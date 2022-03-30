@@ -1,0 +1,19 @@
+@use '../1-abstracts/variables';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.logo {
+    a{
+        font-weight: variables.$font-weight-700;
+        font-size: 1.5rem;
+        color: variables.$font-color-dark;
+
+        .logo-span{
+            color: variables.$accent-color;
+        }
+    }
+}

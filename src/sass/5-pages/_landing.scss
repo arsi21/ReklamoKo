@@ -1,0 +1,61 @@
+@use '../1-abstracts/variables';
+
+body {
+    margin: 1rem;
+}
+
+.landing-header {
+    display: flex;
+    justify-content: space-between;
+    nav {
+        display: none;
+    }
+}
+
+.hero-section {
+    
+    .hero-left-column {
+        margin-top: 8rem;
+        text-align: center;
+        .hero-header {
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            span {
+                color: variables.$accent-color;
+            }
+        }
+
+        .hero-sub-header {
+            font-size: 1.3rem;
+            font-weight: variables.$font-weight-400;
+            color: variables.$font-color-lighter;
+            margin-bottom: 4rem;
+        }
+
+        .start-now-btn {
+            padding: 0.6em 2em;
+            font-size: 1.4rem;
+            font-weight: variables.$font-weight-700;
+            color: variables.$white-color;
+            background-color: variables.$accent-color;
+            border-radius: 5em;
+            border: none;
+            margin-bottom: 4rem;
+        }
+    }
+
+    .hero-img {
+        display: flex;
+        justify-content: center;
+        img {
+            width: 110vw;
+        }
+    }
+}
+
+.landing-footer {
+    text-align: center;
+    color: variables.$font-color-lighter;
+    font-size: 1rem;
+    margin-top: 5rem;
+}
