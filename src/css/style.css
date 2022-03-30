@@ -51,8 +51,29 @@ body {
   font-size: 1.3rem;
   font-weight: 400;
   color: #707070;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 .hero-section .hero-left-column .start-now-btn {
-  padding: 1em, 2em;
+  padding: 0.6em 2em;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  background-color: #5f74cc;
+  border-radius: 5em;
+  border: none;
+  margin-bottom: 4rem;
+}
+.hero-section .hero-img {
+  display: flex;
+  justify-content: center;
+}
+.hero-section .hero-img img {
+  width: 110vw;
+}
+
+.landing-footer {
+  text-align: center;
+  color: #707070;
+  font-size: 1rem;
+  margin-top: 5rem;
 }

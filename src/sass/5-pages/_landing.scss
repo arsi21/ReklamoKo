@@ -18,7 +18,7 @@ body {
         margin-top: 8rem;
         text-align: center;
         .hero-header {
-            font-size: 2.3rem;
+            font-size: clamp(2.3rem, 5vw, 3.5rem); 
             margin-bottom: 2rem;
             span {
                 color: variables.$accent-color;
@@ -26,7 +26,7 @@ body {
         }
 
         .hero-sub-header {
-            font-size: 1.3rem;
+            font-size: clamp(1.3rem, 3vw, 1.5rem);
             font-weight: variables.$font-weight-400;
             color: variables.$font-color-lighter;
             margin-bottom: 4rem;
@@ -34,7 +34,7 @@ body {
 
         .start-now-btn {
             padding: 0.6em 2em;
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             font-weight: variables.$font-weight-700;
             color: variables.$white-color;
             background-color: variables.$accent-color;
