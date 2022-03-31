@@ -7,19 +7,22 @@ body {
 .landing-header {
     display: flex;
     justify-content: space-between;
+
     nav {
         display: none;
     }
 }
 
 .hero-section {
-    
+
     .hero-left-column {
         margin-top: 8rem;
         text-align: center;
+
         .hero-header {
-            font-size: clamp(2.3rem, 5vw, 3.5rem); 
+            font-size: clamp(2.3rem, 5vw, 3.5rem);
             margin-bottom: 2rem;
+
             span {
                 color: variables.$accent-color;
             }
@@ -47,8 +50,9 @@ body {
     .hero-img {
         display: flex;
         justify-content: center;
+
         img {
-            width: 110vw;
+            width: min(110vw, 850px);
         }
     }
 }
@@ -58,4 +62,95 @@ body {
     color: variables.$font-color-lighter;
     font-size: 1rem;
     margin-top: 5rem;
+}
+
+nav.menu-btn {
+    display: block;
+}
+
+.landing-nav {
+    position: fixed;
+    z-index: 999;
+    width: 66%;
+    right: 0;
+    top: 0;
+    background: variables.$dark-color;
+    height: 100vh;
+    padding: 1rem;
+
+    .mobile-menu-exit {
+        margin: 0;
+    }
+
+    .landing-pri-nav {
+        margin-top: 5em;
+    }
+
+    li {
+        a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 0.5em;
+            font-size: 1.3em;
+            text-align: right;
+
+            &:hover {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.mobile-menu-exit {
+    width: 1.5em;
+    float: right;
+    margin: 0.5em;
+    cursor: pointer;
+}
+
+@media (min-width: 38em) and (max-width: 70em) {
+
+    .mobile-menu-open,
+    .mobile-menu-exit {
+        display: none;
+    }
+
+    .landing-header {
+        display: flex;
+
+        .logo {
+            margin-block: auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            position: unset;
+            height: auto;
+            width: 100%;
+            padding: 0;
+            background-color: white;
+
+            ul {
+                display: flex;
+            }
+
+            a {
+                color: variables.$accent-color;
+                font-size: 1.2rem;
+            }
+
+            ul.landing-pri-nav {
+                margin: 0;
+
+                .sign-up-cta {
+                    padding-inline: 1em;
+                    border: 2px solid variables.$accent-color;
+                    border-radius: 5em;
+                    margin-left: 2em;
+                }
+            }
+        }
+    }
 }
