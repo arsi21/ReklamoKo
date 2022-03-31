@@ -20,7 +20,7 @@ body {
         text-align: center;
 
         .hero-header {
-            font-size: clamp(2.3rem, 5vw, 3.5rem);
+            font-size: clamp(2.3rem, 3vw, 3rem);
             margin-bottom: 2rem;
 
             span {
@@ -29,7 +29,7 @@ body {
         }
 
         .hero-sub-header {
-            font-size: clamp(1.3rem, 3vw, 1.5rem);
+            font-size: clamp(1.2rem, 1.5vw, 1.4rem);
             font-weight: variables.$font-weight-400;
             color: variables.$font-color-lighter;
             margin-bottom: 4rem;
@@ -37,13 +37,18 @@ body {
 
         .start-now-btn {
             padding: 0.6em 2em;
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-size: clamp(1rem, 3vw, 1.2rem);
             font-weight: variables.$font-weight-700;
             color: variables.$white-color;
             background-color: variables.$accent-color;
+            border: 2px solid variables.$accent-color;
             border-radius: 5em;
-            border: none;
             margin-bottom: 4rem;
+
+            &:hover {
+                color: variables.$accent-color;
+                background-color: variables.$white-color;
+            }
         }
     }
 
@@ -109,7 +114,7 @@ nav.menu-btn {
     cursor: pointer;
 }
 
-@media (min-width: 38em) and (max-width: 70em) {
+@media (min-width: 38em) {
 
     .mobile-menu-open,
     .mobile-menu-exit {
@@ -138,19 +143,59 @@ nav.menu-btn {
 
             a {
                 color: variables.$accent-color;
-                font-size: 1.2rem;
+                font-size: clamp(1rem, 8vw, 1.2rem);
             }
 
             ul.landing-pri-nav {
                 margin: 0;
 
                 .sign-up-cta {
-                    padding-inline: 1em;
+                    font-weight: variables.$font-weight-700;
+                    padding-inline: 1.5em;
                     border: 2px solid variables.$accent-color;
                     border-radius: 5em;
                     margin-left: 2em;
+
+                    &:hover {
+                        background-color: variables.$accent-color;
+                        color: variables.$white-color;
+                    }
                 }
             }
         }
+    }
+}
+
+@media (min-width: 50em) {
+
+    .landing-header,
+    .hero-section,
+    .landing-footer {
+        max-width: 1200px;
+        margin-inline: auto;
+    }
+
+    .hero-section {
+        display: flex;
+        justify-content: space-between;
+
+        .hero-left-column {
+            text-align: left;
+
+            .hero-header {
+                width: max(10ch, 17ch);
+            }
+        }
+
+        .hero-img {
+            img {
+                margin-right: -7%;
+                width: min(60vw, 900px);
+            }
+        }
+    }
+
+    .landing-footer {
+        text-align: start;
     }
 }

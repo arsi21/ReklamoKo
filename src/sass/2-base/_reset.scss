@@ -2,10 +2,16 @@
     margin: 0;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 a {
     text-decoration: none;
 }
 
- ul {
+ul {
     list-style-type: none;
- }
+}
