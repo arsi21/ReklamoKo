@@ -7,8 +7,11 @@
 @forward "3-layout/header";
 @forward "3-layout/navigation";
 @forward "3-layout/side_menu";
+@forward "3-layout/login";
 
 @forward "4-components/buttons";
+@forward "4-components/input";
+@forward "4-components/link";
 
 @forward "5-pages/landing";
 @forward "5-pages/login";

@@ -1,0 +1,10 @@
+@use '../1-abstracts/variables';
+
+input[type=text],
+input[type=password] {
+    padding: 0.6em;
+    border-radius: 6px;
+    border: 2px solid #E1E1E1;
+    font-size: variables.$fs-regular;
+    width: 100%;
+}
