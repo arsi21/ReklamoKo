@@ -2,7 +2,8 @@
 $fw-400: 400;
 $fw-700: 700;
 
-$fs-regular: clamp(1rem, 3vw, 1.3rem);
+$fs-regular: 1rem;
+$fs-medium: clamp(1.2rem, 2vw, 1.4rem);
 
 //color
 $clr-accent: rgb(95, 116, 204);

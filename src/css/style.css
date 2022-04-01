@@ -19,7 +19,7 @@ ul {
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -68,7 +68,7 @@ p.question {
 }
 
 input[type=submit].pri-button {
-  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-size: 1rem;
   font-weight: 700;
   padding-block: 0.9em;
   width: 100%;
@@ -86,16 +86,20 @@ input[type=password] {
   padding: 0.6em;
   border-radius: 6px;
   border: 2px solid #E1E1E1;
-  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
   width: 100%;
 }
 
 a {
-  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-size: 1rem;
   color: #5f74cc;
 }
 a:hover {
   font-weight: 700;
+}
+
+label.input-lbl {
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
 }
 
 body {
