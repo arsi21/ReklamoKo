@@ -24,30 +24,30 @@ body {
             margin-bottom: 2rem;
 
             span {
-                color: variables.$accent-color;
+                color: variables.$clr-accent;
             }
         }
 
         .hero-sub-header {
             font-size: clamp(1.2rem, 1.5vw, 1.4rem);
-            font-weight: variables.$font-weight-400;
-            color: variables.$font-color-lighter;
+            font-weight: variables.$fw-400;
+            color: variables.$clr-font-light;
             margin-bottom: 4rem;
         }
 
         .start-now-btn {
             padding: 0.6em 2em;
             font-size: clamp(1rem, 3vw, 1.2rem);
-            font-weight: variables.$font-weight-700;
-            color: variables.$white-color;
-            background-color: variables.$accent-color;
-            border: 2px solid variables.$accent-color;
+            font-weight: variables.$fw-700;
+            color: variables.$clr-light;
+            background-color: variables.$clr-accent;
+            border: 2px solid variables.$clr-accent;
             border-radius: 5em;
             margin-bottom: 4rem;
 
             &:hover {
-                color: variables.$accent-color;
-                background-color: variables.$white-color;
+                color: variables.$clr-accent;
+                background-color: variables.$clr-light;
             }
         }
     }
@@ -64,7 +64,7 @@ body {
 
 .landing-footer {
     text-align: center;
-    color: variables.$font-color-lighter;
+    color: variables.$clr-font-light;
     font-size: 1rem;
     margin-top: 5rem;
 }
@@ -79,7 +79,7 @@ nav.menu-btn {
     width: 66%;
     right: 0;
     top: 0;
-    background: variables.$dark-color;
+    background: variables.$clr-dark;
     height: 100vh;
     padding: 1rem;
 
@@ -93,7 +93,7 @@ nav.menu-btn {
 
     li {
         a {
-            color: white;
+            color: variables.$clr-light;
             text-decoration: none;
             display: block;
             padding: 0.5em;
@@ -101,7 +101,7 @@ nav.menu-btn {
             text-align: right;
 
             &:hover {
-                font-weight: bold;
+                font-weight: variables.$fw-700;
             }
         }
     }
@@ -136,14 +136,14 @@ nav.menu-btn {
             height: auto;
             width: 100%;
             padding: 0;
-            background-color: white;
+            background-color: variables.$clr-light;
 
             ul {
                 display: flex;
             }
 
             a {
-                color: variables.$accent-color;
+                color: variables.$clr-accent;
                 font-size: clamp(1rem, 8vw, 1.2rem);
             }
 
@@ -151,15 +151,15 @@ nav.menu-btn {
                 margin: 0;
 
                 .sign-up-cta {
-                    font-weight: variables.$font-weight-700;
+                    font-weight: variables.$fw-700;
                     padding-inline: 1.5em;
-                    border: 2px solid variables.$accent-color;
+                    border: 2px solid variables.$clr-accent;
                     border-radius: 5em;
                     margin-left: 2em;
 
                     &:hover {
-                        background-color: variables.$accent-color;
-                        color: variables.$white-color;
+                        background-color: variables.$clr-accent;
+                        color: variables.$clr-light;
                     }
                 }
             }
