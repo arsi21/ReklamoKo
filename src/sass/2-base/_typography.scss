@@ -21,8 +21,18 @@ body {
     }
 }
 
-h1 {
+.home-title {
     font-size: clamp(2rem, 3vw, 3rem);
     font-weight: variables.$fw-700;
     color: variables.$clr-font-dark;
+}
+
+.home-sec-title {
+    font-weight: variables.$fw-400;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+}
+
+.font-reg-sec {
+    font-weight: variables.$fw-400;
+    color: variables.$clr-font-light;
 }
