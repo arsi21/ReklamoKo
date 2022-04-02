@@ -1,0 +1,29 @@
+@use '../1-abstracts/variables';
+
+.card {
+    padding-top: 3em;
+    background-color: variables.$clr-light;
+}
+
+.card-left-col {
+    max-width: 350px;
+}
+
+
+@media (min-width: 38em) {
+    .card-background {
+        background-color: rgb(247, 240, 240);
+    }
+
+    .card {
+        padding: clamp(3rem, 8vw, 6rem);
+        max-width: calc(350px + 6em);
+        border-radius: 10px;
+    }
+}
+
+@media (min-width: 63em) {
+    .card {
+        max-width: 950px;
+    }
+}

@@ -42,6 +42,10 @@ h1 {
   display: none;
 }
 
+.card-left-col {
+  margin-inline: auto;
+}
+
 h1.title {
   margin-top: 1.5em;
   margin-bottom: 0.9em;
@@ -86,7 +90,7 @@ input[type=password] {
   padding: 0.6em;
   border-radius: 6px;
   border: 2px solid #E1E1E1;
-  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  font-size: clamp(1.2rem, 5vw, 1.4rem);
   width: 100%;
 }
 
@@ -99,7 +103,11 @@ a:hover {
 }
 
 label.input-lbl {
-  font-size: clamp(1.2rem, 2vw, 1.4rem);
+  font-size: clamp(1.2rem, 5vw, 1.4rem);
+}
+
+.card-left-col {
+  max-width: 400px;
 }
 
 body {
