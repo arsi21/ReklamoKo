@@ -16,7 +16,7 @@ label {
     margin-top: 1rem;
 }
 
-input[type=submit].pri-button {
+input[type=submit].home-pri-button {
     margin-top: 3.5rem;
 }
 
@@ -31,14 +31,14 @@ p.question {
 }
 
 @media (min-width: 38em) {
-    .card {
+    .home-card {
         margin-top: 3em;
         margin-inline: auto;
     }
 }
 
 @media (min-width: 63em) {
-    .wrapper {
+    .home-wrapper {
         max-width: 1200px;
         margin-inline: auto;
     }
@@ -53,7 +53,7 @@ p.question {
         margin-left: auto;
     }
 
-    .card {
+    .home-card {
         display: grid;
         gap: 2rem;
         grid-template-columns: repeat(2, 1fr);
