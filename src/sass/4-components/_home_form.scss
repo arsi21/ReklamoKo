@@ -9,6 +9,10 @@
     max-width: 350px;
 }
 
+.home-card-form-container {
+    max-width: 450px;
+}
+
 
 @media (min-width: 38em) {
     .home-card-background {
@@ -16,14 +20,21 @@
     }
 
     .home-card {
-        padding: clamp(3rem, 8vw, 6rem);
-        max-width: calc(350px + 6em);
+        padding: clamp(3rem, 8vw, 4rem);
         border-radius: 10px;
+    }
+
+    .home-card-with-img {
+        max-width: calc(350px + 6em);
+    }
+
+    .home-card-no-img {
+        max-width: calc(500px + 6em);
     }
 }
 
 @media (min-width: 63em) {
-    .home-card {
+    .home-card-with-img {
         max-width: 950px;
     }
 }

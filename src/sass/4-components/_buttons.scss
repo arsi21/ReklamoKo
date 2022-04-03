@@ -14,3 +14,33 @@ input[type=submit].home-pri-button {
         background-color: variables.$clr-accent-hover;
     }
 }
+
+input[type=submit].sec-button {
+    font-size: clamp(0.8rem, 5vw, 1rem);
+    font-weight: variables.$fw-700;
+    padding-block: 0.4em;
+    padding-inline: 1em;
+    color: variables.$clr-light;
+    background-color: variables.$clr-accent;
+    border-radius: 6px;
+    border: none;
+
+    &:hover {
+        background-color: variables.$clr-accent-hover;
+    }
+}
+
+input[type=submit].cancel-button {
+    font-size: clamp(0.8rem, 5vw, 1rem);
+    font-weight: variables.$fw-700;
+    padding-block: 0.4em;
+    padding-inline: 1em;
+    color: variables.$clr-font-light;
+    background-color: variables.$clr-dark-50;
+    border-radius: 6px;
+    border: none;
+
+    &:hover {
+        background-color: variables.$clr-dark-50-hover;
+    }
+}

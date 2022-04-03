@@ -6,18 +6,8 @@
     margin-inline: auto;
 }
 
-.home-title {
-    margin-bottom: 0.9em;
-}
-
 .home-sec-title {
     margin-bottom: 2em;
-}
-
-.input-lbl {
-    display: block;
-    margin-bottom: .6rem;
-    margin-top: 1rem;
 }
 
 .agree-terms-checkbox {
@@ -38,23 +28,8 @@ p.question {
     margin-top: 2rem;
 }
 
-@media (min-width: 38em) {
-    .home-card {
-        margin-top: 3em;
-        margin-inline: auto;
-    }
-}
 
 @media (min-width: 63em) {
-    .home-wrapper {
-        max-width: 1200px;
-        margin-inline: auto;
-    }
-
-    header {
-        margin-top: 2rem;
-    }
-
     .form-img {
         display: block;
         max-width: min(45vw, 400px);
@@ -62,7 +37,7 @@ p.question {
         margin-left: auto;
     }
 
-    .home-card {
+    .home-card-with-img {
         display: grid;
         gap: 2rem;
         grid-template-columns: repeat(2, 1fr);
