@@ -2,7 +2,8 @@
 
 @use '../1-abstracts/variables';
 
-body {
+.landing-header,
+.hero-left-column {
     margin: 1rem;
 }
 
@@ -57,9 +58,12 @@ body {
     .hero-img {
         display: flex;
         justify-content: center;
+        overflow: hidden;
+
 
         img {
             width: min(110vw, 850px);
+
         }
     }
 }
@@ -172,6 +176,15 @@ nav.menu-btn {
 @media (min-width: 50em) {
 
     .landing-header,
+    .hero-left-column {
+        margin: 0;
+    }
+
+    body {
+        margin: 1rem;
+    }
+
+    .landing-header,
     .hero-section,
     .landing-footer {
         max-width: 1200px;
@@ -191,7 +204,10 @@ nav.menu-btn {
         }
 
         .hero-img {
+            overflow: visible;
+
             img {
+
                 margin-right: -7%;
                 width: min(60vw, 900px);
             }
