@@ -20,7 +20,7 @@
                 <form class="home-card__form" action="">
                     <h1 class="home-card__title">Sign Up</h1>
 
-                    <h2 class="home-sec-title">Welcome to ReklamoKo!</h2>
+                    <h2 class="home-card__sec__title">Welcome to ReklamoKo!</h2>
 
                     <label class="home-card__lbl" for="mobile_input">Mobile</label>
                     <input id="mobile_input" class="home-card__input" type="number" name="uname">
@@ -28,14 +28,13 @@
                     <label class="home-card__lbl" for="password_input">Password</label>
                     <input id="password_input" class="home-card__input" type="password" name="password">
 
-                    <div class="agree-terms-checkbox">
-                        <label class="font--reg-light" for="agree_terms">I have read and agree to the
+                    <div class="home-card__checkbox">
+                        <label class="home-card__checkbox__lbl" for="agree_terms">I have read and agree to the
                             Terms of
                             Service.
 
-                            <input class="input-checkbox" type="checkbox" id="agree_terms" name="agreeTerms"
-                                value="Yes">
-                            <span class="checkmark"></span>
+                            <input type="checkbox" id="agree_terms" name="agreeTerms" value="Yes">
+                            <span class="home-card__checkmark"></span>
                         </label>
 
                         <a href="#">ReklamoKo Terms</a>
@@ -44,7 +43,7 @@
                     <input class="home-card__button" type="submit" value="Create Account">
                 </form>
 
-                <p class="home-card__p font--reg-light">Have already an account? <a href="login.html">Login here</a></p>
+                <p class="home-card__p">Have already an account? <a href="login.html">Login here</a></p>
             </div>
 
             <img class="home-card__img" src="assets/signUpImg.svg" alt="">

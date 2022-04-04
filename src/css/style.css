@@ -23,12 +23,12 @@ body {
   font-weight: 400;
 }
 
-.home-logo a {
+.home__logo {
   font-weight: 700;
   font-size: 1.3rem;
   color: #252424;
 }
-.home-logo a .logo-span {
+.home__logo .logo-span {
   color: #5f74cc;
 }
 
@@ -55,33 +55,26 @@ body {
   padding-top: 3em;
   background-color: white;
 }
-.home-card-background .home-card .home-card-form-container {
+.home-card-background .home-card__container {
   max-width: 400px;
   margin-inline: auto;
 }
-.home-card-background .home-card .card-left-col {
-  max-width: 300px;
-}
-
-.home__title {
+.home-card-background .home-card__title {
   margin-bottom: 1em;
 }
-
-.home__input-lbl {
+.home-card-background .home-card__lbl {
   display: block;
   margin-bottom: 0.6rem;
   margin-top: 1rem;
 }
-
-.p__helper {
+.home-card-background .home-card__p {
   margin-bottom: 1em;
 }
-
-.container-home-btn {
+.home-card-background .home-card__btn__cont {
   margin-top: 2.5em;
   text-align: right;
 }
-.container-home-btn .cancel__button {
+.home-card-background .home-card__cancel__btn {
   margin-right: 0.8rem;
 }
 
@@ -97,12 +90,10 @@ body {
     margin-top: 3em;
     margin-inline: auto;
   }
-
-  .home-card-with-img {
+  .home-card--with--img {
     max-width: calc(300px + 6em);
   }
-
-  .home-card-no-img {
+  .home-card--no--img {
     max-width: calc(400px + 6em);
   }
 }
@@ -112,44 +103,41 @@ body {
     margin-inline: auto;
   }
 
-  .home-card-with-img {
+  .home-card--with--img {
     max-width: 750px;
   }
 }
-.form-img {
+.home-card__left {
+  margin-inline: auto;
+  max-width: 300px;
+}
+.home-card__img {
   display: none;
 }
-
-.card-left-col {
-  margin-inline: auto;
-}
-
-input[type=submit].home-pri-button {
+.home-card__button {
   margin-top: 3rem;
 }
-
-p.question {
+.home-card__p {
   margin-top: 1.5rem;
 }
 
 @media (min-width: 63em) {
-  .form-img {
+  .home-card-background .home-card--with--img {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home-card-background .home-card__left {
+    margin-inline: 0;
+  }
+  .home-card-background .home-card__img {
     display: block;
     max-width: min(45vw, 300px);
     max-height: min(45vw, 350px);
     margin-left: auto;
   }
-
-  .home-card-with-img {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .home-card-with-img .card-left-col {
-    margin-inline: 0;
-  }
 }
-input[type=submit].home-pri-button {
+input[type=submit].home-card__button {
   font-size: 1rem;
   font-weight: 700;
   padding-block: 0.7em;
@@ -159,11 +147,11 @@ input[type=submit].home-pri-button {
   border-radius: 5em;
   border: none;
 }
-input[type=submit].home-pri-button:hover {
+input[type=submit].home-card__button:hover {
   background-color: #9da9db;
 }
 
-input[type=submit].sec__button {
+input[type=submit].home-card__sec__btn {
   font-size: 0.8rem;
   font-weight: 700;
   padding-block: 0.4em;
@@ -173,11 +161,11 @@ input[type=submit].sec__button {
   border-radius: 6px;
   border: none;
 }
-input[type=submit].sec__button:hover {
+input[type=submit].home-card__sec__btn:hover {
   background-color: #9da9db;
 }
 
-input[type=submit].cancel__button {
+input[type=submit].home-card__cancel__btn {
   font-size: 0.8rem;
   font-weight: 700;
   padding-block: 0.4em;
@@ -187,13 +175,13 @@ input[type=submit].cancel__button {
   border-radius: 6px;
   border: none;
 }
-input[type=submit].cancel__button:hover {
+input[type=submit].home-card__cancel__btn:hover {
   background-color: #f3efef;
 }
 
-input[type=text].home__input,
-input[type=password].home__input,
-input[type=number].home__input {
+input[type=text].home-card__input,
+input[type=password].home-card__input,
+input[type=number].home-card__input {
   padding: 0.6em;
   border-radius: 6px;
   border: 2px solid #E1E1E1;
@@ -412,7 +400,7 @@ nav.menu-btn {
     text-align: start;
   }
 }
-a.forgot-pwd {
+.home-card__forgot {
   display: block;
   width: 15ch;
   margin-top: 4rem;
@@ -487,30 +475,29 @@ a.forgot-pwd {
   transform: rotate(45deg);
 }
 
-.img-reset-your-pass {
+.home-card__account__img {
   position: relative;
   width: 80px;
   height: 80px;
   overflow: hidden;
   border-radius: 50%;
 }
-.img-reset-your-pass img {
+.home-card__account__img img {
   width: 100%;
   height: auto;
 }
-
-.home-account-container {
+.home-card__account__cont {
   display: flex;
 }
-.home-account-container .home-account {
+.home-card__account {
   margin-block: auto;
   margin-left: 1.5rem;
 }
-.home-account-container .home-account h2.account__name {
+.home-card__name {
   font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: 0.3rem;
 }
-.home-account-container .home-account p.account__pos {
+.home-card__pos {
   color: #707070;
 }

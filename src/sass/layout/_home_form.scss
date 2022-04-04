@@ -14,8 +14,18 @@
         }
 
         &__title {
+            font-size: variables.$fs-large;
+            font-weight: variables.$fw-700;
+            color: variables.$clr-font-dark;
             margin-bottom: 1em;
         }
+
+
+        &__sec__title {
+            font-weight: variables.$fw-400;
+            font-size: variables.$fs-medium;
+        }
+
 
         &__lbl {
             display: block;
@@ -24,6 +34,8 @@
         }
 
         &__p {
+            font-weight: variables.$fw-400;
+            color: variables.$clr-font-light;
             margin-bottom: 1em;
         }
 
