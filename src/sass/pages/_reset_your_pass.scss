@@ -1,0 +1,33 @@
+@use '../abstracts/variables';
+
+.img-reset-your-pass {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.home-account-container {
+    display: flex;
+
+    .home-account {
+        margin-block: auto;
+        margin-left: 1.5rem;
+
+        h2.account__name {
+            font-size: variables.$fs-medium;
+            font-weight: variables.$fw-400;
+            margin-bottom: 0.3rem;
+        }
+
+        p.account__pos {
+            color: variables.$clr-font-light;
+        }
+    }
+}
