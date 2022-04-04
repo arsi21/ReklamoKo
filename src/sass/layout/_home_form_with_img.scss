@@ -1,35 +1,43 @@
-.form-img {
-    display: none;
-}
+.home-card {
 
-.card-left-col {
-    margin-inline: auto;
-}
-
-input[type=submit].home-pri-button {
-    margin-top: 3rem;
-}
-
-p.question {
-    margin-top: 1.5rem;
-}
-
-
-@media (min-width: 63em) {
-    .form-img {
-        display: block;
-        max-width: min(45vw, 300px);
-        max-height: min(45vw, 350px);
-        margin-left: auto;
+    &__left {
+        margin-inline: auto;
+        max-width: 300px;
     }
 
-    .home-card-with-img {
-        display: grid;
-        gap: 2rem;
-        grid-template-columns: repeat(2, 1fr);
+    &__img {
+        display: none;
+    }
 
-        .card-left-col {
-            margin-inline: 0;
+    &__button {
+        margin-top: 3rem;
+    }
+
+    &__p {
+        margin-top: 1.5rem;
+    }
+}
+
+@media (min-width: 63em) {
+    .home-card-background {
+
+        .home-card {
+            &--with--img {
+                display: grid;
+                gap: 2rem;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            &__left {
+                margin-inline: 0;
+            }
+
+            &__img {
+                display: block;
+                max-width: min(45vw, 300px);
+                max-height: min(45vw, 350px);
+                margin-left: auto;
+            }
         }
     }
 }

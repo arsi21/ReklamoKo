@@ -12,29 +12,24 @@
 <body class="home-card-background">
     <div class="home-wrapper">
         <header>
-            <div class="home-logo">
-                <a href="index.html">Reklamo<span class="logo-span">Ko</span></a>
-            </div>
+            <a href="index.html" class="home__logo">Reklamo<span class="logo-span">Ko</span></a>
         </header>
 
-        <section class="home-card home-card-with-img">
-            <div class="card-left-col">
-                <form class="pri-form" action="">
-                    <h1 class="home-title">Sign Up</h1>
+        <section class="home-card home-card--with--img">
+            <div class="home-card__container home-card__left">
+                <form class="home-card__form" action="">
+                    <h1 class="home-card__title">Sign Up</h1>
 
                     <h2 class="home-sec-title">Welcome to ReklamoKo!</h2>
 
-                    <label class="home-input-lbl mobile-input" for="mobile_input">Mobile</label>
-                    <input id="mobile_input" class="home-input" type="number" name="uname">
+                    <label class="home-card__lbl" for="mobile_input">Mobile</label>
+                    <input id="mobile_input" class="home-card__input" type="number" name="uname">
 
-
-                    <div class="input-lbl pwd-input">
-                        <label class="home-input-lbl" for="password_input">Password</label>
-                        <input id="password_input" class="home-input" type="password" name="password">
-                    </div>
+                    <label class="home-card__lbl" for="password_input">Password</label>
+                    <input id="password_input" class="home-card__input" type="password" name="password">
 
                     <div class="agree-terms-checkbox">
-                        <label class="font-reg-sec" for="agree_terms">I have read and agree to the
+                        <label class="font--reg-light" for="agree_terms">I have read and agree to the
                             Terms of
                             Service.
 
@@ -42,17 +37,17 @@
                                 value="Yes">
                             <span class="checkmark"></span>
                         </label>
-                        <a>ReklamoKo Terms</a>
+
+                        <a href="#">ReklamoKo Terms</a>
                     </div>
 
-                    <input class="home-pri-button" type="submit" value="Create Account">
+                    <input class="home-card__button" type="submit" value="Create Account">
                 </form>
 
-                <p class="question font-reg-sec">Have already an account? <a class="sign-up" href="login.html">Login
-                        here</a></p>
+                <p class="home-card__p font--reg-light">Have already an account? <a href="login.html">Login here</a></p>
             </div>
 
-            <img class="form-img" src="assets/signUpImg.svg" alt="">
+            <img class="home-card__img" src="assets/signUpImg.svg" alt="">
         </section>
     </div>
 </body>

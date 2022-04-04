@@ -9,15 +9,13 @@ body {
     font-weight: variables.$fw-400;
 }
 
-.home-logo {
-    a {
-        font-weight: variables.$fw-700;
-        font-size: 1.3rem;
-        color: variables.$clr-font-dark;
+.home__logo {
+    font-weight: variables.$fw-700;
+    font-size: 1.3rem;
+    color: variables.$clr-font-dark;
 
-        .logo-span {
-            color: variables.$clr-accent;
-        }
+    .logo-span {
+        color: variables.$clr-accent;
     }
 }
 
@@ -32,7 +30,7 @@ body {
     font-size: variables.$fs-medium;
 }
 
-.font-reg-sec {
+.font--reg-light {
     font-weight: variables.$fw-400;
     color: variables.$clr-font-light;
 }

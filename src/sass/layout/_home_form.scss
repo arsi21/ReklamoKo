@@ -7,40 +7,43 @@
         padding-top: 3em;
         background-color: variables.$clr-light;
 
-        .home-card-form-container {
+        &__container {
             max-width: 400px;
             margin-inline: auto;
+
         }
 
-        .card-left-col {
-            max-width: 300px;
+        &__title {
+            margin-bottom: 1em;
+        }
+
+        &__lbl {
+            display: block;
+            margin-bottom: .6rem;
+            margin-top: 1rem;
+        }
+
+        &__p {
+            margin-bottom: 1em;
+        }
+
+        &__btn__cont {
+            margin-top: 2.5em;
+            text-align: right;
+        }
+
+        &__cancel__btn {
+            margin-right: 0.8rem;
         }
     }
 }
 
 
-.home-title {
-    margin-bottom: 1em;
-}
 
-.home-input-lbl {
-    display: block;
-    margin-bottom: .6rem;
-    margin-top: 1rem;
-}
 
-.paragraph-helper {
-    margin-bottom: 1em;
-}
 
-.container-home-btn {
-    margin-top: 2.5em;
-    text-align: right;
 
-    .cancel-button {
-        margin-right: 0.8rem;
-    }
-}
+
 
 
 @media (min-width: 38em) {
@@ -54,15 +57,17 @@
         border-radius: 10px;
         margin-top: 3em;
         margin-inline: auto;
+
+        &--with--img {
+            max-width: calc(300px + 6em);
+        }
+
+        &--no--img {
+            max-width: calc(400px + 6em);
+        }
     }
 
-    .home-card-with-img {
-        max-width: calc(300px + 6em);
-    }
 
-    .home-card-no-img {
-        max-width: calc(400px + 6em);
-    }
 }
 
 @media (min-width: 63em) {
@@ -71,7 +76,7 @@
         margin-inline: auto;
     }
 
-    .home-card-with-img {
+    .home-card--with--img {
         max-width: 750px;
     }
 }

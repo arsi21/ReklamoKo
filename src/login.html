@@ -12,34 +12,29 @@
 <body class="home-card-background">
     <div class="home-wrapper">
         <header>
-            <div class="home-logo">
-                <a href="index.html">Reklamo<span class="logo-span">Ko</span></a>
-            </div>
+            <a href="index.html" class="home__logo">Reklamo<span class="logo-span">Ko</span></a>
         </header>
 
-        <section class="home-card home-card-with-img">
-            <div class="card-left-col">
-                <form class="pri-form" action="">
-                    <h1 class="home-title">Log In</h1>
+        <section class="home-card home-card--with--img">
+            <div class="home-card__container home-card__left">
+                <form class="home-card__form" action="">
+                    <h1 class="home-card__title">Log In</h1>
 
+                    <label class="home-card__lbl" for="username_input">Username</label>
+                    <input id="username_input" class="home-card__input" type="text" name="uname">
 
-                    <label class="home-input-lbl uname_input" for="username_input">Username</label>
-                    <input id="username_input" class="home-input" type="text" name="uname">
+                    <label class="home-card__lbl" for="password_input">Password</label>
+                    <input id="password_input" class="home-card__input" type="password" name="password">
 
-
-                    <div class="input-lbl pwd-input">
-                        <label class="home-input-lbl" for="password_input">Password</label>
-                        <input id="password_input" class="home-input" type="password" name="password">
-                    </div>
-
-                    <input class="home-pri-button" type="submit" value="Log In">
+                    <input class="home-card__button" type="submit" value="Log In">
                 </form>
-                <a class="forgot-pwd" href="_find_your_account.html">Forgot password?</a>
 
-                <p class="question">Don't have an account? <a class="sign-up" href="signup.html">Sign Up</a></p>
+                <a class="home-card__forgot" href="_find_your_account.html">Forgot password?</a>
+
+                <p class="home-card__p font--reg-light">Don't have an account? <a href="signup.html">Sign Up</a></p>
             </div>
 
-            <img class="form-img" src="assets/loginImg.svg" alt="">
+            <img class="home-card__img" src="assets/loginImg.svg" alt="">
         </section>
     </div>
 </body>

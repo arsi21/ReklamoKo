@@ -1,6 +1,6 @@
 @use '../abstracts/variables';
 
-input[type=submit].home-pri-button {
+input[type=submit].home-card__button {
     font-size: variables.$fs-regular;
     font-weight: variables.$fw-700;
     padding-block: 0.7em;
@@ -15,7 +15,7 @@ input[type=submit].home-pri-button {
     }
 }
 
-input[type=submit].sec-button {
+input[type=submit].home-card__sec__btn {
     font-size: variables.$fs-small;
     font-weight: variables.$fw-700;
     padding-block: 0.4em;
@@ -30,7 +30,7 @@ input[type=submit].sec-button {
     }
 }
 
-input[type=submit].cancel-button {
+input[type=submit].home-card__cancel__btn {
     font-size: variables.$fs-small;
     font-weight: variables.$fw-700;
     padding-block: 0.4em;

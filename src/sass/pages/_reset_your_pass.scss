@@ -1,33 +1,35 @@
 @use '../abstracts/variables';
 
-.img-reset-your-pass {
-    position: relative;
-    width: 80px;
-    height: 80px;
-    overflow: hidden;
-    border-radius: 50%;
+.home-card {
+    &__account__img {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        border-radius: 50%;
 
-    img {
-        width: 100%;
-        height: auto;
+        img {
+            width: 100%;
+            height: auto;
+        }
     }
-}
 
-.home-account-container {
-    display: flex;
+    &__account__cont {
+        display: flex;
+    }
 
-    .home-account {
+    &__account {
         margin-block: auto;
         margin-left: 1.5rem;
+    }
 
-        h2.account__name {
-            font-size: variables.$fs-medium;
-            font-weight: variables.$fw-400;
-            margin-bottom: 0.3rem;
-        }
+    &__name {
+        font-size: variables.$fs-medium;
+        font-weight: variables.$fw-400;
+        margin-bottom: 0.3rem;
+    }
 
-        p.account__pos {
-            color: variables.$clr-font-light;
-        }
+    &__pos {
+        color: variables.$clr-font-light;
     }
 }
