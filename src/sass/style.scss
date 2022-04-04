@@ -1,25 +1,26 @@
-@forward "2-base/reset";
-@forward "2-base/typography";
+@forward "base/reset";
+@forward "base/typography";
 
-@forward "3-layout/footer";
-@forward "3-layout/forms";
-@forward "3-layout/grid";
-@forward "3-layout/header";
-@forward "3-layout/navigation";
-@forward "3-layout/side_menu";
-@forward "3-layout/home_form";
-@forward "3-layout/home_form_with_img";
+@forward "layout/footer";
+@forward "layout/forms";
+@forward "layout/grid";
+@forward "layout/header";
+@forward "layout/navigation";
+@forward "layout/side_menu";
+@forward "layout/home_form";
+@forward "layout/home_form_with_img";
 
-@forward "4-components/buttons";
-@forward "4-components/input";
-@forward "4-components/link";
-@forward "4-components/label";
-@forward "4-components/home_form";
-@forward "4-components/paragraph_helper";
+@forward "components/buttons";
+@forward "components/input";
+@forward "components/link";
+@forward "components/label";
+@forward "components/home_form";
+@forward "components/paragraph_helper";
+@forward "components/img";
 
-@forward "5-pages/landing";
-@forward "5-pages/login";
-@forward "5-pages/signup";
+@forward "pages/landing";
+@forward "pages/login";
+@forward "pages/signup";
 
-@forward "6-themes/admin";
-@forward "6-themes/resident";
+@forward "themes/admin";
+@forward "themes/resident";

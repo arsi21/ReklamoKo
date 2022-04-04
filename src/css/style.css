@@ -318,6 +318,18 @@ label.input-lbl {
   color: #707070;
 }
 
+.img-reset-your-pass {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.img-reset-your-pass img {
+  width: 100%;
+  height: auto;
+}
+
 .landing-header,
 .hero-left-column {
   margin: 1rem;
