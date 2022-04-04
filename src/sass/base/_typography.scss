@@ -12,7 +12,7 @@ body {
 .home-logo {
     a {
         font-weight: variables.$fw-700;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: variables.$clr-font-dark;
 
         .logo-span {
@@ -22,7 +22,7 @@ body {
 }
 
 .home-title {
-    font-size: clamp(1.8rem, 3vw, 2rem);
+    font-size: 1.5rem;
     font-weight: variables.$fw-700;
     color: variables.$clr-font-dark;
 }

@@ -16,7 +16,7 @@ input[type=submit].home-pri-button {
 }
 
 input[type=submit].sec-button {
-    font-size: clamp(0.8rem, 5vw, 1rem);
+    font-size: variables.$fs-small;
     font-weight: variables.$fw-700;
     padding-block: 0.4em;
     padding-inline: 1em;
@@ -31,7 +31,7 @@ input[type=submit].sec-button {
 }
 
 input[type=submit].cancel-button {
-    font-size: clamp(0.8rem, 5vw, 1rem);
+    font-size: variables.$fs-small;
     font-weight: variables.$fw-700;
     padding-block: 0.4em;
     padding-inline: 1em;

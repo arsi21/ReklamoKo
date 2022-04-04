@@ -19,7 +19,7 @@
 .hero-section {
 
     .hero-left-column {
-        margin-top: 8rem;
+        margin-top: 5rem;
         text-align: center;
 
         .hero-header {
@@ -103,7 +103,7 @@ nav.menu-btn {
             text-decoration: none;
             display: block;
             padding: 0.5em;
-            font-size: 1.3em;
+            font-size: variables.$fs-regular;
             text-align: right;
 
             &:hover {
@@ -150,7 +150,7 @@ nav.menu-btn {
 
             a {
                 color: variables.$clr-accent;
-                font-size: clamp(1rem, 8vw, 1.2rem);
+                font-size: variables.$fs-regular;
             }
 
             ul.landing-pri-nav {
@@ -208,7 +208,6 @@ nav.menu-btn {
             overflow: visible;
 
             img {
-
                 margin-right: -7%;
                 width: min(60vw, 900px);
             }

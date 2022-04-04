@@ -6,34 +6,20 @@
     margin-inline: auto;
 }
 
-.home-sec-title {
-    margin-bottom: 2em;
-}
-
-.agree-terms-checkbox {
-    margin-top: 2rem;
-}
-
 input[type=submit].home-pri-button {
-    margin-top: 3.5rem;
-}
-
-a.forgot-pwd {
-    display: block;
-    width: 15ch;
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
 p.question {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 
 @media (min-width: 63em) {
     .form-img {
         display: block;
-        max-width: min(45vw, 400px);
-        max-height: min(45vw, 450px);
+        max-width: min(45vw, 300px);
+        max-height: min(45vw, 350px);
         margin-left: auto;
     }
 

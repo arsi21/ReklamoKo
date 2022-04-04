@@ -1,16 +1,29 @@
+@use '../abstracts/variables';
+
 .home-card-background {
     margin: 1rem;
+
+    .home-card {
+        padding-top: 3em;
+        background-color: variables.$clr-light;
+
+        .home-card-form-container {
+            max-width: 400px;
+            margin-inline: auto;
+        }
+
+        .card-left-col {
+            max-width: 300px;
+        }
+    }
 }
 
-.home-card-form-container {
-    margin-inline: auto;
-}
 
 .home-title {
-    margin-bottom: 0.9em;
+    margin-bottom: 1em;
 }
 
-.input-lbl {
+.home-input-lbl {
     display: block;
     margin-bottom: .6rem;
     margin-top: 1rem;
@@ -32,12 +45,23 @@
 
 @media (min-width: 38em) {
     .home-card-background {
+        background-color: rgb(247, 240, 240);
         margin-top: 2rem;
     }
 
     .home-card {
+        padding: 3rem;
+        border-radius: 10px;
         margin-top: 3em;
         margin-inline: auto;
+    }
+
+    .home-card-with-img {
+        max-width: calc(300px + 6em);
+    }
+
+    .home-card-no-img {
+        max-width: calc(400px + 6em);
     }
 }
 
@@ -45,5 +69,9 @@
     .home-wrapper {
         max-width: 1200px;
         margin-inline: auto;
+    }
+
+    .home-card-with-img {
+        max-width: 750px;
     }
 }
