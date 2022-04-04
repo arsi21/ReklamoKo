@@ -1,0 +1,5 @@
+@use '../abstracts/variables';
+
+label.input-lbl {
+    font-size: variables.$fs-medium;
+}

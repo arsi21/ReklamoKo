@@ -1,0 +1,49 @@
+.home-card-background {
+    margin: 1rem;
+}
+
+.home-card-form-container {
+    margin-inline: auto;
+}
+
+.home-title {
+    margin-bottom: 0.9em;
+}
+
+.input-lbl {
+    display: block;
+    margin-bottom: .6rem;
+    margin-top: 1rem;
+}
+
+.paragraph-helper {
+    margin-bottom: 1em;
+}
+
+.container-home-btn {
+    margin-top: 2.5em;
+    text-align: right;
+
+    .cancel-button {
+        margin-right: 0.8rem;
+    }
+}
+
+
+@media (min-width: 38em) {
+    .home-card-background {
+        margin-top: 2rem;
+    }
+
+    .home-card {
+        margin-top: 3em;
+        margin-inline: auto;
+    }
+}
+
+@media (min-width: 63em) {
+    .home-wrapper {
+        max-width: 1200px;
+        margin-inline: auto;
+    }
+}
