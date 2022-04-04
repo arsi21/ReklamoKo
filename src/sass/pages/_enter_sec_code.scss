@@ -1,0 +1,18 @@
+@use '../abstracts/variables';
+
+.home-card__mobile__num {
+    color: variables.$clr-font-light;
+    margin-top: 1rem;
+}
+
+@media (min-width: 23em) {
+    .home-card__mobile__cont {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home-card__mobile__num {
+        margin-top: 0;
+    }
+}
