@@ -6,7 +6,7 @@
         margin-bottom: 4rem;
 
         img {
-            margin-right: 2rem;
+            display: none;
         }
 
         .home-card__p {
@@ -17,5 +17,14 @@
     &__resend {
         display: block;
         margin-top: 3rem;
+    }
+}
+
+@media (min-width: 24em) {
+    .home-card__auth__cont {
+        img {
+            display: block;
+            margin-right: 2rem;
+        }
     }
 }
