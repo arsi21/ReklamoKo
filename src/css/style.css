@@ -32,22 +32,6 @@ body {
   color: #5f74cc;
 }
 
-.home-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #252424;
-}
-
-.home-sec-title {
-  font-weight: 400;
-  font-size: 1.2rem;
-}
-
-.font--reg-light {
-  font-weight: 400;
-  color: #707070;
-}
-
 .home-card-background {
   margin: 1rem;
 }
@@ -60,7 +44,14 @@ body {
   margin-inline: auto;
 }
 .home-card-background .home-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #252424;
   margin-bottom: 1em;
+}
+.home-card-background .home-card__sec__title {
+  font-weight: 400;
+  font-size: 1.1rem;
 }
 .home-card-background .home-card__lbl {
   display: block;
@@ -68,6 +59,8 @@ body {
   margin-top: 1rem;
 }
 .home-card-background .home-card__p {
+  font-weight: 400;
+  color: #707070;
   margin-bottom: 1em;
 }
 .home-card-background .home-card__btn__cont {
@@ -302,7 +295,7 @@ nav.menu-btn {
   text-decoration: none;
   display: block;
   padding: 0.5em;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: right;
 }
 .landing-nav li a:hover {
@@ -406,16 +399,21 @@ nav.menu-btn {
   margin-top: 4rem;
 }
 
-.home-sec-title {
+.home-card__sec__title {
   margin-bottom: 2em;
 }
 
-.agree-terms-checkbox {
+.home-card__checkbox {
   margin-top: 2rem;
 }
 
+.home-card__checkbox__lbl {
+  font-weight: 400;
+  color: #707070;
+}
+
 /* The container */
-.agree-terms-checkbox {
+.home-card__checkbox {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -427,7 +425,7 @@ nav.menu-btn {
 }
 
 /* Hide the browser's default checkbox */
-.agree-terms-checkbox input {
+.home-card__checkbox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -436,7 +434,7 @@ nav.menu-btn {
 }
 
 /* Create a custom checkbox */
-.checkmark {
+.home-card__checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -446,24 +444,24 @@ nav.menu-btn {
 }
 
 /* When the checkbox is checked, add a blue background */
-.agree-terms-checkbox input:checked ~ .checkmark {
+.home-card__checkbox input:checked ~ .home-card__checkmark {
   background-color: #2196F3;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
+.home-card__checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
 /* Show the checkmark when checked */
-.agree-terms-checkbox input:checked ~ .checkmark:after {
+.home-card__checkbox input:checked ~ .home-card__checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.agree-terms-checkbox .checkmark:after {
+.home-card__checkbox .home-card__checkmark:after {
   left: 10px;
   top: 7px;
   width: 5px;
@@ -494,10 +492,27 @@ nav.menu-btn {
   margin-left: 1.5rem;
 }
 .home-card__name {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 400;
   margin-bottom: 0.3rem;
 }
 .home-card__pos {
   color: #707070;
+}
+
+.home-card__mobile__num {
+  color: #707070;
+  margin-top: 1rem;
+}
+
+@media (min-width: 23em) {
+  .home-card__mobile__cont {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-card__mobile__num {
+    margin-top: 0;
+  }
 }
