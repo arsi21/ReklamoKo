@@ -1,0 +1,21 @@
+@use '../abstracts/variables';
+
+.home-card {
+    &__auth__cont {
+        display: flex;
+        margin-bottom: 4rem;
+
+        img {
+            margin-right: 2rem;
+        }
+
+        .home-card__p {
+            margin: 0;
+        }
+    }
+
+    &__resend {
+        display: block;
+        margin-top: 3rem;
+    }
+}

@@ -516,3 +516,9 @@ nav.menu-btn {
     margin-top: 0;
   }
 }
+.home-card__auth__cont {
+  display: flex;
+}
+.home-card__auth__cont img {
+  margin-right: 2rem;
+}

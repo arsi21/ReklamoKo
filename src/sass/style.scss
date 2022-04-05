@@ -1,6 +1,8 @@
+//base
 @forward "base/reset";
 @forward "base/typography";
 
+//layout
 @forward "layout/footer";
 @forward "layout/forms";
 @forward "layout/grid";
@@ -10,17 +12,21 @@
 @forward "layout/home-form";
 @forward "layout/home-form-with-img";
 
+//components
 @forward "components/buttons";
 @forward "components/input";
 @forward "components/link";
 @forward "components/label";
 @forward "components/paragraph";
 
+//pages
 @forward "pages/landing";
 @forward "pages/login";
 @forward "pages/signup";
 @forward "pages/reset-password";
 @forward "pages/security-code";
+@forward "pages/authentication";
 
+//themes
 @forward "themes/admin";
 @forward "themes/resident";
