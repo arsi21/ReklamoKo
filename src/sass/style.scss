@@ -6,9 +6,9 @@
 @forward "layout/grid";
 @forward "layout/header";
 @forward "layout/navigation";
-@forward "layout/side_menu";
-@forward "layout/home_form";
-@forward "layout/home_form_with_img";
+@forward "layout/side-menu";
+@forward "layout/home-form";
+@forward "layout/home-form-with-img";
 
 @forward "components/buttons";
 @forward "components/input";
@@ -19,8 +19,8 @@
 @forward "pages/landing";
 @forward "pages/login";
 @forward "pages/signup";
-@forward "pages/reset_your_pass";
-@forward "pages/enter_sec_code";
+@forward "pages/reset-password";
+@forward "pages/security-code";
 
 @forward "themes/admin";
 @forward "themes/resident";
