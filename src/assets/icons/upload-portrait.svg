@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="149" height="149" viewBox="0 0 149 149">
+  <g id="Group_54" data-name="Group 54" transform="translate(-560 -581)">
+    <g id="Ellipse_22" data-name="Ellipse 22" transform="translate(560 581)" fill="#fff" stroke="#e1e1e1" stroke-width="3">
+      <circle cx="74.5" cy="74.5" r="74.5" stroke="none"/>
+      <circle cx="74.5" cy="74.5" r="73" fill="none"/>
+    </g>
+    <path id="user" d="M62.9,23.176A23.173,23.173,0,1,1,39.725,0,23.175,23.175,0,0,1,62.9,23.176Zm-5.29,23.769a29.564,29.564,0,0,1-35.782-.007C8.346,52.874,0,71.356,0,79.45H79.45C79.45,71.429,70.843,52.947,57.608,46.945Z" transform="translate(594.275 615.775)" fill="#707070"/>
+    <g id="Group_41" data-name="Group 41" transform="translate(125 29)">
+      <circle id="Ellipse_21" data-name="Ellipse 21" cx="17.5" cy="17.5" r="17.5" transform="translate(549 666)" fill="#5f74cc"/>
+      <path id="upload" d="M16,16H13v5H11V16H8l4-4Zm3.479-5.908a7.49,7.49,0,0,0-14.958,0A5.5,5.5,0,0,0,5.5,21H9V19H5.5A3.5,3.5,0,0,1,2,15.5c0-2.8,2.479-3.833,4.433-3.72C6.266,7.562,8.641,5,12,5c3.453,0,5.891,2.8,5.567,6.78C19.312,11.734,22,12.531,22,15.5A3.5,3.5,0,0,1,18.5,19H15v2h3.5a5.5,5.5,0,0,0,.979-10.908Z" transform="translate(554 671)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
