@@ -1,0 +1,113 @@
+@use '../abstracts/variables';
+
+.home-card {
+
+    &__indication {
+        display: inline;
+        background-color: variables.$clr-dark-50;
+        color: variables.$clr-font-light;
+        font-size: variables.$fs-regular;
+        padding: 5px 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        text-align: center;
+        margin-right: 2rem;
+
+        &--active {
+            background-color: variables.$clr-accent;
+            color: variables.$clr-font-0;
+        }
+
+        &--done {
+            background-color: variables.$clr-accent;
+            color: variables.$clr-font-0;
+
+            img {
+                height: 10px;
+                width: 10px;
+            }
+        }
+    }
+
+    &__select {
+        background-color: variables.$clr-light;
+        margin-bottom: 2rem;
+    }
+
+
+}
+
+
+
+
+
+///////////style of radio button
+
+.home-card {
+
+    /* The container */
+    &__radio__lbl {
+        position: relative;
+        padding-left: 35px;
+        padding-right: 0;
+        margin-bottom: 12px;
+        margin-right: 3rem;
+        cursor: pointer;
+        font-size: variables.$fs-regular;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default radio button */
+    &__radio__lbl input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* Create a custom radio button */
+    .dotmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: rgb(224, 216, 216);
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    &__radio__lbl:hover input~.dotmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    &__radio__lbl input:checked~.dotmark {
+        background-color: variables.$clr-accent;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .dotmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    &__radio__lbl input:checked~.dotmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    &__radio__lbl .dotmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+}

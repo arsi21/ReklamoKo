@@ -2,7 +2,9 @@
 
 input[type=text].home-card__input,
 input[type=password].home-card__input,
-input[type=number].home-card__input {
+input[type=number].home-card__input,
+input[type=date].home-card__input,
+select.home-card__select {
     padding: 0.6em;
     border-radius: 6px;
     border: 2px solid #E1E1E1;

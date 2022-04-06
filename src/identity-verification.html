@@ -23,9 +23,10 @@
                     <h2 class="home-card__sec__title">Identity Verification</h2>
 
                     <div class="home-card__indication__cont">
-                        <span class="home-card__indication home-card__indication--active">1</span>
-                        <span class="home-card__indication">2</span>
-                        <span class="home-card__indication">3</span>
+                        <div class="home-card__indication home-card__indication--active">1</div>
+                        <div class="home-card__indication home-card__indication--done"><img src="assets/icons/check.svg"
+                                alt=""></div>
+                        <div class="home-card__indication">3</div>
                     </div>
 
                     <label class="home-card__lbl" for="fname_input">First Name</label>
@@ -42,11 +43,15 @@
 
                     <p class="home-card__lbl">Gender</p>
 
-                    <input id="female_input" class="home-card__input" type="radio" name="gender">
-                    <label class="home-card__radio__lbl" for="female_input">Female</label>
+                    <label class="home-card__radio__lbl" for="female_input">Female
+                        <input id="female_input" class="home-card__input" type="radio" name="gender">
+                        <span class="dotmark"></span>
+                    </label>
 
-                    <input id="male_input" class="home-card__input" type="radio" name="gender">
-                    <label class="home-card__radio__lbl" for="male_input">Male</label>
+                    <label class="home-card__radio__lbl" for="male_input">Male
+                        <input id="male_input" class="home-card__input" type="radio" name="gender">
+                        <span class="dotmark"></span>
+                    </label>
 
                     <label class="home-card__lbl" for="position_input">Position</label>
                     <select class="home-card__select" name="position" id="position_input">
