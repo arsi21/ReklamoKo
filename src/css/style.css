@@ -196,6 +196,10 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.home-card__file__lbl input[type=file].home-card__input__file {
+  display: none;
+}
+
 a {
   font-size: 1rem;
   color: #5f74cc;
@@ -563,8 +567,9 @@ nav.menu-btn {
   height: 10px;
   width: 10px;
 }
-.home-card__radio__lbl {
-  margin-right: 3rem;
+.home-card__select {
+  background-color: white;
+  margin-bottom: 2rem;
 }
 
 .home-card {
