@@ -13,6 +13,37 @@ select.home-card__select {
 }
 
 
+
+
+
+////////toggle for showing password
+.eye {
+    position: absolute;
+    z-index: 999;
+    margin-left: -40px;
+    margin-top: 14px;
+    background-image: url(../assets/icons/eye.svg);
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 20px;
+}
+
+.eye-slash {
+    position: absolute;
+    z-index: 999;
+    margin-left: -40px;
+    margin-top: 12px;
+    background-image: url(../assets/icons/eye-slash.svg);
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 20px;
+}
+
+
+
+
+
+
 //remove up and down arrow in input type number
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -30,43 +61,41 @@ input[type=number] {
 
 
 //////////home input type file
-.home-card {
-    &__file__lbl {
-        border-radius: 6px;
-        padding: 0.6em 1em;
-        color: variables.$clr-font-0;
-        background-color: #A6AEAA;
-        cursor: pointer;
+.home-card__file__lbl {
+    border-radius: 6px;
+    padding: 0.6em 1em;
+    color: variables.$clr-font-0;
+    background-color: #A6AEAA;
+    cursor: pointer;
 
-        &:hover {
-            background-color: #B8BCBA;
-        }
-
-        input[type=file].home-card__input__file {
-            display: none;
-        }
-
-        img {
-            height: 1rem;
-            width: auto;
-            margin-right: 0.5rem;
-        }
+    &:hover {
+        background-color: #B8BCBA;
     }
 
-    .home-card__img__preview {
-        margin-top: 1rem;
-        margin-bottom: 3rem;
-        border: 2px solid #E1E1E1;
-        border-radius: 6px;
-        height: 180px;
-        max-width: 100%;
-        display: flex;
-        justify-content: center;
+    input[type=file].home-card__input__file {
+        display: none;
+    }
 
-        img {
-            border: none;
-            max-width: 100%;
-            height: auto;
-        }
+    img {
+        height: 1rem;
+        width: auto;
+        margin-right: 0.5rem;
+    }
+}
+
+.home-card__img__preview {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border: 2px solid #E1E1E1;
+    border-radius: 6px;
+    height: 180px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+
+    img {
+        border: none;
+        max-width: 100%;
+        height: auto;
     }
 }

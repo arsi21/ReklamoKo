@@ -3,3 +3,25 @@
     width: 15ch;
     margin-top: 4rem;
 }
+
+.eye {
+    position: absolute;
+    z-index: 999;
+    margin-left: -40px;
+    margin-top: 14px;
+    background-image: url(../assets/icons/eye.svg);
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 20px;
+}
+
+.eye-slash {
+    position: absolute;
+    z-index: 999;
+    margin-left: -40px;
+    margin-top: 12px;
+    background-image: url(../assets/icons/eye-slash.svg);
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 20px;
+}

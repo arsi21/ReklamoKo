@@ -201,18 +201,24 @@ input[type=number] {
   border-radius: 6px;
   padding: 0.6em 1em;
   color: white;
-  background-color: #B8BCBA;
+  background-color: #A6AEAA;
   cursor: pointer;
+}
+.home-card__file__lbl:hover {
+  background-color: #B8BCBA;
 }
 .home-card__file__lbl input[type=file].home-card__input__file {
   display: none;
 }
 .home-card__file__lbl img {
+  height: 1rem;
+  width: auto;
   margin-right: 0.5rem;
 }
-.home-card .home-card__img__preview {
+
+.home-card__img__preview {
   margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   border: 2px solid #E1E1E1;
   border-radius: 6px;
   height: 180px;
@@ -220,7 +226,7 @@ input[type=number] {
   display: flex;
   justify-content: center;
 }
-.home-card .home-card__img__preview img {
+.home-card__img__preview img {
   border: none;
   max-width: 100%;
   height: auto;
@@ -429,6 +435,11 @@ nav.menu-btn {
   display: block;
   width: 15ch;
   margin-top: 4rem;
+}
+
+.eye:before {
+  content: "";
+  background: url(../assets/icons/eye.svg);
 }
 
 .home-card__sec__title {
