@@ -26,7 +26,14 @@
                     <input id="mobile_input" class="home-card__input" type="number" name="uname">
 
                     <label class="home-card__lbl" for="password_input">Password</label>
-                    <input id="password_input" class="home-card__input" type="password" name="password">
+                    <input id="password_input" class="home-card__input home-card__input--pass" type="password"
+                        name="password">
+                    <i class="eye" id="toggle_pwd"></i>
+
+                    <label class="home-card__lbl" for="password_input">Confirm Password</label>
+                    <input id="con_password_input" class="home-card__input home-card__input--pass" type="password"
+                        name="conPassword">
+                    <i class="eye" id="toggle_con_pwd"></i>
 
                     <div class="home-card__checkbox">
                         <label class="home-card__checkbox__lbl" for="agree_terms">I have read and agree to the
@@ -49,6 +56,29 @@
             <img class="home-card__img" src="assets/signUpImg.svg" alt="">
         </section>
     </div>
+
+    <script>
+        const togglePwd = document.querySelector('#toggle_pwd');
+        const pwdInput = document.querySelector('#password_input');
+        const toggleConPwd = document.querySelector('#toggle_con_pwd');
+        const conPwdInput = document.querySelector('#con_password_input');
+
+        togglePwd.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = pwdInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            pwdInput.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('eye-slash');
+        });
+
+        toggleConPwd.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = conPwdInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            conPwdInput.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('eye-slash');
+        });
+    </script>
 </body>
 
 </html>
