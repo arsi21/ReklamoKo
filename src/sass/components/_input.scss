@@ -12,8 +12,11 @@ select.home-card__select {
     width: 100%;
 }
 
-
-
+//for making the toggle more visible
+input[type=password].home-card__input--pass,
+input[type=text].home-card__input--pass {
+    padding-right: 3rem;
+}
 
 
 ////////toggle for showing password
