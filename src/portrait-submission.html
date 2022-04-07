@@ -32,10 +32,16 @@
 
                     <p class="home-card__p">Upload portrait photo</p>
 
-                    <label class="home-card__file__lbl" for="portrait_photo">
-                        <input id="portrait_photo" class="home-card__input__file" type="file" name="portraitPhoto">
-                        <img src="assets/icons/upload-portrait.svg" alt="Upload icon">
+                    <label class="home-card__file__lbl" for="portrait_pic_input">
+                        <input id="portrait_pic_input" class="home-card__input__file" type="file"
+                            name="portraitPicInput">
+                        <img src="assets/icons/upload.svg" alt="Upload icon">
+                        <span>Upload photo</span>
                     </label>
+
+                    <div class="home-card__img__preview">
+                        <img id="portrait_pic_preview" />
+                    </div>
 
                     <input class="home-card__button" type="submit" value="Submit">
                 </form>
@@ -44,6 +50,8 @@
             <img class="home-card__img" src="assets/signUpImg.svg" alt="">
         </section>
     </div>
+
+    <script src="js/showPortraitPic.js"></script>
 </body>
 
 </html>

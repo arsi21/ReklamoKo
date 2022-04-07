@@ -61,6 +61,7 @@ body {
 .home-card-background .home-card__p {
   font-weight: 400;
   color: #707070;
+  line-height: 1.5;
   margin-bottom: 1em;
 }
 .home-card-background .home-card__btn__cont {
@@ -197,21 +198,32 @@ input[type=number] {
 }
 
 .home-card__file__lbl {
-  margin-top: 1rem;
-  border: 1px solid #ccc;
-  display: flex;
-  padding-block: 4rem;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  color: #707070;
+  border-radius: 6px;
+  padding: 0.6em 1em;
+  color: white;
+  background-color: #B8BCBA;
   cursor: pointer;
 }
 .home-card__file__lbl input[type=file].home-card__input__file {
   display: none;
 }
 .home-card__file__lbl img {
-  margin-right: 0.6rem;
+  margin-right: 0.5rem;
+}
+.home-card .home-card__img__preview {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  border: 2px solid #E1E1E1;
+  border-radius: 6px;
+  height: 180px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.home-card .home-card__img__preview img {
+  border: none;
+  max-width: 100%;
+  height: auto;
 }
 
 a {

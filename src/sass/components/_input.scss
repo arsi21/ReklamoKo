@@ -32,23 +32,41 @@ input[type=number] {
 //////////home input type file
 .home-card {
     &__file__lbl {
-        margin-top: 1rem;
         border-radius: 6px;
-        border: 2px solid #E1E1E1;
-        display: flex;
-        padding-block: 4rem;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        color: variables.$clr-font-light;
+        padding: 0.6em 1em;
+        color: variables.$clr-font-0;
+        background-color: #A6AEAA;
         cursor: pointer;
+
+        &:hover {
+            background-color: #B8BCBA;
+        }
 
         input[type=file].home-card__input__file {
             display: none;
         }
 
         img {
-            margin-right: 0.6rem;
+            height: 1rem;
+            width: auto;
+            margin-right: 0.5rem;
+        }
+    }
+
+    .home-card__img__preview {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        border: 2px solid #E1E1E1;
+        border-radius: 6px;
+        height: 180px;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+
+        img {
+            border: none;
+            max-width: 100%;
+            height: auto;
         }
     }
 }
