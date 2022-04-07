@@ -25,6 +25,7 @@
 
                     <label class="home-card__lbl" for="password_input">Password</label>
                     <input id="password_input" class="home-card__input" type="password" name="password">
+                    <i class="eye" id="toggle_pwd"></i>
 
                     <input class="home-card__button" type="submit" value="Log In">
                 </form>
@@ -37,6 +38,19 @@
             <img class="home-card__img" src="assets/loginImg.svg" alt="">
         </section>
     </div>
+
+    <script>
+        const togglePwd = document.querySelector('#toggle_pwd');
+        const pwdInput = document.querySelector('#password_input');
+
+        togglePwd.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = pwdInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            pwdInput.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('eye-slash');
+        });
+    </script>
 </body>
 
 </html>

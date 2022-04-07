@@ -185,6 +185,33 @@ select.home-card__select {
   width: 100%;
 }
 
+input[type=password].home-card__input--pass,
+input[type=text].home-card__input--pass {
+  padding-right: 3rem;
+}
+
+.eye {
+  position: absolute;
+  z-index: 999;
+  margin-left: -40px;
+  margin-top: 14px;
+  background-image: url(../assets/icons/eye.svg);
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 20px;
+}
+
+.eye-slash {
+  position: absolute;
+  z-index: 999;
+  margin-left: -40px;
+  margin-top: 12px;
+  background-image: url(../assets/icons/eye-slash.svg);
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 20px;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -437,9 +464,26 @@ nav.menu-btn {
   margin-top: 4rem;
 }
 
-.eye:before {
-  content: "";
-  background: url(../assets/icons/eye.svg);
+.eye {
+  position: absolute;
+  z-index: 999;
+  margin-left: -40px;
+  margin-top: 14px;
+  background-image: url(../assets/icons/eye.svg);
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 20px;
+}
+
+.eye-slash {
+  position: absolute;
+  z-index: 999;
+  margin-left: -40px;
+  margin-top: 12px;
+  background-image: url(../assets/icons/eye-slash.svg);
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 20px;
 }
 
 .home-card__sec__title {
