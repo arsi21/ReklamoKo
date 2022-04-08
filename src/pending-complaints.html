@@ -9,78 +9,91 @@
     <title>ReklamoKo | Pending Complaints</title>
 </head>
 
-<body class="body-backgound">
-    <header class="header">
-        <div class="header__left__col">
-            <img class="header__menu" src="assets/icons/menu.svg" alt="Menu icon">
+<body class="body-background">
+    <div class="body-wrapper">
+        <header class="header">
+            <div class="header__left__col">
+                <img class="header__menu" src="assets/icons/menu.svg" alt="Menu icon">
 
-            <a class="header__logo" href="#">ReklamoKo</a>
-        </div>
+                <a class="header__logo" href="#">ReklamoKo</a>
+            </div>
 
-        <div class="header__tool">
+            <div class="header__tool">
+                <ul>
+                    <li>
+                        <img class="header__inbox" src="assets/icons/inbox.svg" alt="Inbox icon">
+                    </li>
+
+                    <li>
+                        <img class="header__notif" src="assets/icons/notification.svg" alt="Notification icon">
+                    </li>
+
+                    <li class="header__profile">
+                        <img src="assets/residentProfSample.jpg " alt="Profile picture">
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <div class="nav__profile">
+                <div class="nav__profile__pic">
+                    <img src="assets/residentProfSample.jpg " alt="Profile picture">
+                </div>
+
+                <div class="nav__profile__info">
+                    <span class="nav__name">Juan Dela Cruz</span>
+
+                    <span class="nav__position">Resident</span>
+
+                </div>
+            </div>
+
+            <hr class="nav__hr">
+
+            <button class="nav__complain__btn">
+                <img src="assets/icons/add.svg" alt="Add icon">
+                <span>Complain</span>
+            </button>
+
             <ul>
                 <li>
-                    <img class="header__inbox" src="assets/icons/inbox.svg" alt="Inbox icon">
+                    <a href="#" class="nav__dashboard nav--active">
+                        <img src="assets/icons/dashboard.svg" alt="Dashboard icon">
+                        <span>Dashboard</span>
+                    </a>
                 </li>
 
                 <li>
-                    <img class="header__notif" src="assets/icons/notification.svg" alt="Notification icon">
+                    <a href="#" class="nav__pending">
+                        <img src="assets/icons/pending_complaints.svg" alt="Pending complaints icon">
+                        <span>Pending Complaints</span>
+                    </a>
                 </li>
 
                 <li>
-                    <img class="header__profile" src="assets/residentProfSample.jpg " alt="Profile picture">
+                    <a href="#" class="nav__ongoing">
+                        <img src="assets/icons/ongoing_complaints.svg" alt="On going complaints icon">
+                        <span>On Going Complaints</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav__transferred">
+                        <img src="assets/icons/transferred_complaints.svg" alt="Transferred complaints icon">
+                        <span>Transferred Complaints</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav__solved">
+                        <img src="assets/icons/solved_complaints.svg" alt="Solved complaints icon">
+                        <span>Solved Complaints</span>
+                    </a>
                 </li>
             </ul>
-        </div>
-    </header>
-
-    <nav class="nav">
-        <div class="nav__profile">
-            <img class="nav__profile__pic" src="assets/residentProfSample.jpg " alt="Profile picture">
-            <span class="nav__name">Juan Dela Cruz</span>
-            <span class="nav__position">Resident</span>
-        </div>
-
-        <hr class="nav__hr">
-
-        <ul>
-            <li>
-                <a href="#" class="nav__dashboard">
-                    <img src="assets/icons/dashboard.svg" alt="Dashboard icon">
-                    Dashboard
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="nav__pending">
-                    <img src="assets/icons/pending_complaints.svg" alt="Pending complaints icon">
-                    Pending Complaints
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="nav__ongoing">
-                    <img src="assets/icons/ongoing_complaints.svg" alt="On going complaints icon">
-                    On Going Complaints
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="nav__transferred">
-                    <img src="assets/icons/transferred_complaints.svg" alt="Transferred complaints icon">
-                    Transferred Complaints
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="nav__solved">
-                    <img src="assets/icons/solved_complaints.svg" alt="Solved complaints icon">
-                    Solved Complaints
-                </a>
-            </li>
-        </ul>
-    </nav>
-
+        </nav>
+    </div>
 </body>
 
 </html>

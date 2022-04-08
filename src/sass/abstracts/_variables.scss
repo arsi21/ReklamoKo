@@ -4,14 +4,17 @@ $fw-700: 700;
 
 //font size
 $fs-small: 0.8rem;
-$fs-regular: 1rem;
+$fs-regular: 0.9rem;
 $fs-medium: 1.1rem;
 $fs-large: 1.5rem;
 
 //color for background
 $clr-accent: rgb(95, 116, 204);
+$clr-accent-darker: #5E699A;
+$clr-darker: #17191C;
 $clr-dark: rgb(38, 44, 51);
 $clr-dark-50: rgb(232, 232, 232);
+$clr-dark-80: #EFD9D9;
 $clr-light: rgb(255, 255, 255);
 
 //color for background hover
@@ -21,5 +24,6 @@ $clr-dark-50-hover: rgb(243, 239, 239);
 //color for font
 $clr-font-dark: rgb(37, 36, 36);
 $clr-font-light: rgb(112, 112, 112);
+$clr-font-lighter: #BCBCBC;
 $clr-font-0: rgb(255, 255, 255);
 $clr-font-accent: rgb(95, 116, 204);
