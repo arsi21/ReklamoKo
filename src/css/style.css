@@ -187,29 +187,31 @@ select.home-card__select {
 
 input[type=password].home-card__input--pass,
 input[type=text].home-card__input--pass {
-  padding-right: 3rem;
+  padding-right: 45px;
 }
 
 .eye {
   position: absolute;
   z-index: 999;
-  margin-left: -40px;
-  margin-top: 14px;
+  margin-left: -36px;
+  margin-top: 16px;
   background-image: url(../assets/icons/eye.svg);
   background-repeat: no-repeat;
-  width: 28px;
-  height: 20px;
+  width: 22px;
+  height: 18px;
+  background-size: contain;
 }
 
 .eye-slash {
   position: absolute;
   z-index: 999;
-  margin-left: -40px;
-  margin-top: 12px;
+  margin-left: -36px;
+  margin-top: 14px;
   background-image: url(../assets/icons/eye-slash.svg);
   background-repeat: no-repeat;
-  width: 28px;
-  height: 20px;
+  width: 22px;
+  height: 18px;
+  background-size: contain;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -462,28 +464,6 @@ nav.menu-btn {
   display: block;
   width: 15ch;
   margin-top: 4rem;
-}
-
-.eye {
-  position: absolute;
-  z-index: 999;
-  margin-left: -40px;
-  margin-top: 14px;
-  background-image: url(../assets/icons/eye.svg);
-  background-repeat: no-repeat;
-  width: 28px;
-  height: 20px;
-}
-
-.eye-slash {
-  position: absolute;
-  z-index: 999;
-  margin-left: -40px;
-  margin-top: 12px;
-  background-image: url(../assets/icons/eye-slash.svg);
-  background-repeat: no-repeat;
-  width: 28px;
-  height: 20px;
 }
 
 .home-card__sec__title {
