@@ -1,0 +1,80 @@
+@use '../abstracts/variables';
+
+.body-background {
+    background-color: variables.$clr-dark-80;
+}
+
+.header {
+    background-color: variables.$clr-accent-darker;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 8px;
+    padding-inline: 24px;
+    width: 100%;
+
+    &__left__col {
+        display: flex;
+    }
+
+    &__menu {}
+
+    &__logo {
+        display: none;
+    }
+
+    &__tool {
+
+        ul {
+            display: flex;
+            align-items: center;
+            padding: 0;
+
+            li {
+                margin-left: 2rem;
+            }
+        }
+    }
+
+    &__profile {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+        border-radius: 50%;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+
+@media (min-width: 30em) {
+    .header {
+
+        &__logo {
+            display: block;
+            margin-left: 1.5rem;
+            font-weight: variables.$fw-700;
+            font-size: 1.3rem;
+            color: variables.$clr-font-0;
+        }
+
+
+        &__tool {
+            ul {
+                li {
+                    margin-left: 3rem;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 38em) {
+    .header {
+        padding-inline: 32px;
+    }
+}
