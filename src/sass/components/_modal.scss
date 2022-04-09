@@ -4,6 +4,10 @@
     display: none;
 }
 
+.modal--message {
+    display: none;
+}
+
 .modal {
     background-color: variables.$clr-light;
     width: 100%;
@@ -22,7 +26,7 @@
     }
 }
 
-.notif {
+.modal__item {
     cursor: pointer;
     padding-inline: 16px;
     padding-block: 0.5rem;
