@@ -2,13 +2,13 @@
 
 .nav {
     //display: none;
-    position: fixed;
+    position: absolute;
     z-index: 999;
     width: 280px;
     left: 0;
     top: 55px;
     background: variables.$clr-dark;
-    height: 100vh;
+    height: 100%;
 
     &__profile {
         cursor: pointer;
