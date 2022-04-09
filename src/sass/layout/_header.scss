@@ -18,6 +18,7 @@
     }
 
     &__menu {
+        cursor: pointer;
         height: 20px;
         width: 20px;
     }
@@ -38,6 +39,7 @@
 
                 .header__inbox,
                 .header__notif {
+                    cursor: pointer;
                     height: 20px;
                     width: 20px;
                     vertical-align: middle;
@@ -73,6 +75,7 @@
         vertical-align: middle;
 
         img {
+            cursor: pointer;
             width: 100%;
             height: auto;
         }
