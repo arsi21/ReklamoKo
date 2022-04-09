@@ -1,7 +1,7 @@
 @use '../abstracts/variables';
 
 .nav {
-    display: none;
+    //display: none;
     position: fixed;
     z-index: 999;
     width: 280px;
@@ -12,7 +12,7 @@
 
     &__profile {
         cursor: pointer;
-        padding: 22px;
+        padding: 14px;
         display: flex;
         align-items: center;
     }
@@ -55,8 +55,9 @@
     &__complain__btn {
         cursor: pointer;
         margin-bottom: 1rem;
-        margin-left: 16px;
-        padding-inline: 16px;
+        margin-left: 14px;
+        padding-right: 16px;
+        padding-left: 10px;
         padding-block: 10px;
         border-radius: 5em;
         border: none;
@@ -95,8 +96,7 @@
                 color: variables.$clr-font-lighter;
                 width: 100%;
                 padding-block: 0.6rem;
-                padding-inline: 32px;
-                //align-items: center;
+                padding-inline: 24px;
 
                 &:hover {
                     font-weight: variables.$fw-400;
