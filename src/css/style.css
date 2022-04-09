@@ -40,13 +40,13 @@ body {
   background-color: #5E699A;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding-block: 8px;
   padding-inline: 32px;
   width: 100%;
 }
 .header__left__col {
   display: flex;
+  align-items: center;
 }
 .header__menu {
   height: 20px;
@@ -63,10 +63,11 @@ body {
 .header__tool ul li {
   margin-left: 2rem;
 }
-.header__tool ul li img.header__inbox,
+.header__tool ul li .header__inbox,
 .header__tool ul li .header__notif {
   height: 20px;
   width: 20px;
+  vertical-align: middle;
 }
 .header__profile {
   position: relative;
@@ -74,6 +75,7 @@ body {
   height: 40px;
   overflow: hidden;
   border-radius: 50%;
+  vertical-align: middle;
 }
 .header__profile img {
   width: 100%;
@@ -137,6 +139,27 @@ body {
 }
 .nav__complain__btn {
   margin-bottom: 1rem;
+  margin-left: 16px;
+  padding-inline: 16px;
+  padding-block: 10px;
+  border-radius: 5em;
+  border: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: white;
+  background-color: #5f74cc;
+}
+.nav__complain__btn img {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+}
+.nav__complain__btn span {
+  vertical-align: middle;
+  margin-left: 1.3rem;
+}
+.nav__complain__btn:hover {
+  background-color: #9da9db;
 }
 .nav ul {
   width: 100%;
@@ -158,7 +181,11 @@ body {
 .nav ul li a img {
   height: 20px;
   width: 20px;
-  margin-right: 1.5rem;
+  vertical-align: middle;
+}
+.nav ul li a span {
+  vertical-align: middle;
+  margin-left: 1.3rem;
 }
 .nav--active {
   background-color: #17191C;

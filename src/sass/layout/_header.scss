@@ -42,6 +42,24 @@
                     width: 20px;
                     vertical-align: middle;
                 }
+
+                .message-counter,
+                .notif-counter {
+                    display: block;
+                    position: absolute;
+                    z-index: 999;
+                    margin-top: -25px;
+                    margin-left: 13px;
+                    text-align: center;
+                    padding-block: 0.5px;
+                    background-color: #E1284D;
+                    color: variables.$clr-font-0;
+                    font-size: variables.$fs-xs;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    border: 1.5px solid variables.$clr-accent-darker;
+                }
             }
         }
     }
