@@ -41,7 +41,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding-block: 8px;
-  padding-inline: 32px;
+  padding-inline: 24px;
   width: 100%;
 }
 .header__left__col {
@@ -116,17 +116,17 @@ body {
 }
 .nav {
   display: none;
-  position: fixed;
+  position: absolute;
   z-index: 999;
   width: 280px;
   left: 0;
   top: 55px;
   background: #262c33;
-  height: 100vh;
+  height: 100%;
 }
 .nav__profile {
   cursor: pointer;
-  padding: 22px;
+  padding: 14px;
   display: flex;
   align-items: center;
 }
@@ -162,8 +162,9 @@ body {
 .nav__complain__btn {
   cursor: pointer;
   margin-bottom: 1rem;
-  margin-left: 16px;
-  padding-inline: 16px;
+  margin-left: 14px;
+  padding-right: 16px;
+  padding-left: 10px;
   padding-block: 10px;
   border-radius: 5em;
   border: none;
@@ -195,7 +196,7 @@ body {
   color: #BCBCBC;
   width: 100%;
   padding-block: 0.6rem;
-  padding-inline: 32px;
+  padding-inline: 24px;
 }
 .nav ul li a:hover {
   font-weight: 400;
@@ -483,8 +484,73 @@ a:hover {
 
 .modal {
   background-color: white;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  padding-block: 1.5rem;
+}
+.modal__title {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #494747;
+  margin-left: 24px;
+  margin-bottom: 1rem;
+}
+
+.notif {
+  cursor: pointer;
+  padding-inline: 24px;
+  padding-block: 0.5rem;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.notif--read {
+  background-color: #EFD9D9;
+}
+.notif:hover {
+  background-color: #EFD9D9;
+}
+.notif__img__cont {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.notif__img {
+  width: 100%;
+  height: auto;
+}
+.notif__info {
+  color: #707070;
+  margin-left: 4rem;
+  width: 100%;
+}
+.notif__info__top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.1rem;
+}
+.notif__pos {
+  display: block;
+  font-size: 0.8rem;
+  color: #5f74cc;
+}
+.notif__date {
+  font-size: 0.9rem;
+}
+.notif__name {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+.notif__desc {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.1rem;
 }
 
 .landing-header,
