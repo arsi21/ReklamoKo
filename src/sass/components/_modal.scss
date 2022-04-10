@@ -1,7 +1,7 @@
 @use '../abstracts/variables';
 
 .modal--notif {
-    display: none;
+    //display: none;
 }
 
 .modal--message {
@@ -20,7 +20,7 @@
         display: block;
         font-size: variables.$fs-large;
         font-weight: variables.$fw-700;
-        color: variables.$clr-font-50;
+        color: variables.$clr-font-dark-80;
         margin-left: 16px;
         margin-bottom: 1rem;
     }
@@ -35,11 +35,11 @@
     align-items: center;
 
     &--read {
-        background-color: variables.$clr-dark-80;
+        background-color: variables.$clr-dark-60;
     }
 
     &:hover {
-        background-color: variables.$clr-dark-80;
+        background-color: variables.$clr-dark-60;
     }
 
     &__img__cont {
@@ -57,7 +57,7 @@
     }
 
     &__info {
-        color: variables.$clr-font-light;
+        color: variables.$clr-font-dark-60;
         margin-left: 4rem;
         width: 100%;
     }

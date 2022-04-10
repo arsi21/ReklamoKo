@@ -7,7 +7,7 @@
     width: 280px;
     left: 0;
     top: 55px;
-    background: variables.$clr-dark;
+    background: variables.$clr-dark-80;
     height: 100%;
 
     &__profile {
@@ -44,7 +44,7 @@
     &__position {
         font-weight: variables.$fw-400;
         font-size: variables.$fs-small;
-        color: variables.$clr-font-lighter;
+        color: variables.$clr-font-dark-50;
     }
 
     &__hr {
@@ -93,24 +93,24 @@
             a {
                 display: block;
                 font-size: variables.$fs-regular;
-                color: variables.$clr-font-lighter;
+                color: variables.$clr-font-dark-50;
                 width: 100%;
                 padding-block: 0.6rem;
                 padding-inline: 24px;
 
                 &:hover {
                     font-weight: variables.$fw-400;
-                    background-color: variables.$clr-darker;
+                    background-color: variables.$clr-dark-100;
 
                     &::before {
                         content: "";
                         display: block;
                         position: absolute;
                         margin-top: -9.5px;
-                        margin-left: -32px;
+                        margin-left: -24px;
                         z-index: 999;
                         width: 6px;
-                        height: 39.5px;
+                        height: 39.2px;
                         background-color: variables.$clr-accent;
                     }
                 }
@@ -130,17 +130,17 @@
     }
 
     &--active {
-        background-color: variables.$clr-darker;
+        background-color: variables.$clr-dark-80;
 
         &::before {
             content: "";
             display: block;
             position: absolute;
             margin-top: -9.5px;
-            margin-left: -32px;
+            margin-left: -24px;
             z-index: 999;
             width: 6px;
-            height: 39.5px;
+            height: 39.2px;
             background-color: variables.$clr-accent;
         }
     }

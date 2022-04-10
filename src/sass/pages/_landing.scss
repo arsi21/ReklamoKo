@@ -34,7 +34,7 @@
         .hero-sub-header {
             font-size: clamp(1.2rem, 1.5vw, 1.4rem);
             font-weight: variables.$fw-400;
-            color: variables.$clr-font-light;
+            color: variables.$clr-font-dark-60;
             margin-bottom: 4rem;
         }
 
@@ -70,7 +70,7 @@
 
 .landing-footer {
     text-align: center;
-    color: variables.$clr-font-light;
+    color: variables.$clr-font-dark-60;
     font-size: 1rem;
     margin-top: 5rem;
 }
@@ -85,7 +85,7 @@ nav.menu-btn {
     width: 66%;
     right: 0;
     top: 0;
-    background: variables.$clr-dark;
+    background: variables.$clr-dark-80;
     height: 100vh;
     padding: 1rem;
 

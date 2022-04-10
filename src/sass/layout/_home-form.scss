@@ -16,7 +16,7 @@
         &__title {
             font-size: variables.$fs-large;
             font-weight: variables.$fw-700;
-            color: variables.$clr-font-dark;
+            color: variables.$clr-font-dark-100;
             margin-bottom: 1em;
         }
 
@@ -35,7 +35,7 @@
 
         &__p {
             font-weight: variables.$fw-400;
-            color: variables.$clr-font-light;
+            color: variables.$clr-font-dark-60;
             line-height: 1.5;
             margin-bottom: 1em;
         }
