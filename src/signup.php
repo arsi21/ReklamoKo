@@ -12,7 +12,7 @@
 <body class="home-card-background">
     <div class="home-wrapper">
         <header>
-            <a href="index.html" class="home__logo">Reklamo<span class="logo-span">Ko</span></a>
+            <a href="index.php" class="home__logo">Reklamo<span class="logo-span">Ko</span></a>
         </header>
 
         <section class="home-card home-card--with--img">
@@ -50,7 +50,7 @@
                     <input class="home-card__button" type="submit" value="Create Account">
                 </form>
 
-                <p class="home-card__p">Have already an account? <a href="login.html">Login here</a></p>
+                <p class="home-card__p">Have already an account? <a href="login.php">Login here</a></p>
             </div>
 
             <img class="home-card__img" src="assets/signUpImg.svg" alt="">

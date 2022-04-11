@@ -19,8 +19,8 @@
             <img id="mobile-exit" class="mobile-menu-exit" src="assets/icons/mobile-exit.svg" alt="Exit menu">
 
             <ul class="landing-pri-nav">
-                <li><a href="login.html">Login</a></li>
-                <li><a class="sign-up-cta" href="signup.html">Sign Up</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a class="sign-up-cta" href="signup.php">Sign Up</a></li>
             </ul>
         </nav>
     </header>
@@ -58,7 +58,7 @@
         const signupBtn = document.querySelector('#signup');
 
         signupBtn.addEventListener('click', function () {
-            location.href = "signup.html";
+            location.href = "signup.php";
         });
 
     </script>

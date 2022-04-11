@@ -12,7 +12,7 @@
 <body class="home-card-background">
     <div class="home-wrapper">
         <header>
-            <a href="index.html" class="home__logo">Reklamo<span class="logo-span">Ko</span></a>
+            <a href="index.php" class="home__logo">Reklamo<span class="logo-span">Ko</span></a>
         </header>
 
         <section class="home-card home-card--with--img">

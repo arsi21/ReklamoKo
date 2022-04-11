@@ -12,20 +12,26 @@
 <body class="home-card-background">
     <div class="home-wrapper">
         <header>
-            <a href="index.html" class="home__logo">Reklamo<span class="logo-span">Ko</span></a>
+            <a href="index.php" class="home__logo">Reklamo<span class="logo-span">Ko</span></a>
         </header>
 
         <section class="home-card home-card--no--img">
             <div class="home-card__container">
                 <form class="home-card__form" action="">
-                    <h1 class="home-card__title">Choose a New Password</h1>
-                    <p class="home-card__p">Create a new password that is at 6 characters long. A
-                        strong password is combination of letters, numbers, and
-                        punctuation marks.
+                    <h1 class="home-card__title">Enter security code</h1>
+                    <p class="home-card__p">Please check your mobile phone for a message with your
+                        code. Your code is 6 numbers long.
                     </p>
 
-                    <input id="pass_input" class="home-card__input" type="text" name="newPass"
-                        placeholder="New Password">
+                    <div class="home-card__mobile__cont">
+                        <input id="code_input" class="home-card__input" type="text" name="secuCode"
+                            placeholder="Enter code">
+
+                        <div class="home-card__mobile__num">
+                            <p class="">We sent your code to:</p>
+                            <p class="">09268780822</p>
+                        </div>
+                    </div>
 
                     <div class="home-card__btn__cont">
                         <input class="home-card__cancel__btn" type="submit" value="Cancel">
