@@ -225,7 +225,7 @@ body {
   margin-left: 1.3rem;
 }
 .nav--active {
-  background-color: #17191C;
+  background-color: #262c33;
 }
 .nav--active::before {
   content: "";
