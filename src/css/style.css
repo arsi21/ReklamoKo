@@ -381,7 +381,7 @@ body {
   white-space: nowrap;
 }
 .content__item__desc {
-  width: min(80vw, 100ch);
+  width: min(75vw, 100ch);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
