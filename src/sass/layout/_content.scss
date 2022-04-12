@@ -4,11 +4,12 @@
 .content {
 
     &__title__cont {
-        width: 100%;
+        max-width: 1100px;
         padding-block: 0.8em;
         padding-inline: 24px;
         background-color: variables.$clr-light;
         margin-block: 0.5em;
+        margin-inline: auto;
     }
 
     &__title {
@@ -17,10 +18,11 @@
     }
 
     &__body__cont {
-        width: 100%;
+        max-width: 1100px;
         height: auto;
         padding-block: 24px;
         background-color: variables.$clr-light;
+        margin-inline: auto;
     }
 
     &__item__cont {
@@ -49,17 +51,14 @@
 
     &__item__name {
         font-weight: variables.$fw-700;
-        max-height: 16px;
+        white-space: nowrap;
     }
 
     &__item__desc {
         width: min(80vw, 100ch);
         overflow: hidden;
-        max-height: 16px;
-
-        &::after {
-            content: "...";
-        }
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     &__item__date,
@@ -88,6 +87,7 @@
             gap: 1rem;
             align-items: center;
         }
+
 
         &__item__name,
         &__item__desc,
