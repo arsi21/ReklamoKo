@@ -409,22 +409,102 @@
 
 
 
-        <section class="page">
-            <div class="page__title__cont">
-                <h2 class="page__title">Pending Complaints</h2>
+        <section class="content">
+            <div class="content__title__cont">
+                <h2 class="content__title">Pending Complaints</h2>
             </div>
 
-            <div class="page__content__cont">
-                <input class="page__search" type="search" placeholder="Search a complain">
-                <div class="page__item__list__cont">
-                    <div class="page__item__cont">
-                        <span class="page__item__name">Juan Dela Cruz</span>
-                        <span class="page__item__desc">Lorem ipsum dolor sit amet,sed...</span>
-                        <span class="page__item__date">01/10/22</span>
-                        <span class="page__item__status">Pending</span>
-                        <img class="page__item__action" src="assets/icons/action.svg" alt="Action icon">
+            <div class="content__body__cont">
+                <form action="">
+                    <div class="content__search__cont">
+                        <button class="content__search__btn">
+                            <img src="assets/icons/search.svg" alt="Search icon">
+                        </button>
+
+                        <input class="content__search" id="search_input" type="search" name="search" placeholder="Search a complain">
+                    </div>
+                </form>
+
+                <div class="content__item__list__cont">
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet, Lorem dolor sit amet dolor sit amet dolor sit amet dolor sit amet dolor sit amet, Lorem ipsum dolor sit amet ipsum dolor sit amet, sadipscing elit consetetur sadipscing elitr, sed diam...</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+
+                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
                     </div>
                 </div>
+
+                <div class="content__item__list__cont">
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+
+                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
+                    </div>
+                </div>
+
+                <div class="content__item__list__cont">
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+
+                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
+                    </div>
+                </div>
+
+                <div class="content__item__list__cont">
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+
+                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
+                    </div>
+                </div>
+
+                <div class="content__item__list__cont">
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+
+                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
+                    </div>
+                </div>
+
+                <div class="content__item__list__cont">
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+
+                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
+                    </div>
+                </div>
+
+
+
             </div>
         </section>
 

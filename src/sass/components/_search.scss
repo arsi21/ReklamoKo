@@ -1,0 +1,33 @@
+@use '../abstracts/variables';
+
+.content {
+
+    .content__search__cont {
+        padding-inline: 24px;
+    }
+
+    .content__search__btn {
+        position: absolute;
+        z-index: 999;
+        margin-top: 6px;
+        margin-left: 6px;
+        padding-inline: 8px;
+        padding-block: 6px;
+        border-radius: 50%;
+        border: none;
+
+        img {
+            width: 15px;
+        }
+    }
+
+    input[type=search].content__search {
+        font-size: variables.$fs-regular;
+        padding: 12px 12px 12px 45px;
+        border-radius: 6px;
+        border: none;
+        background-color: variables.$clr-dark-50;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}

@@ -1,0 +1,103 @@
+@use '../abstracts/variables';
+
+
+.content {
+
+    &__title__cont {
+        width: 100%;
+        padding-block: 0.8em;
+        padding-inline: 24px;
+        background-color: variables.$clr-light;
+        margin-block: 0.5em;
+    }
+
+    &__title {
+        font-size: variables.$fs-regular;
+        color: variables.$clr-font-dark-80;
+    }
+
+    &__body__cont {
+        width: 100%;
+        height: auto;
+        padding-block: 24px;
+        background-color: variables.$clr-light;
+    }
+
+    &__item__cont {
+        display: flex;
+        justify-content: space-between;
+        max-width: 100%;
+        padding-inline: 24px;
+        padding-block: 0.8rem;
+        color: variables.$clr-font-dark-60;
+
+        &:hover {
+            background-color: variables.$clr-dark-50;
+        }
+    }
+
+    &__item__info__cont {
+        max-width: 95%;
+    }
+
+    &__item__name,
+    &__item__desc {
+        display: block;
+        margin-bottom: 0.2rem;
+        font-size: variables.$fs-regular;
+    }
+
+    &__item__name {
+        font-weight: variables.$fw-700;
+        max-height: 16px;
+    }
+
+    &__item__desc {
+        width: min(80vw, 100ch);
+        overflow: hidden;
+        max-height: 16px;
+
+        &::after {
+            content: "...";
+        }
+    }
+
+    &__item__date,
+    &__item__status {
+        font-size: variables.$fs-small;
+        font-weight: variables.$fw-400;
+    }
+
+    &__item__status {
+        color: variables.$clr-font-accent;
+        margin-left: 1em;
+    }
+}
+
+
+
+@media (min-width: 34em) {
+    .content {
+
+        &__item__cont {
+            //display: block;
+        }
+
+        &__item__info__cont {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        &__item__name,
+        &__item__desc,
+        &__item__date,
+        &__item__status,
+        &__item__info__cont,
+        &__item__action {
+            // display: inline;
+        }
+
+
+    }
+}
