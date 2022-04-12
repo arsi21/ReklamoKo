@@ -13,7 +13,7 @@
     <div class="body-wrapper">
         <header class="header">
             <div class="header__left__col">
-                <img class="header__menu" src="assets/icons/menu.svg" alt="Menu icon">
+                <img id="menu-btn" class="header__menu" src="assets/icons/menu.svg" alt="Menu icon">
 
                 <a class="header__logo" href="#">ReklamoKo</a>
             </div>
@@ -342,7 +342,7 @@
 
 
 
-        <nav class="nav">
+        <nav  id="nav" class="nav">
             <div class="nav__profile">
                 <div class="nav__profile__pic">
                     <img src="assets/residentProfSample.jpg " alt="Profile picture">
@@ -442,7 +442,7 @@
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
-                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__desc">Lorem</span>
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
@@ -455,7 +455,7 @@
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
-                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed</span>
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
@@ -468,7 +468,7 @@
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
-                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed</span>
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
@@ -481,7 +481,7 @@
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
-                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed</span>
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
@@ -494,7 +494,7 @@
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
-                            <span class="content__item__desc">Lorem ipsum dolor sit amet,sed...</span>
+                            <span class="content__item__desc">Lorem ipsum dolor  ipsum dolor sit amet ipsum dolorsit amet,sed</span>
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
@@ -517,6 +517,23 @@
 
 
     </div>
+
+    <script>
+        //for showing menu
+        const menuBtn = document.getElementById('menu-btn');
+        nav = document.getElementById('nav')
+
+        menuBtn.addEventListener('click', () => {
+            if (nav.style.display == "block"){
+                //to hide the navigation
+                nav.style.display = "none";
+            }else {
+                //to show navigation
+                nav.style.display = "block";
+            }
+        })
+
+    </script>
 </body>
 
 </html>
