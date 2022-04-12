@@ -42,7 +42,6 @@
 
                 .header__inbox,
                 .header__notif {
-                    cursor: pointer;
                     height: 20px;
                     width: 20px;
                     vertical-align: middle;
@@ -67,6 +66,11 @@
                 }
             }
         }
+    }
+
+    &__inbox__cont,
+    &__notif__cont {
+        cursor: pointer;
     }
 
     &__profile {

@@ -20,17 +20,17 @@
 
             <div class="header__tool">
                 <ul>
-                    <li>
+                    <li id="inbox-btn" class="header__inbox__cont">
                         <img class="header__inbox" src="assets/icons/inbox.svg" alt="Inbox icon">
                         <span class="message-counter">2</span>
                     </li>
 
-                    <li>
+                    <li id="notif-btn" class="header__notif__cont">
                         <img class="header__notif" src="assets/icons/notification.svg" alt="Notification icon">
                         <span class="notif-counter">5</span>
                     </li>
 
-                    <li class="header__profile">
+                    <li id="profile-btn" class="header__profile">
                         <img src="assets/residentProfSample.jpg " alt="Profile picture">
                     </li>
                 </ul>
@@ -45,7 +45,7 @@
 
 
 
-        <div class="modal modal--message">
+        <div id="modal-message" class="modal modal--message">
             <span class="modal__title">Message</span>
             <div class="modal__item">
                 <div class="modal__item__img__cont">
@@ -201,7 +201,7 @@
 
 
 
-        <div class="modal modal--notif">
+        <div id="modal-notif" class="modal modal--notif">
             <span class="modal__title">Notification</span>
             <div class="modal__item">
                 <div class="modal__item__img__cont">
@@ -521,7 +521,7 @@
     <script>
         //for showing menu
         const menuBtn = document.getElementById('menu-btn');
-        nav = document.getElementById('nav')
+        const nav = document.getElementById('nav');
 
         menuBtn.addEventListener('click', () => {
             if (nav.style.display == "block"){
@@ -533,6 +533,38 @@
             }
         })
 
+
+        //for showing message and notification
+        const inboxBtn = document.getElementById('inbox-btn');
+        const notifBtn = document.getElementById('notif-btn');
+        const modalMessage = document.getElementById('modal-message');
+        const modalNotif = document.getElementById('modal-notif');
+
+        inboxBtn.addEventListener('click', () => {
+            if (modalMessage.style.display == "block"){
+                modalMessage.style.display = "none";
+            }else {
+                modalNotif.style.display = "none";
+                modalMessage.style.display = "block";
+            }
+        })
+
+        notifBtn.addEventListener('click', () => {
+            if (modalNotif.style.display == "block"){
+                modalNotif.style.display = "none";
+            }else {
+                modalMessage.style.display = "none";
+                modalNotif.style.display = "block";
+            }
+        })
+
+        // window.onclick = function(e) {
+        //     if (modalMessage.style.display == "block" || modalNotif.style.display == "block"){
+        //         modalMessage.style.display = "none";
+        //         modalNotif.style.display = "none";
+        //     }
+        // }
+        
     </script>
 </body>
 

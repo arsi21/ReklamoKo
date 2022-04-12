@@ -88,16 +88,15 @@
             align-items: center;
         }
 
+    }
+}
 
-        &__item__name,
-        &__item__desc,
-        &__item__date,
-        &__item__status,
-        &__item__info__cont,
-        &__item__action {
-            // display: inline;
+
+
+@media (min-width: 44em) {
+    .content {
+        &__body__cont {
+            border-radius: 6px;
         }
-
-
     }
 }
