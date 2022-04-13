@@ -433,8 +433,6 @@
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
-
-                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
                     </div>
                 </div>
 
@@ -446,8 +444,6 @@
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
-
-                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
                     </div>
                 </div>
 
@@ -459,8 +455,6 @@
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
-
-                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
                     </div>
                 </div>
 
@@ -472,8 +466,6 @@
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
-
-                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
                     </div>
                 </div>
 
@@ -485,8 +477,6 @@
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
-
-                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
                     </div>
                 </div>
 
@@ -498,8 +488,6 @@
                             <span class="content__item__date">01/10/22</span>
                             <span class="content__item__status">Pending</span>
                         </div>
-
-                        <img class="content__item__action" src="assets/icons/action.svg" alt="Action icon">
                     </div>
                 </div>
 

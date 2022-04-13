@@ -4,11 +4,11 @@
 .content {
 
     &__title__cont {
-        max-width: 1100px;
+        //max-width: 1500px;
         padding-block: 0.8em;
         padding-inline: 24px;
         background-color: variables.$clr-light;
-        margin-block: 0.5em;
+        margin-block: 6px;
         margin-inline: auto;
     }
 
@@ -18,7 +18,7 @@
     }
 
     &__body__cont {
-        max-width: 1100px;
+        //max-width: 1500px;
         height: auto;
         padding-block: 24px;
         background-color: variables.$clr-light;
@@ -39,7 +39,7 @@
     }
 
     &__item__info__cont {
-        max-width: 95%;
+        max-width: 100%;
     }
 
     &__item__name,
@@ -55,7 +55,7 @@
     }
 
     &__item__desc {
-        width: min(75vw, 100ch);
+        width: min(100vw, 90vw);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -79,12 +79,13 @@
     .content {
 
         &__item__cont {
-            //display: block;
+            justify-content: flex-start;
+            gap: 2rem;
         }
 
         &__item__info__cont {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
             align-items: center;
         }
 
@@ -93,8 +94,10 @@
 
 
 
-@media (min-width: 44em) {
+@media (min-width: 60em) {
     .content {
+        margin-right: 6px;
+
         &__body__cont {
             border-radius: 6px;
         }
