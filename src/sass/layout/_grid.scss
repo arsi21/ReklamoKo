@@ -1,0 +1,24 @@
+@media (min-width: 60em) {
+    .body-wrapper {
+        display: grid;
+        grid-template-columns: 280px calc(100% - 280px);
+        grid-column-gap: 6px;
+        grid-template-areas:
+            "header header"
+            "nav content"
+            "nav content"
+            "nav content";
+    }
+
+    .header {
+        grid-area: header;
+    }
+
+    .nav {
+        grid-area: nav;
+    }
+
+    .content {
+        grid-area: content;
+    }
+}
