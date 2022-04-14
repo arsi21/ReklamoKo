@@ -10,7 +10,7 @@
 </head>
 
 <body class="body-background">
-    <div class="body-wrapper">
+    <div id="body-wrapper" class="body-wrapper">
         <header class="header">
             <div class="header__left__col">
                 <img id="menu-btn" class="header__menu" src="assets/icons/menu.svg" alt="Menu icon">
@@ -409,7 +409,7 @@
 
 
 
-        <section class="content">
+        <section id="content" class="content">
             <div class="content__title__cont">
                 <h2 class="content__title">Pending Complaints</h2>
             </div>
@@ -577,16 +577,21 @@
         //for showing menu
         const menuBtn = document.getElementById('menu-btn');
         const nav = document.getElementById('nav');
+        const bodyWrapper = document.getElementById('body-wrapper');
+        const content = document.getElementById('content');
 
         menuBtn.addEventListener('click', () => {
-            if (nav.style.display == "block"){
-                //to hide the navigation
-                nav.style.display = "none";
+            if (screen.width  >= 960){
+                //for minimizing and maximazing the menu in big screen
+                nav.classList.toggle("nav--desk--close");
+                content.classList.toggle("content--desk--menu--close");
+                bodyWrapper.classList.toggle("body-wrapper--desk--menu--close");
             }else {
-                //to show navigation
-                nav.style.display = "block";
+                //for closing and opening the menu in smaller screen
+                nav.classList.toggle("nav--mobile--open");
             }
         })
+
 
 
         //for showing message and notification

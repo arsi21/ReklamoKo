@@ -51,7 +51,7 @@
     }
 
     &__item__desc {
-        width: min(100vw, 90vw);
+        width: min(100vw, 80vw);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -65,7 +65,6 @@
 
     &__item__status {
         color: variables.$clr-font-accent;
-        margin-left: 1em;
     }
 }
 
@@ -88,14 +87,21 @@
     .content {
         max-width: calc(100vw - 286px);
 
+        &--desk--menu--close {
+            max-width: calc(100vw - 74px);
+        }
+
         &__body__cont {
             border-radius: 6px;
         }
 
         &__item__list__cont {
-            //background-color: black;
             overflow-y: scroll;
-            max-height: calc(100vh - calc(236px + 1rem));
+            max-height: calc(100vh - calc(152px + 4.9rem));
+        }
+
+        &__item__desc {
+            width: min(100vw, 100vw);
         }
     }
 }

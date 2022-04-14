@@ -11,6 +11,10 @@
     background: variables.$clr-dark-80;
     // height: 100%;
 
+    &--mobile--open {
+        display: block;
+    }
+
     &__profile {
         cursor: pointer;
         padding: 14px;
@@ -19,7 +23,7 @@
     }
 
     &__profile__pic {
-        position: relative;
+        position: absolute;
         width: 40px;
         height: 40px;
         overflow: hidden;
@@ -32,7 +36,7 @@
     }
 
     &__profile__info {
-        margin-left: 1rem;
+        margin-left: 3.5rem;
     }
 
     &__name {
@@ -150,8 +154,23 @@
 
 @media (min-width: 60em) {
     .nav {
+        display: block;
         position: relative;
         top: 0;
         height: calc(100vh - 56px);
+    }
+
+    .nav--desk--close {
+        width: 68px;
+        white-space: nowrap;
+        overflow: hidden;
+
+        .nav__complain__btn {
+            padding: 10px;
+
+            span {
+                display: none;
+            }
+        }
     }
 }

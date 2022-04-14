@@ -19,7 +19,13 @@
         grid-template-areas:
             "header header"
             "nav content";
+
+        &--desk--menu--close {
+            grid-template-columns: 68px auto;
+        }
     }
+
+
 
     .header {
         grid-area: header;
