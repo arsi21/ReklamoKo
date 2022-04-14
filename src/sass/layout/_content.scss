@@ -86,10 +86,16 @@
 
 @media (min-width: 60em) {
     .content {
-        margin-right: 6px;
+        max-width: calc(100vw - 286px);
 
         &__body__cont {
             border-radius: 6px;
+        }
+
+        &__item__list__cont {
+            //background-color: black;
+            overflow-y: scroll;
+            max-height: calc(100vh - calc(236px + 1rem));
         }
     }
 }

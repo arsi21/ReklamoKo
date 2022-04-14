@@ -1,12 +1,5 @@
 @use '../abstracts/variables';
 
-.body-background {
-    background-color: variables.$clr-dark-60;
-    height: 100%;
-    overflow: hidden;
-    //margin-inline: auto;
-}
-
 .header {
     background-color: variables.$clr-accent-darker;
     display: flex;

@@ -415,15 +415,14 @@
             </div>
 
             <div class="content__body__cont">
-                <form action="">
-                    <div class="content__search__cont">
-                        <button class="content__search__btn">
-                            <img src="assets/icons/search.svg" alt="Search icon">
-                        </button>
+                <form class="content__search__cont" action="">
+                    <button class="content__search__btn">
+                        <img src="assets/icons/search.svg" alt="Search icon">
+                    </button>
 
-                        <input class="content__search" id="search_input" type="search" name="search" placeholder="Search a complain">
-                    </div>
+                    <input class="content__search" id="search_input" type="search" name="search" placeholder="Search a complain">
                 </form>
+
 
                 <div class="content__item__list__cont">
                     <div class="content__item__cont">
@@ -434,9 +433,88 @@
                             <span class="content__item__status">Pending</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="content__item__list__cont">
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="content__item__cont">
+                        <div class="content__item__info__cont">
+                            <span class="content__item__name">Juan Dela Cruz</span>
+                            <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                            <span class="content__item__date">01/10/22</span>
+                            <span class="content__item__status">Pending</span>
+                        </div>
+                    </div>
+
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
@@ -445,9 +523,7 @@
                             <span class="content__item__status">Pending</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="content__item__list__cont">
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
@@ -456,9 +532,7 @@
                             <span class="content__item__status">Pending</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="content__item__list__cont">
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
@@ -467,9 +541,7 @@
                             <span class="content__item__status">Pending</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="content__item__list__cont">
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
@@ -478,9 +550,7 @@
                             <span class="content__item__status">Pending</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="content__item__list__cont">
                     <div class="content__item__cont">
                         <div class="content__item__info__cont">
                             <span class="content__item__name">Juan Dela Cruz</span>
@@ -490,9 +560,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </section>
 
