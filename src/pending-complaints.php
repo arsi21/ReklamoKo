@@ -581,7 +581,7 @@
         const content = document.getElementById('content');
 
         menuBtn.addEventListener('click', () => {
-            if (screen.width  >= 960){
+            if (window.innerWidth  >= 960){
                 //for minimizing and maximazing the menu in big screen
                 nav.classList.toggle("nav--desk--close");
                 content.classList.toggle("content--desk--menu--close");
@@ -591,6 +591,16 @@
                 nav.classList.toggle("nav--mobile--open");
             }
         })
+
+        document.addEventListener('click', function(event) {
+            if(window.innerWidth  < 960){
+                
+                if (!nav.contains(event.target) && event.target != menuBtn){
+                    console.log("hi");
+                    nav.classList.remove("nav--mobile--open");
+             }
+            }
+        });
 
 
 
