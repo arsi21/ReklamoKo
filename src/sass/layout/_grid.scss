@@ -2,6 +2,10 @@
 
 .body-background {
     background-color: variables.$clr-dark-60;
+
+    &--open--menu {
+        overflow: hidden;
+    }
 }
 
 

@@ -9,7 +9,7 @@
     <title>ReklamoKo | Pending Complaints</title>
 </head>
 
-<body class="body-background">
+<body id="body-background" class="body-background">
     <div id="body-wrapper" class="body-wrapper">
         <header class="header">
             <div class="header__left__col">
@@ -578,6 +578,7 @@
         const menuBtn = document.getElementById('menu-btn');
         const nav = document.getElementById('nav');
         const bodyWrapper = document.getElementById('body-wrapper');
+        const body = document.getElementById('body-background');
         const content = document.getElementById('content');
 
         menuBtn.addEventListener('click', () => {
@@ -589,15 +590,28 @@
             }else {
                 //for closing and opening the menu in smaller screen
                 nav.classList.toggle("nav--mobile--open");
+
+                //disable scroll when nav is open in small screen
+                if (nav.classList.contains("nav--mobile--open")){
+                    body.classList.add("body-background--open--menu");
+                }else {
+                    body.classList.remove("body-background--open--menu");
+                }
             }
         })
 
+        //for closing and opening the menu in smaller screen when they click outside the
         document.addEventListener('click', function(event) {
             if(window.innerWidth  < 960){
-                
                 if (!nav.contains(event.target) && event.target != menuBtn){
-                    console.log("hi");
                     nav.classList.remove("nav--mobile--open");
+
+                    //disable scroll when nav is open in small screen
+                    if (nav.classList.contains("nav--mobile--open")){
+                        body.classList.add("body-background--open--menu");
+                    }else {
+                        body.classList.remove("body-background--open--menu");
+                    }
              }
             }
         });
