@@ -712,6 +712,8 @@
                     inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
                     notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
                     accountBtn.classList.remove("header__profile--active"); //for removing profile icon border
+
+                    toggleContent(); //for adding and removing content
                 }
             }
         });
