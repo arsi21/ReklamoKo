@@ -348,6 +348,35 @@
 
 
 
+        <div id="modal-notif" class="modal modal--account">
+            <span class="modal__title">Account</span>
+            <div class="modal__acc__cont">
+                <div class="modal__acc__pic__cont">
+                    <img class="modal__acc__pic" src="assets/residentProfSample.jpg" alt="Profile picture">
+                </div>
+
+                <div class="modal__acc__info">
+                    <span class="modal__acc__pos">Resident</span>
+                    <span class="modal__acc__name">Juan Dela Cruz</span>
+                    <span class="modal__acc__uname">juandelacruz@gmail.com</span>
+                </div>
+            </div>
+
+            <div class="modal__acc__action">
+                <a class="modal__acc__link" href="#">Manage your account</a>
+
+                <a class="modal__acc__btn" href="#">Log Out</a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
         <nav  id="nav" class="nav">
             <div class="nav__profile">
                 <div class="nav__profile__pic">
@@ -632,12 +661,10 @@
 
         //function for adding or removing content
         function toggleContent() {
-            if(window.innerWidth  <= 479){
-                if (modalMessage.classList.contains("modal--message--active") || modalNotif.classList.contains("modal--notif--active")){
-                    content.classList.add("content--display--none");
-                }else {
-                    content.classList.remove("content--display--none");
-                }
+            if (modalMessage.classList.contains("modal--message--active") || modalNotif.classList.contains("modal--notif--active")){
+                content.classList.add("content--display--none");
+            }else {
+                content.classList.remove("content--display--none");
             }
         }
 
