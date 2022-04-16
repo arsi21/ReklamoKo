@@ -36,7 +36,7 @@
                         <span class="notif-counter">5</span>
                     </li>
 
-                    <li id="profile-btn" class="header__profile">
+                    <li id="account-btn" class="header__profile">
                         <img src="assets/residentProfSample.jpg " alt="Profile picture">
                     </li>
                 </ul>
@@ -348,7 +348,7 @@
 
 
 
-        <div id="modal-notif" class="modal modal--account">
+        <div id="modal-account" class="modal modal--account">
             <span class="modal__title">Account</span>
             <div class="modal__acc__cont">
                 <div class="modal__acc__pic__cont">
@@ -656,12 +656,14 @@
         //for showing message and notification
         const inboxBtn = document.getElementById('inbox-btn');
         const notifBtn = document.getElementById('notif-btn');
+        const accountBtn = document.getElementById('account-btn');
         const modalMessage = document.getElementById('modal-message');
         const modalNotif = document.getElementById('modal-notif');
+        const modalAccount = document.getElementById('modal-account');
 
         //function for adding or removing content
         function toggleContent() {
-            if (modalMessage.classList.contains("modal--message--active") || modalNotif.classList.contains("modal--notif--active")){
+            if (modalMessage.classList.contains("modal--message--active") || modalNotif.classList.contains("modal--notif--active") || modalAccount.classList.contains("modal--account--active")){
                 content.classList.add("content--display--none");
             }else {
                 content.classList.remove("content--display--none");
@@ -673,6 +675,7 @@
             notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
             modalMessage.classList.toggle("modal--message--active"); //for adding modal message
             modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
+            modalAccount.classList.remove("modal--account--active"); //for removing modal account
 
             toggleContent(); //for adding and removing content
         })
@@ -681,6 +684,17 @@
             notifBtn.classList.toggle("header__notif__cont--active"); //for changing notif icon color
             inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
             modalNotif.classList.toggle("modal--notif--active"); //for adding modal notif
+            modalMessage.classList.remove("modal--message--active"); //for removing modal message
+            modalAccount.classList.remove("modal--account--active"); //for removing modal account
+
+            toggleContent(); //for adding and removing content
+        })
+
+        accountBtn.addEventListener('click', () => {
+            notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
+            inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
+            modalAccount.classList.toggle("modal--account--active"); //for adding modal account
+            modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
             modalMessage.classList.remove("modal--message--active"); //for removing modal message
 
             toggleContent(); //for adding and removing content

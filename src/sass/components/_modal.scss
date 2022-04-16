@@ -20,6 +20,10 @@
     display: block;
 }
 
+.modal--account--active {
+    display: block;
+}
+
 .modal {
     background-color: variables.$clr-light;
     width: 100%;
@@ -71,13 +75,13 @@
     }
 
     &__acc__name {
-        font-size: variables.$fs-medium;
+        font-size: variables.$fs-regular;
         font-weight: variables.$fw-700;
         color: variables.$clr-font-dark-80;
     }
 
     &__acc__uname {
-        font-size: variables.$fs-medium;
+        font-size: variables.$fs-regular;
         font-weight: variables.$fw-400;
         color: variables.$clr-font-dark-80;
     }
@@ -91,7 +95,7 @@
     }
 
     &__acc__link {
-        font-size: variables.$fs-medium;
+        font-size: variables.$fs-regular;
     }
 
     &__acc__btn {
@@ -178,7 +182,7 @@
 }
 
 
-@media (min-width: 21em) {
+@media (min-width: 19em) {
     .modal {
         &__acc__cont {
             flex-direction: row;

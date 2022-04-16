@@ -653,6 +653,10 @@ a:hover {
   display: block;
 }
 
+.modal--account--active {
+  display: block;
+}
+
 .modal {
   background-color: white;
   width: 100%;
@@ -698,12 +702,12 @@ a:hover {
   color: #5f74cc;
 }
 .modal__acc__name {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #494747;
 }
 .modal__acc__uname {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: #494747;
 }
@@ -715,7 +719,7 @@ a:hover {
   margin-inline: 16px;
 }
 .modal__acc__link {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 .modal__acc__btn {
   text-align: center;
@@ -788,7 +792,7 @@ a:hover {
   margin-bottom: 0.1rem;
 }
 
-@media (min-width: 21em) {
+@media (min-width: 19em) {
   .modal__acc__cont {
     flex-direction: row;
     align-items: center;
