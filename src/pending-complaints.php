@@ -625,32 +625,26 @@
             }else {
                 //for closing and opening the menu in smaller screen
                 nav.classList.toggle("nav--mobile--open");
-
-                //disable scroll when nav is open in small screen
-                if (nav.classList.contains("nav--mobile--open")){
-                    body.classList.add("body-background--open--menu");
-                }else {
-                    body.classList.remove("body-background--open--menu");
-                }
             }
         })
+
 
         //for closing and opening the menu in smaller screen when they click outside the
         document.addEventListener('click', function(event) {
             if(window.innerWidth  < 960){
                 if (!nav.contains(event.target) && event.target != menuBtn){
                     nav.classList.remove("nav--mobile--open");
-
-                    //disable scroll when nav is open in small screen
-                    if (nav.classList.contains("nav--mobile--open")){
-                        body.classList.add("body-background--open--menu");
-                    }else {
-                        body.classList.remove("body-background--open--menu");
-                    }
              }
             }
         });
 
+
+        //for closing the menu in smaller screen when they scroll
+        document.addEventListener('scroll', function(event) {
+            if(window.innerWidth  < 960 && nav.classList.contains("nav--mobile--open")){
+                nav.classList.remove("nav--mobile--open");
+            }
+        });
 
 
         //for showing message and notification

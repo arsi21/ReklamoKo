@@ -35,9 +35,6 @@ body {
 .body-background {
   background-color: #EFD9D9;
 }
-.body-background--open--menu {
-  overflow: hidden;
-}
 
 @media (min-width: 60em) {
   .body-background {
