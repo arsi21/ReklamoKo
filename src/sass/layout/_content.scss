@@ -3,6 +3,10 @@
 
 .content {
 
+    &--display--none {
+        display: none;
+    }
+
     &__title__cont {
         padding-block: 0.8em;
         padding-inline: 24px;
@@ -65,6 +69,14 @@
 
     &__item__status {
         color: variables.$clr-font-accent;
+    }
+}
+
+
+
+@media (min-width: 30em) {
+    .content {
+        display: block;
     }
 }
 

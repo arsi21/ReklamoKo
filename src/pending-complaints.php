@@ -630,11 +630,24 @@
         const modalMessage = document.getElementById('modal-message');
         const modalNotif = document.getElementById('modal-notif');
 
+        //function for adding or removing content
+        function toggleContent() {
+            if(window.innerWidth  <= 479){
+                if (modalMessage.classList.contains("modal--message--active") || modalNotif.classList.contains("modal--notif--active")){
+                    content.classList.add("content--display--none");
+                }else {
+                    content.classList.remove("content--display--none");
+                }
+            }
+        }
+
         inboxBtn.addEventListener('click', () => {
             inboxBtn.classList.toggle("header__inbox__cont--active"); //for changing inbox icon color
             notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
             modalMessage.classList.toggle("modal--message--active"); //for adding modal message
             modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
+
+            toggleContent(); //for adding and removing content
         })
 
         notifBtn.addEventListener('click', () => {
@@ -642,12 +655,13 @@
             inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
             modalNotif.classList.toggle("modal--notif--active"); //for adding modal notif
             modalMessage.classList.remove("modal--message--active"); //for removing modal message
+
+            toggleContent(); //for adding and removing content
         })
 
         document.addEventListener('click', function(event) {
-            if(window.innerWidth  > 479){
+            if (window.innerWidth  > 479){
                 if (!inboxBtn.contains(event.target) && !notifBtn.contains(event.target)){
-                    console.log(event.target);
                     modalMessage.classList.remove("modal--message--active"); //for removing modal message
                     modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
                     inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color

@@ -402,6 +402,9 @@ body {
     margin-left: auto;
   }
 }
+.content--display--none {
+  display: none;
+}
 .content__title__cont {
   padding-block: 0.8em;
   padding-inline: 24px;
@@ -454,6 +457,11 @@ body {
   color: #5f74cc;
 }
 
+@media (min-width: 30em) {
+  .content {
+    display: block;
+  }
+}
 @media (min-width: 34em) {
   .content__item__info__cont {
     display: flex;
