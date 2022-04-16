@@ -139,10 +139,16 @@ body {
   border-radius: 50%;
   vertical-align: middle;
 }
+.header__profile:hover {
+  border: 2px solid #A8A2A2;
+}
 .header__profile img {
   cursor: pointer;
   width: 100%;
   height: auto;
+}
+.header__profile--active {
+  border: 2px solid #A8A2A2;
 }
 
 @media (min-width: 30em) {

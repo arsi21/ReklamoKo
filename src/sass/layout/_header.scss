@@ -93,11 +93,19 @@
         border-radius: 50%;
         vertical-align: middle;
 
+        &:hover {
+            border: 2px solid #A8A2A2;
+        }
+
         img {
             cursor: pointer;
             width: 100%;
             height: auto;
         }
+    }
+
+    &__profile--active {
+        border: 2px solid #A8A2A2;
     }
 }
 
