@@ -8,6 +8,14 @@
     display: none;
 }
 
+.modal--notif--active {
+    display: block;
+}
+
+.modal--message--active {
+    display: block;
+}
+
 .modal {
     background-color: variables.$clr-light;
     width: 100%;

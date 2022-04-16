@@ -96,17 +96,6 @@ body {
 .header__tool ul li {
   margin-left: 2rem;
 }
-.header__tool ul li .header__inbox,
-.header__tool ul li .header__notif {
-  height: 20px;
-  width: 20px;
-  vertical-align: middle;
-  fill: #FFFFFF;
-}
-.header__tool ul li .header__inbox:hover,
-.header__tool ul li .header__notif:hover {
-  fill: #D1D1D1;
-}
 .header__tool ul li .message-counter,
 .header__tool ul li .notif-counter {
   display: block;
@@ -126,6 +115,21 @@ body {
 }
 .header__inbox__cont, .header__notif__cont {
   cursor: pointer;
+}
+.header__inbox__cont--active .header__inbox {
+  fill: #D1D1D1;
+}
+.header__notif__cont--active .header__notif {
+  fill: #D1D1D1;
+}
+.header__inbox, .header__notif {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  fill: #FFFFFF;
+}
+.header__inbox:hover, .header__notif:hover {
+  fill: #D1D1D1;
 }
 .header__profile {
   position: relative;
@@ -627,6 +631,14 @@ a:hover {
 
 .modal--message {
   display: none;
+}
+
+.modal--notif--active {
+  display: block;
+}
+
+.modal--message--active {
+  display: block;
 }
 
 .modal {

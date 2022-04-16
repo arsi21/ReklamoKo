@@ -33,18 +33,6 @@
             li {
                 margin-left: 2rem;
 
-                .header__inbox,
-                .header__notif {
-                    height: 20px;
-                    width: 20px;
-                    vertical-align: middle;
-                    fill: #FFFFFF;
-
-                    &:hover {
-                        fill: #D1D1D1;
-                    }
-                }
-
                 .message-counter,
                 .notif-counter {
                     display: block;
@@ -69,7 +57,32 @@
     &__inbox__cont,
     &__notif__cont {
         cursor: pointer;
+    }
 
+    &__inbox__cont--active {
+
+        .header__inbox {
+            fill: #D1D1D1;
+        }
+    }
+
+    &__notif__cont--active {
+
+        .header__notif {
+            fill: #D1D1D1;
+        }
+    }
+
+    &__inbox,
+    &__notif {
+        height: 20px;
+        width: 20px;
+        vertical-align: middle;
+        fill: #FFFFFF;
+
+        &:hover {
+            fill: #D1D1D1;
+        }
     }
 
     &__profile {

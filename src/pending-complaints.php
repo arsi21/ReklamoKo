@@ -631,29 +631,30 @@
         const modalNotif = document.getElementById('modal-notif');
 
         inboxBtn.addEventListener('click', () => {
-            if (modalMessage.style.display == "block"){
-                modalMessage.style.display = "none";
-            }else {
-                modalNotif.style.display = "none";
-                modalMessage.style.display = "block";
-            }
+            inboxBtn.classList.toggle("header__inbox__cont--active"); //for changing inbox icon color
+            notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
+            modalMessage.classList.toggle("modal--message--active"); //for adding modal message
+            modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
         })
 
         notifBtn.addEventListener('click', () => {
-            if (modalNotif.style.display == "block"){
-                modalNotif.style.display = "none";
-            }else {
-                modalMessage.style.display = "none";
-                modalNotif.style.display = "block";
-            }
+            notifBtn.classList.toggle("header__notif__cont--active"); //for changing notif icon color
+            inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
+            modalNotif.classList.toggle("modal--notif--active"); //for adding modal notif
+            modalMessage.classList.remove("modal--message--active"); //for removing modal message
         })
 
-        // window.onclick = function(e) {
-        //     if (modalMessage.style.display == "block" || modalNotif.style.display == "block"){
-        //         modalMessage.style.display = "none";
-        //         modalNotif.style.display = "none";
-        //     }
-        // }
+        document.addEventListener('click', function(event) {
+            if(window.innerWidth  > 479){
+                if (!inboxBtn.contains(event.target) && !notifBtn.contains(event.target)){
+                    console.log(event.target);
+                    modalMessage.classList.remove("modal--message--active"); //for removing modal message
+                    modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
+                    inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
+                    notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
+                }
+            }
+        });
         
     </script>
 </body>
