@@ -5,6 +5,12 @@
         const body = document.getElementById('body-background');
         const content = document.getElementById('content');
 
+        const navDashboard = document.getElementById('nav-dashboard');
+        const navPending = document.getElementById('nav-pending');
+        const navOngoing = document.getElementById('nav-ongoing');
+        const navTransferred = document.getElementById('nav-transferred');
+        const navSolved = document.getElementById('nav-solved');
+
         const inboxBtn = document.getElementById('inbox-btn');
         const notifBtn = document.getElementById('notif-btn');
         const accountBtn = document.getElementById('account-btn');
@@ -46,6 +52,56 @@
                 nav.classList.remove("nav--mobile--open");
             }
         });
+
+
+
+
+
+
+
+// ////////////for redirecting to other page using navigation
+//         //function for removing all classList "nav--active"
+//         function navRemoveClass() {
+//             navDashboard.classList.remove("nav--active");
+//             navPending.classList.remove("nav--active");
+//             navOngoing.classList.remove("nav--active");
+//             navTransferred.classList.remove("nav--active");
+//             navSolved.classList.remove("nav--active");
+//         }
+
+//         console.log();
+
+//         navDashboard.addEventListener('click', () => {
+//             navRemoveClass();//for removing all classlist "nav--active"
+
+//             navDashboard.classList.add("nav--active");
+//         })
+
+//         navPending.addEventListener('click', () => {
+//             navRemoveClass();//for removing all classlist "nav--active"
+
+//             navPending.classList.add("nav--active");
+//         })
+
+//         navOngoing.addEventListener('click', () => {
+//             navRemoveClass();//for removing all classlist "nav--active"
+
+//             navOngoing.classList.add("nav--active");
+//         })
+
+//         navTransferred.addEventListener('click', () => {
+//             navRemoveClass();//for removing all classlist "nav--active"
+
+//             navTransferred.classList.add("nav--active");
+//         })
+
+//         navSolved.addEventListener('click', () => {
+//             navRemoveClass();//for removing all classlist "nav--active"
+
+//             navSolved.classList.add("nav--active");
+//         })
+
+
 
 
 

@@ -21,35 +21,35 @@
 
             <ul>
                 <li>
-                    <a href="#" class="nav__dashboard nav--active">
+                    <a id="nav-dashboard" href="dashboard.php" class="nav__dashboard">
                         <img src="assets/icons/dashboard.svg" alt="Dashboard icon">
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="nav__pending">
+                    <a id="nav-pending" href="pending-complaints.php" class="nav__pending">
                         <img src="assets/icons/pending_complaints.svg" alt="Pending complaints icon">
                         <span>Pending Complaints</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="nav__ongoing">
+                    <a id="nav-ongoing" href="on-going-complaints.php" class="nav__ongoing">
                         <img src="assets/icons/ongoing_complaints.svg" alt="On going complaints icon">
                         <span>On Going Complaints</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="nav__transferred">
+                    <a id="nav-transferred" href="transferred-complaints.php" class="nav__transferred">
                         <img src="assets/icons/transferred_complaints.svg" alt="Transferred complaints icon">
                         <span>Transferred Complaints</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#" class="nav__solved">
+                    <a id="nav-solved" href="solved-complaints.php" class="nav__solved">
                         <img src="assets/icons/solved_complaints.svg" alt="Solved complaints icon">
                         <span>Solved Complaints</span>
                     </a>
