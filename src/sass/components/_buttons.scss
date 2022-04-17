@@ -44,3 +44,22 @@ input[type=submit].home-card__cancel__btn {
         background-color: variables.$clr-dark-50-hover;
     }
 }
+
+
+
+
+.content__btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    background-color: variables.$clr-light;
+
+    &:hover {
+        background-color: variables.$clr-dark-60;
+    }
+
+    img {
+        width: 18px;
+    }
+}

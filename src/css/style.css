@@ -571,6 +571,20 @@ input[type=submit].home-card__cancel__btn:hover {
   background-color: #f3efef;
 }
 
+.content__btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+}
+.content__btn:hover {
+  background-color: #EFD9D9;
+}
+.content__btn img {
+  width: 18px;
+}
+
 input[type=text].home-card__input,
 input[type=password].home-card__input,
 input[type=number].home-card__input,
