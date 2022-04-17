@@ -1,6 +1,5 @@
 @use '../abstracts/variables';
 
-
 .content {
 
     &--display--none {
@@ -25,6 +24,25 @@
         padding-block: 24px;
         background-color: variables.$clr-light;
         margin-inline: auto;
+    }
+
+    &__pages__indicator {
+        display: flex;
+        gap: 2rem;
+    }
+
+    &__page__num {
+        span {
+            color: variables.$clr-font-dark-80;
+            font-size: variables.$fs-regular;
+        }
+    }
+
+    &__hr {
+        width: 100%;
+        height: 1px;
+        border: none;
+        background-color: variables.$clr-font-dark-50;
     }
 
     &__item__cont {
