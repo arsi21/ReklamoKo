@@ -410,7 +410,7 @@ body {
 }
 .content__title__cont {
   padding-block: 0.8em;
-  padding-inline: 24px;
+  padding-inline: 16px;
   background-color: white;
   margin-block: 6px;
   margin-inline: auto;
@@ -421,7 +421,7 @@ body {
 }
 .content__body__cont {
   height: auto;
-  padding-block: 24px;
+  padding-block: 16px;
   background-color: white;
   margin-inline: auto;
 }
@@ -430,7 +430,7 @@ body {
   gap: 1rem;
   align-items: center;
   justify-content: end;
-  margin-inline: 24px;
+  margin-inline: 16px;
 }
 .content__page__num span {
   color: #494747;
@@ -463,7 +463,7 @@ body {
 }
 .content__item__cont {
   max-width: 100%;
-  padding-inline: 24px;
+  padding-inline: 16px;
   padding-block: 0.8rem;
   color: #707070;
 }
@@ -523,7 +523,7 @@ body {
   }
   .content__item__list__cont {
     overflow-y: scroll;
-    max-height: calc(100vh - (152px + 4.9rem));
+    max-height: calc(100vh - (190px + 3.4rem));
   }
   .content__item__desc {
     width: 100vw;
@@ -864,7 +864,7 @@ a:hover {
   }
 }
 .content .content__search__cont {
-  padding-inline: 24px;
+  padding-inline: 16px;
 }
 .content .content__search__btn {
   position: absolute;

@@ -8,7 +8,7 @@
 
     &__title__cont {
         padding-block: 0.8em;
-        padding-inline: 24px;
+        padding-inline: 16px;
         background-color: variables.$clr-light;
         margin-block: 6px;
         margin-inline: auto;
@@ -21,7 +21,7 @@
 
     &__body__cont {
         height: auto;
-        padding-block: 24px;
+        padding-block: 16px;
         background-color: variables.$clr-light;
         margin-inline: auto;
     }
@@ -31,7 +31,7 @@
         gap: 1rem;
         align-items: center;
         justify-content: end;
-        margin-inline: 24px;
+        margin-inline: 16px;
     }
 
     &__page__num {
@@ -73,7 +73,7 @@
 
     &__item__cont {
         max-width: 100%;
-        padding-inline: 24px;
+        padding-inline: 16px;
         padding-block: 0.8rem;
         color: variables.$clr-font-dark-60;
 
@@ -157,7 +157,7 @@
 
         &__item__list__cont {
             overflow-y: scroll;
-            max-height: calc(100vh - calc(152px + 4.9rem));
+            max-height: calc(100vh - calc(190px + 3.4rem));
         }
 
         &__item__desc {
