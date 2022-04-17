@@ -426,18 +426,40 @@ body {
   margin-inline: auto;
 }
 .content__pages__indicator {
-  display: flex;
-  gap: 2rem;
+  display: none;
+  gap: 1rem;
+  align-items: center;
+  justify-content: end;
+  margin-inline: 24px;
 }
 .content__page__num span {
   color: #494747;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+}
+.content__page__action {
+  display: flex;
+  gap: 1rem;
+}
+.content__page__action button {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: white;
+}
+.content__page__action button:hover {
+  background-color: #e8e8e8;
+}
+.content__page__action button svg {
+  height: 12px;
+  width: auto;
 }
 .content__hr {
   width: 100%;
   height: 1px;
   border: none;
   background-color: #BCBCBC;
+  margin-top: 8px;
 }
 .content__item__cont {
   max-width: 100%;
@@ -495,6 +517,9 @@ body {
   }
   .content__body__cont {
     border-radius: 6px;
+  }
+  .content__pages__indicator {
+    display: flex;
   }
   .content__item__list__cont {
     overflow-y: scroll;
@@ -861,7 +886,7 @@ a:hover {
   border: none;
   background-color: #e8e8e8;
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 8px;
 }
 
 .landing-header,

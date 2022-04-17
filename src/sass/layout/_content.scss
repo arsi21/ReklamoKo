@@ -27,14 +27,39 @@
     }
 
     &__pages__indicator {
-        display: flex;
-        gap: 2rem;
+        display: none;
+        gap: 1rem;
+        align-items: center;
+        justify-content: end;
+        margin-inline: 24px;
     }
 
     &__page__num {
         span {
             color: variables.$clr-font-dark-80;
-            font-size: variables.$fs-regular;
+            font-size: variables.$fs-small;
+        }
+    }
+
+    &__page__action {
+        display: flex;
+        gap: 1rem;
+
+        button {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            border: none;
+            background-color: variables.$clr-light;
+
+            &:hover {
+                background-color: variables.$clr-dark-50;
+            }
+
+            svg {
+                height: 12px;
+                width: auto;
+            }
         }
     }
 
@@ -43,6 +68,7 @@
         height: 1px;
         border: none;
         background-color: variables.$clr-font-dark-50;
+        margin-top: 8px;
     }
 
     &__item__cont {
@@ -123,6 +149,10 @@
 
         &__body__cont {
             border-radius: 6px;
+        }
+
+        &__pages__indicator {
+            display: flex;
         }
 
         &__item__list__cont {
