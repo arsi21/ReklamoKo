@@ -82,6 +82,10 @@
         }
     }
 
+    &__item__link {
+        color: variables.$clr-font-dark-60
+    }
+
     &__item__info__cont {
         max-width: 100%;
     }

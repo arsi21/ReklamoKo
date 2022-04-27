@@ -1,0 +1,97 @@
+@use '../abstracts/variables';
+
+.content {
+
+    &__action__cont {
+        display: flex;
+        padding-inline: 16px;
+    }
+
+    &__action {
+        display: flex;
+        margin-right: 1.5em;
+        margin-top: -8px;
+        background-color: variables.$clr-light;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: variables.$clr-dark-50;
+        }
+
+        img {
+            height: 20px;
+        }
+    }
+
+    &__details__cont {
+        padding: 16px;
+        height: calc(100vh - calc(68px + 8.5rem));
+        overflow-y: scroll;
+    }
+
+    &__complainant__cont {
+        display: flex;
+        margin-bottom: 2em;
+        align-items: center;
+    }
+
+    &__complainant__pic {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 1em;
+
+        &:hover {
+            border: 2px solid #A8A2A2;
+        }
+
+        img {
+            cursor: pointer;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    &__complainant__info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    &__complainant__name {
+        font-size: variables.$fs-regular;
+        font-weight: variables.$fw-700;
+    }
+
+    &__complainant__date {
+        font-size: variables.$fs-small;
+    }
+
+    &__comp__lbl {
+        color: variables.$clr-font-dark-60;
+        margin-bottom: 0.5em;
+    }
+
+    &__comp__val {
+        margin-bottom: 2em;
+    }
+
+    &__proof__cont {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    &__proof__pic {
+        width: 180px;
+    }
+}
