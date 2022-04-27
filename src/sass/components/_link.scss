@@ -1,6 +1,6 @@
 @use '../abstracts/variables';
 
-a {
+.link {
     font-size: variables.$fs-regular;
     color: variables.$clr-accent;
 

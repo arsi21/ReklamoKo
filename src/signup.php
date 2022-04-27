@@ -44,13 +44,13 @@
                             <span class="home-card__checkmark"></span>
                         </label>
 
-                        <a href="#">ReklamoKo Terms</a>
+                        <a class="link" href="#">ReklamoKo Terms</a>
                     </div>
 
                     <input class="home-card__button" type="submit" value="Create Account">
                 </form>
 
-                <p class="home-card__p">Have already an account? <a href="login.php">Login here</a></p>
+                <p class="home-card__p">Have already an account? <a class="link" href="login.php">Login here</a></p>
             </div>
 
             <img class="home-card__img" src="assets/signUpImg.svg" alt="">
