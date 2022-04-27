@@ -15,7 +15,7 @@
     }
 
     &__title {
-        font-size: variables.$fs-regular;
+        font-size: variables.$fs-medium;
         color: variables.$clr-font-dark-80;
     }
 
@@ -157,7 +157,7 @@
 
         &__item__list__cont {
             overflow-y: scroll;
-            max-height: calc(100vh - calc(190px + 3.4rem));
+            max-height: calc(100vh - calc(190px + 3.9rem));
         }
 
         &__item__desc {
