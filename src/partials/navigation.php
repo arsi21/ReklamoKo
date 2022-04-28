@@ -54,5 +54,36 @@
                         <span>Solved Complaints</span>
                     </a>
                 </li>
+
+                
+
+
+
+                <hr class="nav__hr nav__hr--ad">
+
+
+            
+
+
+                <li>
+                    <a href="submitted-applications.php" class="nav__ongoing">
+                        <img src="assets/icons/submitted_application.svg" alt="On going complaints icon">
+                        <span>Submitted Applications</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="resident-accounts.php" class="nav__transferred">
+                        <img src="assets/icons/resident-accounts.svg" alt="Transferred complaints icon">
+                        <span>Resident Accounts</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="official-accounts.php" class="nav__solved">
+                        <img src="assets/icons/official-accounts.svg" alt="Solved complaints icon">
+                        <span>Official Accounts</span>
+                    </a>
+                </li>
             </ul>
         </nav>

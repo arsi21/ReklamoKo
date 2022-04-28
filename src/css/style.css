@@ -213,6 +213,9 @@ body {
   margin-inline: 16px;
   margin-bottom: 1rem;
 }
+.nav__hr--ad {
+  margin-top: 1rem;
+}
 .nav__complain__btn {
   cursor: pointer;
   margin-bottom: 1rem;
