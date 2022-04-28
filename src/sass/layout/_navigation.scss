@@ -9,7 +9,7 @@
     top: 55px;
     bottom: 0;
     background: variables.$clr-dark-80;
-    height: 100%;
+    height: calc(100vh - 56px);
     overflow-y: auto;
 
     &--mobile--open {

@@ -172,7 +172,7 @@ body {
   top: 55px;
   bottom: 0;
   background: #262c33;
-  height: 100%;
+  height: calc(100vh - 56px);
   overflow-y: auto;
 }
 .nav--mobile--open {
