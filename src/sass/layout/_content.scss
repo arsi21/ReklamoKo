@@ -1,6 +1,7 @@
 @use '../abstracts/variables';
 
 .content {
+    margin-top: 62px;
 
     &--display--none {
         display: none;
@@ -145,6 +146,7 @@
 
 @media (min-width: 60em) {
     .content {
+        margin-top: 0;
         max-width: calc(100vw - 286px);
 
         &--desk--menu--close {

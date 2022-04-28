@@ -46,13 +46,6 @@
         });
 
 
-        //for closing the menu in smaller screen when they scroll
-        document.addEventListener('scroll', function(event) {
-            if(window.innerWidth  < 960 && nav.classList.contains("nav--mobile--open")){
-                nav.classList.remove("nav--mobile--open");
-            }
-        });
-
 
 
 

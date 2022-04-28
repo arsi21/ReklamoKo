@@ -1,12 +1,15 @@
 @use '../abstracts/variables';
 
 .header {
+    position: fixed;
     background-color: variables.$clr-accent-darker;
     display: flex;
     justify-content: space-between;
     padding-block: 8px;
     padding-inline: 24px;
     width: 100%;
+    top: 0;
+    z-index: 999;
 
     &__left__col {
         display: flex;
