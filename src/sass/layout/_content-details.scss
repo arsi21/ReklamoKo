@@ -31,7 +31,7 @@
 
     &__details__cont {
         padding: 16px;
-        height: calc(100vh - calc(68px + 8.5rem));
+        height: auto;
         overflow-y: scroll;
     }
 
@@ -93,5 +93,14 @@
 
     &__proof__pic {
         width: 180px;
+    }
+}
+
+
+@media (min-width: 60em) {
+    .content {
+        &__details__cont {
+            height: calc(100vh - calc(68px + 8.5rem));
+        }
     }
 }
