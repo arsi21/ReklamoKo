@@ -966,10 +966,10 @@ input[type=number] {
 }
 @media (min-width: 30em) {
   .modal {
+    position: fixed;
     border-radius: 6px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     overflow-y: scroll;
-    position: absolute;
     width: 400px;
     max-height: 85vh;
     right: 24px;
