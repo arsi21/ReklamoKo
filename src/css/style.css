@@ -65,6 +65,10 @@ body {
     grid-area: content;
   }
 }
+.body-background--noscroll {
+  overflow: hidden;
+}
+
 .header {
   position: fixed;
   background-color: #5E699A;
@@ -978,7 +982,7 @@ input[type=number] {
     z-index: 1000;
   }
 }
-.modal2-bg {
+.modal2 {
   position: fixed;
   bottom: 0;
   top: 0;
@@ -987,8 +991,13 @@ input[type=number] {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1002;
 }
-
-.modal2 {
+.modal2--add--comp {
+  display: none;
+}
+.modal2--add--comp--active {
+  display: block;
+}
+.modal2__cont {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -1118,7 +1127,7 @@ input[type=number] {
 }
 
 @media (min-width: 35em) {
-  .modal2 {
+  .modal2__cont {
     position: relative;
     height: calc(100% - 3.5rem);
     width: 500px;
@@ -1150,6 +1159,10 @@ input[type=number] {
   background-color: #e8e8e8;
   width: 100%;
   margin-bottom: 8px;
+}
+
+.home-body {
+  overflow-x: hidden;
 }
 
 .landing-header,
@@ -1210,6 +1223,7 @@ input[type=number] {
   color: #707070;
   font-size: 1rem;
   margin-top: 5rem;
+  margin-bottom: 2rem;
 }
 
 nav.menu-btn {

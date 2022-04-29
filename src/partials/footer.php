@@ -1,12 +1,12 @@
     <!-- modal -->
-    <div class="modal2-bg">
-        <form action="" class="modal2">
+    <div id="modal2" class="modal2 modal2--add--comp">
+        <form action="" id="modal2-cont" class="modal2__cont">
             <div class="modal2__head">
                 <span class="modal2__title">
                     New Complain
                 </span>
                 
-                <span class="modal2__close">
+                <span id="modal2-exit" class="modal2__close">
                     <img src="assets/icons/exit.svg" alt="">
                 </span>
             </div>
@@ -20,9 +20,7 @@
                 <label class="modal2__lbl">
                     Complain description
                 </label>
-                <textarea class="modal2__input" name="complainDesc">
-
-                </textarea>
+                <textarea class="modal2__input" name="complainDesc"></textarea>
 
                 <p class="modal2__lbl">
                     Proof/Pictures (Optional)
@@ -55,13 +53,9 @@
             </div>
 
             <div class="modal2__footer">
-                <button class="modal2__cancel">
-                    Cancel
-                </button>
+                <button id="modal2-cancel" class="modal2__cancel">Cancel</button>
 
-                <a class="modal2__submit" href="">
-                    Submit
-                </a>
+                <input type="submit" class="modal2__submit" value="Submit" name="submitComp">
             </div>
         </form>
     </div>
@@ -69,6 +63,7 @@
 
 
 
+    <script src="js/modal.js"></script>
 
     <script>
         const menuBtn = document.getElementById('menu-btn');

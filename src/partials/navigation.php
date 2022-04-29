@@ -14,7 +14,7 @@
 
             <hr class="nav__hr">
 
-            <button class="nav__complain__btn">
+            <button id="add-complain-btn" class="nav__complain__btn">
                 <img src="assets/icons/add.svg" alt="Add icon">
                 <span>Complain</span>
             </button>

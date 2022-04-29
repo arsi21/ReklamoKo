@@ -1,5 +1,9 @@
 @use '../abstracts/variables';
 
+.body-background--noscroll {
+    overflow: hidden;
+}
+
 .header {
     position: fixed;
     background-color: variables.$clr-accent-darker;
