@@ -1,4 +1,76 @@
-<script>
+    <!-- modal -->
+    <div class="modal2-bg">
+        <form action="" class="modal2">
+            <div class="modal2__head">
+                <span class="modal2__title">
+                    New Complain
+                </span>
+                
+                <span class="modal2__close">
+                    <img src="assets/icons/exit.svg" alt="">
+                </span>
+            </div>
+
+            <div class="modal2__body">
+                <label class="modal2__lbl">
+                    Name of the complained person 
+                </label>
+                <input type="text" class="modal2__input" name="compPerson">
+
+                <label class="modal2__lbl">
+                    Complain description
+                </label>
+                <textarea class="modal2__input" name="complainDesc">
+
+                </textarea>
+
+                <p class="modal2__lbl">
+                    Proof/Pictures (Optional)
+                </p>
+
+                <div class="modal2__img__prev__cont">
+                    <div class="modal2__img__prev">
+                        <!-- <img id=img-prev" /> -->
+                    </div>
+                    <div class="modal2__img__prev">
+                        <!-- <img id=img-prev" /> -->
+                    </div>
+                    <div class="modal2__img__prev">
+                        <!-- <img id=img-prev" /> -->
+                    </div>
+                    <div class="modal2__img__prev">
+                        <!-- <img id=img-prev" /> -->
+                    </div>
+                    <div class="modal2__img__prev">
+                        <!-- <img id=img-prev" /> -->
+                    </div>
+                </div>
+
+                <label class="modal2__upload__lbl" for="upload-pic">
+                    <input id="upload-pic" class="modal2__upload__input" type="file"
+                    name="complainProof[]" multiple>
+                    <img src="assets/icons/upload.svg" alt="Upload icon">
+                    <span>Upload photo</span>
+                </label>
+            </div>
+
+            <div class="modal2__footer">
+                <button class="modal2__cancel">
+                    Cancel
+                </button>
+
+                <a class="modal2__submit" href="">
+                    Submit
+                </a>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+    <script>
         const menuBtn = document.getElementById('menu-btn');
         const nav = document.getElementById('nav');
         const bodyWrapper = document.getElementById('body-wrapper');
