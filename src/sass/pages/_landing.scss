@@ -2,6 +2,10 @@
 
 @use '../abstracts/variables';
 
+.home-body {
+    overflow-x: hidden;
+}
+
 .landing-header,
 .hero-left-column {
     margin: 1rem;
@@ -73,6 +77,7 @@
     color: variables.$clr-font-dark-60;
     font-size: 1rem;
     margin-top: 5rem;
+    margin-bottom: 2rem;
 }
 
 nav.menu-btn {
