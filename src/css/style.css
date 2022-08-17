@@ -506,11 +506,11 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.content__item__date, .content__item__status {
+.content__item__date, .content__item__status, .content__item__position {
   font-size: 0.9rem;
   font-weight: 400;
 }
-.content__item__status {
+.content__item__status, .content__item__position {
   color: #5f74cc;
 }
 

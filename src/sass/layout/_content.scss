@@ -111,12 +111,14 @@
     }
 
     &__item__date,
-    &__item__status {
+    &__item__status,
+    &__item__position {
         font-size: variables.$fs-small;
         font-weight: variables.$fw-400;
     }
 
-    &__item__status {
+    &__item__status,
+    &__item__position {
         color: variables.$clr-font-accent;
     }
 }
