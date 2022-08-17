@@ -29,21 +29,21 @@
                     </div>
 
                     <label class="home-card__lbl" for="fname_input">First Name</label>
-                    <input id="fname_input" class="home-card__input" type="text" name="fname">
+                    <input id="fname_input" class="home-card__input" type="text" name="fname" required>
 
                     <label class="home-card__lbl" for="mname_input">Middle Name (if applicable)</label>
                     <input id="mname_input" class="home-card__input" type="text" name="mname">
 
                     <label class="home-card__lbl" for="lname_input">Last Name</label>
-                    <input id="lname_input" class="home-card__input" type="text" name="lname">
+                    <input id="lname_input" class="home-card__input" type="text" name="lname" required>
 
                     <label class="home-card__lbl" for="birth_date_input">Date of Birth</label>
-                    <input id="birth_date_input" class="home-card__input" type="date" name="birthDate">
+                    <input id="birth_date_input" class="home-card__input" type="date" name="birthDate" required>
 
                     <p class="home-card__lbl">Gender</p>
 
                     <label class="home-card__radio__lbl" for="female_input">Female
-                        <input id="female_input" class="home-card__input" type="radio" name="gender">
+                        <input id="female_input" class="home-card__input" type="radio" name="gender" required>
                         <span class="dotmark"></span>
                     </label>
 
@@ -52,23 +52,26 @@
                         <span class="dotmark"></span>
                     </label>
 
+                    <label class="home-card__lbl" for="email_input">Email</label>
+                    <input id="email_input" class="home-card__input" type="email" name="email" required>
+
                     <label class="home-card__lbl" for="position_input">Position</label>
-                    <select class="home-card__select" name="position" id="position_input">
+                    <select class="home-card__select" name="position" id="position_input" required>
                         <option value="resident">Resident</option>
                         <option value="official">Official</option>
                     </select>
 
                     <label class="home-card__lbl" for="street_input">Street</label>
-                    <input id="street_input" class="home-card__input" type="text" name="street">
+                    <input id="street_input" class="home-card__input" type="text" name="street" required>
 
                     <label class="home-card__lbl" for="barangay_input">Barangay</label>
-                    <input id="barangay_input" class="home-card__input" type="text" name="barangay">
+                    <input id="barangay_input" class="home-card__input" type="text" name="barangay" required>
 
                     <label class="home-card__lbl" for="municipality_input">Municipality</label>
-                    <input id="municipality_input" class="home-card__input" type="text" name="municipality">
+                    <input id="municipality_input" class="home-card__input" type="text" name="municipality" required>
 
                     <label class="home-card__lbl" for="province_input">Province</label>
-                    <input id="province_input" class="home-card__input" type="text" name="province">
+                    <input id="province_input" class="home-card__input" type="text" name="province" required>
 
                     <input class="home-card__button" type="submit" value="Continue">
                 </form>
