@@ -106,7 +106,7 @@
         //for closing and opening the menu in smaller screen when they click outside the
         document.addEventListener('click', function(event) {
             if(window.innerWidth  < 960){
-                if (!nav.contains(event.target) && event.target != menuBtn){
+                if (!nav.contains(event.target) && event.target != menuBtn || event.target == addComplainBtn){
                     nav.classList.remove("nav--mobile--open");
              }
             }
