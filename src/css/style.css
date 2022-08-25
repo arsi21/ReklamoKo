@@ -633,6 +633,11 @@ body {
 .content__proof__pic {
   width: 180px;
 }
+.content__btn__cont {
+  margin-top: 3rem;
+  display: flex;
+  column-gap: 1rem;
+}
 
 @media (min-width: 60em) {
   .content__details__cont {
@@ -729,6 +734,34 @@ input[type=submit].home-card__cancel__btn:hover {
 }
 .content__btn img {
   width: 18px;
+}
+
+.primary-btn {
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-block: 0.6em;
+  padding-inline: 1.5em;
+  color: white;
+  background-color: #5f74cc;
+  border-radius: 6px;
+  border: none;
+}
+.primary-btn:hover {
+  background-color: #9da9db;
+}
+
+.danger-btn {
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-block: 0.6em;
+  padding-inline: 1.5em;
+  color: white;
+  background-color: firebrick;
+  border-radius: 6px;
+  border: none;
+}
+.danger-btn:hover {
+  background-color: #9da9db;
 }
 
 input[type=text].home-card__input,

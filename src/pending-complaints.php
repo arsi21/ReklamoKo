@@ -41,7 +41,7 @@
                 <hr class="content__hr">
 
                 <div class="content__item__list__cont">
-                    <a class="content__item__link" href="">
+                    <a class="content__item__link" href="pending-complaint.php">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
                                 <span class="content__item__name">Juan Dela Cruz</span>

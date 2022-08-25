@@ -103,3 +103,34 @@ input[type=submit].home-card__cancel__btn {
         width: 18px;
     }
 }
+
+
+.primary-btn {
+    font-size: variables.$fs-small;
+    font-weight: variables.$fw-700;
+    padding-block: 0.6em;
+    padding-inline: 1.5em;
+    color: variables.$clr-light;
+    background-color: variables.$clr-btn-primary;
+    border-radius: 6px;
+    border: none;
+
+    &:hover {
+        background-color: variables.$clr-btn-primary-hover;
+    }
+}
+
+.danger-btn {
+    font-size: variables.$fs-small;
+    font-weight: variables.$fw-700;
+    padding-block: 0.6em;
+    padding-inline: 1.5em;
+    color: variables.$clr-light;
+    background-color: variables.$clr-btn-danger;
+    border-radius: 6px;
+    border: none;
+
+    &:hover {
+        background-color: variables.$clr-accent-hover;
+    }
+}
