@@ -387,6 +387,14 @@ body {
     max-width: 750px;
   }
 }
+.step-form {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
 .home-card__left {
   margin-inline: auto;
   max-width: 300px;
@@ -631,7 +639,8 @@ body {
     height: calc(100vh - (68px + 8.5rem));
   }
 }
-input[type=submit].home-card__button {
+input[type=submit].home-card__button,
+a.home-card__button {
   font-size: 1rem;
   font-weight: 700;
   padding-block: 0.7em;
@@ -641,7 +650,8 @@ input[type=submit].home-card__button {
   border-radius: 5em;
   border: none;
 }
-input[type=submit].home-card__button:hover {
+input[type=submit].home-card__button:hover,
+a.home-card__button:hover {
   background-color: #9da9db;
 }
 
@@ -671,6 +681,40 @@ input[type=submit].home-card__cancel__btn {
 }
 input[type=submit].home-card__cancel__btn:hover {
   background-color: #f3efef;
+}
+
+.multi-step-form-btn-container {
+  display: flex;
+  column-gap: 1rem;
+  margin-top: 3rem;
+}
+
+.multi-step-form-btn-next {
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-block: 0.4em;
+  padding-inline: 1em;
+  color: white;
+  background-color: #5f74cc;
+  border-radius: 6px;
+  border: none;
+}
+.multi-step-form-btn-next:hover {
+  background-color: #9da9db;
+}
+
+.multi-step-form-btn-prev {
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-block: 0.4em;
+  padding-inline: 1em;
+  color: #262c33;
+  background-color: #EFD9D9;
+  border-radius: 6px;
+  border: none;
+}
+.multi-step-form-btn-prev:hover {
+  background-color: #e8e8e8;
 }
 
 .content__btn {
@@ -1428,6 +1472,11 @@ nav.menu-btn {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+#step2,
+#step3 {
+  display: none;
 }
 
 .home-card__account__img {

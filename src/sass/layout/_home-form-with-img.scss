@@ -1,3 +1,11 @@
+.step-form {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
 .home-card {
 
     &__left {
@@ -16,6 +24,7 @@
     &__p {
         margin-top: 1.5rem;
     }
+
 }
 
 @media (min-width: 63em) {
