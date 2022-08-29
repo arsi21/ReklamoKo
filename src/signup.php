@@ -17,13 +17,13 @@
 
         <section class="home-card home-card--with--img">
             <div class="home-card__container home-card__left">
-                <form class="home-card__form" action="">
+                <form class="home-card__form" action="./includes/signup-user.php" method="post">
                     <h1 class="home-card__title">Sign Up</h1>
 
                     <h2 class="home-card__sec__title">Welcome to ReklamoKo!</h2>
 
                     <label class="home-card__lbl" for="mobile_input">Mobile</label>
-                    <input id="mobile_input" class="home-card__input" type="number" name="uname">
+                    <input id="mobile_input" class="home-card__input" type="number" name="mobileNumber">
 
                     <label class="home-card__lbl" for="password_input">Password</label>
                     <input id="password_input" class="home-card__input home-card__input--pass" type="password"
@@ -32,7 +32,7 @@
 
                     <label class="home-card__lbl" for="password_input">Confirm Password</label>
                     <input id="con_password_input" class="home-card__input home-card__input--pass" type="password"
-                        name="conPassword">
+                        name="confirmPassword">
                     <i class="eye" id="toggle_con_pwd"></i>
 
                     <div class="home-card__checkbox">
@@ -40,14 +40,14 @@
                             Terms of
                             Service.
 
-                            <input type="checkbox" id="agree_terms" name="agreeTerms" value="Yes">
+                            <input type="checkbox" id="agree_terms" name="agreeTerms" value="yes" required>
                             <span class="home-card__checkmark"></span>
                         </label>
 
                         <a class="link" href="#">ReklamoKo Terms</a>
                     </div>
 
-                    <input class="home-card__button" type="submit" value="Create Account">
+                    <input class="home-card__button" type="submit" value="Create Account" name="submitBtn">
                 </form>
 
                 <p class="home-card__p">Have already an account? <a class="link" href="login.php">Login here</a></p>
