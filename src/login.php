@@ -17,18 +17,18 @@
 
         <section class="home-card home-card--with--img">
             <div class="home-card__container home-card__left">
-                <form class="home-card__form" action="">
+                <form class="home-card__form" action="./includes/login-user.php" method="POST">
                     <h1 class="home-card__title">Log In</h1>
 
-                    <label class="home-card__lbl" for="username_input">Username</label>
-                    <input id="username_input" class="home-card__input" type="text" name="uname">
+                    <label class="home-card__lbl" for="username_input">Mobile Number</label>
+                    <input id="username_input" class="home-card__input" type="number" name="mobileNumber">
 
                     <label class="home-card__lbl" for="password_input">Password</label>
                     <input id="password_input" class="home-card__input home-card__input--pass" type="password"
                         name="password">
                     <i class="eye" id="toggle_pwd"></i>
 
-                    <input class="home-card__button" type="submit" value="Log In">
+                    <input class="home-card__button" type="submit" value="Log In" name="submitBtn">
                 </form>
 
                 <a class="home-card__forgot link" href="find-account.php">Forgot password?</a>
