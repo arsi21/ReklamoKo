@@ -70,10 +70,7 @@
                             <label class="home-card__lbl" for="position_input">Position</label>
                             <select class="home-card__select" name="position" id="position_input" required>
                                 <option value="resident">Resident</option>
-                                <option value="barangay justice">Barangay Justice</option>
-                                <option value="police officer">Police Officer</option>
-                                <option value="secretary">Secretary</option>
-                                <option value="captain">Captain</option>
+                                <option value="barangay justice">Official</option>
                             </select>
 
                             <label class="home-card__lbl" for="house_number_input">House Number</label>

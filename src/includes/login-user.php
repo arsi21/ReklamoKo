@@ -19,5 +19,13 @@ $login = new LoginController($mobileNumber, $password);
 //validate data and login user
 $login->loginUser();
 
-//going back to signup page
-header("location: ../dashboard.php");
+session_start();
+
+$access = $_SESSION['access'];
+if($access == "nonVerified"){
+    header("location: ../verification.php");
+}elseif($access == "pendingVerification"){
+    header("location: ../application-submitted.php");
+}else{
+    header("location: ../dashboard.php?$access");
+}

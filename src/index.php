@@ -1,3 +1,13 @@
+<?php 
+session_start();
+
+if(isset($_SESSION['access']) && $_SESSION['access'] == "resident"){
+    header("location: pending-complaints.php");
+}elseif(isset($_SESSION['access']) && $_SESSION['access'] == "official"){
+    header("location: dashboard.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
