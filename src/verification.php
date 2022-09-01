@@ -19,7 +19,7 @@
 
 
 
-        <form data-multi-step id="signupForm" action="" method="post">
+        <form data-multi-step id="signupForm" action="./includes/verify-application.php" method="post" enctype="multipart/form-data">
 
             <!-- Identity verification -->
 
@@ -46,18 +46,21 @@
                             <label class="home-card__lbl" for="lname_input">Last Name</label>
                             <input id="lname_input" class="home-card__input" type="text" name="lastName" required>
 
+                            <label class="home-card__lbl" for="suffix_input">Suffix</label>
+                            <input id="suffix_input" class="home-card__input" type="text" name="suffix">
+
                             <label class="home-card__lbl" for="birth_date_input">Date of Birth</label>
                             <input id="birth_date_input" class="home-card__input" type="date" name="birthDate" required>
 
                             <p class="home-card__lbl">Gender</p>
 
                             <label class="home-card__radio__lbl" for="female_input">Female
-                                <input id="female_input" class="home-card__input" type="radio" name="gender" required>
+                                <input id="female_input" class="home-card__input" type="radio" name="gender" value="female" required>
                                 <span class="dotmark"></span>
                             </label>
 
                             <label class="home-card__radio__lbl" for="male_input">Male
-                                <input id="male_input" class="home-card__input" type="radio" name="gender">
+                                <input id="male_input" class="home-card__input" type="radio" name="gender" value="male">
                                 <span class="dotmark"></span>
                             </label>
 
@@ -67,7 +70,10 @@
                             <label class="home-card__lbl" for="position_input">Position</label>
                             <select class="home-card__select" name="position" id="position_input" required>
                                 <option value="resident">Resident</option>
-                                <option value="official">Official</option>
+                                <option value="barangay justice">Barangay Justice</option>
+                                <option value="police officer">Police Officer</option>
+                                <option value="secretary">Secretary</option>
+                                <option value="captain">Captain</option>
                             </select>
 
                             <label class="home-card__lbl" for="house_number_input">House Number</label>
@@ -78,15 +84,21 @@
 
                             <label class="home-card__lbl" for="barangay_input">Barangay</label>
                             <input id="barangay_input" class="home-card__input" type="text" name="barangay" required>
-
-                            <label class="home-card__lbl" for="municipality_input">Municipality</label>
-                            <input id="municipality_input" class="home-card__input" type="text" name="municipality" required>
-
-                            <label class="home-card__lbl" for="province_input">Province</label>
-                            <input id="province_input" class="home-card__input" type="text" name="province" required>
-
-                            <label class="home-card__lbl" for="postal_number_input">Postal Number</label>
-                            <input id="postal_number_input" class="home-card__input" type="number" name="postalNumber" required>
+                            
+                            <label class="home-card__lbl" for="postal_input">Postal Code</label>
+                            <select class="home-card__select" name="postalCode" id="postal_input" required>
+                        <?php
+                            $postalStart = 3100;
+                            for($i = 0; $i < 25; $i++){
+                        ?>
+                                <option value="<?= $postalStart; ?>"><?= $postalStart; ?></option>
+                        <?php
+                                $postalStart++;
+                            }     
+                        ?>
+                            
+                            
+                            </select>
 
                             <div class="multi-step-form-btn-container">
                                 <span data-next class="multi-step-form-btn-next">Continue</span>
@@ -194,7 +206,7 @@
 
                             <label class="home-card__file__lbl" for="portrait_pic_input">
                                 <input id="portrait_pic_input" class="home-card__input__file" type="file"
-                                    name="portraitPhoto" required>
+                                    name="profile" required>
                                 <img src="assets/icons/upload.svg" alt="Upload icon">
                                 <span>Upload photo</span>
                             </label>
@@ -208,7 +220,7 @@
                                 <span data-next class="multi-step-form-btn-next">Continue</span>
                             </div> -->
                             
-                            <input class="home-card__button" type="submit" name="submit" value="Submit">
+                            <input class="home-card__button" type="submit" name="submitBtn" value="Submit">
                         </div>
                     </div>
 

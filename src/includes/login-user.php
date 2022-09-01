@@ -16,7 +16,7 @@ include "../classes/login-controller.php";
 //instantiate class
 $login = new LoginController($mobileNumber, $password);
 
-//validate data and signup user
+//validate data and login user
 $login->loginUser();
 
 //going back to signup page
