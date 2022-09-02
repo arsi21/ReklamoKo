@@ -356,9 +356,9 @@
                 </div>
 
                 <div class="modal__acc__info">
-                    <span class="modal__acc__pos">Resident</span>
-                    <span class="modal__acc__name">Juan Dela Cruz</span>
-                    <span class="modal__acc__uname">juandelacruz@gmail.com</span>
+                    <span class="modal__acc__pos"><?= ucwords($_SESSION['access']); ?></span>
+                    <span class="modal__acc__name"><?php echo ucwords($_SESSION['firstName']) . " " . ucwords($_SESSION['lastName']); ?></span>
+                    <span class="modal__acc__uname"><?= ucwords($_SESSION['mobileNumber']); ?></span>
                 </div>
             </div>
 

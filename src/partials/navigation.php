@@ -1,31 +1,47 @@
-        <nav  id="nav" class="nav">
+  <nav  id="nav" class="nav">
             <div class="nav__profile">
                 <div class="nav__profile__pic">
                     <img src="assets/residentProfSample.jpg " alt="Profile picture">
                 </div>
 
                 <div class="nav__profile__info">
-                    <span class="nav__name">Juan Dela Cruz</span>
+                    <span class="nav__name"><?php echo ucwords($_SESSION['firstName']) . " " . ucwords($_SESSION['lastName']); ?></span>
 
-                    <span class="nav__position">Resident</span>
+                    <span class="nav__position"><?= ucwords($_SESSION['access']); ?></span>
 
                 </div>
             </div>
 
             <hr class="nav__hr">
 
+
+    <?php
+        if($_SESSION['access'] == "resident"){
+    ?>
             <button id="add-complain-btn" class="nav__complain__btn">
                 <img src="assets/icons/add.svg" alt="Add icon">
                 <span>Complain</span>
             </button>
 
+    <?php
+        }
+    ?>
+
+
             <ul>
+
+    <?php
+        if($_SESSION['access'] == "admin" || $_SESSION['access'] == "official"){
+    ?>
                 <li>
                     <a id="nav-dashboard" href="dashboard.php" class="nav__dashboard">
                         <img src="assets/icons/dashboard.svg" alt="Dashboard icon">
                         <span>Dashboard</span>
                     </a>
                 </li>
+    <?php
+        }
+    ?>
 
                 <li>
                     <a id="nav-pending" href="pending-complaints.php" class="nav__pending">
@@ -56,13 +72,12 @@
                 </li>
 
                 
-
+    <?php
+        if($_SESSION['access'] == "admin"){
+    ?>
 
 
                 <hr class="nav__hr nav__hr--ad">
-
-
-            
 
 
                 <li>
@@ -85,5 +100,9 @@
                         <span>Official Accounts</span>
                     </a>
                 </li>
+
+    <?php
+        }
+    ?>
             </ul>
         </nav>

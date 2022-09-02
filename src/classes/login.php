@@ -29,16 +29,20 @@ class Login extends Dbh {
         $userMobileNumber = $user[0]['mobile_number'];
 
         $stmt = null;
+
+        $userData = $this->getUserData($userId);
         
         session_start();
 
         //set session
         $_SESSION['userId'] = $userId;
         $_SESSION['mobileNumber'] = $userMobileNumber;
-        $_SESSION['access'] = $this->getUserAccess($userId);
+        $_SESSION['access'] = $userData['userAccess'];
+        $_SESSION['firstName'] = $userData['firstName'];
+        $_SESSION['lastName'] = $userData['lastName'];
     }
 
-    protected function getUserAccess($userId) {
+    protected function getUserData($userId) {
         $stmt = $this->connect()->prepare('SELECT * FROM tblapplication WHERE user_id = ?');
     
         if(!$stmt->execute(array($userId))){
@@ -59,8 +63,13 @@ class Login extends Dbh {
             $userAccess = "nonVerified";
         }
 
+        $firstName = $user[0]['first_name'];
+        $lastName = $user[0]['last_name'];
+
+        $data = array("firstName"=>$firstName, "lastName"=>$lastName, "userAccess"=>$userAccess);
+
         $stmt = null;
 
-        return $userAccess;
+        return $data;
     }
 }
