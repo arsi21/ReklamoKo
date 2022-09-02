@@ -365,6 +365,6 @@
             <div class="modal__acc__action">
                 <a class="modal__acc__link" href="#">Manage your account</a>
 
-                <a class="modal__acc__btn" href="#">Log Out</a>
+                <a class="modal__acc__btn" href="includes/logout.php">Log Out</a>
             </div>
         </div>

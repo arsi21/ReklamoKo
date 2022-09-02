@@ -19,13 +19,19 @@ $login = new LoginController($mobileNumber, $password);
 //validate data and login user
 $login->loginUser();
 
+//get the access type
 session_start();
-
 $access = $_SESSION['access'];
+
+//redirect to pages depends on their access type
 if($access == "nonVerified"){
     header("location: ../verification.php");
 }elseif($access == "pendingVerification"){
     header("location: ../application-submitted.php");
+}elseif($access == "resident"){
+    header("location: ../pending-complaints.php");
+}elseif($access == "official" || $access == "admin"){
+    header("location: ../dashboard.php");
 }else{
-    header("location: ../dashboard.php?$access");
+    header("location: ../index.php");
 }
