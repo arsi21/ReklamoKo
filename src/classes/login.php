@@ -25,48 +25,37 @@ class Login extends Dbh {
             exit();
         }
 
-        $userId = $user[0]['id'];
-        $userMobileNumber = $user[0]['mobile_number'];
-
         $stmt = null;
 
-        $userData = $this->getUserData($userId);
+        $userData = $this->getUserData($user[0]['resident_id']);
         
         session_start();
 
         //set session
-        $_SESSION['userId'] = $userId;
-        $_SESSION['mobileNumber'] = $userMobileNumber;
-        $_SESSION['access'] = $userData['userAccess'];
+        $_SESSION['userId'] = $user[0]['id'];
+        $_SESSION['residentId'] = $user[0]['resident_id'];
+        $_SESSION['profile'] = $user[0]['profile'];
+        $_SESSION['mobileNumber'] = $user[0]['mobile_number'];
+        $_SESSION['accessType'] = $user[0]['access_type'];
         $_SESSION['firstName'] = $userData['firstName'];
         $_SESSION['lastName'] = $userData['lastName'];
     }
 
-    protected function getUserData($userId) {
-        $stmt = $this->connect()->prepare('SELECT * FROM tblapplication WHERE user_id = ?');
+    protected function getUserData($residentId) {
+        $stmt = $this->connect()->prepare('SELECT * FROM resident WHERE id = ?');
     
-        if(!$stmt->execute(array($userId))){
+        if(!$stmt->execute(array($residentId))){
             $stmt = null;
             header("location: ../login.php?error=stmtfailed");
             exit();
         }
 
-        $user = $stmt->fetchAll();
+        $resident = $stmt->fetchAll();
 
-        if($stmt->rowCount() != 0){
-            if($user[0]['application_status'] == "pending"){
-                $userAccess = "pendingVerification";
-            }else{
-                $userAccess = $user[0]['position'];
-            }
-        }else{
-            $userAccess = "nonVerified";
-        }
+        $firstName = $resident[0]['first_name'];
+        $lastName = $resident[0]['last_name'];
 
-        $firstName = $user[0]['first_name'];
-        $lastName = $user[0]['last_name'];
-
-        $data = array("firstName"=>$firstName, "lastName"=>$lastName, "userAccess"=>$userAccess);
+        $data = array("firstName"=>$firstName, "lastName"=>$lastName);
 
         $stmt = null;
 

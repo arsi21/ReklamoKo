@@ -64,8 +64,8 @@
                                 <span class="dotmark"></span>
                             </label>
 
-                            <label class="home-card__lbl" for="email_input">Email</label>
-                            <input id="email_input" class="home-card__input" type="email" name="email" required>
+                            <!-- <label class="home-card__lbl" for="email_input">Email</label>
+                            <input id="email_input" class="home-card__input" type="email" name="email" required> -->
 
                             <label class="home-card__lbl" for="position_input">Position</label>
                             <select class="home-card__select" name="position" id="position_input" required>
@@ -73,7 +73,7 @@
                                 <option value="barangay justice">Official</option>
                             </select>
 
-                            <label class="home-card__lbl" for="house_number_input">House Number</label>
+                            <!-- <label class="home-card__lbl" for="house_number_input">House Number</label>
                             <input id="house_number_input" class="home-card__input" type="number" name="houseNumber" required>
 
                             <label class="home-card__lbl" for="street_input">Street</label>
@@ -85,17 +85,17 @@
                             <label class="home-card__lbl" for="postal_input">Postal Code</label>
                             <select class="home-card__select" name="postalCode" id="postal_input" required>
                         <?php
-                            $postalStart = 3100;
-                            for($i = 0; $i < 25; $i++){
+                            //$postalStart = 3100;
+                            //for($i = 0; $i < 25; $i++){
                         ?>
-                                <option value="<?= $postalStart; ?>"><?= $postalStart; ?></option>
+                                <option value="<?php //echo $postalStart; ?>"><?php //echo $postalStart; ?></option>
                         <?php
-                                $postalStart++;
-                            }     
+                                //$postalStart++;
+                            //}     
                         ?>
                             
                             
-                            </select>
+                            </select> -->
 
                             <div class="multi-step-form-btn-container">
                                 <span data-next class="multi-step-form-btn-next">Continue</span>
@@ -203,7 +203,7 @@
 
                             <label class="home-card__file__lbl" for="portrait_pic_input">
                                 <input id="portrait_pic_input" class="home-card__input__file" type="file"
-                                    name="profile" required>
+                                    name="portraitPhoto" required>
                                 <img src="assets/icons/upload.svg" alt="Upload icon">
                                 <span>Upload photo</span>
                             </label>

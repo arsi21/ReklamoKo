@@ -1,9 +1,9 @@
     <!-- modal -->
     <div id="modal2" class="modal2 modal2--add--comp">
-        <form action="" id="modal2-cont" class="modal2__cont">
+        <form action="includes/add-complaint.php" method="post" enctype="multipart/form-data" id="modal2-cont" class="modal2__cont">
             <div class="modal2__head">
                 <span class="modal2__title">
-                    New Complain
+                    New Complaint
                 </span>
                 
                 <span id="modal2-exit" class="modal2__close">
@@ -13,14 +13,14 @@
 
             <div class="modal2__body">
                 <label class="modal2__lbl">
-                    Name of the complained person 
+                    Name of the complaint person 
                 </label>
-                <input type="text" class="modal2__input" name="compPerson">
+                <input type="text" class="modal2__input" name="complaintPerson">
 
                 <label class="modal2__lbl">
-                    Complain description
+                    Complaint description
                 </label>
-                <textarea class="modal2__input" name="complainDesc"></textarea>
+                <textarea class="modal2__input" name="complaintDescription"></textarea>
 
                 <p class="modal2__lbl">
                     Proof/Pictures (Optional)
@@ -55,7 +55,7 @@
             <div class="modal2__footer">
                 <button id="modal2-cancel" class="modal2__cancel">Cancel</button>
 
-                <input type="submit" class="modal2__submit" value="Submit" name="submitComp">
+                <input type="submit" class="modal2__submit" value="Submit" name="submitBtn">
             </div>
         </form>
     </div>

@@ -17,7 +17,12 @@ $lastName = $_POST['lastName'];
 $suffix = "";
 $birthDate = $_POST['birthDate'];
 $gender = $_POST['gender'];
+$email = $_POST['email'];
 $position = $_POST['position'];
+$houseNumber = $_POST['houseNumber'];
+$street = $_POST['street'];
+$barangay = $_POST['barangay'];
+$postalCode = $_POST['postalCode'];
 
 if(isset($_POST['middleName'])){
     $middleName = $_POST['middleName'];
@@ -97,8 +102,8 @@ if(!empty($_FILES['backId']['name'])){
     header("location: ../verification.php?error=emptyImage");
 }
 
-if(!empty($_FILES['portraitPhoto']['name'])){
-    $profile = $_FILES['portraitPhoto'];
+if(!empty($_FILES['profile']['name'])){
+    $profile = $_FILES['profile'];
 
     $profileName = $profile['name'];
     $profileTmpName = $profile['tmp_name'];
@@ -138,7 +143,7 @@ include "../classes/verification.php";
 include "../classes/verification-controller.php";
 
 //instantiate class
-$verification = new VerificationController($userId, $firstName, $middleName, $lastName, $suffix, $birthDate, $gender, $position, $frontIdNameNew, $backIdNameNew, $profileNameNew);
+$verification = new VerificationController($userId, $firstName, $middleName, $lastName, $suffix, $birthDate, $gender, $email, $position, $houseNumber, $street, $barangay, $postalCode, $frontIdNameNew, $backIdNameNew, $profileNameNew);
 
 //validate data and add data to the database
 $verification->addApplication();

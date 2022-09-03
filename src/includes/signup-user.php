@@ -21,5 +21,5 @@ $signup = new SignupController($mobileNumber, $password, $confirmPassword, $agre
 //validate data and signup user
 $signup->signupUser();
 
-//going back to signup page
-header("location: ../signup.php");
+//redirect to other page
+header("location: ../login.php");

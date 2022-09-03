@@ -21,7 +21,7 @@ $login->loginUser();
 
 //get the access type
 session_start();
-$access = $_SESSION['access'];
+$access = $_SESSION['accessType'];
 
 //redirect to pages depends on their access type
 if($access == "nonVerified"){
