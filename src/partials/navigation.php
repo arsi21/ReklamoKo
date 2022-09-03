@@ -7,7 +7,7 @@
                 <div class="nav__profile__info">
                     <span class="nav__name"><?php echo ucwords($_SESSION['firstName']) . " " . ucwords($_SESSION['lastName']); ?></span>
 
-                    <span class="nav__position"><?= ucwords($_SESSION['access']); ?></span>
+                    <span class="nav__position"><?= ucwords($_SESSION['accessType']); ?></span>
 
                 </div>
             </div>
@@ -16,7 +16,7 @@
 
 
     <?php
-        if($_SESSION['access'] == "resident"){
+        if($_SESSION['accessType'] == "resident"){
     ?>
             <button id="add-complain-btn" class="nav__complain__btn">
                 <img src="assets/icons/add.svg" alt="Add icon">
@@ -31,7 +31,7 @@
             <ul>
 
     <?php
-        if($_SESSION['access'] == "admin" || $_SESSION['access'] == "official"){
+        if($_SESSION['accessType'] == "admin" || $_SESSION['accessType'] == "official"){
     ?>
                 <li>
                     <a id="nav-dashboard" href="dashboard.php" class="nav__dashboard">
@@ -73,7 +73,7 @@
 
                 
     <?php
-        if($_SESSION['access'] == "admin"){
+        if($_SESSION['accessType'] == "admin"){
     ?>
 
 

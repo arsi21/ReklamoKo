@@ -356,7 +356,7 @@
                 </div>
 
                 <div class="modal__acc__info">
-                    <span class="modal__acc__pos"><?= ucwords($_SESSION['access']); ?></span>
+                    <span class="modal__acc__pos"><?= ucwords($_SESSION['accessType']); ?></span>
                     <span class="modal__acc__name"><?php echo ucwords($_SESSION['firstName']) . " " . ucwords($_SESSION['lastName']); ?></span>
                     <span class="modal__acc__uname"><?= ucwords($_SESSION['mobileNumber']); ?></span>
                 </div>
