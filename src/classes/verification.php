@@ -13,5 +13,20 @@ class Verification extends Dbh {
         }
 
         $stmt = null;
+
+        $this->updateUserAccessType($userId);
+    }
+
+    private function updateUserAccessType($userId) {
+        $accessType = "pendingVerification";//default value of status
+        $stmt = $this->connect()->prepare('UPDATE user SET access_type = ? WHERE id = ?');
+    
+        if(!$stmt->execute(array($accessType, $userId))){
+            $stmt = null;
+            header("location: ../verification.php?error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
     }
 }
