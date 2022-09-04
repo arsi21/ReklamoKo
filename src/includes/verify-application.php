@@ -127,7 +127,7 @@ if(!empty($_FILES['portraitPhoto']['name'])){
     }
 
     $profileNameNew = uniqid('', true).".".$profileActualExt;
-    $profileDestination = '../profile-uploads/'.$profileNameNew;
+    $profileDestination = '../portrait-uploads/'.$profileNameNew;
 }else{
     header("location: ../verification.php?error=emptyImage");
 }
