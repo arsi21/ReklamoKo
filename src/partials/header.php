@@ -37,7 +37,17 @@
                     </li>
 
                     <li id="account-btn" class="header__profile">
-                        <img src="assets/residentProfSample.jpg " alt="Profile picture">
+                        <?php 
+                            if($_SESSION['profile'] != ""){
+                        ?>
+                                <img src="profile-uploads/<?= $_SESSION['profile'] ?>" alt="Profile picture">
+                        <?php 
+                            }else{
+                        ?>
+                                <img src="profile-uploads/default.jpg" alt="Profile picture">
+                        <?php 
+                            }
+                        ?>
                     </li>
                 </ul>
             </div>
@@ -352,7 +362,17 @@
             <span class="modal__title">Account</span>
             <div class="modal__acc__cont">
                 <div class="modal__acc__pic__cont">
-                    <img class="modal__acc__pic" src="assets/residentProfSample.jpg" alt="Profile picture">
+                        <?php 
+                            if($_SESSION['profile'] != ""){
+                        ?>
+                                <img class="modal__acc__pic" src="profile-uploads/<?= $_SESSION['profile'] ?>" alt="Profile picture">
+                        <?php 
+                            }else{
+                        ?>
+                                <img class="modal__acc__pic" src="profile-uploads/default.jpg" alt="Profile picture">
+                        <?php 
+                            }
+                        ?>
                 </div>
 
                 <div class="modal__acc__info">

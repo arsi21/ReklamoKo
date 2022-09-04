@@ -1,7 +1,17 @@
   <nav  id="nav" class="nav">
             <div class="nav__profile">
                 <div class="nav__profile__pic">
-                    <img src="assets/residentProfSample.jpg " alt="Profile picture">
+                        <?php 
+                            if($_SESSION['profile'] != ""){
+                        ?>
+                                <img src="profile-uploads/<?= $_SESSION['profile'] ?>" alt="Profile picture">
+                        <?php 
+                            }else{
+                        ?>
+                                <img src="profile-uploads/default.jpg" alt="Profile picture">
+                        <?php 
+                            }
+                        ?>
                 </div>
 
                 <div class="nav__profile__info">
