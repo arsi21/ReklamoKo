@@ -1,18 +1,22 @@
 <?php
 
 class ComplaintController extends Complaint {
-    private $complaintPerson;
+    private $userId;
+    private $complainee;
     private $complaintDescription;
     private $proof1;
     private $proof2;
     private $proof3;
+    private $complaintDate;
 
-    public function __construct($complaintPerson, $complaintDescription, $proof1, $proof2, $proof3) {
-        $this->complaintPerson = $complaintPerson;
+    public function __construct($userId, $complainee, $complaintDescription, $proof1, $proof2, $proof3, $complaintDate) {
+        $this->userId = $userId;
+        $this->complainee = $complainee;
         $this->complaintDescription = $complaintDescription;
         $this->proof1 = $proof1;
         $this->proof2 = $proof2;
         $this->proof3 = $proof3;
+        $this->complaintDate = $complaintDate;
     }
 
     public function addComplaint() {
@@ -21,12 +25,12 @@ class ComplaintController extends Complaint {
             exit();
         }
 
-        $this->setComplaint($this->complaintPerson, $this->complaintDescription, $this->proof1, $this->proof2, $this->proof3);
+        $this->setComplaint($this->userId, $this->complainee, $this->complaintDescription, $this->proof1, $this->proof2, $this->proof3, $this->complaintDate);
     }
 
     private function emptyInput() {
         $result;
-        if(empty($this->complaintPerson) || empty($this->complaintDescription)){
+        if(empty($this->userId) || empty($this->complainee)){
             $result = false;
         }else {
             $result = true;

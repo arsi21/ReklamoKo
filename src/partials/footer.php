@@ -13,43 +13,63 @@
 
             <div class="modal2__body">
                 <label class="modal2__lbl">
-                    Name of the complaint person 
+                    Name of person being complained about
                 </label>
-                <input type="text" class="modal2__input" name="complaintPerson">
+                <select name="complainee" id="select-name" placeholder="Please select name..." required>
+                    <option value="">Please select name...</option>
+                <?php
+                    foreach($residentsData as $row){
+                ?>
+                    <option value="<?= $row['id'] ?>"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
+                <?php
+                    }
+                ?>
+                </select>
+
+                <div class="spacer"></div>
+
+                <!-- <label class="modal2__lbl">
+                    Name of person being complained about
+                </label>
+                <input type="text" class="modal2__input" name="complainee"> -->
 
                 <label class="modal2__lbl">
                     Complaint description
                 </label>
-                <textarea class="modal2__input" name="complaintDescription"></textarea>
+                <textarea class="modal2__input" name="complaintDescription" required></textarea>
 
                 <p class="modal2__lbl">
                     Proof/Pictures (Optional)
                 </p>
 
-                <div class="modal2__img__prev__cont">
-                    <div class="modal2__img__prev">
+                <!-- <div class="modal2__img__prev__cont">
+                    <div class="modal2__img__prev"> -->
                         <!-- <img id=img-prev" /> -->
-                    </div>
-                    <div class="modal2__img__prev">
+                    <!-- </div>
+                    <div class="modal2__img__prev"> -->
                         <!-- <img id=img-prev" /> -->
-                    </div>
-                    <div class="modal2__img__prev">
+                    <!-- </div>
+                    <div class="modal2__img__prev"> -->
                         <!-- <img id=img-prev" /> -->
-                    </div>
-                    <div class="modal2__img__prev">
+                    <!-- </div>
+                    <div class="modal2__img__prev"> -->
                         <!-- <img id=img-prev" /> -->
-                    </div>
-                    <div class="modal2__img__prev">
+                    <!-- </div>
+                    <div class="modal2__img__prev"> -->
                         <!-- <img id=img-prev" /> -->
-                    </div>
-                </div>
+                    <!-- </div>
+                </div> -->
 
-                <label class="modal2__upload__lbl" for="upload-pic">
+                <!-- <label class="modal2__upload__lbl" for="upload-pic">
                     <input id="upload-pic" class="modal2__upload__input" type="file"
                     name="complainProof[]" multiple>
                     <img src="assets/icons/upload.svg" alt="Upload icon">
                     <span>Upload photo</span>
-                </label>
+                </label> -->
+
+                <input type="file" name="proof1">
+                <input type="file" name="proof2">
+                <input type="file" name="proof3">
             </div>
 
             <div class="modal2__footer">
@@ -228,6 +248,12 @@
             }
         });
         
+
+        $(document).ready(function () {
+            $('select').selectize({
+                sortField: 'text'
+            });
+        });
     </script>
 </body>
 

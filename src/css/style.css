@@ -1132,6 +1132,9 @@ input[type=number] {
   border-radius: 6px;
   border: 2px solid #BCBCBC;
 }
+.modal2 .spacer {
+  margin-bottom: 1.5em;
+}
 .modal2 textarea.modal2__input {
   max-width: 100%;
   min-width: 100%;

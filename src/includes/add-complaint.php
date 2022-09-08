@@ -11,147 +11,136 @@ if(!isset($_POST['submitBtn'])){
 
 //Grab the data
 $userId = $_SESSION['userId'];
-$firstName = $_POST['firstName'];
-$middleName = "";
-$lastName = $_POST['lastName'];
-$suffix = "";
-$birthDate = $_POST['birthDate'];
-$gender = $_POST['gender'];
-$email = $_POST['email'];
-$position = $_POST['position'];
-$houseNumber = $_POST['houseNumber'];
-$street = $_POST['street'];
-$barangay = $_POST['barangay'];
-$postalCode = $_POST['postalCode'];
+$complainee = $_POST['complainee'];
+$complaintDescription = $_POST['complaintDescription'];
+$proof1NameNew = "";
+$proof2NameNew = "";
+$proof3NameNew = "";
+$complaintDate;
 
-if(isset($_POST['middleName'])){
-    $middleName = $_POST['middleName'];
-}
+//get current date
+date_default_timezone_set("Asia/Manila");
+$complaintDate = date("Y-m-d");
 
-if(isset($_POST['suffix'])){
-    $suffix = $_POST['suffix'];
-}
 
-if(!empty($_FILES['frontId']['name'])){
-    $frontId = $_FILES['frontId'];
+if(!empty($_FILES['proof1']['name'])){
+    $proof1 = $_FILES['proof1'];
 
-    $frontIdName = $frontId['name'];
-    $frontIdTmpName = $frontId['tmp_name'];
-    $frontIdSize = $frontId['size'];
-    $frontIdError = $frontId['error'];
-    $frontIdType = $frontId['type'];
+    $proof1Name = $proof1['name'];
+    $proof1TmpName = $proof1['tmp_name'];
+    $proof1Size = $proof1['size'];
+    $proof1Error = $proof1['error'];
+    $proof1Type = $proof1['type'];
 
-    $frontIdExt = explode('.', $frontIdName);
-    $frontIdActualExt = strtolower(end($frontIdExt));//get the extension
+    $proof1Ext = explode('.', $proof1Name);
+    $proof1ActualExt = strtolower(end($proof1Ext));//get the extension
 
     $allowedType = array('jpg', 'jpeg', 'png');
 
-    if(!in_array($frontIdActualExt, $allowedType)){
-        header("location: ../verification.php?error=imageType1$frontIdActualExt");
+    if(!in_array($proof1ActualExt, $allowedType)){
+        header("location: ../pending-complaints.php?error=imageType1");
         exit();
     }
 
-    if($frontIdError !== 0){
-        header("location: ../verification.php?error=imageError1");
+    if($proof1Error !== 0){
+        header("location: ../pending-complaints.php?error=imageError1");
         exit();
     }
 
-    if($frontIdSize > 5000000){ //5000000 = 5mb
-        header("location: ../verification.php?error=imageSize1");
+    if($proof1Size > 5000000){ //5000000 = 5mb
+        header("location: ../pending-complaints.php?error=imageSize1");
         exit();
     }
 
-    $frontIdNameNew = uniqid('', true).".".$frontIdActualExt;
-    $frontIdDestination = '../id-uploads/'.$frontIdNameNew;
-}else{
-    header("location: ../verification.php?error=emptyImage");
+    $proof1NameNew = uniqid('', true).".".$proof1ActualExt;
+    $proof1Destination = '../proof-uploads/'.$proof1NameNew;
 }
 
-if(!empty($_FILES['backId']['name'])){
-    $backId = $_FILES['backId'];
 
-    $backIdName = $backId['name'];
-    $backIdTmpName = $backId['tmp_name'];
-    $backIdSize = $backId['size'];
-    $backIdError = $backId['error'];
-    $backIdType = $backId['type'];
+if(!empty($_FILES['proof2']['name'])){
+    $proof2 = $_FILES['proof2'];
 
-    $backIdExt = explode('.', $backIdName);
-    $backIdActualExt = strtolower(end($backIdExt));//get the extension
+    $proof2Name = $proof2['name'];
+    $proof2TmpName = $proof2['tmp_name'];
+    $proof2Size = $proof2['size'];
+    $proof2Error = $proof2['error'];
+    $proof2Type = $proof2['type'];
+
+    $proof2Ext = explode('.', $proof2Name);
+    $proof2ActualExt = strtolower(end($proof2Ext));//get the extension
 
     $allowedType = array('jpg', 'jpeg', 'png');
 
-    if(!in_array($backIdActualExt, $allowedType)){
-        header("location: ../verification.php?error=imageType2");
+    if(!in_array($proof2ActualExt, $allowedType)){
+        header("location: ../pending-complaints.php?error=imageType2");
         exit();
     }
 
-    if($backIdError !== 0){
-        header("location: ../verification.php?error=imageError2");
+    if($proof2Error !== 0){
+        header("location: ../pending-complaints.php?error=imageError2");
         exit();
     }
 
-    if($backIdSize > 5000000){ //5000000 = 5mb
-        header("location: ../verification.php?error=imageSize2");
+    if($proof2Size > 5000000){ //5000000 = 5mb
+        header("location: ../pending-complaints.php?error=imageSize2");
         exit();
     }
 
-    $backIdNameNew = uniqid('', true).".".$backIdActualExt;
-    $backIdDestination = '../id-uploads/'.$backIdNameNew;
-}else{
-    header("location: ../verification.php?error=emptyImage");
+    $proof2NameNew = uniqid('', true).".".$proof2ActualExt;
+    $proof2Destination = '../proof-uploads/'.$proof2NameNew;
 }
 
-if(!empty($_FILES['profile']['name'])){
-    $profile = $_FILES['profile'];
 
-    $profileName = $profile['name'];
-    $profileTmpName = $profile['tmp_name'];
-    $profileSize = $profile['size'];
-    $profileError = $profile['error'];
-    $profileType = $profile['type'];
+if(!empty($_FILES['proof3']['name'])){
+    $proof3 = $_FILES['proof3'];
 
-    $profileExt = explode('.', $profileName);
-    $profileActualExt = strtolower(end($profileExt));//get the extension
+    $proof3Name = $proof3['name'];
+    $proof3TmpName = $proof3['tmp_name'];
+    $proof3Size = $proof3['size'];
+    $proof3Error = $proof3['error'];
+    $proof3Type = $proof3['type'];
+
+    $proof3Ext = explode('.', $proof3Name);
+    $proof3ActualExt = strtolower(end($proof3Ext));//get the extension
 
     $allowedType = array('jpg', 'jpeg', 'png');
 
-    if(!in_array($profileActualExt, $allowedType)){
-        header("location: ../verification.php?error=imageType3");
+    if(!in_array($proof3ActualExt, $allowedType)){
+        header("location: ../pending-complaints.php?error=imageType3");
         exit();
     }
 
-    if($profileError !== 0){
-        header("location: ../verification.php?error=imageError3");
+    if($proof3Error !== 0){
+        header("location: ../pending-complaints.php?error=imageError3");
         exit();
     }
 
-    if($profileSize > 5000000){ //5000000 = 5mb
-        header("location: ../verification.php?error=imageSize3");
+    if($proof3Size > 5000000){ //5000000 = 5mb
+        header("location: ../pending-complaints.php?error=imageSize3");
         exit();
     }
 
-    $profileNameNew = uniqid('', true).".".$profileActualExt;
-    $profileDestination = '../profile-uploads/'.$profileNameNew;
-}else{
-    header("location: ../verification.php?error=emptyImage");
+    $proof3NameNew = uniqid('', true).".".$proof3ActualExt;
+    $proof3Destination = '../proof-uploads/'.$proof3NameNew;
 }
+
+
 
 //include needed files
 include "../classes/dbh.php";
-include "../classes/verification.php";
-include "../classes/verification-controller.php";
+include "../classes/complaint.php";
+include "../classes/complaint-controller.php";
 
 //instantiate class
-$verification = new VerificationController($userId, $firstName, $middleName, $lastName, $suffix, $birthDate, $gender, $email, $position, $houseNumber, $street, $barangay, $postalCode, $frontIdNameNew, $backIdNameNew, $profileNameNew);
+$complaint = new ComplaintController($userId, $complainee, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate);
 
 //validate data and add data to the database
-$verification->addApplication();
+$complaint->addComplaint();
 
 //save images
-move_uploaded_file($frontIdTmpName, $frontIdDestination);
-move_uploaded_file($backIdTmpName, $backIdDestination);
-move_uploaded_file($profileTmpName, $profileDestination);
+move_uploaded_file($proof1TmpName, $proof1Destination);
+move_uploaded_file($proof2TmpName, $proof2Destination);
+move_uploaded_file($proof3TmpName, $proof3Destination);
 
 //going back to page
-header("location: ../application-submitted.php");
+header("location: ../pending-complaints.php");

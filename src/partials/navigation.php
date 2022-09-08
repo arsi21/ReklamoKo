@@ -30,7 +30,7 @@
     ?>
             <button id="add-complain-btn" class="nav__complain__btn">
                 <img src="assets/icons/add.svg" alt="Add icon">
-                <span>Complain</span>
+                <span>Complaint</span>
             </button>
 
     <?php
