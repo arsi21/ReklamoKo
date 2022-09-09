@@ -137,10 +137,20 @@ $complaint = new ComplaintController($userId, $complainee, $complaintDescription
 //validate data and add data to the database
 $complaint->addComplaint();
 
+
 //save images
-move_uploaded_file($proof1TmpName, $proof1Destination);
-move_uploaded_file($proof2TmpName, $proof2Destination);
-move_uploaded_file($proof3TmpName, $proof3Destination);
+if(!empty($_FILES['proof1']['name'])){
+    move_uploaded_file($proof1TmpName, $proof1Destination);
+}
+
+if(!empty($_FILES['proof2']['name'])){
+    move_uploaded_file($proof2TmpName, $proof2Destination);
+}
+
+if(!empty($_FILES['proof3']['name'])){
+    move_uploaded_file($proof3TmpName, $proof3Destination);
+}
+
 
 //going back to page
 header("location: ../pending-complaints.php");
