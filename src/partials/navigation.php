@@ -61,9 +61,9 @@
                 </li>
 
                 <li>
-                    <a id="nav-ongoing" href="on-going-complaints.php" class="nav__ongoing">
-                        <img src="assets/icons/ongoing_complaints.svg" alt="On going complaints icon">
-                        <span>On Going Complaints</span>
+                    <a id="nav-ongoing" href="ongoing-complaints.php" class="nav__ongoing">
+                        <img src="assets/icons/ongoing_complaints.svg" alt="Ongoing complaints icon">
+                        <span>Ongoing Complaints</span>
                     </a>
                 </li>
 
