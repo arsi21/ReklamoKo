@@ -16,11 +16,12 @@ class OngoingComplaint extends Dbh {
         INNER JOIN resident
         ON resident.id = user.resident_id
         WHERE complaint.user_id = ?
+        AND complaint.status = "ongoing"
         ORDER BY ongoing_complaint.ongoing_date DESC');
 
         if(!$stmt->execute(array($userId))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../ongoing-complaints.php?error=stmtfailed");
             exit();
         }
 
@@ -44,6 +45,7 @@ class OngoingComplaint extends Dbh {
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
+        WHERE complaint.status = "ongoing"
         ORDER BY ongoing_complaint.ongoing_date DESC');
 
         $results = $stmt->fetchAll();
@@ -70,11 +72,12 @@ class OngoingComplaint extends Dbh {
         INNER JOIN resident
         ON resident.id = user.resident_id
         WHERE complaint.user_id = ?
+        AND complaint.status = "ongoing"
         ORDER BY ongoing_complaint.ongoing_date DESC');
 
         if(!$stmt->execute(array($userId))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../ongoing-complaints.php?error=stmtfailed");
             exit();
         }
 
@@ -87,7 +90,7 @@ class OngoingComplaint extends Dbh {
 
 
     public function getAllOngoingComplaintsCount() {
-        $stmt = $this->connect()->query('SELECT SELECT complaint.id,
+        $stmt = $this->connect()->query('SELECT complaint.id,
         resident.first_name,
         resident.last_name,
         complaint.complaint_description,
@@ -99,6 +102,7 @@ class OngoingComplaint extends Dbh {
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
+        WHERE complaint.status = "ongoing"
         ORDER BY ongoing_complaint.ongoing_date DESC');
 
         $result = $stmt->rowCount();

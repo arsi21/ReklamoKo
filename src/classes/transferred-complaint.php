@@ -16,6 +16,7 @@ class TransferredComplaint extends Dbh {
         INNER JOIN resident
         ON resident.id = user.resident_id
         WHERE complaint.user_id = ?
+        AND complaint.status = "transferred"
         ORDER BY transferred_complaint.transferred_date DESC');
 
         if(!$stmt->execute(array($userId))){
@@ -44,7 +45,8 @@ class TransferredComplaint extends Dbh {
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
-        ORDER BY transferred_complaint.pending_date DESC');
+        WHERE complaint.status = "transferred"
+        ORDER BY transferred_complaint.transferred_date DESC');
 
         $results = $stmt->fetchAll();
 
@@ -70,6 +72,7 @@ class TransferredComplaint extends Dbh {
         INNER JOIN resident
         ON resident.id = user.resident_id
         WHERE complaint.user_id = ?
+        AND complaint.status = "transferred"
         ORDER BY transferred_complaint.transferred_date DESC');
 
         if(!$stmt->execute(array($userId))){
@@ -99,6 +102,7 @@ class TransferredComplaint extends Dbh {
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
+        WHERE complaint.status = "transferred"
         ORDER BY transferred_complaint.transferred_date DESC');
 
         $result = $stmt->rowCount();

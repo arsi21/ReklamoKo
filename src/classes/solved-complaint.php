@@ -16,6 +16,7 @@ class SolvedComplaint extends Dbh {
         INNER JOIN resident
         ON resident.id = user.resident_id
         WHERE complaint.user_id = ?
+        AND complaint.status = "solved"
         ORDER BY solved_complaint.solved_date DESC');
 
         if(!$stmt->execute(array($userId))){
@@ -44,6 +45,7 @@ class SolvedComplaint extends Dbh {
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
+        WHERE complaint.status = "solved"
         ORDER BY solved_complaint.solved_date DESC');
 
         $results = $stmt->fetchAll();
@@ -70,6 +72,7 @@ class SolvedComplaint extends Dbh {
         INNER JOIN resident
         ON resident.id = user.resident_id
         WHERE complaint.user_id = ?
+        AND complaint.status = "solved"
         ORDER BY solved_complaint.solved_date DESC');
 
         if(!$stmt->execute(array($userId))){
@@ -99,6 +102,7 @@ class SolvedComplaint extends Dbh {
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
+        WHERE complaint.status = "solved"
         ORDER BY solved_complaint.solved_date DESC');
 
         $result = $stmt->rowCount();

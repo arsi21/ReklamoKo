@@ -3,6 +3,8 @@
 class Complaint extends Dbh {
 
     protected function setComplaint($userId, $complaineeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate) {
+        $status = "pending"; //default status of complaint
+        
         //get all proofs
         $proofs = array();
         if(!empty($proof1NameNew)){
@@ -19,9 +21,9 @@ class Complaint extends Dbh {
 
         $conn = $this->connect();
 
-        $stmt = $conn->prepare('INSERT INTO complaint (user_id, complainee_id, complaint_description, date) VALUES (?, ?, ?, ?)');
+        $stmt = $conn->prepare('INSERT INTO complaint (user_id, complainee_id, complaint_description, date, status) VALUES (?, ?, ?, ?, ?)');
     
-        if(!$stmt->execute(array($userId, $complaineeId, $complaintDescription, $complaintDate))){
+        if(!$stmt->execute(array($userId, $complaineeId, $complaintDescription, $complaintDate, $status))){
             $stmt = null;
             header("location: ../pending-complaints.php?error=stmtfailed");
             exit();
