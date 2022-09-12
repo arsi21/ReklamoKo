@@ -1,5 +1,5 @@
 <?php
-include "classes/dbh.php";
+include_once "classes/dbh.php";
 include "classes/resident.php";
 
 //Instantiate Class

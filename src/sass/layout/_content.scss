@@ -121,6 +121,13 @@
     &__item__position {
         color: variables.$clr-font-accent;
     }
+
+    .no-data-msg {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: variables.$clr-font-dark-60
+    }
 }
 
 
@@ -166,6 +173,7 @@
         &__item__list__cont {
             overflow-y: scroll;
             max-height: calc(100vh - calc(190px + 3.9rem));
+            min-height: calc(100vh - calc(190px + 3.9rem));
         }
 
         &__item__desc {

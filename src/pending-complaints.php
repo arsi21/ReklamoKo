@@ -1,8 +1,30 @@
-<?php 
-    if(!isset($_SESSION)){
-        session_start();
-    }
+<?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+include "classes/dbh.php";
+include "classes/pending-complaint.php";
+
+//Instantiate Class
+$pendingComplaint = new PendingComplaint();
+
+//get the user id
+$userId = $_SESSION['userId'];
+
+//get data from database
+if($_SESSION['accessType'] == "resident"){
+    $pendingComplaintsData = $pendingComplaint->getUserPendingComplaints($userId);
+    $pendingComplaintsCount = $pendingComplaint->getUserPendingComplaintsCount($userId);
+}elseif($_SESSION['accessType'] == "admin"){
+    $pendingComplaintsData = $pendingComplaint->getAllPendingComplaints();
+    $pendingComplaintsCount = $pendingComplaint->getAllPendingComplaintsCount();
+}
+
 ?>
+
+
 
 <!-- include all needed partials -->
 <?php include 'partials/header.php';?>
@@ -47,148 +69,32 @@
                 <hr class="content__hr">
 
                 <div class="content__item__list__cont">
-                    <a class="content__item__link" href="pending-complaint.php">
+                <?php
+                    foreach($pendingComplaintsData as $row){
+                ?>
+                    <a class="content__item__link" href="pending-complaint.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
+                                <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>
+                                <span class="content__item__desc"><?= $row['complaint_description'] ?></span>
+                                <span class="content__item__date"><?= $row['pending_date'] ?></span>
+                                <span class="content__item__status"><?= ucwords($row['status']) ?></span>
                             </div>
                         </div>
                     </a>
+                <?php
+                    }
+                ?>
 
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                                <span class="content__item__date">01/10/22</span>
-                                <span class="content__item__status">Pending</span>
-                            </div>
-                        </div>
-                    </a>
+                <?php
+                    if($pendingComplaintsCount == 0){
+                ?>
+                    <div class="no-data-msg">
+                        <p>No pending complaints!</p>
+                    </div>
+                <?php
+                    }
+                ?>
                 </div>
                 <hr class="content__hr">
             </div>

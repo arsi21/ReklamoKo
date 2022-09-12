@@ -521,6 +521,12 @@ body {
 .content__item__status, .content__item__position {
   color: #5f74cc;
 }
+.content .no-data-msg {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #707070;
+}
 
 @media (min-width: 30em) {
   .content {
@@ -551,6 +557,7 @@ body {
   .content__item__list__cont {
     overflow-y: scroll;
     max-height: calc(100vh - (190px + 3.9rem));
+    min-height: calc(100vh - (190px + 3.9rem));
   }
   .content__item__desc {
     width: 100vw;

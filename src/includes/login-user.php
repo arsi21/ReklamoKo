@@ -30,7 +30,7 @@ if($access == "nonVerified"){
     header("location: ../application-submitted.php");
 }elseif($access == "resident"){
     header("location: ../pending-complaints.php");
-}elseif($access == "official" || $access == "admin"){
+}elseif($access == "lupon" || $access == "admin"){
     header("location: ../dashboard.php");
 }else{
     header("location: ../index.php");
