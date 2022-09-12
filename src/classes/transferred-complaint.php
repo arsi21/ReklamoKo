@@ -1,28 +1,26 @@
 <?php 
 
-class PendingComplaint extends Dbh {
+class TransferredComplaint extends Dbh {
 
-    public function getUserPendingComplaints($userId) {
+    public function getUserTransferredComplaints($userId) {
         $stmt = $this->connect()->prepare('SELECT complaint.id,
         resident.first_name,
         resident.last_name,
         complaint.complaint_description,
-        pending_complaint.pending_date,
-        pending_complaint.status
-        FROM pending_complaint 
+        transferred_complaint.transferred_date
+        FROM transferred_complaint 
         INNER JOIN complaint 
-        ON complaint.id = pending_complaint.complaint_id 
+        ON complaint.id = transferred_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
         WHERE complaint.user_id = ?
-        AND pending_complaint.status != "approved"
-        ORDER BY pending_complaint.pending_date DESC');
+        ORDER BY transferred_complaint.transferred_date DESC');
 
         if(!$stmt->execute(array($userId))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../transferred-complaints.php?error=stmtfailed");
             exit();
         }
 
@@ -33,22 +31,20 @@ class PendingComplaint extends Dbh {
         return $results;
     }
 
-    public function getAllPendingComplaints() {
+    public function getAllTransferredComplaints() {
         $stmt = $this->connect()->query('SELECT complaint.id,
         resident.first_name,
         resident.last_name,
         complaint.complaint_description,
-        pending_complaint.pending_date,
-        pending_complaint.status
-        FROM pending_complaint 
+        transferred_complaint.transferred_date
+        FROM transferred_complaint 
         INNER JOIN complaint 
-        ON complaint.id = pending_complaint.complaint_id 
+        ON complaint.id = transferred_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
-        WHERE pending_complaint.status != "approved"
-        ORDER BY pending_complaint.pending_date DESC');
+        ORDER BY transferred_complaint.pending_date DESC');
 
         $results = $stmt->fetchAll();
 
@@ -60,27 +56,25 @@ class PendingComplaint extends Dbh {
 
 
 
-    public function getUserPendingComplaintsCount($userId) {
+    public function getUserTransferredComplaintsCount($userId) {
         $stmt = $this->connect()->prepare('SELECT complaint.id,
         resident.first_name,
         resident.last_name,
         complaint.complaint_description,
-        pending_complaint.pending_date,
-        pending_complaint.status
-        FROM pending_complaint 
+        transferred_complaint.transferred_date
+        FROM transferred_complaint 
         INNER JOIN complaint 
-        ON complaint.id = pending_complaint.complaint_id 
+        ON complaint.id = transferred_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
         WHERE complaint.user_id = ?
-        AND pending_complaint.status != "approved"
-        ORDER BY pending_complaint.pending_date DESC');
+        ORDER BY transferred_complaint.transferred_date DESC');
 
         if(!$stmt->execute(array($userId))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../transferred-complaints.php?error=stmtfailed");
             exit();
         }
 
@@ -92,22 +86,20 @@ class PendingComplaint extends Dbh {
     }
 
 
-    public function getAllPendingComplaintsCount() {
+    public function getAllTransferredComplaintsCount() {
         $stmt = $this->connect()->query('SELECT complaint.id,
         resident.first_name,
         resident.last_name,
         complaint.complaint_description,
-        pending_complaint.pending_date,
-        pending_complaint.status
-        FROM pending_complaint 
+        transferred_complaint.transferred_date
+        FROM transferred_complaint 
         INNER JOIN complaint 
-        ON complaint.id = pending_complaint.complaint_id 
+        ON complaint.id = transferred_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
         INNER JOIN resident
         ON resident.id = user.resident_id
-        WHERE pending_complaint.status != "approved"
-        ORDER BY pending_complaint.pending_date DESC');
+        ORDER BY transferred_complaint.transferred_date DESC');
 
         $result = $stmt->rowCount();
 

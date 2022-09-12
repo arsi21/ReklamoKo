@@ -77,6 +77,7 @@
         padding-inline: 16px;
         padding-block: 0.8rem;
         color: variables.$clr-font-dark-60;
+        cursor: pointer;
 
         &:hover {
             background-color: variables.$clr-dark-50;
@@ -84,7 +85,7 @@
     }
 
     &__item__link {
-        color: variables.$clr-font-dark-60
+        color: variables.$clr-font-dark-60;
     }
 
     &__item__info__cont {

@@ -489,6 +489,7 @@ body {
   padding-inline: 16px;
   padding-block: 0.8rem;
   color: #707070;
+  cursor: pointer;
 }
 .content__item__cont:hover {
   background-color: #e8e8e8;
