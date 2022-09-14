@@ -28,7 +28,9 @@
                         name="password">
                     <i class="eye" id="toggle_pwd"></i>
 
-                    <input class="home-card__button" type="submit" value="Log In" name="submitBtn">
+                    <div>
+                        <input class="home-card__button" type="submit" value="Log In" name="submitBtn">
+                    </div>
                 </form>
 
                 <a class="home-card__forgot link" href="find-account.php">Forgot password?</a>
