@@ -11,21 +11,8 @@ if(!isset($_POST['submitBtn'])){
 
 //Grab the data
 $userId = $_SESSION['userId'];
-$firstName = $_POST['firstName'];
-$middleName = "";
-$lastName = $_POST['lastName'];
-$suffix = "";
-$birthDate = $_POST['birthDate'];
-$gender = $_POST['gender'];
-$position = $_POST['position'];
+$residentId = $_POST['residentId'];
 
-if(isset($_POST['middleName'])){
-    $middleName = $_POST['middleName'];
-}
-
-if(isset($_POST['suffix'])){
-    $suffix = $_POST['suffix'];
-}
 
 if(!empty($_FILES['frontId']['name'])){
     $frontId = $_FILES['frontId'];
@@ -138,10 +125,10 @@ include "../classes/verification.php";
 include "../classes/verification-controller.php";
 
 //instantiate class
-$verification = new VerificationController($userId, $firstName, $middleName, $lastName, $suffix, $birthDate, $gender, $position, $frontIdNameNew, $backIdNameNew, $profileNameNew);
+$verification = new VerificationController();
 
 //validate data and add data to the database
-$verification->addApplication();
+$verification->addApplication($userId, $residentId, $frontIdNameNew, $backIdNameNew, $profileNameNew);
 
 //save images
 move_uploaded_file($frontIdTmpName, $frontIdDestination);

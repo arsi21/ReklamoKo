@@ -13,8 +13,10 @@ class TransferredComplaint extends Dbh {
         ON complaint.id = transferred_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
+        INNER JOIN application
+        ON user.id = application.user_id
         INNER JOIN resident
-        ON resident.id = user.resident_id
+        ON resident.id = application.resident_id
         WHERE complaint.user_id = ?
         AND complaint.status = "transferred"
         ORDER BY transferred_complaint.transferred_date DESC');
@@ -43,8 +45,10 @@ class TransferredComplaint extends Dbh {
         ON complaint.id = transferred_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
+        INNER JOIN application
+        ON user.id = application.user_id
         INNER JOIN resident
-        ON resident.id = user.resident_id
+        ON resident.id = application.resident_id
         WHERE complaint.status = "transferred"
         ORDER BY transferred_complaint.transferred_date DESC');
 
@@ -69,8 +73,10 @@ class TransferredComplaint extends Dbh {
         ON complaint.id = transferred_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
+        INNER JOIN application
+        ON user.id = application.user_id
         INNER JOIN resident
-        ON resident.id = user.resident_id
+        ON resident.id = application.resident_id
         WHERE complaint.user_id = ?
         AND complaint.status = "transferred"
         ORDER BY transferred_complaint.transferred_date DESC');
@@ -100,8 +106,10 @@ class TransferredComplaint extends Dbh {
         ON complaint.id = transferred_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
+        INNER JOIN application
+        ON user.id = application.user_id
         INNER JOIN resident
-        ON resident.id = user.resident_id
+        ON resident.id = application.resident_id
         WHERE complaint.status = "transferred"
         ORDER BY transferred_complaint.transferred_date DESC');
 

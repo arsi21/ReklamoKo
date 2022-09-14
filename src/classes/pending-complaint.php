@@ -14,8 +14,10 @@ class PendingComplaint extends Dbh {
         ON complaint.id = pending_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
+        INNER JOIN application
+        ON user.id = application.user_id
         INNER JOIN resident
-        ON resident.id = user.resident_id
+        ON resident.id = application.resident_id
         WHERE complaint.user_id = ?
         AND pending_complaint.status != "approved"
         ORDER BY pending_complaint.pending_date DESC');
@@ -45,8 +47,10 @@ class PendingComplaint extends Dbh {
         ON complaint.id = pending_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
+        INNER JOIN application
+        ON user.id = application.user_id
         INNER JOIN resident
-        ON resident.id = user.resident_id
+        ON resident.id = application.resident_id
         WHERE pending_complaint.status != "approved"
         ORDER BY pending_complaint.pending_date DESC');
 
@@ -72,8 +76,10 @@ class PendingComplaint extends Dbh {
         ON complaint.id = pending_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
+        INNER JOIN application
+        ON user.id = application.user_id
         INNER JOIN resident
-        ON resident.id = user.resident_id
+        ON resident.id = application.resident_id
         WHERE complaint.user_id = ?
         AND pending_complaint.status != "approved"
         ORDER BY pending_complaint.pending_date DESC');
@@ -104,8 +110,10 @@ class PendingComplaint extends Dbh {
         ON complaint.id = pending_complaint.complaint_id 
         INNER JOIN user
         ON complaint.user_id = user.id
+        INNER JOIN application
+        ON user.id = application.user_id
         INNER JOIN resident
-        ON resident.id = user.resident_id
+        ON resident.id = application.resident_id
         WHERE pending_complaint.status != "approved"
         ORDER BY pending_complaint.pending_date DESC');
 

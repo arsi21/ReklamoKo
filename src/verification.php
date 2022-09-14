@@ -37,6 +37,10 @@
                                 <div class="home-card__indication">3</div>
                             </div>
 
+                            <div id="message"></div>
+
+                            <div id="residentIdContainer"></div>
+
                             <label class="home-card__lbl" for="fname_input">First Name</label>
                             <input id="fname_input" class="home-card__input" type="text" name="firstName" required>
 
@@ -46,7 +50,7 @@
                             <label class="home-card__lbl" for="lname_input">Last Name</label>
                             <input id="lname_input" class="home-card__input" type="text" name="lastName" required>
 
-                            <label class="home-card__lbl" for="suffix_input">Suffix</label>
+                            <label class="home-card__lbl" for="suffix_input">Suffix (if applicable)</label>
                             <input id="suffix_input" class="home-card__input" type="text" name="suffix">
 
                             <label class="home-card__lbl" for="birth_date_input">Date of Birth</label>
@@ -67,11 +71,11 @@
                             <!-- <label class="home-card__lbl" for="email_input">Email</label>
                             <input id="email_input" class="home-card__input" type="email" name="email" required> -->
 
-                            <label class="home-card__lbl" for="position_input">Position</label>
+                            <!-- <label class="home-card__lbl" for="position_input">Position</label>
                             <select class="home-card__select" name="position" id="position_input" required>
                                 <option value="resident">Resident</option>
                                 <option value="barangay justice">Official</option>
-                            </select>
+                            </select> -->
 
                             <!-- <label class="home-card__lbl" for="house_number_input">House Number</label>
                             <input id="house_number_input" class="home-card__input" type="number" name="houseNumber" required>
@@ -133,7 +137,7 @@
 
                             <p class="home-card__p">Upload identification card</p>
 
-                            <label class=" home-card__lbl" for="id_input">Select ID</label>
+                            <!-- <label class=" home-card__lbl" for="id_input">Select ID</label>
                             <select class="home-card__select" name="position" id="position_input">
                                 <option value="resident">Postal ID</option>
                                 <option value="official">National ID</option>
@@ -146,7 +150,7 @@
                                 <option value="official">GSIS ID</option>
                                 <option value="official">PWD ID</option>
                                 <option value="official">PhilHealth ID</option>
-                            </select>
+                            </select> -->
 
                             <label class="home-card__file__lbl" for="front_id">
                                 <input id="front_id" class="home-card__input__file" type="file" name="frontId" required>

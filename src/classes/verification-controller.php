@@ -1,44 +1,44 @@
 <?php
 
 class VerificationController extends Verification {
-    private $userId;
-    private $firstName;
-    private $middleName;
-    private $lastName;
-    private $suffix;
-    private $birthDate;
-    private $gender;
-    private $position;
-    private $frontId;
-    private $backId;
-    private $portraitPhoto;
 
-    public function __construct($userId, $firstName, $middleName, $lastName, $suffix, $birthDate, $gender, $position, $frontId, $backId, $portraitPhoto) {
-        $this->userId = $userId;
-        $this->firstName = $firstName;
-        $this->middleName = $middleName;
-        $this->lastName = $lastName;
-        $this->suffix = $suffix;
-        $this->birthDate = $birthDate;
-        $this->gender = $gender;
-        $this->position = $position;
-        $this->frontId = $frontId;
-        $this->backId = $backId;
-        $this->portraitPhoto = $portraitPhoto;
-    }
-
-    public function addApplication() {
-        if(!$this->emptyInput()){
+    public function checkResidentInfo($firstName, $middleName, $lastName, $suffix, $birthDate, $gender) {
+        if(!$this->emptyInputResidentInfo($firstName, $middleName, $lastName, $suffix, $birthDate, $gender)){
             header("location: ../verification.php?error=emptyInput");
             exit();
         }
 
-        $this->setApplication($this->userId, $this->firstName, $this->middleName, $this->lastName, $this->suffix, $this->birthDate, $this->gender, $this->position, $this->frontId, $this->backId, $this->portraitPhoto);
+        $result = $this->verifyResidentInfo($firstName, $middleName, $lastName, $suffix, $birthDate, $gender);
+    
+        return $result;
     }
 
-    private function emptyInput() {
+
+    public function addApplication($userId, $residentId, $frontId, $backId, $portraitPhoto) {
+        if(!$this->emptyInput($userId, $residentId, $frontId, $backId, $portraitPhoto)){
+            header("location: ../verification.php?error=emptyInput");
+            exit();
+        }
+
+        $this->setApplication($userId, $residentId, $frontId, $backId, $portraitPhoto);
+    }
+
+
+    private function emptyInput($userId, $residentId, $frontId, $backId, $portraitPhoto) {
         $result;
-        if(empty($this->userId) || empty($this->firstName) || empty($this->lastName) || empty($this->birthDate) || empty($this->gender) || empty($this->position) || empty($this->frontId) || empty($this->backId) || empty($this->portraitPhoto)){
+        if(empty($userId) || empty($residentId) || empty($frontId) || empty($backId) || empty($portraitPhoto)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+
+    private function emptyInputResidentInfo($firstName, $middleName, $lastName, $suffix, $birthDate, $gender) {
+        $result;
+        if(empty($firstName) || empty($lastName) || empty($birthDate) || empty($gender)){
             $result = false;
         }else {
             $result = true;
