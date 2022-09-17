@@ -2,26 +2,81 @@
 
 class OngoingComplaint extends Dbh {
 
-    public function getUserOngoingComplaints($userId) {
-        $stmt = $this->connect()->prepare('SELECT complaint.id,
-        resident.first_name,
-        resident.last_name,
-        complaint.complaint_description,
-        ongoing_complaint.ongoing_date
-        FROM ongoing_complaint 
-        INNER JOIN complaint 
-        ON complaint.id = ongoing_complaint.complaint_id 
-        INNER JOIN user
-        ON complaint.user_id = user.id
-        INNER JOIN application
-        ON user.id = application.user_id
-        INNER JOIN resident
-        ON resident.id = application.resident_id
-        WHERE complaint.user_id = ?
-        AND complaint.status = "ongoing"
-        ORDER BY ongoing_complaint.ongoing_date DESC');
+    //set
 
-        if(!$stmt->execute(array($userId))){
+    protected function setMeetingSchedule($complaintId, $scheduleDate, $scheduleTime) {
+        $stmt = $this->connect()->prepare('INSERT INTO meeting_schedule (complaint_id, date, time) 
+        VALUES (?, ?, ?)');
+    
+        if(!$stmt->execute(array($complaintId, $scheduleDate, $scheduleTime))){
+            $stmt = null;
+            header("location: ../ongoing-complaint.php?id=$complaintId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+
+    protected function setSolvedComplaint($complaintId, $solvedDate) {
+        $stmt = $this->connect()->prepare('INSERT INTO solved_complaint (complaint_id, solved_date) 
+        VALUES (?, ?)');
+    
+        if(!$stmt->execute(array($complaintId, $solvedDate))){
+            $stmt = null;
+            header("location: ../ongoing-complaint.php?id=$complaintId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+    protected function setTransferredComplaint($complaintId, $transferredDate) {
+        $stmt = $this->connect()->prepare('INSERT INTO transferred_complaint (complaint_id, transferred_date) 
+        VALUES (?, ?)');
+    
+        if(!$stmt->execute(array($complaintId, $transferredDate))){
+            $stmt = null;
+            header("location: ../ongoing-complaint.php?id=$complaintId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+
+
+
+
+
+
+
+
+    //get
+
+    public function getUserOngoingComplaints($residentId) {
+        $stmt = $this->connect()->prepare('SELECT c.id,
+        r.first_name,
+        r.last_name,
+        c.complaint_description,
+        oc.ongoing_date
+        FROM ongoing_complaint oc
+        INNER JOIN complaint c
+        ON c.id = oc.complaint_id 
+        INNER JOIN resident r
+        ON r.id = c.complainant_id
+        WHERE c.complainant_id = ?
+        AND c.id 
+        NOT IN 
+            (SELECT complaint_id
+            FROM solved_complaint)
+        AND c.id 
+        NOT IN 
+            (SELECT complaint_id
+            FROM transferred_complaint)
+        ORDER BY oc.ongoing_date DESC');
+
+        if(!$stmt->execute(array($residentId))){
             $stmt = null;
             header("location: ../ongoing-complaints.php?error=stmtfailed");
             exit();
@@ -35,22 +90,25 @@ class OngoingComplaint extends Dbh {
     }
 
     public function getAllOngoingComplaints() {
-        $stmt = $this->connect()->query('SELECT complaint.id,
-        resident.first_name,
-        resident.last_name,
-        complaint.complaint_description,
-        ongoing_complaint.ongoing_date
-        FROM ongoing_complaint 
-        INNER JOIN complaint 
-        ON complaint.id = ongoing_complaint.complaint_id 
-        INNER JOIN user
-        ON complaint.user_id = user.id
-        INNER JOIN application
-        ON user.id = application.user_id
-        INNER JOIN resident
-        ON resident.id = application.resident_id
-        -- WHERE complaint.status = "ongoing"
-        ORDER BY ongoing_complaint.ongoing_date DESC');
+        $stmt = $this->connect()->query('SELECT c.id,
+        r.first_name,
+        r.last_name,
+        c.complaint_description,
+        oc.ongoing_date
+        FROM ongoing_complaint oc
+        INNER JOIN complaint c
+        ON c.id = oc.complaint_id 
+        INNER JOIN resident r
+        ON r.id = c.complainant_id
+        AND c.id 
+        NOT IN 
+            (SELECT complaint_id
+            FROM solved_complaint)
+        AND c.id 
+        NOT IN 
+            (SELECT complaint_id
+            FROM transferred_complaint)
+        ORDER BY oc.ongoing_date DESC');
 
         $results = $stmt->fetchAll();
 
@@ -60,63 +118,121 @@ class OngoingComplaint extends Dbh {
     }
 
 
+    public function getUserOngoingComplaint($complaintId, $residentId) {
+        $stmt = $this->connect()->prepare('SELECT c.id,
+        r1.first_name complainant_first_name,
+        r1.last_name complainant_last_name,
+        r2.first_name complainee_first_name,
+        r2.last_name complainee_last_name,
+        c.complaint_description,
+        oc.ongoing_date
+        FROM ongoing_complaint oc
+        INNER JOIN complaint c
+        ON c.id = oc.complaint_id 
+        INNER JOIN resident r1
+        ON c.complainant_id = r1.id
+        INNER JOIN resident r2
+        ON c.complainee_id = r2.id
+        WHERE c.id = ?
+        AND c.complainant_id = ?
+        AND c.id 
+        NOT IN 
+            (SELECT complaint_id
+            FROM solved_complaint)
+        AND c.id 
+        NOT IN 
+            (SELECT complaint_id
+            FROM transferred_complaint)
+        ORDER BY oc.ongoing_date DESC');
 
-
-    public function getUserOngoingComplaintsCount($userId) {
-        $stmt = $this->connect()->prepare('SELECT complaint.id,
-        resident.first_name,
-        resident.last_name,
-        complaint.complaint_description,
-        ongoing_complaint.ongoing_date
-        FROM ongoing_complaint 
-        INNER JOIN complaint 
-        ON complaint.id = ongoing_complaint.complaint_id 
-        INNER JOIN user
-        ON complaint.user_id = user.id
-        INNER JOIN application
-        ON user.id = application.user_id
-        INNER JOIN resident
-        ON resident.id = application.resident_id
-        WHERE complaint.user_id = ?
-        AND complaint.status = "ongoing"
-        ORDER BY ongoing_complaint.ongoing_date DESC');
-
-        if(!$stmt->execute(array($userId))){
+        if(!$stmt->execute(array($complaintId, $residentId))){
             $stmt = null;
             header("location: ../ongoing-complaints.php?error=stmtfailed");
             exit();
         }
 
-        $result = $stmt->rowCount();
+        $results = $stmt->fetch();
 
         $stmt = null;
 
-        return $result;
+        return $results;
     }
 
 
-    public function getAllOngoingComplaintsCount() {
-        $stmt = $this->connect()->query('SELECT complaint.id,
-        resident.first_name,
-        resident.last_name,
-        complaint.complaint_description,
-        ongoing_complaint.ongoing_date
-        FROM ongoing_complaint 
-        INNER JOIN complaint 
-        ON complaint.id = ongoing_complaint.complaint_id 
-        INNER JOIN user
-        ON complaint.user_id = user.id
-        INNER JOIN application
-        ON user.id = application.user_id
-        INNER JOIN resident
-        ON resident.id = application.resident_id
-        WHERE complaint.status = "ongoing"
-        ORDER BY ongoing_complaint.ongoing_date DESC');
+    public function getAllOngoingComplaint($complaintId) {
+        $stmt = $this->connect()->prepare('SELECT c.id,
+        r1.first_name complainant_first_name,
+        r1.last_name complainant_last_name,
+        r2.first_name complainee_first_name,
+        r2.last_name complainee_last_name,
+        c.complaint_description,
+        oc.ongoing_date
+        FROM ongoing_complaint oc
+        INNER JOIN complaint c
+        ON c.id = oc.complaint_id 
+        INNER JOIN resident r1
+        ON c.complainant_id = r1.id
+        INNER JOIN resident r2
+        ON c.complainee_id = r2.id
+        WHERE c.id = ?
+        AND c.id 
+        NOT IN 
+            (SELECT complaint_id
+            FROM solved_complaint)
+        AND c.id 
+        NOT IN 
+            (SELECT complaint_id
+            FROM transferred_complaint)
+        ORDER BY oc.ongoing_date DESC');
 
-        $result = $stmt->rowCount();
+        if(!$stmt->execute(array($complaintId))){
+            $stmt = null;
+            header("location: ../ongoing-complaints.php?error=stmtfailed");
+            exit();
+        }
+
+        $results = $stmt->fetch();
 
         $stmt = null;
 
-        return $result;
+        return $results;
+    }
+
+
+
+    public function getComplaintProofs($id) {
+        $stmt = $this->connect()->prepare('SELECT image
+        FROM proof
+        WHERE complaint_id = ?');
+
+        if(!$stmt->execute(array($id))){
+            $stmt = null;
+            header("location: ../ongoing-complaint.php?id=$id&error=stmtfailed");
+            exit();
+        }
+
+        $results = $stmt->fetchAll();
+
+        $stmt = null;
+
+        return $results;
+    }
+
+    public function getMeetingSchedules($id) {
+        $stmt = $this->connect()->prepare('SELECT *
+        FROM meeting_schedule
+        WHERE complaint_id = ?');
+
+        if(!$stmt->execute(array($id))){
+            $stmt = null;
+            header("location: ../ongoing-complaint.php?id=$id&error=stmtfailed");
+            exit();
+        }
+
+        $results = $stmt->fetchAll();
+
+        $stmt = null;
+
+        return $results;
     }
 }

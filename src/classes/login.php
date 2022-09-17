@@ -36,7 +36,7 @@ class Login extends Dbh {
 
         //set session
         $_SESSION['userId'] = $user[0]['id'];
-        $_SESSION['residentId'] = $applicationData['resident_id'];
+        $_SESSION['residentId'] = $applicationData['residentId'];
         $_SESSION['profile'] = $user[0]['profile'];
         $_SESSION['mobileNumber'] = $user[0]['mobile_number'];
         $_SESSION['accessType'] = $user[0]['access_type'];

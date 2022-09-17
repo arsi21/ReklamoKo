@@ -11,9 +11,6 @@ include "classes/pending-complaint.php";
 //Instantiate Class
 $pendingComplaint = new PendingComplaint();
 
-//get the user id
-$userId = $_SESSION['userId'];
-
 //get the complaint Id
 $complaintId = $_GET['id'];
 
@@ -58,7 +55,17 @@ $luponData = $pendingComplaint->getLupons();
                 <div class="content__details__cont">
                     <div class="content__complainant__cont">
                         <div class="content__complainant__pic">
-                            <img src="assets/residentProfSample.jpg" alt="resident profile picture">
+                    <?php 
+                        if($_SESSION['profile'] != ""){
+                    ?>
+                            <img src="profile-uploads/<?= $_SESSION['profile'] ?>" alt="resident profile picture">
+                    <?php 
+                        }else{
+                    ?>
+                            <img src="profile-uploads/default.jpg" alt="resident profile picture">
+                    <?php 
+                        }
+                    ?>
                         </div>
 
                         <div class="content__complainant__info">
@@ -173,7 +180,7 @@ $luponData = $pendingComplaint->getLupons();
 
                 <div class="modal2__body">
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
-                    
+
                     <label class="modal2__lbl">
                         Message
                     </label>

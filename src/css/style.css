@@ -645,6 +645,8 @@ body {
   margin-top: 3rem;
   display: flex;
   column-gap: 1rem;
+  row-gap: 1rem;
+  flex-wrap: wrap;
 }
 
 @media (min-width: 60em) {
@@ -769,7 +771,21 @@ input[type=submit].home-card__cancel__btn:hover {
   border: none;
 }
 .danger-btn:hover {
-  background-color: #9da9db;
+  background-color: #cd4949;
+}
+
+.success-btn {
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding-block: 0.6em;
+  padding-inline: 1.5em;
+  color: white;
+  background-color: seagreen;
+  border-radius: 6px;
+  border: none;
+}
+.success-btn:hover {
+  background-color: #54b87e;
 }
 
 input[type=text].home-card__input,

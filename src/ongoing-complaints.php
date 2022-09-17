@@ -11,16 +11,16 @@ include "classes/ongoing-complaint.php";
 $ongoingComplaint = new OngoingComplaint();
 
 //get the user id
-$userId = $_SESSION['userId'];
+$residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $ongoingComplaintsData = $ongoingComplaint->getUserOngoingComplaints($userId);
-    $ongoingComplaintsCount = $ongoingComplaint->getUserOngoingComplaintsCount($userId);
+    $ongoingComplaintsData = $ongoingComplaint->getUserOngoingComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
     $ongoingComplaintsData = $ongoingComplaint->getAllOngoingComplaints();
-    $ongoingComplaintsCount = $ongoingComplaint->getAllOngoingComplaintsCount();
 }
+
+$ongoingComplaintsCount = count($ongoingComplaintsData);
 
 ?>
 

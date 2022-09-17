@@ -11,11 +11,11 @@ include "classes/pending-complaint.php";
 $pendingComplaint = new PendingComplaint();
 
 //get the user id
-$userId = $_SESSION['userId'];
+$residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $pendingComplaintsData = $pendingComplaint->getUserPendingComplaints($userId);
+    $pendingComplaintsData = $pendingComplaint->getUserPendingComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
     $pendingComplaintsData = $pendingComplaint->getAllPendingComplaints();
 }
