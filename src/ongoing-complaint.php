@@ -19,7 +19,7 @@ if($_SESSION['accessType'] == 'resident'){
     $residentId = $_SESSION['residentId'];
 
     //get data from database
-    $data = $ongoingComplaint->getUserOngoingComplaint($residentId, $complaintId);
+    $data = $ongoingComplaint->getUserOngoingComplaint($complaintId, $residentId);
     $proofData = $ongoingComplaint->getComplaintProofs($complaintId);
     $meetingData = $ongoingComplaint->getMeetingSchedules($complaintId);
 }elseif($_SESSION['accessType'] == 'admin'){
