@@ -1,6 +1,34 @@
+<?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+
+include "classes/dbh.php";
+include "classes/pending-complaint.php";
+
+//Instantiate Class
+$pendingComplaint = new PendingComplaint();
+
+//get the user id
+$userId = $_SESSION['userId'];
+
+//get the complaint Id
+$complaintId = $_GET['id'];
+
+//get data from database
+$data = $pendingComplaint->getPendingComplaint($complaintId);
+$proofData = $pendingComplaint->getPendingComplaintProofs($complaintId);
+$luponData = $pendingComplaint->getLupons();
+
+?>
+
+
 <!-- include all needed partials -->
 <?php include 'partials/header.php';?>
 <?php include 'partials/navigation.php';?>
+
 
 
 
@@ -16,7 +44,7 @@
                         <img src="assets/icons/back.svg" alt="back button">
                     </a>
 
-                    <button id="editComplaintBtn" class="content__action">
+                    <button id="editComplaintBtn" class="content__action" onclick="showEditComplaintModal()">
                         <img src="assets/icons/edit.svg" alt="edit button">
                     </button>
 
@@ -34,31 +62,38 @@
                         </div>
 
                         <div class="content__complainant__info">
-                            <span class="content__complainant__name">Juan Dela Cruz</span>
-                            <span class="content__complainant__date">Jan 9, 2022</span>
+                            <span class="content__complainant__name"><?= ucwords($data['complainant_first_name']) . " " . ucwords($data['complainant_last_name']) ?></span>
+                            <span class="content__complainant__date"><?= $data['pending_date'] ?></span>
                         </div>
                     </div>
 
                     <p class="content__comp__lbl">Name of the complained person:</p>
-                    <p class="content__comp__val">Juan Dela Cruz</p>
+                    <p class="content__comp__val"><?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?></p>
 
                     <p class="content__comp__lbl">Complain Description:</p>
-                    <p class="content__comp__val">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet</p>
+                    <p class="content__comp__val"><?= $data['complaint_description'] ?></p>
 
                     <p class="content__comp__lbl">Proof/Pictures:</p>
                     <div class="content__proof__cont">
-                        <img class="content__proof__pic" src="assets/sampleProof.png" alt="Proof picture">
-                        <img class="content__proof__pic" src="assets/sampleProof.png" alt="Proof picture">
-                        <img class="content__proof__pic" src="assets/sampleProof.png" alt="Proof picture">
-                        <img class="content__proof__pic" src="assets/sampleProof.png" alt="Proof picture">
-                        <img class="content__proof__pic" src="assets/sampleProof.png" alt="Proof picture">
-                        <img class="content__proof__pic" src="assets/sampleProof.png" alt="Proof picture">
+                <?php
+                    foreach($proofData as $row){
+                ?>
+                        <img class="content__proof__pic" src="proof-uploads/<?= $row['image'] ?>" alt="Proof picture">
+                <?php 
+                    }
+                ?>    
                     </div>
 
+                <?php
+                    if($_SESSION['accessType'] == "admin"){
+                ?>
                     <div class="content__btn__cont">
-                        <button id="approveComplaintBtn" class="primary-btn">Approve</button>
-                        <button id="rejectComplaintBtn" class="danger-btn">Reject</button>
+                        <button id="approveComplaintBtn" class="primary-btn" onclick="showApproveComplaintModal()">Approve</button>
+                        <button id="rejectComplaintBtn" class="danger-btn" onclick="showRejectComplaintModal()">Reject</button>
                     </div>
+                <?php 
+                    }
+                ?>  
                 </div>
 
                 <hr class="content__hr">
@@ -67,7 +102,7 @@
 
         <!-- modal -->
         <div id="approveComplaintModal" class="modal2 modal2--add--comp">
-            <form action="" id="approveComplaintModalCont" class="modal2__cont">
+            <form action="includes/approve-complaint.php" id="approveComplaintModalCont" class="modal2__cont" method="post">
                 <div class="modal2__head">
                     <span class="modal2__title">
                         Approve Complaint
@@ -79,16 +114,39 @@
                 </div>
 
                 <div class="modal2__body">
+
+                    <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                     <label class="modal2__lbl">
-                        Schedule
+                        Lupon
                     </label>
-                    <input type="date" class="modal2__input" name="compPerson">
+                    <select name="luponId" id="select-name" placeholder="Please select name..." required>
+                        <option value="">Please select name...</option>
+                    <?php
+                        foreach($luponData as $row){
+                    ?>
+                        <option value="<?= $row['id'] ?>"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
+                    <?php
+                        }
+                    ?>
+                    </select>
+
+                    <div class="spacer"></div>
+
+                    <label class="modal2__lbl">
+                        Schedule Date
+                    </label>
+                    <input type="date" class="modal2__input" name="scheduleDate" required>
+
+                    <label class="modal2__lbl">
+                        Schedule Time
+                    </label>
+                    <input type="time" class="modal2__input" name="scheduleTime" required>
                 </div>
 
                 <div class="modal2__footer">
                     <button type="button" id="approveComplaintModalCancel" class="modal2__cancel">Cancel</button>
 
-                    <input type="submit" class="modal2__submit" value="Submit" name="approveComplaint">
+                    <input type="submit" class="modal2__submit" value="Submit" name="approveBtn">
                 </div>
             </form>
         </div>
@@ -102,7 +160,7 @@
 
         <!-- modal -->
         <div id="rejectComplaintModal" class="modal2 modal2--add--comp">
-            <form action="" id="rejectComplaintModalCont" class="modal2__cont">
+            <form action="includes/reject-complaint.php" id="rejectComplaintModalCont" class="modal2__cont" method="post">
                 <div class="modal2__head">
                     <span class="modal2__title">
                         Reject Complaint
@@ -114,6 +172,8 @@
                 </div>
 
                 <div class="modal2__body">
+                    <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                    
                     <label class="modal2__lbl">
                         Message
                     </label>
@@ -123,7 +183,7 @@
                 <div class="modal2__footer">
                     <button type="button" id="rejectComplaintModalCancel" class="modal2__cancel">Cancel</button>
 
-                    <input type="submit" class="modal2__submit" value="Submit" name="rejectComplaint">
+                    <input type="submit" class="modal2__submit" value="Submit" name="rejectBtn">
                 </div>
             </form>
         </div>
@@ -202,17 +262,17 @@
 
 
 <script>
-const approveComplaintBtn = document.getElementById("approveComplaintBtn");
 const approveComplaintModal = document.getElementById("approveComplaintModal");
 const approveComplaintModalCont = document.getElementById("approveComplaintModalCont");
 const approveComplaintModalExit = document.getElementById("approveComplaintModalExit");
 const approveComplaintModalCancel = document.getElementById("approveComplaintModalCancel");
 const approveComplaintModalBackground = document.getElementById("body-background");
 
-approveComplaintBtn.addEventListener('click', () => {
+function showApproveComplaintModal() {
     approveComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
     approveComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
+}
+
 
 approveComplaintModalExit.addEventListener('click', () => {
     approveComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
@@ -235,17 +295,17 @@ approveComplaintModal.addEventListener('click', function (event) {
 
 
 
-const rejectComplaintBtn = document.getElementById("rejectComplaintBtn");
 const rejectComplaintModal = document.getElementById("rejectComplaintModal");
 const rejectComplaintModalCont = document.getElementById("rejectComplaintModalCont");
 const rejectComplaintModalExit = document.getElementById("rejectComplaintModalExit");
 const rejectComplaintModalCancel = document.getElementById("rejectComplaintModalCancel");
 const rejectComplaintModalBackground = document.getElementById("body-background");
 
-rejectComplaintBtn.addEventListener('click', () => {
+function showRejectComplaintModal() {
     rejectComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
     rejectComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
+};
+
 
 rejectComplaintModalExit.addEventListener('click', () => {
     rejectComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
@@ -268,17 +328,18 @@ rejectComplaintModal.addEventListener('click', function (event) {
 
 
 
-const editComplaintBtn = document.getElementById("editComplaintBtn");
+
 const editComplaintModal = document.getElementById("editComplaintModal");
 const editComplaintModalCont = document.getElementById("editComplaintModalCont");
 const editComplaintModalExit = document.getElementById("editComplaintModalExit");
 const editComplaintModalCancel = document.getElementById("editComplaintModalCancel");
 const editComplaintModalBackground = document.getElementById("body-background");
 
-editComplaintBtn.addEventListener('click', () => {
+function showEditComplaintModal() {
     editComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
     editComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
+};
+
 
 editComplaintModalExit.addEventListener('click', () => {
     editComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal

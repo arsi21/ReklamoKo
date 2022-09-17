@@ -49,7 +49,7 @@ class OngoingComplaint extends Dbh {
         ON user.id = application.user_id
         INNER JOIN resident
         ON resident.id = application.resident_id
-        WHERE complaint.status = "ongoing"
+        -- WHERE complaint.status = "ongoing"
         ORDER BY ongoing_complaint.ongoing_date DESC');
 
         $results = $stmt->fetchAll();

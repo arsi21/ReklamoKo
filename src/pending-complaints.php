@@ -16,11 +16,11 @@ $userId = $_SESSION['userId'];
 //get data from database
 if($_SESSION['accessType'] == "resident"){
     $pendingComplaintsData = $pendingComplaint->getUserPendingComplaints($userId);
-    $pendingComplaintsCount = $pendingComplaint->getUserPendingComplaintsCount($userId);
 }elseif($_SESSION['accessType'] == "admin"){
     $pendingComplaintsData = $pendingComplaint->getAllPendingComplaints();
-    $pendingComplaintsCount = $pendingComplaint->getAllPendingComplaintsCount();
 }
+
+$pendingComplaintsCount = count($pendingComplaintsData);
 
 ?>
 

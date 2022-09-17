@@ -28,7 +28,7 @@
     <?php
         if($_SESSION['accessType'] == "resident"){
     ?>
-            <button id="add-complain-btn" class="nav__complain__btn">
+            <button id="add-complain-btn" class="nav__complain__btn" onclick="showAddComplaintModal()">
                 <img src="assets/icons/add.svg" alt="Add icon">
                 <span>Complaint</span>
             </button>

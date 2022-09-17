@@ -1,14 +1,13 @@
-const addComplainBtn = document.getElementById("add-complain-btn");
 const modal2 = document.getElementById("modal2");
 const modal2Cont = document.getElementById("modal2-cont");
 const modal2Exit = document.getElementById("modal2-exit");
 const modal2Cancel = document.getElementById("modal2-cancel");
 const bodyBackground = document.getElementById("body-background");
 
-addComplainBtn.addEventListener('click', () => {
+function showAddComplaintModal() {
     modal2.classList.toggle("modal2--add--comp--active");//to show and hide modal
     bodyBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
+};
 
 modal2Exit.addEventListener('click', () => {
     modal2.classList.toggle("modal2--add--comp--active");//to show and hide modal
