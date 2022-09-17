@@ -14,11 +14,25 @@ $pendingComplaint = new PendingComplaint();
 //get the complaint Id
 $complaintId = $_GET['id'];
 
-//get data from database
-$data = $pendingComplaint->getPendingComplaint($complaintId);
-$proofData = $pendingComplaint->getPendingComplaintProofs($complaintId);
-$luponData = $pendingComplaint->getLupons();
 
+if($_SESSION['accessType'] == 'resident'){
+    //get resident id
+    $residentId = $_SESSION['residentId'];
+
+    //get data from database
+    $data = $pendingComplaint->getUserPendingComplaint($complaintId, $residentId);
+    $proofData = $pendingComplaint->getComplaintProofs($complaintId);
+    $luponData = $pendingComplaint->getLupons();
+}elseif($_SESSION['accessType'] == 'admin'){
+    //get data from database
+    $data = $pendingComplaint->getPendingComplaint($complaintId);
+    $proofData = $pendingComplaint->getComplaintProofs($complaintId);
+    $luponData = $pendingComplaint->getLupons();
+}
+
+if(empty($data)){
+    header("location: pending-complaints.php");
+}
 ?>
 
 
@@ -40,14 +54,31 @@ $luponData = $pendingComplaint->getLupons();
                     <a class="content__action" href="pending-complaints.php">
                         <img src="assets/icons/back.svg" alt="back button">
                     </a>
-
+            <?php 
+                if($_SESSION['accessType'] == "resident"){
+            ?>
                     <button id="editComplaintBtn" class="content__action" onclick="showEditComplaintModal()">
                         <img src="assets/icons/edit.svg" alt="edit button">
                     </button>
 
-                    <a class="content__action" href="">
-                        <img src="assets/icons/delete.svg" alt="delete button">
-                    </a>
+                    <form action="includes/delete-complaint.php" method="post">
+                        <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                <?php
+                    $proofNum = 1;
+                    foreach($proofData as $row){
+                ?>
+                        <input type="hidden" value="<?= $row['image'] ?>" name="proof<?= $proofNum ?>">
+                <?php 
+                        $proofNum++;
+                    }
+                ?>
+                        <button type="submit" name="deleteBtn" class="content__action">
+                            <img src="assets/icons/delete.svg" alt="delete button">
+                        </button>
+                    </form>
+            <?php 
+                }
+            ?>
                 </div>
 
                 <hr class="content__hr">
@@ -80,7 +111,14 @@ $luponData = $pendingComplaint->getLupons();
                     <p class="content__comp__lbl">Complain Description:</p>
                     <p class="content__comp__val"><?= $data['complaint_description'] ?></p>
 
+                <?php
+                    if(count($proofData) != 0){
+                ?>
                     <p class="content__comp__lbl">Proof/Pictures:</p>
+                <?php 
+                    }
+                ?> 
+
                     <div class="content__proof__cont">
                 <?php
                     foreach($proofData as $row){

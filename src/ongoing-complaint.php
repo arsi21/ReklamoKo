@@ -29,6 +29,9 @@ if($_SESSION['accessType'] == 'resident'){
     $meetingData = $ongoingComplaint->getMeetingSchedules($complaintId);
 }
 
+if(empty($data)){
+    header("location: ongoing-complaints.php");
+}
 ?>
 
 

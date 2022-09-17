@@ -71,6 +71,48 @@ class PendingComplaint extends Dbh {
 
 
 
+    //delete
+
+    protected function deleteComplaint($complaintId) {
+        $stmt = $this->connect()->prepare('DELETE 
+        FROM pending_complaint
+        WHERE complaint_id = ?');
+    
+        if(!$stmt->execute(array($complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = $this->connect()->prepare('DELETE 
+        FROM proof
+        WHERE complaint_id = ?');
+    
+        if(!$stmt->execute(array($complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = $this->connect()->prepare('DELETE 
+        FROM complaint
+        WHERE id = ?');
+    
+        if(!$stmt->execute(array($complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+
+
+
+
+
+
     //get
 
     public function getUserPendingComplaints($comlainantId) {
@@ -124,6 +166,39 @@ class PendingComplaint extends Dbh {
         return $results;
     }
 
+    public function getUserPendingComplaint($complaintId, $residentId) {
+        $stmt = $this->connect()->prepare('SELECT c.id,
+        r1.first_name complainant_first_name,
+        r1.last_name complainant_last_name,
+        r2.first_name complainee_first_name,
+        r2.last_name complainee_last_name,
+        c.complaint_description,
+        pc.pending_date,
+        pc.status
+        FROM pending_complaint pc
+        INNER JOIN complaint c
+        ON c.id = pc.complaint_id 
+        INNER JOIN resident r1
+        ON c.complainant_id = r1.id
+        INNER JOIN resident r2
+        ON c.complainee_id = r2.id
+        WHERE c.id = ?
+        AND c.complainant_id = ?
+        AND pc.status != "approved"
+        ORDER BY pc.pending_date DESC');
+
+        if(!$stmt->execute(array($complaintId, $residentId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$id&error=stmtfailed");
+            exit();
+        }
+
+        $results = $stmt->fetch();
+
+        $stmt = null;
+
+        return $results;
+    }
 
     public function getPendingComplaint($id) {
         $stmt = $this->connect()->prepare('SELECT c.id,
@@ -159,7 +234,7 @@ class PendingComplaint extends Dbh {
     }
 
 
-    public function getPendingComplaintProofs($id) {
+    public function getComplaintProofs($id) {
         $stmt = $this->connect()->prepare('SELECT image
         FROM proof
         WHERE complaint_id = ?');

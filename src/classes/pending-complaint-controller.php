@@ -37,6 +37,21 @@ class PendingComplaintController extends PendingComplaint {
 
 
 
+
+    //delete
+
+    public function removeComplaint($complaintId) {
+        $this->deleteComplaint($complaintId);
+    }
+
+
+
+
+
+
+
+
+
     private function emptyInput($complaintId, $luponId, $scheduleDate, $scheduleTime) {
         $result;
         if(empty($complaintId) || empty($luponId) || empty($scheduleDate) || empty($scheduleTime)){
