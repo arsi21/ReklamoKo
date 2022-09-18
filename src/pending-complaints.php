@@ -72,7 +72,7 @@ $pendingComplaintsCount = count($pendingComplaintsData);
                 <?php
                     foreach($pendingComplaintsData as $row){
                 ?>
-                    <a class="content__item__link" href="pending-complaint.php?id=<?= $row['id'] ?>">
+                    <a class="content__item__link" href="pending-complaint-info.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
                                 <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>

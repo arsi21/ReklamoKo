@@ -1,12 +1,12 @@
 <?php
 
-class PendingComplaintController extends PendingComplaint {
+class PendingComplaintInfoController extends PendingComplaintInfo {
 
     //add
 
     public function addOngoingComplaint($complaintId, $luponId, $scheduleDate, $scheduleTime, $ongoingDate) {
         if(!$this->emptyInput($complaintId, $luponId, $scheduleDate, $scheduleTime)){
-            header("location: ../pending-complaint.php?id=$complaintId&error=emptyInput");
+            header("location: ../pending-complaint-info.php?id=$complaintId&error=emptyInput");
             exit();
         }
 
@@ -27,7 +27,7 @@ class PendingComplaintController extends PendingComplaint {
 
     public function editPendingComplaintMessage($complaintId, $message) {
         if(!$this->emptyInputMessage($message)){
-            header("location: ../pending-complaint.php?id=$complaintId&error=emptyInput");
+            header("location: ../pending-complaint-info.php?id=$complaintId&error=emptyInput");
             exit();
         }
 

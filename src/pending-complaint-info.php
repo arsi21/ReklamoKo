@@ -6,10 +6,10 @@ if(!isset($_SESSION)){
 
 
 include "classes/dbh.php";
-include "classes/pending-complaint.php";
+include "classes/pending-complaint-info.php";
 
 //Instantiate Class
-$pendingComplaint = new PendingComplaint();
+$pendingComplaintInfo = new PendingComplaintInfo();
 
 //get the complaint Id
 $complaintId = $_GET['id'];
@@ -20,14 +20,14 @@ if($_SESSION['accessType'] == 'resident'){
     $residentId = $_SESSION['residentId'];
 
     //get data from database
-    $data = $pendingComplaint->getUserPendingComplaint($complaintId, $residentId);
-    $proofData = $pendingComplaint->getComplaintProofs($complaintId);
-    $luponData = $pendingComplaint->getLupons();
+    $data = $pendingComplaintInfo->getUserPendingComplaint($complaintId, $residentId);
+    $proofData = $pendingComplaintInfo->getComplaintProofs($complaintId);
+    $luponData = $pendingComplaintInfo->getLupons();
 }elseif($_SESSION['accessType'] == 'admin'){
     //get data from database
-    $data = $pendingComplaint->getPendingComplaint($complaintId);
-    $proofData = $pendingComplaint->getComplaintProofs($complaintId);
-    $luponData = $pendingComplaint->getLupons();
+    $data = $pendingComplaintInfo->getPendingComplaint($complaintId);
+    $proofData = $pendingComplaintInfo->getComplaintProofs($complaintId);
+    $luponData = $pendingComplaintInfo->getLupons();
 }
 
 if(empty($data)){

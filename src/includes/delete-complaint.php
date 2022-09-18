@@ -9,11 +9,11 @@ $complaintId = $_POST['complaintId'];
 
 //include needed files
 include "../classes/dbh.php";
-include "../classes/pending-complaint.php";
-include "../classes/pending-complaint-controller.php";
+include "../classes/pending-complaint-info.php";
+include "../classes/pending-complaint-info-controller.php";
 
 //instantiate class
-$controller = new PendingComplaintController();
+$controller = new PendingComplaintInfoController();
 
 //validate data and add data to the database
 $controller->removeComplaint($complaintId);
