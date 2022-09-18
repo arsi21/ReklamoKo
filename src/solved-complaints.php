@@ -4,24 +4,24 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-
+    
 include "classes/dbh.php";
 include "classes/solved-complaint.php";
 
 //Instantiate Class
-$solvedComplaint = new SolvedComplaint();
+$model = new SolvedComplaint();
 
 //get the user id
-$userId = $_SESSION['userId'];
+$residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $solvedComplaintsData = $solvedComplaint->getUserSolvedComplaints($userId);
-    $solvedComplaintsCount = $solvedComplaint->getUserSolvedComplaintsCount($userId);
+    $data = $model->getUserSolvedComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
-    $solvedComplaintsData = $solvedComplaint->getAllSolvedComplaints();
-    $solvedComplaintsCount = $solvedComplaint->getAllSolvedComplaintsCount();
+    $data = $model->getAllSolvedComplaints();
 }
+
+$dataCount = count($data);
 ?>
 
 <!-- include all needed partials -->
@@ -68,9 +68,9 @@ if($_SESSION['accessType'] == "resident"){
 
                 <div class="content__item__list__cont">
                 <?php
-                    foreach($solvedComplaintsData as $row){
+                    foreach($data as $row){
                 ?>
-                    <a class="content__item__link" href="pending-complaint.php?id=<?= $row['id'] ?>">
+                    <a class="content__item__link" href="solved-complaint-info.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
                                 <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>
@@ -84,7 +84,7 @@ if($_SESSION['accessType'] == "resident"){
                 ?>
 
                 <?php
-                    if($solvedComplaintsCount == 0){
+                    if($dataCount == 0){
                 ?>
                     <div class="no-data-msg">
                         <p>No solved complaints!</p>

@@ -2,26 +2,23 @@
 
 class SolvedComplaint extends Dbh {
 
-    public function getUserSolvedComplaints($userId) {
-        $stmt = $this->connect()->prepare('SELECT complaint.id,
-        resident.first_name,
-        resident.last_name,
-        complaint.complaint_description,
-        solved_complaint.solved_date
-        FROM solved_complaint 
-        INNER JOIN complaint 
-        ON complaint.id = solved_complaint.complaint_id 
-        INNER JOIN user
-        ON complaint.user_id = user.id
-        INNER JOIN application
-        ON user.id = application.user_id
-        INNER JOIN resident
-        ON resident.id = application.resident_id
-        WHERE complaint.user_id = ?
-        AND complaint.status = "solved"
-        ORDER BY solved_complaint.solved_date DESC');
+    //get
 
-        if(!$stmt->execute(array($userId))){
+    public function getUserSolvedComplaints($residentId) {
+        $stmt = $this->connect()->prepare('SELECT c.id,
+        r.first_name,
+        r.last_name,
+        c.complaint_description,
+        sc.solved_date
+        FROM solved_complaint sc
+        INNER JOIN complaint c
+        ON c.id = sc.complaint_id 
+        INNER JOIN resident r
+        ON r.id = c.complainant_id
+        WHERE c.complainant_id = ?
+        ORDER BY sc.solved_date DESC');
+
+        if(!$stmt->execute(array($residentId))){
             $stmt = null;
             header("location: ../solved-complaints.php?error=stmtfailed");
             exit();
@@ -35,88 +32,22 @@ class SolvedComplaint extends Dbh {
     }
 
     public function getAllSolvedComplaints() {
-        $stmt = $this->connect()->query('SELECT complaint.id,
-        resident.first_name,
-        resident.last_name,
-        complaint.complaint_description,
-        solved_complaint.solved_date
-        FROM solved_complaint 
-        INNER JOIN complaint 
-        ON complaint.id = solved_complaint.complaint_id 
-        INNER JOIN user
-        ON complaint.user_id = user.id
-        INNER JOIN application
-        ON user.id = application.user_id
-        INNER JOIN resident
-        ON resident.id = application.resident_id
-        WHERE complaint.status = "solved"
-        ORDER BY solved_complaint.solved_date DESC');
+        $stmt = $this->connect()->query('SELECT c.id,
+        r.first_name,
+        r.last_name,
+        c.complaint_description,
+        sc.solved_date
+        FROM solved_complaint sc
+        INNER JOIN complaint c
+        ON c.id = sc.complaint_id 
+        INNER JOIN resident r
+        ON r.id = c.complainant_id
+        ORDER BY sc.solved_date DESC');
 
         $results = $stmt->fetchAll();
 
         $stmt = null;
 
         return $results;
-    }
-
-
-
-
-    public function getUserSolvedComplaintsCount($userId) {
-        $stmt = $this->connect()->prepare('SELECT complaint.id,
-        resident.first_name,
-        resident.last_name,
-        complaint.complaint_description,
-        solved_complaint.solved_date
-        FROM solved_complaint 
-        INNER JOIN complaint 
-        ON complaint.id = solved_complaint.complaint_id 
-        INNER JOIN user
-        ON complaint.user_id = user.id
-        INNER JOIN application
-        ON user.id = application.user_id
-        INNER JOIN resident
-        ON resident.id = application.resident_id
-        WHERE complaint.user_id = ?
-        AND complaint.status = "solved"
-        ORDER BY solved_complaint.solved_date DESC');
-
-        if(!$stmt->execute(array($userId))){
-            $stmt = null;
-            header("location: ../solved-complaints.php?error=stmtfailed");
-            exit();
-        }
-
-        $result = $stmt->rowCount();
-
-        $stmt = null;
-
-        return $result;
-    }
-
-
-    public function getAllSolvedComplaintsCount() {
-        $stmt = $this->connect()->query('SELECT complaint.id,
-        resident.first_name,
-        resident.last_name,
-        complaint.complaint_description,
-        solved_complaint.solved_date
-        FROM solved_complaint 
-        INNER JOIN complaint 
-        ON complaint.id = solved_complaint.complaint_id 
-        INNER JOIN user
-        ON complaint.user_id = user.id
-        INNER JOIN application
-        ON user.id = application.user_id
-        INNER JOIN resident
-        ON resident.id = application.resident_id
-        WHERE complaint.status = "solved"
-        ORDER BY solved_complaint.solved_date DESC');
-
-        $result = $stmt->rowCount();
-
-        $stmt = null;
-
-        return $result;
     }
 }
