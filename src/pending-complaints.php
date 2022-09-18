@@ -8,20 +8,19 @@ include "classes/dbh.php";
 include "classes/pending-complaint.php";
 
 //Instantiate Class
-$pendingComplaint = new PendingComplaint();
+$model = new PendingComplaint();
 
 //get the user id
 $residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $pendingComplaintsData = $pendingComplaint->getUserPendingComplaints($residentId);
+    $data = $model->getUserPendingComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
-    $pendingComplaintsData = $pendingComplaint->getAllPendingComplaints();
+    $data = $model->getAllPendingComplaints();
 }
 
-$pendingComplaintsCount = count($pendingComplaintsData);
-
+$dataCount = count($data);
 ?>
 
 
@@ -70,7 +69,7 @@ $pendingComplaintsCount = count($pendingComplaintsData);
 
                 <div class="content__item__list__cont">
                 <?php
-                    foreach($pendingComplaintsData as $row){
+                    foreach($data as $row){
                 ?>
                     <a class="content__item__link" href="pending-complaint-info.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
@@ -87,7 +86,7 @@ $pendingComplaintsCount = count($pendingComplaintsData);
                 ?>
 
                 <?php
-                    if($pendingComplaintsCount == 0){
+                    if($dataCount == 0){
                 ?>
                     <div class="no-data-msg">
                         <p>No pending complaints!</p>

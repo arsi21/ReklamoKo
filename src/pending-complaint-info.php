@@ -9,7 +9,7 @@ include "classes/dbh.php";
 include "classes/pending-complaint-info.php";
 
 //Instantiate Class
-$pendingComplaintInfo = new PendingComplaintInfo();
+$model = new PendingComplaintInfo();
 
 //get the complaint Id
 $complaintId = $_GET['id'];
@@ -20,14 +20,14 @@ if($_SESSION['accessType'] == 'resident'){
     $residentId = $_SESSION['residentId'];
 
     //get data from database
-    $data = $pendingComplaintInfo->getUserPendingComplaint($complaintId, $residentId);
-    $proofData = $pendingComplaintInfo->getComplaintProofs($complaintId);
-    $luponData = $pendingComplaintInfo->getLupons();
+    $data = $model->getUserPendingComplaint($complaintId, $residentId);
+    $proofData = $model->getComplaintProofs($complaintId);
+    $luponData = $model->getLupons();
 }elseif($_SESSION['accessType'] == 'admin'){
     //get data from database
-    $data = $pendingComplaintInfo->getPendingComplaint($complaintId);
-    $proofData = $pendingComplaintInfo->getComplaintProofs($complaintId);
-    $luponData = $pendingComplaintInfo->getLupons();
+    $data = $model->getPendingComplaint($complaintId);
+    $proofData = $model->getComplaintProofs($complaintId);
+    $luponData = $model->getLupons();
 }
 
 if(empty($data)){
