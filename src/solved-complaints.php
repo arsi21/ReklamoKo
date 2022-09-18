@@ -11,7 +11,7 @@ include "classes/solved-complaint.php";
 //Instantiate Class
 $model = new SolvedComplaint();
 
-//get the user id
+//get the resident id
 $residentId = $_SESSION['residentId'];
 
 //get data from database

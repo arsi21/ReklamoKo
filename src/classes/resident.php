@@ -2,8 +2,16 @@
 
 class Resident extends Dbh {
 
-    public function getResidents() {
-        $stmt = $this->connect()->query('SELECT * FROM resident');
+    public function getResidents($residentId) {
+        $stmt = $this->connect()->prepare('SELECT * 
+        FROM resident
+        WHERE id != ?');
+
+        if(!$stmt->execute(array($residentId))){
+            $stmt = null;
+            header("location: ../pending-complaints.php?error=stmtfailed");
+            exit();
+        }
 
         $results = $stmt->fetchAll();
 

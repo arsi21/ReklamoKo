@@ -1,4 +1,13 @@
 <?php
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+//get the resident id
+$residentId = $_SESSION['residentId'];
+
+
 include_once "classes/dbh.php";
 include "classes/resident.php";
 
@@ -6,7 +15,8 @@ include "classes/resident.php";
 $resident = new Resident();
 
 //get data from database
-$residentsData = $resident->getResidents();
+$residentsData = $resident->getResidents($residentId);
+
 ?>
 
 
