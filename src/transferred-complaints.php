@@ -12,16 +12,16 @@ include "classes/transferred-complaint.php";
 $transferredComplaint = new TransferredComplaint();
 
 //get the user id
-$userId = $_SESSION['userId'];
+$residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $transferredComplaintsData = $transferredComplaint->getUserTransferredComplaints($userId);
-    $transferredComplaintsCount = $transferredComplaint->getUserTransferredComplaintsCount($userId);
+    $transferredComplaintsData = $transferredComplaint->getUserTransferredComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
     $transferredComplaintsData = $transferredComplaint->getAllTransferredComplaints();
-    $transferredComplaintsCount = $transferredComplaint->getAllTransferredComplaintsCount();
 }
+
+$transferredComplaintsCount = count($transferredComplaintsData);
 ?>
 
 <!-- include all needed partials -->
@@ -70,7 +70,7 @@ if($_SESSION['accessType'] == "resident"){
                 <?php
                     foreach($transferredComplaintsData as $row){
                 ?>
-                    <a class="content__item__link" href="pending-complaint.php?id=<?= $row['id'] ?>">
+                    <a class="content__item__link" href="transferred-complaint.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
                                 <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>
