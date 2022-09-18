@@ -37,7 +37,16 @@ class Verification extends Dbh {
     
     protected function setApplication($userId, $residentId, $frontId, $backId, $profile) {
         $status = "pending";//default value of status
-        $stmt = $this->connect()->prepare('INSERT INTO application (user_id, resident_id, front_id, back_id, portrait_photo, status) VALUES (?, ?, ?, ?, ?, ?)');
+        $stmt = $this->connect()->prepare('INSERT 
+        INTO application 
+            (user_id, 
+            resident_id, 
+            front_id, 
+            back_id, 
+            portrait_photo, 
+            status) 
+        VALUES 
+            (?, ?, ?, ?, ?, ?)');
     
         if(!$stmt->execute(array($userId, $residentId, $frontId, $backId, $profile, $status))){
             $stmt = null;
@@ -52,7 +61,9 @@ class Verification extends Dbh {
 
     private function updateUserAccessType($userId) {
         $accessType = "pendingVerification";//default value of status
-        $stmt = $this->connect()->prepare('UPDATE user SET access_type = ? WHERE id = ?');
+        $stmt = $this->connect()->prepare('UPDATE user 
+        SET access_type = ? 
+        WHERE id = ?');
     
         if(!$stmt->execute(array($accessType, $userId))){
             $stmt = null;

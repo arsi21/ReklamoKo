@@ -5,7 +5,11 @@ class PendingComplaintInfo extends Dbh {
     //set
 
     protected function setOngoingComplaint($complaintId, $luponId, $scheduleDate, $scheduleTime, $ongoingDate) {
-        $stmt = $this->connect()->prepare('INSERT INTO ongoing_complaint (complaint_id, lupon_id, ongoing_date) 
+        $stmt = $this->connect()->prepare('INSERT 
+        INTO ongoing_complaint 
+            (complaint_id, 
+            lupon_id, 
+            ongoing_date) 
         VALUES (?, ?, ?)');
     
         if(!$stmt->execute(array($complaintId, $luponId, $ongoingDate))){
@@ -23,7 +27,9 @@ class PendingComplaintInfo extends Dbh {
     }
 
     protected function setMeetingSchedule($complaintId, $scheduleDate, $scheduleTime) {
-        $stmt = $this->connect()->prepare('INSERT INTO meeting_schedule (complaint_id, date, time) 
+        $stmt = $this->connect()->prepare('INSERT 
+        INTO meeting_schedule 
+            (complaint_id, date, time) 
         VALUES (?, ?, ?)');
     
         if(!$stmt->execute(array($complaintId, $scheduleDate, $scheduleTime))){

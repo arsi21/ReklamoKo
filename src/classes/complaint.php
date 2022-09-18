@@ -19,7 +19,12 @@ class Complaint extends Dbh {
 
         $conn = $this->connect();
 
-        $stmt = $conn->prepare('INSERT INTO complaint (complainant_id, complainee_id, complaint_description) VALUES (?, ?, ?)');
+        $stmt = $conn->prepare('INSERT 
+        INTO complaint 
+            (complainant_id, 
+            complainee_id, 
+            complaint_description) 
+        VALUES (?, ?, ?)');
     
         if(!$stmt->execute(array($complainantId, $complaineeId, $complaintDescription))){
             $stmt = null;
@@ -31,7 +36,11 @@ class Complaint extends Dbh {
 
         //add proofs
         foreach($proofs as $proof){
-            $stmt = $conn->prepare('INSERT INTO proof (complaint_id, image) VALUES (?, ?)');
+            $stmt = $conn->prepare('INSERT 
+            INTO proof 
+                (complaint_id, 
+                image) 
+            VALUES (?, ?)');
 
             if(!$stmt->execute(array($complaintId, $proof))){
                 $stmt = null;
@@ -47,7 +56,12 @@ class Complaint extends Dbh {
 
     private function setPendingComplaint($complaintId, $complaintDate) {
         $status = "pending"; //default status
-        $stmt = $this->connect()->prepare('INSERT INTO pending_complaint (complaint_id, pending_date, status) VALUES (?, ?, ?)');
+        $stmt = $this->connect()->prepare('INSERT 
+        INTO pending_complaint 
+            (complaint_id, 
+            pending_date, 
+            status) 
+        VALUES (?, ?, ?)');
     
         if(!$stmt->execute(array($complaintId, $complaintDate, $status))){
             $stmt = null;
