@@ -6,10 +6,10 @@ if(!isset($_SESSION)){
 
 
 include "classes/dbh.php";
-include "classes/ongoing-complaint.php";
+include "classes/ongoing-complaint-info.php";
 
 //Instantiate Class
-$ongoingComplaint = new OngoingComplaint();
+$model = new OngoingComplaintInfo();
 
 //get the complaint Id
 $complaintId = $_GET['id'];
@@ -19,14 +19,14 @@ if($_SESSION['accessType'] == 'resident'){
     $residentId = $_SESSION['residentId'];
 
     //get data from database
-    $data = $ongoingComplaint->getUserOngoingComplaint($complaintId, $residentId);
-    $proofData = $ongoingComplaint->getComplaintProofs($complaintId);
-    $meetingData = $ongoingComplaint->getMeetingSchedules($complaintId);
+    $data = $model->getUserOngoingComplaint($complaintId, $residentId);
+    $proofData = $model->getComplaintProofs($complaintId);
+    $meetingData = $model->getMeetingSchedules($complaintId);
 }elseif($_SESSION['accessType'] == 'admin'){
     //get data from database
-    $data = $ongoingComplaint->getAllOngoingComplaint($complaintId);
-    $proofData = $ongoingComplaint->getComplaintProofs($complaintId);
-    $meetingData = $ongoingComplaint->getMeetingSchedules($complaintId);
+    $data = $model->getAllOngoingComplaint($complaintId);
+    $proofData = $model->getComplaintProofs($complaintId);
+    $meetingData = $model->getMeetingSchedules($complaintId);
 }
 
 if(empty($data)){

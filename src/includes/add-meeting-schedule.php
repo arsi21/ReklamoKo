@@ -11,14 +11,14 @@ $scheduleTime = $_POST['scheduleTime'];
 
 //include needed files
 include "../classes/dbh.php";
-include "../classes/ongoing-complaint.php";
-include "../classes/ongoing-complaint-controller.php";
+include "../classes/ongoing-complaint-info.php";
+include "../classes/ongoing-complaint-info-controller.php";
 
 //instantiate class
-$controller = new OngoingComplaintController();
+$controller = new OngoingComplaintInfoController();
 
 //validate data and add data to the database
 $controller->addMeetingSchedule($complaintId, $scheduleDate, $scheduleTime);
 
 //going back to page
-header("location: ../ongoing-complaint.php?id=$complaintId");
+header("location: ../ongoing-complaint-info.php?id=$complaintId");

@@ -14,11 +14,11 @@ $transferredDate = date("Y-m-d");
 
 //include needed files
 include "../classes/dbh.php";
-include "../classes/ongoing-complaint.php";
-include "../classes/ongoing-complaint-controller.php";
+include "../classes/ongoing-complaint-info.php";
+include "../classes/ongoing-complaint-info-controller.php";
 
 //instantiate class
-$controller = new OngoingComplaintController();
+$controller = new OngoingComplaintInfoController();
 
 //validate data and add data to the database
 $controller->addTransferredComplaint($complaintId, $transferredDate);
