@@ -8,19 +8,19 @@ include "classes/dbh.php";
 include "classes/ongoing-complaint.php";
 
 //Instantiate Class
-$ongoingComplaint = new OngoingComplaint();
+$model = new OngoingComplaint();
 
 //get the user id
 $residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $ongoingComplaintsData = $ongoingComplaint->getUserOngoingComplaints($residentId);
+    $data = $model->getUserOngoingComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
-    $ongoingComplaintsData = $ongoingComplaint->getAllOngoingComplaints();
+    $data = $model->getAllOngoingComplaints();
 }
 
-$ongoingComplaintsCount = count($ongoingComplaintsData);
+$dataCount = count($data);
 
 ?>
 
@@ -68,7 +68,7 @@ $ongoingComplaintsCount = count($ongoingComplaintsData);
 
                 <div class="content__item__list__cont">
                 <?php
-                    foreach($ongoingComplaintsData as $row){
+                    foreach($data as $row){
                 ?>
                     <a class="content__item__link" href="ongoing-complaint-info.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
@@ -85,7 +85,7 @@ $ongoingComplaintsCount = count($ongoingComplaintsData);
 
 
                 <?php
-                    if($ongoingComplaintsCount == 0){
+                    if($dataCount == 0){
                 ?>
                     <div class="no-data-msg">
                         <p>No ongoing complaints!</p>
