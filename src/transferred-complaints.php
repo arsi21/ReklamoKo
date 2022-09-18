@@ -9,19 +9,19 @@ include "classes/dbh.php";
 include "classes/transferred-complaint.php";
 
 //Instantiate Class
-$transferredComplaint = new TransferredComplaint();
+$model = new TransferredComplaint();
 
 //get the user id
 $residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $transferredComplaintsData = $transferredComplaint->getUserTransferredComplaints($residentId);
+    $data = $model->getUserTransferredComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
-    $transferredComplaintsData = $transferredComplaint->getAllTransferredComplaints();
+    $data = $model->getAllTransferredComplaints();
 }
 
-$transferredComplaintsCount = count($transferredComplaintsData);
+$dataCount = count($data);
 ?>
 
 <!-- include all needed partials -->
@@ -68,9 +68,9 @@ $transferredComplaintsCount = count($transferredComplaintsData);
 
                 <div class="content__item__list__cont">
                 <?php
-                    foreach($transferredComplaintsData as $row){
+                    foreach($data as $row){
                 ?>
-                    <a class="content__item__link" href="transferred-complaint.php?id=<?= $row['id'] ?>">
+                    <a class="content__item__link" href="transferred-complaint-info.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
                                 <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>
@@ -84,7 +84,7 @@ $transferredComplaintsCount = count($transferredComplaintsData);
                 ?>
 
                 <?php
-                    if($transferredComplaintsCount == 0){
+                    if($dataCount == 0){
                 ?>
                     <div class="no-data-msg">
                         <p>No transferred complaints!</p>
