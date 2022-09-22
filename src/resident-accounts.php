@@ -10,6 +10,16 @@ if($_SESSION['accessType'] == "resident"){
 //include all needed partials
 include_once 'partials/header.php';
 include_once 'partials/navigation.php';
+
+include_once "classes/dbh.php";
+include_once "classes/resident-account.php";
+
+//Instantiate Class
+$model = new ResidentAccount();
+
+$data = $model->getResidentAccounts();
+
+$dataCount = count($data);
 ?>
 
 
@@ -52,104 +62,30 @@ include_once 'partials/navigation.php';
                 <hr class="content__hr">
 
                 <div class="content__item__list__cont">
-                    <a class="content__item__link" href="">
+                <?php
+                    foreach($data as $row){
+                ?>
+                    <a class="content__item__link" href="resident-account-info.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
+                                <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>
+                                <span class="content__item__desc"><?= $row['house_number'] . " " . ucwords($row['street']) . " " . ucwords($row['barangay']) . " " . ucwords($row['city']) . " " . ucwords($row['province']) ?></span>
                             </div>
                         </div>
                     </a>
+                <?php
+                    }
+                ?>
 
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="content__item__link" href="">
-                        <div class="content__item__cont">
-                            <div class="content__item__info__cont">
-                                <span class="content__item__name">Juan Dela Cruz</span>
-                                <span class="content__item__desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi error magni quas architecto corporis natus, mollitia vitae suscipit provident tenetur expedita illo, dolorum rerum odit iusto facilis ipsa porro. Voluptatibus ratione reprehenderit dolore. Mollitia nisi laudantium nemo porro. Rerum, temporibus.</span>
-                            </div>
-                        </div>
-                    </a>
+                <?php
+                    if($dataCount == 0){
+                ?>
+                    <div class="no-data-msg">
+                        <p>No resident accounts!</p>
+                    </div>
+                <?php
+                    }
+                ?>
                 </div>
                 <hr class="content__hr">
             </div>

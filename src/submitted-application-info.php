@@ -22,7 +22,7 @@ $data = $model->getSubmittedApplication($applicationId);
 
 
 if(empty($data)){
-    header("location: submitted-application-info.php");
+    header("location: submitted-applications.php");
 }
 ?>
 
