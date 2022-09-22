@@ -1,12 +1,15 @@
 <?php
+//include all needed partials
+include_once 'partials/header.php';
+include_once 'partials/navigation.php';
 
 if(!isset($_SESSION)){
     session_start();
 }
 
 
-include "classes/dbh.php";
-include "classes/solved-complaint-info.php";
+include_once "classes/dbh.php";
+include_once "classes/solved-complaint-info.php";
 
 //Instantiate Class
 $model = new SolvedComplaintInfo();
@@ -35,9 +38,6 @@ if(empty($data)){
 ?>
 
 
-<!-- include all needed partials -->
-<?php include 'partials/header.php';?>
-<?php include 'partials/navigation.php';?>
 
 
 
@@ -124,4 +124,4 @@ if(empty($data)){
     
 
 <!-- include partials -->
-<?php include 'partials/footer.php';?>
+<?php include_once 'partials/footer.php';?>

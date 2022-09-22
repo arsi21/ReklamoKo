@@ -1,11 +1,14 @@
 <?php
+//include all needed partials
+include_once 'partials/header.php';
+include_once 'partials/navigation.php';
 
 if(!isset($_SESSION)){
     session_start();
 }
 
-include "classes/dbh.php";
-include "classes/pending-complaint.php";
+include_once "classes/dbh.php";
+include_once "classes/pending-complaint.php";
 
 //Instantiate Class
 $model = new PendingComplaint();
@@ -24,10 +27,6 @@ $dataCount = count($data);
 ?>
 
 
-
-<!-- include all needed partials -->
-<?php include 'partials/header.php';?>
-<?php include 'partials/navigation.php';?>
 
 
 
@@ -106,4 +105,4 @@ $dataCount = count($data);
     
 
 <!-- include partials -->
-<?php include 'partials/footer.php';?>
+<?php include_once 'partials/footer.php';?>

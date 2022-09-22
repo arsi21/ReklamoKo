@@ -1,3 +1,5 @@
+<?php include_once 'includes/check-access.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,12 +1,14 @@
-<?php
+<?php 
+//include all needed partials
+include_once 'partials/header.php';
+include_once 'partials/navigation.php';
 
 if(!isset($_SESSION)){
     session_start();
 }
 
-
-include "classes/dbh.php";
-include "classes/ongoing-complaint-info.php";
+include_once "classes/dbh.php";
+include_once "classes/ongoing-complaint-info.php";
 
 //Instantiate Class
 $model = new OngoingComplaintInfo();
@@ -34,10 +36,6 @@ if(empty($data)){
 }
 ?>
 
-
-<!-- include all needed partials -->
-<?php include 'partials/header.php';?>
-<?php include 'partials/navigation.php';?>
 
 
 
@@ -226,4 +224,4 @@ modal.addEventListener('click', function (event) {
     
 
 <!-- include partials -->
-<?php include 'partials/footer.php';?>
+<?php include_once 'partials/footer.php';?>

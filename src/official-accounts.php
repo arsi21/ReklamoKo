@@ -1,12 +1,16 @@
 <?php 
-    if(!isset($_SESSION)){
-        session_start();
-    }
-?>
+if(!isset($_SESSION)){
+    session_start();
+}
 
-<!-- include all needed partials -->
-<?php include 'partials/header.php';?>
-<?php include 'partials/navigation.php';?>
+if($_SESSION['accessType'] == "resident"){
+    header("location:pending-complaints.php");
+}
+
+//include all needed partials
+include_once 'partials/header.php';
+include_once 'partials/navigation.php';
+?>
 
 
 
@@ -178,4 +182,4 @@
     
 
 <!-- include partials -->
-<?php include 'partials/footer.php';?>
+<?php include_once 'partials/footer.php';?>

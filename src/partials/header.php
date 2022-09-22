@@ -1,4 +1,5 @@
 <?php
+include_once 'includes/check-access.php';
 
 if(!isset($_SESSION)){
     session_start();
@@ -9,18 +10,14 @@ $residentId = $_SESSION['residentId'];
 
 
 include_once "classes/dbh.php";
-include "classes/resident.php";
+include_once "classes/resident.php";
 
 //Instantiate Class
 $resident = new Resident();
 
 //get data from database
 $residentsData = $resident->getResidents($residentId);
-
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
