@@ -9,20 +9,20 @@ if(!isset($_SESSION)){
 
 
 include_once "classes/dbh.php";
-include_once "classes/resident-account-info.php";
+include_once "classes/lupon-info.php";
 
 //Instantiate Class
-$model = new ResidentAccountInfo();
+$model = new LuponInfo();
 
 //get the application Id
-$userId = $_GET['id'];
+$luponId = $_GET['id'];
 
 //get data from database
-$data = $model->getResidentAccount($userId);
+$data = $model->getLupon($luponId);
 
 
 if(empty($data)){
-    header("location:resident-accounts.php");
+    header("location:lupon.php");
 }
 ?>
 
@@ -34,12 +34,12 @@ if(empty($data)){
 
         <section id="content" class="content">
             <div class="content__title__cont">
-                <h2 class="content__title">Resident Accounts</h2>
+                <h2 class="content__title">Lupon</h2>
             </div>
 
             <div class="content__body__cont">
                 <div class="content__action__cont">
-                    <a class="content__action" href="resident-accounts.php">
+                    <a class="content__action" href="lupon.php">
                         <img src="assets/icons/back.svg" alt="back button">
                     </a>
                 </div>
@@ -61,21 +61,6 @@ if(empty($data)){
 
                     <p class="content__comp__lbl">Address:</p>
                     <p class="content__comp__val"><?= $data['house_number'] . " " . ucwords($data['street']) . " " . ucwords($data['barangay']) . " " . ucwords($data['city']) . " " . ucwords($data['province']) ?></p>
-
-                    <p class="content__comp__lbl">Front ID:</p>
-                    <div class="content__proof__cont">
-                        <img class="content__proof__pic" src="id-uploads/<?= $data['front_id'] ?>" alt="Front id"> 
-                    </div>
-
-                    <p class="content__comp__lbl">Back ID:</p>
-                    <div class="content__proof__cont">
-                        <img class="content__proof__pic" src="id-uploads/<?= $data['back_id'] ?>" alt="Back id"> 
-                    </div>
-
-                    <p class="content__comp__lbl">Portrait Photo:</p>
-                    <div class="content__proof__cont">
-                        <img class="content__proof__pic" src="portrait-uploads/<?= $data['portrait_photo'] ?>" alt="Portrait photo"> 
-                    </div>
                 </div>
 
                 <hr class="content__hr">

@@ -105,9 +105,9 @@
                 </li>
 
                 <li>
-                    <a href="official-accounts.php" class="nav__solved">
+                    <a href="lupon.php" class="nav__solved">
                         <img src="assets/icons/official-accounts.svg" alt="Solved complaints icon">
-                        <span>Official Accounts</span>
+                        <span>Lupon</span>
                     </a>
                 </li>
 

@@ -50,7 +50,7 @@ if(empty($data)){
 
             <div class="content__body__cont">
                 <div class="content__action__cont">
-                    <a class="content__action" href="transferred-complaints.php">
+                    <a class="content__action" href="solved-complaints.php">
                         <img src="assets/icons/back.svg" alt="back button">
                     </a>
                 </div>
