@@ -43,7 +43,7 @@ $residentsData = $resident->getResidents($residentId);
 
             <div class="header__tool">
                 <ul>
-                    <li id="inbox-btn" class="header__inbox__cont">
+                    <!-- <li id="inbox-btn" class="header__inbox__cont">
                         <svg class="header__inbox" xmlns="http://www.w3.org/2000/svg" width="34.873" height="26.154" viewBox="0 0 34.873 26.154">
                             <path id="inbox" d="M0,3V29.154H34.873V3ZM9.623,14.521l-6.717,8.3V9.078l6.717,5.443ZM3.606,5.906H31.265L17.436,17.113,3.606,5.906ZM11.88,16.35l5.556,4.5L23,16.343l8.154,9.905H3.869Zm13.379-1.837,6.707-5.436V22.661l-6.707-8.147Z" transform="translate(0 -3)"/>
                         </svg>
@@ -57,7 +57,7 @@ $residentsData = $resident->getResidents($residentId);
                         </svg>
 
                         <span class="notif-counter">5</span>
-                    </li>
+                    </li> -->
 
                     <li id="account-btn" class="header__profile">
                         <?php 
@@ -84,7 +84,7 @@ $residentsData = $resident->getResidents($residentId);
 
 
 
-        <div id="modal-message" class="modal modal--message">
+        <!-- <div id="modal-message" class="modal modal--message">
             <span class="modal__title">Message</span>
             <div class="modal__item">
                 <div class="modal__item__img__cont">
@@ -371,7 +371,7 @@ $residentsData = $resident->getResidents($residentId);
                     <span class="modal__item__desc">Approve your complain.</span>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
 

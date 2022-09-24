@@ -98,11 +98,11 @@
         const navTransferred = document.getElementById('nav-transferred');
         const navSolved = document.getElementById('nav-solved');
 
-        const inboxBtn = document.getElementById('inbox-btn');
-        const notifBtn = document.getElementById('notif-btn');
+        // const inboxBtn = document.getElementById('inbox-btn');
+        // const notifBtn = document.getElementById('notif-btn');
         const accountBtn = document.getElementById('account-btn');
-        const modalMessage = document.getElementById('modal-message');
-        const modalNotif = document.getElementById('modal-notif');
+        // const modalMessage = document.getElementById('modal-message');
+        // const modalNotif = document.getElementById('modal-notif');
         const modalAccount = document.getElementById('modal-account');
 
 
@@ -193,54 +193,54 @@
 
         //function for adding or removing content
         function toggleContent() {
-            if (modalMessage.classList.contains("modal--message--active") || modalNotif.classList.contains("modal--notif--active") || modalAccount.classList.contains("modal--account--active")){
+            if (modalAccount.classList.contains("modal--account--active")){
                 content.classList.add("content--display--none");
             }else {
                 content.classList.remove("content--display--none");
             }
         }
 
-        inboxBtn.addEventListener('click', () => {
-            inboxBtn.classList.toggle("header__inbox__cont--active"); //for changing inbox icon color
-            notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
-            accountBtn.classList.remove("header__profile--active"); //for removing profile icon border
-            modalMessage.classList.toggle("modal--message--active"); //for adding modal message
-            modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
-            modalAccount.classList.remove("modal--account--active"); //for removing modal account
+        // inboxBtn.addEventListener('click', () => {
+        //     inboxBtn.classList.toggle("header__inbox__cont--active"); //for changing inbox icon color
+        //     notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
+        //     accountBtn.classList.remove("header__profile--active"); //for removing profile icon border
+        //     modalMessage.classList.toggle("modal--message--active"); //for adding modal message
+        //     modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
+        //     modalAccount.classList.remove("modal--account--active"); //for removing modal account
 
-            toggleContent(); //for adding and removing content
-        })
+        //     toggleContent(); //for adding and removing content
+        // })
 
-        notifBtn.addEventListener('click', () => {
-            notifBtn.classList.toggle("header__notif__cont--active"); //for changing notif icon color
-            inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
-            accountBtn.classList.remove("header__profile--active"); //for removing profile icon border
-            modalNotif.classList.toggle("modal--notif--active"); //for adding modal notif
-            modalMessage.classList.remove("modal--message--active"); //for removing modal message
-            modalAccount.classList.remove("modal--account--active"); //for removing modal account
+        // notifBtn.addEventListener('click', () => {
+        //     notifBtn.classList.toggle("header__notif__cont--active"); //for changing notif icon color
+        //     inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
+        //     accountBtn.classList.remove("header__profile--active"); //for removing profile icon border
+        //     modalNotif.classList.toggle("modal--notif--active"); //for adding modal notif
+        //     modalMessage.classList.remove("modal--message--active"); //for removing modal message
+        //     modalAccount.classList.remove("modal--account--active"); //for removing modal account
 
-            toggleContent(); //for adding and removing content
-        })
+        //     toggleContent(); //for adding and removing content
+        // })
 
         accountBtn.addEventListener('click', () => {
             accountBtn.classList.toggle("header__profile--active"); //for adding profile icon border
-            notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
-            inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
+            // notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
+            // inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
             modalAccount.classList.toggle("modal--account--active"); //for adding modal account
-            modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
-            modalMessage.classList.remove("modal--message--active"); //for removing modal message
+            // modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
+            // modalMessage.classList.remove("modal--message--active"); //for removing modal message
 
             toggleContent(); //for adding and removing content
         })
 
         document.addEventListener('click', function(event) {
             if (window.innerWidth  > 479){
-                if (!inboxBtn.contains(event.target) && !notifBtn.contains(event.target) && !accountBtn.contains(event.target)){
-                    modalMessage.classList.remove("modal--message--active"); //for removing modal message
-                    modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
+                if (!accountBtn.contains(event.target)){
+                    // modalMessage.classList.remove("modal--message--active"); //for removing modal message
+                    // modalNotif.classList.remove("modal--notif--active"); //for removing modal notif
                     modalAccount.classList.remove("modal--account--active"); //for removing modal account
-                    inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
-                    notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
+                    // inboxBtn.classList.remove("header__inbox__cont--active"); //for changing inbox icon color
+                    // notifBtn.classList.remove("header__notif__cont--active"); //for changing notif icon color
                     accountBtn.classList.remove("header__profile--active"); //for removing profile icon border
 
                     toggleContent(); //for adding and removing content
