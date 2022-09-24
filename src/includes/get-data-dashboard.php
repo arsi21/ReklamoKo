@@ -6,8 +6,12 @@ include "../classes/dashboard.php";
 //instantiate class
 $model = new Dashboard();
 
+//get current year
+date_default_timezone_set("Asia/Manila");
+$year = date("Y");
+
 $complaintCountsPerStatus = $model->getComplaintCountsPerStatus();
-$countsPerMonth = $model->getComplaintCountsPerMonth();
+$countsPerMonth = $model->getComplaintCountsPerMonth($year);
 $residentAccountCounts = $model->getResidentAccountCounts();
 $complaintCountsPerMonth = array (0,0,0,0,0,0,0,0,0,0,0,0);
 

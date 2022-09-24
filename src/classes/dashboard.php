@@ -38,14 +38,20 @@ class Dashboard extends Dbh {
         return $results;
     }
 
-    public function getComplaintCountsPerMonth() {
-        $stmt = $this->connect()->query('SELECT 
+    public function getComplaintCountsPerMonth($year) {
+        $stmt = $this->connect()->prepare('SELECT 
         MONTH(pending_date) MONTH, 
         COUNT(complaint_id) COUNT
         FROM pending_complaint
-        WHERE YEAR(pending_date) = "2022" 
+        WHERE YEAR(pending_date) = ? 
         AND status = "approved"
         GROUP BY MONTH(pending_date)');
+
+        if(!$stmt->execute(array($year))){
+            $stmt = null;
+            header("location: ../dashboard.php?error=stmtfailed");
+            exit();
+        }
 
         $results = $stmt->fetchAll();
 
