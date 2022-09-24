@@ -1,0 +1,105 @@
+@use '../abstracts/variables';
+
+.counts-cont {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.6rem;
+    margin-inline: 1rem;
+    max-width: 1300px;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+
+    .count-cont {
+        background-color: variables.$clr-light;
+        padding: 0.8rem;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.3rem;
+
+        .count-name {
+            font-size: variables.$fs-regular;
+            font-weight: variables.$fw-700;
+            color: variables.$clr-font-dark-80;
+        }
+
+        .count-number {
+            font-size: variables.$fs-large;
+            font-weight: variables.$fw-700;
+
+            &-primary {
+                color: variables.$clr-primary;
+            }
+
+            &-warning {
+                color: variables.$clr-warning;
+            }
+
+            &-success {
+                color: variables.$clr-success;
+            }
+
+            &-danger {
+                color: variables.$clr-danger;
+            }
+        }
+
+        .count-lbl {
+            font-size: variables.$fs-small;
+            color: variables.$clr-font-dark-60;
+        }
+    }
+}
+
+
+.charts-cont {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.6rem;
+    margin-inline: 1rem;
+    max-width: 1300px;
+    margin-bottom: 1rem;
+
+    .chart-cont {
+        background-color: variables.$clr-light;
+        padding: 0.8rem;
+        border-radius: 6px;
+    }
+}
+
+
+@media (min-width: 40em) {
+    .counts-cont {
+        flex-direction: row;
+        gap: 0.6rem;
+
+        .count-cont {
+            flex-grow: 2;
+            width: 25%;
+        }
+    }
+
+    .charts-cont {
+        flex-direction: row;
+        gap: 0.6rem;
+
+        .chart-cont {
+            width: 50%;
+        }
+    }
+}
+
+
+@media (min-width: 60em) {
+
+    .dashboard-content {
+        min-height: calc(100vh - calc(103px + 1.1rem));
+        max-height: calc(100vh - calc(103px + 1.1rem));
+        overflow-y: scroll;
+    }
+
+    .counts-cont,
+    .charts-cont {
+        margin-left: calc(1rem - 6px);
+    }
+}

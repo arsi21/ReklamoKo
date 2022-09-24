@@ -8,6 +8,7 @@ $fs-small: 0.9rem;
 $fs-regular: 1rem;
 $fs-medium: 1.1rem;
 $fs-large: 1.5rem;
+$fs-xlarge: 2rem;
 
 //color for background
 $clr-accent: rgb(95, 116, 204);
@@ -39,3 +40,10 @@ $clr-btn-success: rgb(46, 139, 87);
 $clr-btn-primary-hover: rgb(157, 169, 219);
 $clr-btn-danger-hover: rgb(205, 73, 73);
 $clr-btn-success-hover: rgb(84, 184, 126);
+
+
+//basic color
+$clr-primary: rgb(102, 159, 217);
+$clr-danger: rgb(217, 110, 110);
+$clr-success: rgb(138, 221, 138);
+$clr-warning: rgb(214, 214, 103);

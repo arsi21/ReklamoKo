@@ -50,7 +50,7 @@ class OngoingComplaint extends Dbh {
         ON c.id = oc.complaint_id 
         INNER JOIN resident r
         ON r.id = c.complainant_id
-        AND c.id 
+        WHERE c.id 
         NOT IN 
             (SELECT complaint_id
             FROM solved_complaint)

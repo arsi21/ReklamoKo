@@ -1691,3 +1691,91 @@ nav.menu-btn {
   border-radius: 50%;
   background: white;
 }
+
+.counts-cont {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6rem;
+  margin-inline: 1rem;
+  max-width: 1300px;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.counts-cont .count-cont {
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3rem;
+}
+.counts-cont .count-cont .count-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #494747;
+}
+.counts-cont .count-cont .count-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.counts-cont .count-cont .count-number-primary {
+  color: #669fd9;
+}
+.counts-cont .count-cont .count-number-warning {
+  color: #d6d667;
+}
+.counts-cont .count-cont .count-number-success {
+  color: #8add8a;
+}
+.counts-cont .count-cont .count-number-danger {
+  color: #d96e6e;
+}
+.counts-cont .count-cont .count-lbl {
+  font-size: 0.9rem;
+  color: #707070;
+}
+
+.charts-cont {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6rem;
+  margin-inline: 1rem;
+  max-width: 1300px;
+  margin-bottom: 1rem;
+}
+.charts-cont .chart-cont {
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 6px;
+}
+
+@media (min-width: 40em) {
+  .counts-cont {
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+  .counts-cont .count-cont {
+    flex-grow: 2;
+    width: 25%;
+  }
+
+  .charts-cont {
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+  .charts-cont .chart-cont {
+    width: 50%;
+  }
+}
+@media (min-width: 60em) {
+  .dashboard-content {
+    min-height: calc(100vh - (103px + 1.1rem));
+    max-height: calc(100vh - (103px + 1.1rem));
+    overflow-y: scroll;
+  }
+
+  .counts-cont,
+.charts-cont {
+    margin-left: calc(1rem - 6px);
+  }
+}

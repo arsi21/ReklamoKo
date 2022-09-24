@@ -66,8 +66,6 @@ function checkResidentInfo() {
             result = res.result
             residentId = result
 
-            console.log(result)
-
             if (result > 0) {
                 showCurrentStep()
                 $('#residentIdContainer').html('<input type="hidden" id="residentId" name="residentId" value="' + result + '">')
