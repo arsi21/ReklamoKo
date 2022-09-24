@@ -105,10 +105,22 @@ if(empty($data)){
                         </div>
                     </div>
 
-                    <p class="content__comp__lbl">Name of the complained person:</p>
+                    <p class="content__comp__lbl">Complaint Status:</p>
+                <?php 
+                    if($data['status'] == "pending"){
+                ?>
+                    <p class="content__comp__val primary"><?= ucwords($data['status']) ?></p>
+                <?php 
+                    }elseif($data['status'] == "rejected"){
+                ?>
+                    <p class="content__comp__val danger"><?= ucwords($data['status']) ?> - <span class="secondary"><?= $data['message'] ?></span></p>
+                <?php 
+                    }
+                ?>
+                    <p class="content__comp__lbl">Name of person being complained about:</p>
                     <p class="content__comp__val"><?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?></p>
 
-                    <p class="content__comp__lbl">Complain Description:</p>
+                    <p class="content__comp__lbl">Complaint Description:</p>
                     <p class="content__comp__val"><?= $data['complaint_description'] ?></p>
 
                 <?php
@@ -130,7 +142,7 @@ if(empty($data)){
                     </div>
 
                 <?php
-                    if($_SESSION['accessType'] == "admin"){
+                    if($_SESSION['accessType'] == "admin" && $data['status'] != "rejected"){
                 ?>
                     <div class="content__btn__cont">
                         <button id="approveComplaintBtn" class="primary-btn" onclick="showApproveComplaintModal()">Approve</button>
@@ -254,14 +266,14 @@ if(empty($data)){
 
                 <div class="modal2__body">
                     <label class="modal2__lbl">
-                        Name of the complained person 
+                        Name of person being complained about
                     </label>
-                    <input type="text" class="modal2__input" name="compPerson">
+                    <input type="text" class="modal2__input" name="compPerson" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>">
 
                     <label class="modal2__lbl">
                         Complain description
                     </label>
-                    <textarea class="modal2__input" name="complainDesc"></textarea>
+                    <textarea class="modal2__input" name="complainDesc"><?= $data['complaint_description'] ?></textarea>
 
                     <p class="modal2__lbl">
                         Proof/Pictures (Optional)

@@ -45,7 +45,7 @@ $dataCount = count($data);
                     <input class="content__search" id="search_input" type="search" name="search" placeholder="Search a complain">
                 </form>
 
-                <div class="content__pages__indicator">
+                <!-- <div class="content__pages__indicator">
                     <div class="content__page__num">
                         <span>1</span><span>-</span><span>50</span><span> of </span><span>100</span>
                     </div>
@@ -62,7 +62,7 @@ $dataCount = count($data);
                             </svg>
                         </button>
                     </div>
-                </div>
+                </div> -->
 
                 <hr class="content__hr">
 
@@ -76,7 +76,17 @@ $dataCount = count($data);
                                 <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>
                                 <span class="content__item__desc"><?= $row['complaint_description'] ?></span>
                                 <span class="content__item__date"><?= $row['pending_date'] ?></span>
-                                <span class="content__item__status"><?= ucwords($row['status']) ?></span>
+                            <?php 
+                                if($row['status'] == "pending"){
+                            ?>
+                                <span class="content__item__status primary"><?= ucwords($row['status']) ?></span>
+                            <?php 
+                                }elseif($row['status'] == "rejected"){
+                            ?>
+                                <span class="content__item__status danger"><?= ucwords($row['status']) ?></span>
+                            <?php
+                                }
+                            ?>
                             </div>
                         </div>
                     </a>

@@ -130,7 +130,8 @@ class PendingComplaintInfo extends Dbh {
         r2.last_name complainee_last_name,
         c.complaint_description,
         pc.pending_date,
-        pc.status
+        pc.status,
+        pc.message
         FROM pending_complaint pc
         INNER JOIN complaint c
         ON c.id = pc.complaint_id 
@@ -164,7 +165,8 @@ class PendingComplaintInfo extends Dbh {
         r2.last_name complainee_last_name,
         c.complaint_description,
         pc.pending_date,
-        pc.status
+        pc.status,
+        pc.message
         FROM pending_complaint pc
         INNER JOIN complaint c
         ON c.id = pc.complaint_id 

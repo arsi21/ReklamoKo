@@ -33,13 +33,13 @@ $clr-font-accent: rgb(95, 116, 204);
 
 
 //color for button
-$clr-btn-primary: rgb(95, 116, 204);
-$clr-btn-danger: rgb(178, 34, 34);
-$clr-btn-success: rgb(46, 139, 87);
+$clr-btn-primary: rgb(102, 159, 217);
+$clr-btn-danger: rgb(205, 73, 73);
+$clr-btn-success: rgb(84, 184, 126);
 
 $clr-btn-primary-hover: rgb(157, 169, 219);
-$clr-btn-danger-hover: rgb(205, 73, 73);
-$clr-btn-success-hover: rgb(84, 184, 126);
+$clr-btn-danger-hover: rgb(229, 99, 99);
+$clr-btn-success-hover: rgb(110, 216, 154);
 
 
 //basic color
@@ -47,3 +47,10 @@ $clr-primary: rgb(102, 159, 217);
 $clr-danger: rgb(217, 110, 110);
 $clr-success: rgb(138, 221, 138);
 $clr-warning: rgb(214, 214, 103);
+
+//basic color for font
+$clr-font-primary: rgb(95, 116, 204);
+$clr-font-danger: rgb(178, 34, 34);
+$clr-font-success: rgb(46, 139, 87);
+$clr-font-warning: rgb(187, 187, 87);
+$clr-font-secondary: rgb(112, 112, 112);

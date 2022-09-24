@@ -752,7 +752,7 @@ input[type=submit].home-card__cancel__btn:hover {
   padding-block: 0.6em;
   padding-inline: 1.5em;
   color: white;
-  background-color: #5f74cc;
+  background-color: #669fd9;
   border-radius: 6px;
   border: none;
 }
@@ -766,12 +766,12 @@ input[type=submit].home-card__cancel__btn:hover {
   padding-block: 0.6em;
   padding-inline: 1.5em;
   color: white;
-  background-color: firebrick;
+  background-color: #cd4949;
   border-radius: 6px;
   border: none;
 }
 .danger-btn:hover {
-  background-color: #cd4949;
+  background-color: #e56363;
 }
 
 .success-btn {
@@ -780,12 +780,12 @@ input[type=submit].home-card__cancel__btn:hover {
   padding-block: 0.6em;
   padding-inline: 1.5em;
   color: white;
-  background-color: seagreen;
+  background-color: #54b87e;
   border-radius: 6px;
   border: none;
 }
 .success-btn:hover {
-  background-color: #54b87e;
+  background-color: #6ed89a;
 }
 
 input[type=text].home-card__input,
@@ -891,6 +891,26 @@ input[type=number] {
 
 .p__helper {
   color: #707070;
+}
+
+.primary {
+  color: #5f74cc !important;
+}
+
+.success {
+  color: seagreen !important;
+}
+
+.warning {
+  color: #bbbb57 !important;
+}
+
+.danger {
+  color: firebrick !important;
+}
+
+.secondary {
+  color: #707070 !important;
 }
 
 .modal--notif {

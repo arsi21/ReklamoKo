@@ -3,3 +3,23 @@
 .p__helper {
     color: variables.$clr-font-dark-60;
 }
+
+.primary {
+    color: variables.$clr-font-primary  !important;
+}
+
+.success {
+    color: variables.$clr-font-success  !important;
+}
+
+.warning {
+    color: variables.$clr-font-warning  !important;
+}
+
+.danger {
+    color: variables.$clr-font-danger  !important;
+}
+
+.secondary {
+    color: variables.$clr-font-secondary  !important;
+}
