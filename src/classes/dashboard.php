@@ -22,14 +22,14 @@ class Dashboard extends Dbh {
             (SELECT complaint_id
             FROM transferred_complaint))
         AS ongoing,
+
+        (SELECT COUNT(id) count
+        FROM solved_complaint)
+        AS solved,
     
         (SELECT COUNT(id)
         FROM transferred_complaint)
-        AS transferred,
-    
-        (SELECT COUNT(id) count
-        FROM solved_complaint)
-        AS solved');
+        AS transferred');
 
         $results = $stmt->fetch();
 
