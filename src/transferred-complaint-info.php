@@ -79,11 +79,14 @@ if(empty($data)){
                         </div>
                     </div>
 
-                    <p class="content__comp__lbl">Name of the complained person:</p>
+                    <p class="content__comp__lbl">Name of person being complained about:</p>
                     <p class="content__comp__val"><?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?></p>
 
-                    <p class="content__comp__lbl">Complain Description:</p>
+                    <p class="content__comp__lbl">Complaint Description:</p>
                     <p class="content__comp__val"><?= $data['complaint_description'] ?></p>
+
+                    <p class="content__comp__lbl">Lupon:</p>
+                    <p class="content__comp__val"><?= ucwords($data['lupon_first_name']) . " " . ucwords($data['lupon_last_name']) ?></p>
 
                 <?php
                     if(count($proofData) != 0){

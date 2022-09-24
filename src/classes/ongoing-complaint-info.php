@@ -60,6 +60,8 @@ class OngoingComplaintInfo extends Dbh {
         r1.last_name complainant_last_name,
         r2.first_name complainee_first_name,
         r2.last_name complainee_last_name,
+        r3.first_name lupon_first_name,
+        r3.last_name lupon_last_name,
         c.complaint_description,
         oc.ongoing_date
         FROM ongoing_complaint oc
@@ -69,6 +71,10 @@ class OngoingComplaintInfo extends Dbh {
         ON c.complainant_id = r1.id
         INNER JOIN resident r2
         ON c.complainee_id = r2.id
+        INNER JOIN lupon l
+        ON oc.lupon_id = l.id
+        INNER JOIN resident r3
+        ON l.resident_id = r3.id
         WHERE c.id = ?
         AND c.complainant_id = ?
         AND c.id 
@@ -101,6 +107,8 @@ class OngoingComplaintInfo extends Dbh {
         r1.last_name complainant_last_name,
         r2.first_name complainee_first_name,
         r2.last_name complainee_last_name,
+        r3.first_name lupon_first_name,
+        r3.last_name lupon_last_name,
         c.complaint_description,
         oc.ongoing_date
         FROM ongoing_complaint oc
@@ -110,6 +118,10 @@ class OngoingComplaintInfo extends Dbh {
         ON c.complainant_id = r1.id
         INNER JOIN resident r2
         ON c.complainee_id = r2.id
+        INNER JOIN lupon l
+        ON oc.lupon_id = l.id
+        INNER JOIN resident r3
+        ON l.resident_id = r3.id
         WHERE c.id = ?
         AND c.id 
         NOT IN 
