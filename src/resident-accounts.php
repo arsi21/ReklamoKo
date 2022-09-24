@@ -41,7 +41,7 @@ $dataCount = count($data);
                 </form>
 
                 <div class="content__pages__indicator">
-                    <div class="content__page__num">
+                    <!-- <div class="content__page__num">
                         <span>1</span><span>-</span><span>50</span><span> of </span><span>100</span>
                     </div>
 
@@ -56,7 +56,7 @@ $dataCount = count($data);
                             <path id="arrow" d="M5,2.117,7.157,0l8.427,8.467L7.157,16.934,5,14.817l6.35-6.35Z" transform="translate(-5)" fill="#403f3f"/>
                             </svg>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
 
                 <hr class="content__hr">
