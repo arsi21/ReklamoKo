@@ -64,17 +64,17 @@ if(empty($data)){
 
                     <p class="content__comp__lbl">Front ID:</p>
                     <div class="content__proof__cont">
-                        <img class="content__proof__pic" src="id-uploads/<?= $data['front_id'] ?>" alt="Front id"> 
+                        <img class="content__proof__pic image" src="id-uploads/<?= $data['front_id'] ?>" alt="Front id"> 
                     </div>
 
                     <p class="content__comp__lbl">Back ID:</p>
                     <div class="content__proof__cont">
-                        <img class="content__proof__pic" src="id-uploads/<?= $data['back_id'] ?>" alt="Back id"> 
+                        <img class="content__proof__pic image" src="id-uploads/<?= $data['back_id'] ?>" alt="Back id"> 
                     </div>
 
                     <p class="content__comp__lbl">Portrait Photo:</p>
                     <div class="content__proof__cont">
-                        <img class="content__proof__pic" src="portrait-uploads/<?= $data['portrait_photo'] ?>" alt="Portrait photo"> 
+                        <img class="content__proof__pic image" src="portrait-uploads/<?= $data['portrait_photo'] ?>" alt="Portrait photo"> 
                     </div>
 
                     <div class="content__btn__cont">
@@ -128,11 +128,15 @@ if(empty($data)){
 
 
 
+    <div id="image-viewer">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="full-image">
+    </div>
 
 
 
 
-
+<script src="js/viewImage.js"></script>
 
 <script>
 const rejectComplaintModal = document.getElementById("rejectComplaintModal");
