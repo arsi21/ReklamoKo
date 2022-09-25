@@ -42,6 +42,39 @@
                     Proof/Pictures (Optional)
                 </p>
 
+                <label class="home-card__file__lbl" for="pic_input1">
+                    <input id="pic_input1" class="home-card__input__file" type="file"
+                        name="proof1" onchange="previewImage(this, picPreview1)">
+                    <img src="assets/icons/upload.svg" alt="Upload icon">
+                    <span>Upload photo</span>
+                </label>
+
+                <div class="home-card__img__preview">
+                    <img id="pic_preview1" />
+                </div>
+
+                <label class="home-card__file__lbl" for="pic_input2">
+                    <input id="pic_input2" class="home-card__input__file" type="file"
+                        name="proof2" onchange="previewImage(this, picPreview2)">
+                    <img src="assets/icons/upload.svg" alt="Upload icon">
+                    <span>Upload photo</span>
+                </label>
+
+                <div class="home-card__img__preview">
+                    <img id="pic_preview2" />
+                </div>
+
+                <label class="home-card__file__lbl" for="pic_input3">
+                    <input id="pic_input3" class="home-card__input__file" type="file"
+                        name="proof3" onchange="previewImage(this, picPreview3)">
+                    <img src="assets/icons/upload.svg" alt="Upload icon">
+                    <span>Upload photo</span>
+                </label>
+
+                <div class="home-card__img__preview">
+                    <img id="pic_preview3" />
+                </div>
+
                 <!-- <div class="modal2__img__prev__cont">
                     <div class="modal2__img__prev"> -->
                         <!-- <img id=img-prev" /> -->
@@ -66,10 +99,6 @@
                     <img src="assets/icons/upload.svg" alt="Upload icon">
                     <span>Upload photo</span>
                 </label> -->
-
-                <input type="file" name="proof1">
-                <input type="file" name="proof2">
-                <input type="file" name="proof3">
             </div>
 
             <div class="modal2__footer">
@@ -84,6 +113,7 @@
 
 
     <script src="js/modal.js"></script>
+    <script src="js/showSelectedPic.js"></script>
 
     <script>
         const menuBtn = document.getElementById('menu-btn');
