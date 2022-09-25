@@ -135,7 +135,7 @@ if(empty($data)){
                 <?php
                     foreach($proofData as $row){
                 ?>
-                        <img class="content__proof__pic" src="proof-uploads/<?= $row['image'] ?>" alt="Proof picture">
+                        <img class="content__proof__pic image" src="proof-uploads/<?= $row['image'] ?>" alt="Proof picture">
                 <?php 
                     }
                 ?>    
@@ -313,12 +313,18 @@ if(empty($data)){
             </form>
         </div>
 
+    <div id="image-viewer">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="full-image">
+    </div>
 
 
 
 
+<script src="js/viewImage.js"></script>
 
 <script>
+//for modal
 const approveComplaintModal = document.getElementById("approveComplaintModal");
 const approveComplaintModalCont = document.getElementById("approveComplaintModalCont");
 const approveComplaintModalExit = document.getElementById("approveComplaintModalExit");

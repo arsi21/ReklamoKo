@@ -99,7 +99,7 @@ if(empty($data)){
                 <?php
                     foreach($proofData as $row){
                 ?>
-                        <img class="content__proof__pic" src="proof-uploads/<?= $row['image'] ?>" alt="Proof picture">
+                        <img class="content__proof__pic image" src="proof-uploads/<?= $row['image'] ?>" alt="Proof picture">
                 <?php 
                     }
                 ?>    
@@ -122,9 +122,12 @@ if(empty($data)){
         </section>
 
 
-
+    <div id="image-viewer">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="full-image">
+    </div>
 
     
-
+<script src="js/viewImage.js"></script>
 <!-- include partials -->
 <?php include_once 'partials/footer.php';?>
