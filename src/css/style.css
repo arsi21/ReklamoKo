@@ -1637,6 +1637,16 @@ nav.menu-btn {
   display: none;
 }
 
+#message {
+  margin-top: 2rem;
+}
+#message svg {
+  fill: firebrick;
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+}
+
 .home-card__account__img {
   position: relative;
   width: 80px;

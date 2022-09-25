@@ -39,7 +39,6 @@
                                 <div class="home-card__indication">3</div>
                             </div>
 
-                            <div id="message"></div>
 
                             <div id="residentIdContainer"></div>
 
@@ -102,6 +101,8 @@
                             
                             
                             </select> -->
+
+                            <div id="message" class="danger"></div>
 
                             <div class="multi-step-form-btn-container">
                                 <span data-next class="multi-step-form-btn-next">Continue</span>

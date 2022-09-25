@@ -1,4 +1,17 @@
+@use '../abstracts/variables';
+
 #step2,
 #step3 {
     display: none;
+}
+
+#message {
+    margin-top: 2rem;
+
+    svg {
+        fill: variables.$clr-font-danger;
+        height: 20px;
+        width: 20px;
+        vertical-align: middle;
+    }
 }
