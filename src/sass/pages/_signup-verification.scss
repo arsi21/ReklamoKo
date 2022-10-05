@@ -6,12 +6,15 @@
 }
 
 #message {
+    display: flex;
+    gap: 0.5rem;
     margin-top: 2rem;
 
     svg {
+        flex-shrink: 0;
         fill: variables.$clr-font-danger;
-        height: 20px;
-        width: 20px;
+        height: 20px !important;
+        width: 20px !important;
         vertical-align: middle;
     }
 }

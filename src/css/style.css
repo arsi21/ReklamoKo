@@ -1721,12 +1721,15 @@ nav.menu-btn {
 }
 
 #message {
+  display: flex;
+  gap: 0.5rem;
   margin-top: 2rem;
 }
 #message svg {
+  flex-shrink: 0;
   fill: firebrick;
-  height: 20px;
-  width: 20px;
+  height: 20px !important;
+  width: 20px !important;
   vertical-align: middle;
 }
 
