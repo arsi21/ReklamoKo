@@ -2,6 +2,27 @@
 
 class LuponInfo extends Dbh {
 
+
+    //delete
+
+    protected function deleteLupon($luponId){
+        $stmt = $this->connect()->prepare('DELETE 
+        FROM lupon
+        WHERE id = ?');
+
+        if(!$stmt->execute(array($luponId))){
+            $stmt = null;
+            header("location: ../lupon.php?error=stmtfailed");
+            exit();
+        }
+    }
+
+
+
+
+
+
+
     //get
 
     public function getLupon($id) {

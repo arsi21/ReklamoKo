@@ -61,6 +61,15 @@ if(empty($data)){
 
                     <p class="content__comp__lbl">Address:</p>
                     <p class="content__comp__val"><?= $data['house_number'] . " " . ucwords($data['street']) . " " . ucwords($data['barangay']) . " " . ucwords($data['city']) . " " . ucwords($data['province']) ?></p>
+
+                    <div class="content__btn__cont">
+                        <form action="includes/remove-lupon.php" method="post">
+                            <input type="hidden" value="<?= $data['id'] ?>" name="luponId">
+                            <button name="removeBtn" type="submit" id="rejectComplaintBtn" class="danger-btn">
+                                Remove
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
                 <hr class="content__hr">
