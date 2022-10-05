@@ -452,7 +452,7 @@ body {
   display: none;
   gap: 1rem;
   align-items: center;
-  justify-content: end;
+  justify-content: start;
   margin-inline: 16px;
 }
 .content__page__num span {

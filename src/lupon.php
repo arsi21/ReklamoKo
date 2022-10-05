@@ -18,6 +18,7 @@ include_once "classes/lupon.php";
 $model = new Lupon();
 
 $data = $model->getAllLupon();
+$allResidentsData = $model->getAllResidents();
 
 $dataCount = count($data);
 ?>
@@ -40,6 +41,7 @@ $dataCount = count($data);
                 </form>
 
                 <div class="content__pages__indicator">
+                    <button class="success-btn" onclick="showEditComplaineeModal()">Add</button>
                     <!-- <div class="content__page__num">
                         <span>1</span><span>-</span><span>50</span><span> of </span><span>100</span>
                     </div>
@@ -93,6 +95,71 @@ $dataCount = count($data);
 
 
 
+
+        
+        <!-- modal -->
+        <div id="editComplaineeModal" class="modal2 modal2--add--comp" onclick="hideEditComplaineeModal(event)">
+            <form action="includes/add-lupon.php" method="post" id="editComplaineeModalCont" class="modal2__cont--small"  >
+                <div class="modal2__head">
+                    <span class="modal2__title">
+                        Add Lupon
+                    </span>
+                    
+                    <span id="editComplaineeModalExit" class="modal2__close"  onclick="hideEditComplaineeModal(event)">
+                        <img src="assets/icons/exit.svg" alt="" id="editComplaineeModalExitIcon">
+                    </span>
+                </div>
+
+                <div class="modal2__body--small">
+                    <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                    <label class="modal2__lbl">
+                        Lupon Name
+                    </label>
+                    <select name="residentId" id="select-name" placeholder="Please select name..." required>
+                    <option value="">Please select name...</option>
+                <?php
+                    foreach($allResidentsData as $row){
+                ?>
+                    <option value="<?= $row['id'] ?>"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
+                <?php
+                    }
+                ?>
+                </select>
+                </div>
+
+                <div class="modal2__footer">
+                    <button onclick="hideEditComplaineeModal(event)" type="button" id="editComplaineeModalCancel" class="modal2__cancel">Cancel</button>
+
+                    <input type="submit" class="modal2__submit" value="Submit" name="submitBtn">
+                </div>
+            </form>
+        </div>
+
+
+
+<script>
+const editComplaineeModal = document.getElementById("editComplaineeModal");
+const editComplaineeModalCont = document.getElementById("editComplaineeModalCont");
+const editComplaineeModalExit = document.getElementById("editComplaineeModalExit");
+const editComplaineeModalExitIcon = document.getElementById("editComplaineeModalExitIcon");
+const editComplaineeModalCancel = document.getElementById("editComplaineeModalCancel");
+const editComplaineeModalBackground = document.getElementById("body-background");
+
+function showEditComplaineeModal() {
+    editComplaineeModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
+    editComplaineeModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
+};
+
+function hideEditComplaineeModal(event) {
+    if (editComplaineeModalExit == event.target || editComplaineeModalExitIcon == event.target || editComplaineeModalCancel == event.target) {
+        console.log(event)
+        editComplaineeModal.classList.remove("modal2--add--comp--active");//to show and hide modal
+        editComplaineeModalBackground.classList.remove("body-background--noscroll");//to remove the scroll in body
+    }
+
+    //console.log(event)
+};
+</script>
 
     
 

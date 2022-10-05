@@ -2,6 +2,28 @@
 
 class Lupon extends Dbh {
 
+
+    //set
+
+    protected function setLupon($residentId) {
+        $stmt = $this->connect()->prepare('INSERT 
+        INTO lupon 
+            (resident_id) 
+        VALUES (?)');
+    
+        if(!$stmt->execute(array($residentId))){
+            $stmt = null;
+            header("location: ../lupon.php?error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+
+
+
+
     //get
 
     public function getAllLupon() {
@@ -19,6 +41,21 @@ class Lupon extends Dbh {
         INNER JOIN postal p
         ON p.id = r.postal_id
         ORDER BY r.first_name');
+
+        $results = $stmt->fetchAll();
+
+        $stmt = null;
+
+        return $results;
+    }
+
+    public function getAllResidents() {
+        $stmt = $this->connect()->query('SELECT * 
+        FROM resident
+        WHERE id NOT IN 
+            (SELECT resident_id 
+            FROM lupon)
+        ORDER BY first_name');
 
         $results = $stmt->fetchAll();
 
