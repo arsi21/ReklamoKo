@@ -14,7 +14,7 @@ class Signup extends Dbh {
     
         if(!$stmt->execute(array($mobileNumber, $password, $accessType))){
             $stmt = null;
-            header("location: ../signup.php?error=stmtfailed");
+            header("location: ../signup.php?message=stmtfailed");
             exit();
         }
 
@@ -28,7 +28,7 @@ class Signup extends Dbh {
     
         if(!$stmt->execute(array($mobileNumber))){
             $stmt = null;
-            header("location: ../signup.php?error=stmtfailed");
+            header("location: ../signup.php?message=stmtfailed");
             exit();
         }
 

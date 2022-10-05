@@ -153,4 +153,4 @@ if(!empty($_FILES['proof3']['name'])){
 }
 
 //going back to page
-header("location: ../pending-complaint-info.php?id=$complaintId");
+header("location: ../pending-complaint-info.php?id=$complaintId&message=updatedSuccessfully");

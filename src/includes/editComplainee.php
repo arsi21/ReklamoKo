@@ -24,4 +24,4 @@ $controller->editPendingComplaintStatus($complaintId, $status);
 
 
 //going back to page
-header("location: ../pending-complaint-info.php?id=$complaintId");
+header("location: ../pending-complaint-info.php?id=$complaintId&message=updatedSuccessfully");

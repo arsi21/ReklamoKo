@@ -20,4 +20,4 @@ $controller = new LuponController();
 $controller->addLupon($residentId);
 
 //going back to page
-header("location: ../lupon.php");
+header("location: ../lupon.php?message=addedSuccessfully");

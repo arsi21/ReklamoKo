@@ -51,7 +51,7 @@ class Login extends Dbh {
     
         if(!$stmt->execute(array($residentId))){
             $stmt = null;
-            header("location: ../login.php?error=stmtfailed");
+            header("location: ../login.php?message=stmtfailed");
             exit();
         }
 
@@ -74,7 +74,7 @@ class Login extends Dbh {
     
         if(!$stmt->execute(array($userId))){
             $stmt = null;
-            header("location: ../login.php?error=stmtfailed");
+            header("location: ../login.php?message=stmtfailed");
             exit();
         }
 

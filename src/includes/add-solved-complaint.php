@@ -24,4 +24,4 @@ $controller = new OngoingComplaintInfoController();
 $controller->addSolvedComplaint($complaintId, $solvedDate);
 
 //going back to page
-header("location: ../ongoing-complaints.php");
+header("location: ../ongoing-complaints.php?message=markedAsSolvedSuccessfully");

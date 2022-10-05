@@ -1,0 +1,41 @@
+@use '../abstracts/variables';
+
+.msg {
+    z-index: 1000;
+    right: 10px;
+    bottom: 30px;
+    margin-left: 10px;
+    position: fixed;
+    display: flex;
+    gap: 0.5rem;
+    padding-block: 1.5rem;
+    padding-inline: 1rem;
+    border-radius: 6px;
+    max-width: 18rem;
+    font-size: variables.$fs-small;
+
+    p {
+        color: white;
+    }
+
+    svg {
+        fill: variables.$clr-font-0  !important;
+        height: 20px !important;
+        width: 20px !important;
+        vertical-align: middle !important;
+    }
+}
+
+.msg-success {
+    background-color: variables.$clr-btn-success;
+}
+
+.msg-danger {
+    background-color: variables.$clr-btn-danger;
+}
+
+@media (min-width: 35em) {
+    .msg {
+        min-width: 18rem;
+    }
+}

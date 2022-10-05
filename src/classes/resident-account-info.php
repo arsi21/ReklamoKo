@@ -30,7 +30,7 @@ class ResidentAccountInfo extends Dbh {
 
         if(!$stmt->execute(array($id))){
             $stmt = null;
-            header("location: ../resident-accounts.php?error=stmtfailed");
+            header("location: ../resident-accounts.php?message=stmtfailed");
             exit();
         }
 

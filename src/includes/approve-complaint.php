@@ -28,4 +28,4 @@ $controller->addOngoingComplaint($complaintId, $luponId, $scheduleDate, $schedul
 
 
 //going back to page
-header("location: ../pending-complaints.php");
+header("location: ../pending-complaints.php?message=approvedSuccessfully");

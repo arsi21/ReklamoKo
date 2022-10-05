@@ -49,7 +49,7 @@ class Dashboard extends Dbh {
 
         if(!$stmt->execute(array($year))){
             $stmt = null;
-            header("location: ../dashboard.php?error=stmtfailed");
+            header("location: ../dashboard.php?message=stmtfailed");
             exit();
         }
 

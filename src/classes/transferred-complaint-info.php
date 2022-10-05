@@ -32,7 +32,7 @@ class TransferredComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($complaintId, $residentId))){
             $stmt = null;
-            header("location: ../transferred-complaints.php?error=stmtfailed");
+            header("location: ../transferred-complaints.php?message=stmtfailed");
             exit();
         }
 
@@ -70,7 +70,7 @@ class TransferredComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../transferred-complaints.php?error=stmtfailed");
+            header("location: ../transferred-complaints.php?message=stmtfailed");
             exit();
         }
 
@@ -88,7 +88,7 @@ class TransferredComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../transferred-complaint-info.php?id=$id&error=stmtfailed");
+            header("location: ../transferred-complaint-info.php?id=$id&message=stmtfailed");
             exit();
         }
 
@@ -106,7 +106,7 @@ class TransferredComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../transferred-complaint-info.php?id=$id&error=stmtfailed");
+            header("location: ../transferred-complaint-info.php?id=$id&message=stmtfailed");
             exit();
         }
 

@@ -14,7 +14,7 @@ class Verification extends Dbh {
     
         if(!$stmt->execute(array($firstName, $middleName, $lastName, $suffix, $birthDate, $gender))){
             $stmt = null;
-            header("location: ../verification.php?error=stmtfailed");
+            header("location: ../verification.php?message=stmtfailed");
             exit();
         }
 
@@ -50,7 +50,7 @@ class Verification extends Dbh {
     
         if(!$stmt->execute(array($userId, $residentId, $frontId, $backId, $profile, $status))){
             $stmt = null;
-            header("location: ../verification.php?error=stmtfailed");
+            header("location: ../verification.php?message=stmtfailed");
             exit();
         }
 
@@ -67,7 +67,7 @@ class Verification extends Dbh {
     
         if(!$stmt->execute(array($accessType, $userId))){
             $stmt = null;
-            header("location: ../verification.php?error=stmtfailed");
+            header("location: ../verification.php?message=stmtfailed");
             exit();
         }
 

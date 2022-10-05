@@ -21,4 +21,4 @@ $controller = new OngoingComplaintInfoController();
 $controller->addMeetingSchedule($complaintId, $scheduleDate, $scheduleTime);
 
 //going back to page
-header("location: ../ongoing-complaint-info.php?id=$complaintId");
+header("location: ../ongoing-complaint-info.php?id=$complaintId&message=scheduledSuccessfully");

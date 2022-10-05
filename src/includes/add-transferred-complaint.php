@@ -24,4 +24,4 @@ $controller = new OngoingComplaintInfoController();
 $controller->addTransferredComplaint($complaintId, $transferredDate);
 
 //going back to page
-header("location: ../ongoing-complaints.php");
+header("location: ../ongoing-complaints.php?message=markedAsTransferredSuccessfully");

@@ -22,7 +22,7 @@ class PendingComplaint extends Dbh {
 
         if(!$stmt->execute(array($comlainantId))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../pending-complaints.php?message=stmtfailed");
             exit();
         }
 
@@ -62,7 +62,7 @@ class PendingComplaint extends Dbh {
 
         if(!$stmt->execute(array($id))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$id&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$id&message=stmtfailed");
             exit();
         }
 

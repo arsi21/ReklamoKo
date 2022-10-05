@@ -14,7 +14,7 @@ class PendingComplaintInfo extends Dbh {
     
         if(!$stmt->execute(array($complaintId, $luponId, $ongoingDate))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
         }
 
@@ -34,7 +34,7 @@ class PendingComplaintInfo extends Dbh {
     
         if(!$stmt->execute(array($complaintId, $scheduleDate, $scheduleTime))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
         }
 
@@ -52,7 +52,7 @@ class PendingComplaintInfo extends Dbh {
     
         if(!$stmt->execute(array($status, $complaintId))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
         }
 
@@ -66,7 +66,7 @@ class PendingComplaintInfo extends Dbh {
     
         if(!$stmt->execute(array($message, $complaintId))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
         }
 
@@ -80,7 +80,7 @@ class PendingComplaintInfo extends Dbh {
     
         if(!$stmt->execute(array($complaineeId, $complaintId))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
         }
 
@@ -95,7 +95,7 @@ class PendingComplaintInfo extends Dbh {
     
         if(!$stmt->execute(array($complaintDesc, $complaintId))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
         }
 
@@ -125,7 +125,7 @@ class PendingComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../pending-complaints.php?message=stmtfailed");
             exit();
         }
 
@@ -139,7 +139,7 @@ class PendingComplaintInfo extends Dbh {
 
             if(!$stmt->execute(array($complaintId, $proof))){
                 $stmt = null;
-                header("location: ../pending-complaints.php?error=stmtfailed");
+                header("location: ../pending-complaints.php?message=stmtfailed");
                 exit();
             }
         }
@@ -163,7 +163,7 @@ class PendingComplaintInfo extends Dbh {
     
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
         }
 
@@ -173,7 +173,7 @@ class PendingComplaintInfo extends Dbh {
     
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
         }
 
@@ -183,7 +183,7 @@ class PendingComplaintInfo extends Dbh {
     
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
         }
 
@@ -223,7 +223,7 @@ class PendingComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($complaintId, $residentId))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$id&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$id&message=stmtfailed");
             exit();
         }
 
@@ -257,7 +257,7 @@ class PendingComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($id))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$id&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$id&message=stmtfailed");
             exit();
         }
 
@@ -276,7 +276,7 @@ class PendingComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($id))){
             $stmt = null;
-            header("location: ../pending-complaint.php?id=$id&error=stmtfailed");
+            header("location: ../pending-complaint.php?id=$id&message=stmtfailed");
             exit();
         }
 
@@ -312,7 +312,7 @@ class PendingComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($residentId))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../pending-complaints.php?message=stmtfailed");
             exit();
         }
 

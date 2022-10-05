@@ -28,7 +28,7 @@ class OngoingComplaint extends Dbh {
 
         if(!$stmt->execute(array($residentId))){
             $stmt = null;
-            header("location: ../ongoing-complaints.php?error=stmtfailed");
+            header("location: ../ongoing-complaints.php?message=stmtfailed");
             exit();
         }
 

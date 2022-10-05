@@ -11,7 +11,7 @@ class SubmittedApplicationInfo extends Dbh {
     
         if(!$stmt->execute(array($status, $applicationId))){
             $stmt = null;
-            header("location: ../submitted-application-info.php?id=$applicationId&error=stmtfailed");
+            header("location: ../submitted-application-info.php?id=$applicationId&message=stmtfailed");
             exit();
         }
 
@@ -26,7 +26,7 @@ class SubmittedApplicationInfo extends Dbh {
     
         if(!$stmt->execute(array($accessType, $userId))){
             $stmt = null;
-            header("location: ../submitted-application-info.php?id=$applicationId&error=stmtfailed");
+            header("location: ../submitted-application-info.php?id=$applicationId&message=stmtfailed");
             exit();
         }
 
@@ -46,7 +46,7 @@ class SubmittedApplicationInfo extends Dbh {
     
         if(!$stmt->execute(array($applicationId))){
             $stmt = null;
-            header("location: ../submitted-application-info.php?id=$applicationId&error=stmtfailed");
+            header("location: ../submitted-application-info.php?id=$applicationId&message=stmtfailed");
             exit();
         }
 
@@ -87,7 +87,7 @@ class SubmittedApplicationInfo extends Dbh {
 
         if(!$stmt->execute(array($id))){
             $stmt = null;
-            header("location: ../submitted-application.php?error=stmtfailed");
+            header("location: ../submitted-application.php?message=stmtfailed");
             exit();
         }
 

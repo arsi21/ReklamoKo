@@ -13,7 +13,7 @@ class Lupon extends Dbh {
     
         if(!$stmt->execute(array($residentId))){
             $stmt = null;
-            header("location: ../lupon.php?error=stmtfailed");
+            header("location: ../lupon.php?message=stmtfailed");
             exit();
         }
 

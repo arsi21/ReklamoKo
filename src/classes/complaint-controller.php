@@ -21,7 +21,7 @@ class ComplaintController extends Complaint {
 
     public function addComplaint() {
         if(!$this->emptyInput()){
-            header("location: ../pending-complaints.php?error=emptyInput");
+            header("location: ../pending-complaints.php?message=emptyInput");
             exit();
         }
 

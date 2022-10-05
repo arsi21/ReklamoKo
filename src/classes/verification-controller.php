@@ -4,7 +4,7 @@ class VerificationController extends Verification {
 
     public function checkResidentInfo($firstName, $middleName, $lastName, $suffix, $birthDate, $gender) {
         if(!$this->emptyInputResidentInfo($firstName, $middleName, $lastName, $suffix, $birthDate, $gender)){
-            header("location: ../verification.php?error=emptyInput");
+            header("location: ../verification.php?message=emptyInput");
             exit();
         }
 
@@ -16,7 +16,7 @@ class VerificationController extends Verification {
 
     public function addApplication($userId, $residentId, $frontId, $backId, $portraitPhoto) {
         if(!$this->emptyInput($userId, $residentId, $frontId, $backId, $portraitPhoto)){
-            header("location: ../verification.php?error=emptyInput");
+            header("location: ../verification.php?message=emptyInput");
             exit();
         }
 

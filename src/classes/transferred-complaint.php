@@ -20,7 +20,7 @@ class TransferredComplaint extends Dbh {
 
         if(!$stmt->execute(array($residentId))){
             $stmt = null;
-            header("location: ../transferred-complaints.php?error=stmtfailed");
+            header("location: ../transferred-complaints.php?message=stmtfailed");
             exit();
         }
 

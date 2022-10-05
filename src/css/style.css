@@ -1384,6 +1384,43 @@ input[type=number] {
     margin-inline: auto;
   }
 }
+.msg {
+  z-index: 1000;
+  right: 10px;
+  bottom: 30px;
+  margin-left: 10px;
+  position: fixed;
+  display: flex;
+  gap: 0.5rem;
+  padding-block: 1.5rem;
+  padding-inline: 1rem;
+  border-radius: 6px;
+  max-width: 18rem;
+  font-size: 0.9rem;
+}
+.msg p {
+  color: white;
+}
+.msg svg {
+  fill: white !important;
+  height: 20px !important;
+  width: 20px !important;
+  vertical-align: middle !important;
+}
+
+.msg-success {
+  background-color: #54b87e;
+}
+
+.msg-danger {
+  background-color: #cd4949;
+}
+
+@media (min-width: 35em) {
+  .msg {
+    min-width: 18rem;
+  }
+}
 .content .content__search__cont {
   padding-inline: 16px;
 }

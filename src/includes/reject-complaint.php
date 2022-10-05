@@ -23,4 +23,4 @@ $controller->editPendingComplaintMessage($complaintId, $message);
 
 
 //going back to page
-header("location: ../pending-complaints.php");
+header("location: ../pending-complaints.php?message=rejectedSuccessfully");

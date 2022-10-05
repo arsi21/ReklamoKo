@@ -28,7 +28,7 @@ class Complaint extends Dbh {
     
         if(!$stmt->execute(array($complainantId, $complaineeId, $complaintDescription))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../pending-complaints.php?message=stmtfailed");
             exit();
         }
 
@@ -44,7 +44,7 @@ class Complaint extends Dbh {
 
             if(!$stmt->execute(array($complaintId, $proof))){
                 $stmt = null;
-                header("location: ../pending-complaints.php?error=stmtfailed");
+                header("location: ../pending-complaints.php?message=stmtfailed");
                 exit();
             }
         }
@@ -65,7 +65,7 @@ class Complaint extends Dbh {
     
         if(!$stmt->execute(array($complaintId, $complaintDate, $status))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../pending-complaints.php?message=stmtfailed");
             exit();
         }
 

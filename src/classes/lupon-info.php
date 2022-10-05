@@ -12,7 +12,7 @@ class LuponInfo extends Dbh {
 
         if(!$stmt->execute(array($luponId))){
             $stmt = null;
-            header("location: ../lupon.php?error=stmtfailed");
+            header("location: ../lupon.php?message=stmtfailed");
             exit();
         }
     }
@@ -45,7 +45,7 @@ class LuponInfo extends Dbh {
 
         if(!$stmt->execute(array($id))){
             $stmt = null;
-            header("location: ../lupon.php?error=stmtfailed");
+            header("location: ../lupon.php?message=stmtfailed");
             exit();
         }
 

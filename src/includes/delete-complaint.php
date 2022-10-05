@@ -38,4 +38,4 @@ if(!empty($_POST['proof3'])){
 }
 
 //going back to page
-header("location: ../pending-complaints.php");
+header("location: ../pending-complaints.php?message=deletedSuccessfully");

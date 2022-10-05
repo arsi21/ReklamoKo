@@ -6,7 +6,7 @@ class OngoingComplaintInfoController extends OngoingComplaintInfo {
 
     public function addMeetingSchedule($complaintId, $scheduleDate, $scheduleTime) {
         if(!$this->emptyInput($complaintId, $scheduleDate, $scheduleTime)){
-            header("location: ../ongoing-complaint-info.php?id=$complaintId&error=emptyInput");
+            header("location: ../ongoing-complaint-info.php?id=$complaintId&message=emptyInput");
             exit();
         }
 

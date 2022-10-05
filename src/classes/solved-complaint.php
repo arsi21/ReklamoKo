@@ -20,7 +20,7 @@ class SolvedComplaint extends Dbh {
 
         if(!$stmt->execute(array($residentId))){
             $stmt = null;
-            header("location: ../solved-complaints.php?error=stmtfailed");
+            header("location: ../solved-complaints.php?message=stmtfailed");
             exit();
         }
 

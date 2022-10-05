@@ -9,7 +9,7 @@ class Resident extends Dbh {
 
         if(!$stmt->execute(array($residentId))){
             $stmt = null;
-            header("location: ../pending-complaints.php?error=stmtfailed");
+            header("location: ../pending-complaints.php?message=stmtfailed");
             exit();
         }
 

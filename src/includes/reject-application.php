@@ -24,4 +24,4 @@ $controller->removeApplication($applicationId);
 $controller->editUserAccessType($userId, $accessType);
 
 //going back to page
-header("location: ../submitted-applications.php");
+header("location: ../submitted-applications.php?message=rejectedSuccessfully");

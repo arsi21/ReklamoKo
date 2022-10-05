@@ -20,4 +20,4 @@ $controller->removeLupon($luponId);
 
 
 //going back to page
-header("location: ../lupon.php");
+header("location: ../lupon.php?message=removedSuccessfully");

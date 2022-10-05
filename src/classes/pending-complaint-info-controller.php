@@ -6,7 +6,7 @@ class PendingComplaintInfoController extends PendingComplaintInfo {
 
     public function addOngoingComplaint($complaintId, $luponId, $scheduleDate, $scheduleTime, $ongoingDate) {
         if(!$this->emptyInput($complaintId, $luponId, $scheduleDate, $scheduleTime)){
-            header("location: ../pending-complaint-info.php?id=$complaintId&error=emptyInput");
+            header("location: ../pending-complaint-info.php?id=$complaintId&message=emptyInput");
             exit();
         }
 
@@ -27,7 +27,7 @@ class PendingComplaintInfoController extends PendingComplaintInfo {
 
     public function editPendingComplaintMessage($complaintId, $message) {
         if(!$this->emptyInputMessage($message)){
-            header("location: ../pending-complaint-info.php?id=$complaintId&error=emptyInput");
+            header("location: ../pending-complaint-info.php?id=$complaintId&message=emptyInput");
             exit();
         }
 

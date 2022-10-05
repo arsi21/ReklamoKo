@@ -70,7 +70,7 @@ class solvedComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../solved-complaints.php?error=stmtfailed");
+            header("location: ../solved-complaints.php?message=stmtfailed");
             exit();
         }
 
@@ -88,7 +88,7 @@ class solvedComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../solved-complaint-info.php?id=$id&error=stmtfailed");
+            header("location: ../solved-complaint-info.php?id=$id&message=stmtfailed");
             exit();
         }
 
@@ -106,7 +106,7 @@ class solvedComplaintInfo extends Dbh {
 
         if(!$stmt->execute(array($complaintId))){
             $stmt = null;
-            header("location: ../solved-complaint-info.php?id=$id&error=stmtfailed");
+            header("location: ../solved-complaint-info.php?id=$id&message=stmtfailed");
             exit();
         }
 
