@@ -81,6 +81,25 @@
         margin-bottom: 0.5em;
     }
 
+    &__comp__edit {
+        color: variables.$clr-font-primary;
+        border: none;
+        padding-inline: 1rem;
+        padding-block: 0.6rem;
+        border-radius: 10rem;
+        background-color: variables.$clr-light;
+        font-size: variables.$fs-small;
+
+        svg {
+            height: 0.9rem;
+            fill: variables.$clr-font-primary;
+        }
+
+        &:hover {
+            background-color: variables.$clr-dark-50;
+        }
+    }
+
     &__comp__val {
         margin-bottom: 2em;
     }

@@ -26,6 +26,7 @@ if($_SESSION['accessType'] == 'resident'){
     $data = $model->getUserPendingComplaint($complaintId, $residentId);
     $proofData = $model->getComplaintProofs($complaintId);
     $luponData = $model->getLupons();
+    $residentsData = $model->getResidents($residentId);
 }elseif($_SESSION['accessType'] == 'admin'){
     //get data from database
     $data = $model->getPendingComplaint($complaintId);
@@ -57,10 +58,6 @@ if(empty($data)){
             <?php 
                 if($_SESSION['accessType'] == "resident"){
             ?>
-                    <button id="editComplaintBtn" class="content__action" onclick="showEditComplaintModal()">
-                        <img src="assets/icons/edit.svg" alt="edit button">
-                    </button>
-
                     <form action="includes/delete-complaint.php" method="post">
                         <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                 <?php
@@ -117,18 +114,54 @@ if(empty($data)){
                 <?php 
                     }
                 ?>
-                    <p class="content__comp__lbl">Name of person being complained about:</p>
+                    <p class="content__comp__lbl">Name of person being complained about: 
+                <?php 
+                    if($_SESSION['accessType'] == "resident"){
+                ?>
+                        <button class="content__comp__edit" onclick="showEditComplaineeModal()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z"/>
+                            </svg>Edit
+                        </button>
+                <?php 
+                    }
+                ?>
+                    </p>
                     <p class="content__comp__val"><?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?></p>
 
-                    <p class="content__comp__lbl">Complaint Description:</p>
+                    <p class="content__comp__lbl">Complaint Description: 
+                <?php 
+                    if($_SESSION['accessType'] == "resident"){
+                ?>
+                        <button class="content__comp__edit" onclick="showEditComplaintDescModal()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z"/>
+                            </svg>Edit
+                        </button>
+                <?php 
+                    }
+                ?>
+                    </p>
                     <p class="content__comp__val"><?= $data['complaint_description'] ?></p>
 
                 <?php
-                    if(count($proofData) != 0){
+                    //if(count($proofData) != 0){
                 ?>
-                    <p class="content__comp__lbl">Proof/Pictures:</p>
+                    <p class="content__comp__lbl">Proof/Pictures: 
+                <?php 
+                    if($_SESSION['accessType'] == "resident"){
+                ?>
+                        <button class="content__comp__edit" onclick="showEditComplaintProofModal()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z"/>
+                            </svg>Edit
+                        </button>
                 <?php 
                     }
+                ?>
+                    </p>
+                <?php 
+                    //}
                 ?> 
 
                     <div class="content__proof__cont">
@@ -251,67 +284,173 @@ if(empty($data)){
 
 
 
+
+        
+
+
         <!-- modal -->
-        <div id="editComplaintModal" class="modal2 modal2--add--comp">
-            <form action="" id="editComplaintModalCont" class="modal2__cont">
+        <div id="editComplaineeModal" class="modal2 modal2--add--comp" onclick="hideEditComplaineeModal(event)">
+            <form action="includes/editComplainee.php" method="post" id="editComplaineeModalCont" class="modal2__cont--small"  >
                 <div class="modal2__head">
                     <span class="modal2__title">
                         Edit Complaint
                     </span>
                     
-                    <span id="editComplaintModalExit" class="modal2__close">
-                        <img src="assets/icons/exit.svg" alt="">
+                    <span id="editComplaineeModalExit" class="modal2__close"  onclick="hideEditComplaineeModal(event)">
+                        <img src="assets/icons/exit.svg" alt="" id="editComplaineeModalExitIcon">
+                    </span>
+                </div>
+
+                <div class="modal2__body--small">
+                    <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                    <label class="modal2__lbl">
+                        Name of person being complained about
+                    </label>
+                    <select name="complaineeId" id="select-name" placeholder="Please select name..." required>
+                    <option value="">Please select name...</option>
+                <?php
+                    foreach($residentsData as $row){
+                ?>
+                    <option value="<?= $row['id'] ?>"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
+                <?php
+                    }
+                ?>
+                </select>
+                </div>
+
+                <div class="modal2__footer">
+                    <button onclick="hideEditComplaineeModal(event)" type="button" id="editComplaineeModalCancel" class="modal2__cancel">Cancel</button>
+
+                    <input type="submit" class="modal2__submit" value="Submit" name="editComplaineeBtn">
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+                
+
+
+        <!-- modal -->
+        <div id="editComplaintDescModal" class="modal2 modal2--add--comp" onclick="hideEditComplaintDescModal(event)">
+            <form action="includes/editComplaintDesc.php" method="post" id="editComplaintDescModalCont" class="modal2__cont--small"  >
+                <div class="modal2__head">
+                    <span class="modal2__title">
+                        Edit Complaint
+                    </span>
+                    
+                    <span id="editComplaintDescModalExit" class="modal2__close"  onclick="hideEditComplaintDescModal(event)">
+                        <img src="assets/icons/exit.svg" alt="" id="editComplaintDescModalExitIcon">
+                    </span>
+                </div>
+
+                <div class="modal2__body--small">
+                    <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                    <label class="modal2__lbl">
+                        Complaint description
+                    </label>
+                    <textarea class="modal2__input" name="complaintDescription" required></textarea>
+                </div>
+
+                <div class="modal2__footer">
+                    <button onclick="hideEditComplaintDescModal(event)" type="button" id="editComplaintDescModalCancel" class="modal2__cancel">Cancel</button>
+
+                    <input type="submit" class="modal2__submit" value="Submit" name="editComplaintDescBtn">
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+                
+
+
+        <!-- modal -->
+        <div id="editComplaintProofModal" class="modal2 modal2--add--comp" onclick="hideEditComplaintProofModal(event)">
+            <form action="includes/edit-complaint-proof.php" method="post" id="editComplaintProofModalCont" class="modal2__cont" enctype="multipart/form-data">
+                <div class="modal2__head">
+                    <span class="modal2__title">
+                        Edit Complaint
+                    </span>
+                    
+                    <span id="editComplaintProofModalExit" class="modal2__close"  onclick="hideEditComplaintDescModal(event)">
+                        <img src="assets/icons/exit.svg" alt="" id="editComplaintProofModalExitIcon">
                     </span>
                 </div>
 
                 <div class="modal2__body">
-                    <label class="modal2__lbl">
-                        Name of person being complained about
-                    </label>
-                    <input type="text" class="modal2__input" name="compPerson" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>">
-
-                    <label class="modal2__lbl">
-                        Complain description
-                    </label>
-                    <textarea class="modal2__input" name="complainDesc"><?= $data['complaint_description'] ?></textarea>
+                    <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
 
                     <p class="modal2__lbl">
                         Proof/Pictures (Optional)
                     </p>
 
-                    <div class="modal2__img__prev__cont">
-                        <div class="modal2__img__prev">
-                            <!-- <img id=img-prev" /> -->
-                        </div>
-                        <div class="modal2__img__prev">
-                            <!-- <img id=img-prev" /> -->
-                        </div>
-                        <div class="modal2__img__prev">
-                            <!-- <img id=img-prev" /> -->
-                        </div>
-                        <div class="modal2__img__prev">
-                            <!-- <img id=img-prev" /> -->
-                        </div>
-                        <div class="modal2__img__prev">
-                            <!-- <img id=img-prev" /> -->
-                        </div>
-                    </div>
-
-                    <label class="modal2__upload__lbl" for="upload-pic">
-                        <input id="upload-pic" class="modal2__upload__input" type="file"
-                        name="complainProof[]" multiple>
+                    <label class="home-card__file__lbl" for="pic_input1">
+                        <input id="pic_input1" class="home-card__input__file" type="file"
+                            name="proof1" onchange="previewImage(this, picPreview1)">
                         <img src="assets/icons/upload.svg" alt="Upload icon">
                         <span>Upload photo</span>
                     </label>
+
+                    <div class="home-card__img__preview">
+                        <img id="pic_preview1" />
+                    </div>
+
+                    <label class="home-card__file__lbl" for="pic_input2">
+                        <input id="pic_input2" class="home-card__input__file" type="file"
+                            name="proof2" onchange="previewImage(this, picPreview2)">
+                        <img src="assets/icons/upload.svg" alt="Upload icon">
+                        <span>Upload photo</span>
+                    </label>
+
+                    <div class="home-card__img__preview">
+                        <img id="pic_preview2" />
+                    </div>
+
+                    <label class="home-card__file__lbl" for="pic_input3">
+                        <input id="pic_input3" class="home-card__input__file" type="file"
+                            name="proof3" onchange="previewImage(this, picPreview3)">
+                        <img src="assets/icons/upload.svg" alt="Upload icon">
+                        <span>Upload photo</span>
+                    </label>
+
+                    <div class="home-card__img__preview">
+                        <img id="pic_preview3" />
+                    </div>
                 </div>
 
                 <div class="modal2__footer">
-                    <button type="button" id="editComplaintModalCancel" class="modal2__cancel">Cancel</button>
+                    <button onclick="hideEditComplaintProofModal(event)" type="button" id="editComplaintProofModalCancel" class="modal2__cancel">Cancel</button>
 
-                    <input type="submit" class="modal2__submit" value="Submit" name="editComplaint">
+                    <input type="submit" class="modal2__submit" value="Submit" name="editComplaintProofBtn">
                 </div>
             </form>
         </div>
+
+
+
+
+
+
+
+
+
 
     <div id="image-viewer">
         <span class="close">&times;</span>
@@ -322,105 +461,7 @@ if(empty($data)){
 
 
 <script src="js/viewImage.js"></script>
-
-<script>
-//for modal
-const approveComplaintModal = document.getElementById("approveComplaintModal");
-const approveComplaintModalCont = document.getElementById("approveComplaintModalCont");
-const approveComplaintModalExit = document.getElementById("approveComplaintModalExit");
-const approveComplaintModalCancel = document.getElementById("approveComplaintModalCancel");
-const approveComplaintModalBackground = document.getElementById("body-background");
-
-function showApproveComplaintModal() {
-    approveComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-    approveComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-}
-
-
-approveComplaintModalExit.addEventListener('click', () => {
-    approveComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-    approveComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
-
-approveComplaintModalCancel.addEventListener('click', () => {
-    approveComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-    approveComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
-
-approveComplaintModal.addEventListener('click', function (event) {
-    if (!approveComplaintModalCont.contains(event.target) && approveComplaintBtn != event.target) {
-        approveComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-        approveComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-    }
-});
-
-
-
-
-
-const rejectComplaintModal = document.getElementById("rejectComplaintModal");
-const rejectComplaintModalCont = document.getElementById("rejectComplaintModalCont");
-const rejectComplaintModalExit = document.getElementById("rejectComplaintModalExit");
-const rejectComplaintModalCancel = document.getElementById("rejectComplaintModalCancel");
-const rejectComplaintModalBackground = document.getElementById("body-background");
-
-function showRejectComplaintModal() {
-    rejectComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-    rejectComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-};
-
-
-rejectComplaintModalExit.addEventListener('click', () => {
-    rejectComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-    rejectComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
-
-rejectComplaintModalCancel.addEventListener('click', () => {
-    rejectComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-    rejectComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
-
-rejectComplaintModal.addEventListener('click', function (event) {
-    if (!rejectComplaintModalCont.contains(event.target) && rejectComplaintBtn != event.target) {
-        rejectComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-        rejectComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-    }
-});
-
-
-
-
-
-
-const editComplaintModal = document.getElementById("editComplaintModal");
-const editComplaintModalCont = document.getElementById("editComplaintModalCont");
-const editComplaintModalExit = document.getElementById("editComplaintModalExit");
-const editComplaintModalCancel = document.getElementById("editComplaintModalCancel");
-const editComplaintModalBackground = document.getElementById("body-background");
-
-function showEditComplaintModal() {
-    editComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-    editComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-};
-
-
-editComplaintModalExit.addEventListener('click', () => {
-    editComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-    editComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
-
-editComplaintModalCancel.addEventListener('click', () => {
-    editComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-    editComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-});
-
-editComplaintModal.addEventListener('click', function (event) {
-    if (!editComplaintModalCont.contains(event.target) && editComplaintBtn != event.target) {
-        editComplaintModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
-        editComplaintModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
-    }
-});
-</script>
+<script src="js/pendingComplaintInfoModals.js"></script>
 
     
 

@@ -34,6 +34,18 @@ class PendingComplaintInfoController extends PendingComplaintInfo {
         $this->updatePendingComplaintMessage($complaintId, $message);
     }
 
+    public function editComplainee($complaintId, $complaineeId) {
+        $this->updateComplainee($complaintId, $complaineeId);
+    }
+
+    public function editComplaintDesc($complaintId, $complaintDesc) {
+        $this->updateComplaintDesc($complaintId, $complaintDesc);
+    }
+
+    public function editComplaintProof($complaintId, $proof1NameNew, $proof2NameNew, $proof3NameNew) {
+        $this->updateComplaintProof($complaintId, $proof1NameNew, $proof2NameNew, $proof3NameNew);
+    }
+
 
 
 

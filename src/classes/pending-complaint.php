@@ -18,7 +18,7 @@ class PendingComplaint extends Dbh {
         ON r.id = c.complainant_id
         WHERE c.complainant_id = ?
         AND pc.status != "approved"
-        ORDER BY pc.pending_date DESC');
+        ORDER BY pc.complaint_id DESC');
 
         if(!$stmt->execute(array($comlainantId))){
             $stmt = null;
@@ -46,7 +46,7 @@ class PendingComplaint extends Dbh {
         INNER JOIN resident r
         ON r.id = c.complainant_id
         WHERE pc.status != "approved"
-        ORDER BY pc.pending_date DESC');
+        ORDER BY pc.complaint_id DESC');
 
         $results = $stmt->fetchAll();
 

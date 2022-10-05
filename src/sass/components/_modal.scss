@@ -260,6 +260,17 @@
         border-radius: 6px;
     }
 
+    &__cont--small {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: calc(100% - 1rem);
+        margin: 0.5rem;
+        margin-block: 2rem;
+        background-color: variables.$clr-light;
+        border-radius: 6px;
+    }
+
     &__head {
         display: flex;
         flex-shrink: 0;
@@ -298,6 +309,11 @@
         padding: 16px;
         flex: 1 1 auto;
         overflow-y: auto;
+    }
+
+    &__body--small {
+        padding: 16px;
+        flex: 1 1 auto;
     }
 
     &__lbl {
@@ -391,6 +407,11 @@
         color: variables.$clr-font-dark-80;
         border-radius: 6px;
         border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: variables.$clr-dark-50-hover;
+        }
     }
 
     &__submit {
@@ -402,6 +423,11 @@
         color: variables.$clr-font-0;
         border-radius: 6px;
         border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: variables.$clr-accent-hover;
+        }
     }
 }
 
@@ -414,6 +440,13 @@
         height: calc(100% - 3.5rem);
         width: 500px;
         margin-block: 1.75rem;
+        margin-inline: auto;
+    }
+
+    .modal2__cont--small {
+        position: relative;
+        width: 500px;
+        margin-block: 2rem;
         margin-inline: auto;
     }
 }

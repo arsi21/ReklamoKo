@@ -708,6 +708,22 @@ body {
   color: #707070;
   margin-bottom: 0.5em;
 }
+.content__comp__edit {
+  color: #5f74cc;
+  border: none;
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
+  border-radius: 10rem;
+  background-color: white;
+  font-size: 0.9rem;
+}
+.content__comp__edit svg {
+  height: 0.9rem;
+  fill: #5f74cc;
+}
+.content__comp__edit:hover {
+  background-color: #e8e8e8;
+}
 .content__comp__val {
   margin-bottom: 2em;
 }
@@ -1207,6 +1223,16 @@ input[type=number] {
   background-color: white;
   border-radius: 6px;
 }
+.modal2__cont--small {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: calc(100% - 1rem);
+  margin: 0.5rem;
+  margin-block: 2rem;
+  background-color: white;
+  border-radius: 6px;
+}
 .modal2__head {
   display: flex;
   flex-shrink: 0;
@@ -1239,6 +1265,10 @@ input[type=number] {
   padding: 16px;
   flex: 1 1 auto;
   overflow-y: auto;
+}
+.modal2__body--small {
+  padding: 16px;
+  flex: 1 1 auto;
 }
 .modal2__lbl {
   display: block;
@@ -1317,6 +1347,10 @@ input[type=number] {
   color: #494747;
   border-radius: 6px;
   border: none;
+  cursor: pointer;
+}
+.modal2__cancel:hover {
+  background-color: #f3efef;
 }
 .modal2__submit {
   padding-block: 0.4em;
@@ -1327,6 +1361,10 @@ input[type=number] {
   color: white;
   border-radius: 6px;
   border: none;
+  cursor: pointer;
+}
+.modal2__submit:hover {
+  background-color: #9da9db;
 }
 
 @media (min-width: 35em) {
@@ -1335,6 +1373,13 @@ input[type=number] {
     height: calc(100% - 3.5rem);
     width: 500px;
     margin-block: 1.75rem;
+    margin-inline: auto;
+  }
+
+  .modal2__cont--small {
+    position: relative;
+    width: 500px;
+    margin-block: 2rem;
     margin-inline: auto;
   }
 }

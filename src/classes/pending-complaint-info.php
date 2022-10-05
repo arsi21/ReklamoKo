@@ -73,6 +73,83 @@ class PendingComplaintInfo extends Dbh {
         $stmt = null;
     }
 
+    protected function updateComplainee($complaintId, $complaineeId) {
+        $stmt = $this->connect()->prepare('UPDATE complaint
+        SET complainee_id = ?
+        WHERE id = ?');
+    
+        if(!$stmt->execute(array($complaineeId, $complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+
+    protected function updateComplaintDesc($complaintId, $complaintDesc) {
+        $stmt = $this->connect()->prepare('UPDATE complaint
+        SET complaint_description = ?
+        WHERE id = ?');
+    
+        if(!$stmt->execute(array($complaintDesc, $complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$complaintId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+
+    protected function updateComplaintProof($complaintId, $proof1NameNew, $proof2NameNew, $proof3NameNew) {  
+        //get all proofs
+        $proofs = array();
+        if(!empty($proof1NameNew)){
+            array_push($proofs, $proof1NameNew);
+        }
+
+        if(!empty($proof2NameNew)){
+            array_push($proofs, $proof2NameNew);
+        }
+
+        if(!empty($proof3NameNew)){
+            array_push($proofs, $proof3NameNew);
+        }
+
+        //delete old proof
+        $stmt = $this->connect()->prepare('DELETE 
+        FROM proof
+        WHERE complaint_id = ?');
+
+        if(!$stmt->execute(array($complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaints.php?error=stmtfailed");
+            exit();
+        }
+
+        //add new proof
+        foreach($proofs as $proof){
+            $stmt = $this->connect()->prepare('INSERT 
+            INTO proof 
+                (complaint_id, 
+                image) 
+            VALUES (?, ?)');
+
+            if(!$stmt->execute(array($complaintId, $proof))){
+                $stmt = null;
+                header("location: ../pending-complaints.php?error=stmtfailed");
+                exit();
+            }
+        }
+
+        $stmt = null;
+    }
+
+
+
+
 
 
 
@@ -142,7 +219,7 @@ class PendingComplaintInfo extends Dbh {
         WHERE c.id = ?
         AND c.complainant_id = ?
         AND pc.status != "approved"
-        ORDER BY pc.pending_date DESC');
+        ORDER BY pc.complaint_id DESC');
 
         if(!$stmt->execute(array($complaintId, $residentId))){
             $stmt = null;
@@ -218,6 +295,26 @@ class PendingComplaintInfo extends Dbh {
         FROM lupon l
         INNER JOIN resident r
         ON l.resident_id = r.id ');
+
+        $results = $stmt->fetchAll();
+
+        $stmt = null;
+
+        return $results;
+    }
+
+
+
+    public function getResidents($residentId) {
+        $stmt = $this->connect()->prepare('SELECT * 
+        FROM resident
+        WHERE id != ?');
+
+        if(!$stmt->execute(array($residentId))){
+            $stmt = null;
+            header("location: ../pending-complaints.php?error=stmtfailed");
+            exit();
+        }
 
         $results = $stmt->fetchAll();
 
