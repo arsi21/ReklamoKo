@@ -62,16 +62,16 @@ class Dashboard extends Dbh {
 
     public function getResidentAccountCounts() {
         $stmt = $this->connect()->query('SELECT 
-        (SELECT COUNT(resident_id)
-        FROM application
-        WHERE status = "approved")
+        (SELECT COUNT(id)
+        FROM user
+        WHERE access_type = "resident")
         AS with_account,
     
         (SELECT 
         COUNT(id) - 
-            (SELECT COUNT(resident_id)
-            FROM application
-            WHERE status = "approved")
+            (SELECT COUNT(id)
+            FROM user
+            WHERE access_type = "resident")
             count
         FROM resident)
         AS without_account');

@@ -6,8 +6,10 @@ if(!isset($_POST['rejectBtn'])){
 
 //Grab the data
 $applicationId = $_POST['applicationId'];
+$userId = $_POST['userId'];
 
-$status = "rejected";
+$accessType = "nonVerified";
+
 
 //include needed files
 include "../classes/dbh.php";
@@ -18,7 +20,8 @@ include "../classes/submitted-application-info-controller.php";
 $controller = new SubmittedApplicationInfoController();
 
 //validate data and add data to the database
-$controller->editApplicationStatus($applicationId, $status);
+$controller->removeApplication($applicationId);
+$controller->editUserAccessType($userId, $accessType);
 
 //going back to page
 header("location: ../submitted-applications.php");

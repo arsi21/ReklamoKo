@@ -80,6 +80,7 @@ if(empty($data)){
                     <div class="content__btn__cont">
                         <form action="includes/approve-application.php" method="post">
                             <input type="hidden" value="<?= $data['id'] ?>" name="applicationId">
+                            <input type="hidden" value="<?= $data['user_id'] ?>" name="userId">
                             <button type="submit" id="approveComplaintBtn" class="primary-btn" name="approveBtn">Approve</button>
                         </form>
                         <button id="rejectComplaintBtn" class="danger-btn" onclick="showRejectComplaintModal()">Reject</button>
@@ -95,7 +96,7 @@ if(empty($data)){
 
         <!-- modal -->
         <div id="rejectComplaintModal" class="modal2 modal2--add--comp">
-            <form action="includes/reject-application.php" id="rejectComplaintModalCont" class="modal2__cont" method="post">
+            <form action="includes/reject-application.php" method="post" id="rejectComplaintModalCont" class="modal2__cont--small">
                 <div class="modal2__head">
                     <span class="modal2__title">
                         Reject Application
@@ -106,8 +107,9 @@ if(empty($data)){
                     </span>
                 </div>
 
-                <div class="modal2__body">
+                <div class="modal2__body--small">
                     <input type="hidden" value="<?= $data['id'] ?>" name="applicationId">
+                    <input type="hidden" value="<?= $data['user_id'] ?>" name="userId">
 
                     <label class="modal2__lbl">
                         Message

@@ -19,10 +19,52 @@ class SubmittedApplicationInfo extends Dbh {
     }
 
 
+    protected function updateUserAccessType($userId, $accessType){
+        $stmt = $this->connect()->prepare('UPDATE user
+        SET access_type = ?
+        WHERE id = ?');
+    
+        if(!$stmt->execute(array($accessType, $userId))){
+            $stmt = null;
+            header("location: ../submitted-application-info.php?id=$applicationId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+
+
+
+
+    //delete
+
+    protected function deleteApplication($applicationId){
+        $stmt = $this->connect()->prepare('DELETE 
+        FROM application
+        WHERE id = ?');
+    
+        if(!$stmt->execute(array($applicationId))){
+            $stmt = null;
+            header("location: ../submitted-application-info.php?id=$applicationId&error=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+
+
+
+
+
+
+
     //get
 
     public function getSubmittedApplication($id) {
         $stmt = $this->connect()->prepare('SELECT a.id,
+        a.user_id,
         r.first_name,
         r.middle_name,
         r.last_name,
