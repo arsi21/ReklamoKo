@@ -51,7 +51,7 @@ $dataCount = count($data);
                     if($dataCount == 0){
                 ?>
                     <div class="no-data-msg">
-                        <p>No transferred complaints!</p>
+                        <p>No data found!</p>
                     </div>
                 <?php
                     }
