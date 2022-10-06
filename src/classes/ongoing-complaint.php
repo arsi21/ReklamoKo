@@ -14,7 +14,7 @@ class OngoingComplaint extends Dbh {
         INNER JOIN complaint c
         ON c.id = oc.complaint_id 
         INNER JOIN resident r
-        ON r.id = c.complainant_id
+        ON r.id = c.complainee_id
         WHERE c.complainant_id = ?
         AND c.id 
         NOT IN 
@@ -49,7 +49,7 @@ class OngoingComplaint extends Dbh {
         INNER JOIN complaint c
         ON c.id = oc.complaint_id 
         INNER JOIN resident r
-        ON r.id = c.complainant_id
+        ON r.id = c.complainee_id
         WHERE c.id 
         NOT IN 
             (SELECT complaint_id
@@ -84,7 +84,7 @@ class OngoingComplaint extends Dbh {
         INNER JOIN complaint c
         ON c.id = oc.complaint_id 
         INNER JOIN resident r
-        ON r.id = c.complainant_id
+        ON r.id = c.complainee_id
         WHERE c.complainant_id = '$residentId'
         AND c.id 
         NOT IN 
@@ -100,7 +100,7 @@ class OngoingComplaint extends Dbh {
             INNER JOIN complaint c
             ON c.id = oc.complaint_id 
             INNER JOIN resident r
-            ON r.id = c.complainant_id
+            ON r.id = c.complainee_id
             WHERE r.first_name
             LIKE '%$search%'
             OR r.last_name
@@ -124,7 +124,7 @@ class OngoingComplaint extends Dbh {
         INNER JOIN complaint c
         ON c.id = oc.complaint_id 
         INNER JOIN resident r
-        ON r.id = c.complainant_id
+        ON r.id = c.complainee_id
         WHERE c.id 
         NOT IN 
             (SELECT complaint_id
@@ -139,7 +139,7 @@ class OngoingComplaint extends Dbh {
             INNER JOIN complaint c
             ON c.id = oc.complaint_id 
             INNER JOIN resident r
-            ON r.id = c.complainant_id
+            ON r.id = c.complainee_id
             WHERE r.first_name
             LIKE '%$search%'
             OR r.last_name
