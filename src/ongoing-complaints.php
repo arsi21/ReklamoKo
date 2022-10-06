@@ -37,13 +37,13 @@ $dataCount = count($data);
             </div>
 
             <div class="content__body__cont">
-                <form class="content__search__cont" action="">
-                    <button class="content__search__btn">
+                <div class="content__search__cont">
+                    <div class="content__search__btn">
                         <img src="assets/icons/search.svg" alt="Search icon">
-                    </button>
+                    </div>
 
-                    <input class="content__search" id="search_input" type="search" name="search" placeholder="Search a complain">
-                </form>
+                    <input class="content__search" id="searchInput" type="search" name="search" placeholder="Search a complaint">
+                </div>
 
                 <div class="content__pages__indicator">
                     <!-- <div class="content__page__num">
@@ -66,7 +66,7 @@ $dataCount = count($data);
 
                 <hr class="content__hr">
 
-                <div class="content__item__list__cont">
+                <div id="dataCont" class="content__item__list__cont">
                 <?php
                     foreach($data as $row){
                 ?>
@@ -145,7 +145,7 @@ if(isset($_GET['message'])){
 
 
 
-
+<script src="js/searchOngoingComplaints.js"></script>
     
 
 <!-- include partials -->
