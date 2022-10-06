@@ -32,13 +32,13 @@ $dataCount = count($data);
             </div>
 
             <div class="content__body__cont">
-                <form class="content__search__cont" action="">
-                    <button class="content__search__btn">
+                <div class="content__search__cont">
+                    <div class="content__search__btn">
                         <img src="assets/icons/search.svg" alt="Search icon">
-                    </button>
+                    </div>
 
-                    <input class="content__search" id="search_input" type="search" name="search" placeholder="Search a complain">
-                </form>
+                    <input class="content__search" id="searchInput" type="search" name="search" placeholder="Search a complaint">
+                </div>
 
                 <div class="content__pages__indicator">
                     <button class="success-btn" onclick="showEditComplaineeModal()">Add</button>
@@ -62,7 +62,7 @@ $dataCount = count($data);
 
                 <hr class="content__hr">
 
-                <div class="content__item__list__cont">
+                <div id="dataCont" class="content__item__list__cont">
                 <?php
                     foreach($data as $row){
                 ?>
@@ -201,6 +201,9 @@ function hideEditComplaineeModal(event) {
 </script>
 
     
+
+<script src="js/searchLupon.js"></script>
+
 
 <!-- include partials -->
 <?php include_once 'partials/footer.php';?>

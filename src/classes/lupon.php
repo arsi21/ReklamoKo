@@ -63,4 +63,47 @@ class Lupon extends Dbh {
 
         return $results;
     }
+
+
+
+
+
+
+
+
+    //search
+
+    public function searchAllLupon($search) {
+        $stmt = $this->connect()->query("SELECT l.id,
+        r.first_name,
+        r.last_name,
+        r.house_number,
+        r.street,
+        r.barangay,
+        p.city,
+        p.province
+        FROM lupon l
+        INNER JOIN resident r
+        ON r.id = l.resident_id
+        INNER JOIN postal p
+        ON p.id = r.postal_id
+        WHERE l.id
+        IN (SELECT l.id
+            FROM lupon l
+            INNER JOIN resident r
+            ON r.id = l.resident_id
+            INNER JOIN postal p
+            ON p.id = r.postal_id
+            WHERE r.first_name
+            LIKE '%$search%'
+            OR r.last_name
+            LIKE '%$search%')
+        ORDER BY r.first_name");
+
+        $results = $stmt->fetchAll();
+
+        $stmt = null;
+
+        return $results;
+    }
 }
