@@ -37,7 +37,7 @@ $dataCount = count($data);
                         <img src="assets/icons/search.svg" alt="Search icon">
                     </div>
 
-                    <input class="content__search" id="searchInput" type="search" name="search" placeholder="Search a complaint">
+                    <input class="content__search" id="searchInput" type="search" name="search" placeholder="Search resident name">
                 </div>
 
                 <div class="content__pages__indicator">
