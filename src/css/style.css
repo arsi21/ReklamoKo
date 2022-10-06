@@ -449,7 +449,6 @@ body {
   margin-inline: auto;
 }
 .content__pages__indicator {
-  display: none;
   gap: 1rem;
   align-items: center;
   justify-content: start;
