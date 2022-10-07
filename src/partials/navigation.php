@@ -1,4 +1,5 @@
   <nav  id="nav" class="nav">
+        <a href="account-info.php">
             <div class="nav__profile">
                 <div class="nav__profile__pic">
                         <?php 
@@ -21,6 +22,7 @@
 
                 </div>
             </div>
+        </a>
 
             <hr class="nav__hr">
 

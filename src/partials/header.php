@@ -406,7 +406,7 @@ $residentsData = $resident->getResidents($residentId);
             </div>
 
             <div class="modal__acc__action">
-                <a class="modal__acc__link" href="#">Manage your account</a>
+                <a class="modal__acc__link" href="account-info.php">Manage your account</a>
 
                 <a class="modal__acc__btn" href="includes/logout.php">Log Out</a>
             </div>
