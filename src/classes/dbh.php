@@ -6,7 +6,7 @@ class Dbh {
             $host = "localhost";
             $user = "root";
             $pwd = "";
-            $dbName = "reklamo_ko";
+            $dbName = "reklamoko";
 
             $dsn = 'mysql:host=' . $host . ';dbname=' . $dbName;
             $dbh = new PDO($dsn, $user, $pwd);
