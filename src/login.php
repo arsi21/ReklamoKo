@@ -75,7 +75,7 @@
 
                 <!-- <a class="home-card__forgot link" href="find-account.php">Forgot password?</a> -->
 
-                <p class="home-card__p">Don't have an account? <a class="link" href="signup.php">Sign Up</a></p>
+                <p class="home-card__p home-card__p--m">Don't have an account? <a class="link" href="signup.php">Sign Up</a></p>
             </div>
 
             <img class="home-card__img" src="assets/loginImg.svg" alt="">
