@@ -9,13 +9,13 @@ class Login extends Dbh {
     
         if(!$stmt->execute(array($mobileNumber))){
             $stmt = null;
-            header("location: ../login.php?error=stmtfailed");
+            header("location: ../login.php?message=stmtfailed");
             exit();
         }
 
         if($stmt->rowCount() == 0){
             $stmt = null;
-            header("location: ../login.php?error=userNotFound&mobileNumber=$mobileNumber");
+            header("location: ../login.php?message=userNotFound&mobileNumber=$mobileNumber");
             exit();
         }
 
@@ -23,7 +23,7 @@ class Login extends Dbh {
 
         if($password != $user[0]['password']){
             $stmt = null;
-            header("location: ../login.php?error=didNotMatch&mobileNumber=$mobileNumber");
+            header("location: ../login.php?message=didNotMatch&mobileNumber=$mobileNumber");
             exit();
         }
 
