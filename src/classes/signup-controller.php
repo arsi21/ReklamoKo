@@ -15,22 +15,22 @@ class SignupController extends Signup {
 
     public function signupUser() {
         if(!$this->emptyInput()){
-            header("location: ../signup.php?message=emptyInput");
+            header("location: ../signup.php?message=emptyInput&mobileNumber=$this->mobileNumber");
             exit();
         }
 
         if(!$this->mobileNumberTakenCheck()){
-            header("location: ../signup.php?message=mobileNumberTaken");
+            header("location: ../signup.php?message=mobileNumberTaken&mobileNumber=$this->mobileNumber");
             exit();
         }
 
         if(!$this->passwordMatch()){
-            header("location: ../signup.php?message=passwordDidNotMatch");
+            header("location: ../signup.php?message=passwordDidNotMatch&mobileNumber=$this->mobileNumber");
             exit();
         }
 
         if(!$this->checkAgreeTerms()){
-            header("location: ../signup.php?message=agreeTerms");
+            header("location: ../signup.php?message=agreeTerms&mobileNumber=$this->mobileNumber");
             exit();
         }
 
