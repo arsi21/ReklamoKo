@@ -9,17 +9,15 @@
     border-radius: 6px;
     width: 100%;
     font-size: variables.$fs-small;
-    //background-color: variables.$clr-btn-danger;
     background-color: variables.$clr-dark-50;
 
     p {
-        //color: white;
         color: variables.$clr-btn-danger;
     }
 
     svg {
         fill: variables.$clr-btn-danger !important;
-        //fill: variables.$clr-font-0 !important;
+        flex-shrink: 0;
         height: 20px !important;
         width: 20px !important;
         vertical-align: middle !important;

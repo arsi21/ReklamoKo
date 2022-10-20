@@ -102,10 +102,10 @@
                             
                             </select> -->
 
-                            <div id="message" class="danger"></div>
+                            <div id="message"></div>
 
                             <div class="multi-step-form-btn-container">
-                                <span data-next class="multi-step-form-btn-next">Continue</span>
+                                <button type="button" data-next class="multi-step-form-btn-next">Continue</button>
                             </div>
                         </div>
                     </div>
@@ -176,8 +176,8 @@
                             </div>
 
                             <div class="multi-step-form-btn-container">
-                                <span data-previous class="multi-step-form-btn-prev">Previous</span>
-                                <span data-next class="multi-step-form-btn-next">Continue</span>
+                                <button type="button" data-previous class="multi-step-form-btn-prev">Previous</button>
+                                <button type="button" data-next class="multi-step-form-btn-next">Continue</button>
                             </div>
                         </div>
                     </div>
