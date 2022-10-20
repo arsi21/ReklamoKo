@@ -11,12 +11,15 @@ $residentId = $_SESSION['residentId'];
 
 include_once "classes/dbh.php";
 include_once "classes/resident.php";
+include_once "classes/complaint-type.php";
 
 //Instantiate Class
 $resident = new Resident();
+$complaintType = new ComplaintType();
 
 //get data from database
 $residentsData = $resident->getResidents($residentId);
+$complaintTypesData = $complaintType->getComplaintType();
 ?>
 <!DOCTYPE html>
 <html lang="en">

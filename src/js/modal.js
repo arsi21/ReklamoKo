@@ -20,7 +20,7 @@ modal2Cancel.addEventListener('click', () => {
 });
 
 modal2.addEventListener('click', function (event) {
-    if (!modal2Cont.contains(event.target) && addComplainBtn != event.target) {
+    if (!modal2Cont.contains(event.target)) {
         modal2.classList.toggle("modal2--add--comp--active");//to show and hide modal
         bodyBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
     }

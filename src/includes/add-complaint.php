@@ -12,6 +12,7 @@ if(!isset($_POST['submitBtn'])){
 //Grab the data
 $complainantId = $_SESSION['residentId'];
 $complaineeId = $_POST['complainee'];
+$complaintTypeId = $_POST['complaintTypeId'];
 $complaintDescription = $_POST['complaintDescription'];
 $proof1NameNew = "";
 $proof2NameNew = "";
@@ -132,7 +133,7 @@ include "../classes/complaint.php";
 include "../classes/complaint-controller.php";
 
 //instantiate class
-$complaint = new ComplaintController($complainantId, $complaineeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate);
+$complaint = new ComplaintController($complainantId, $complaineeId, $complaintTypeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate);
 
 //validate data and add data to the database
 $complaint->addComplaint();

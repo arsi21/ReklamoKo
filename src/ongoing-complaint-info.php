@@ -150,7 +150,7 @@ if(empty($data)){
 
         <!-- modal -->
         <div id="modal" class="modal2 modal2--add--comp">
-            <form action="includes/add-meeting-schedule.php" id="modalCont" class="modal2__cont" method="post">
+            <form action="includes/add-meeting-schedule.php" id="modalCont" class="modal2__cont--small" method="post">
                 <div class="modal2__head">
                     <span class="modal2__title">
                         Next Meeting Schedule
@@ -161,7 +161,7 @@ if(empty($data)){
                     </span>
                 </div>
 
-                <div class="modal2__body">
+                <div class="modal2__body--small">
 
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
 

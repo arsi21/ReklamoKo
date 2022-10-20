@@ -192,7 +192,7 @@ if(empty($data)){
 
         <!-- modal -->
         <div id="approveComplaintModal" class="modal2 modal2--add--comp">
-            <form action="includes/approve-complaint.php" id="approveComplaintModalCont" class="modal2__cont" method="post">
+            <form action="includes/approve-complaint.php" id="approveComplaintModalCont" class="modal2__cont--small" method="post">
                 <div class="modal2__head">
                     <span class="modal2__title">
                         Approve Complaint
@@ -203,7 +203,7 @@ if(empty($data)){
                     </span>
                 </div>
 
-                <div class="modal2__body">
+                <div class="modal2__body--small">
 
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                     <label class="modal2__lbl">
@@ -248,9 +248,10 @@ if(empty($data)){
 
 
 
+
         <!-- modal -->
         <div id="rejectComplaintModal" class="modal2 modal2--add--comp">
-            <form action="includes/reject-complaint.php" id="rejectComplaintModalCont" class="modal2__cont" method="post">
+            <form action="includes/reject-complaint.php" id="rejectComplaintModalCont" class="modal2__cont--small" method="post">
                 <div class="modal2__head">
                     <span class="modal2__title">
                         Reject Complaint
@@ -261,7 +262,7 @@ if(empty($data)){
                     </span>
                 </div>
 
-                <div class="modal2__body">
+                <div class="modal2__body--small">
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
 
                     <label class="modal2__lbl">

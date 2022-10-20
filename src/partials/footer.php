@@ -28,6 +28,22 @@
 
                 <div class="spacer"></div>
 
+                <label class="modal2__lbl">
+                    Complaint Type
+                </label>
+                <select name="complaintTypeId" id="select-name" placeholder="Please select complaint type..." required>
+                    <option value="">Please select complaint type...</option>
+                <?php
+                    foreach($complaintTypesData as $row){
+                ?>
+                    <option value="<?= $row['id'] ?>"><?= $row['type'] ?></option>
+                <?php
+                    }
+                ?>
+                </select>
+
+                <div class="spacer"></div>
+
                 <!-- <label class="modal2__lbl">
                     Name of person being complained about
                 </label>

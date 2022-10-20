@@ -2,7 +2,7 @@
 
 class Complaint extends Dbh {
 
-    protected function setComplaint($complainantId, $complaineeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate) {  
+    protected function setComplaint($complainantId, $complaineeId, $complaintTypeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate) {  
         //get all proofs
         $proofs = array();
         if(!empty($proof1NameNew)){
@@ -22,11 +22,12 @@ class Complaint extends Dbh {
         $stmt = $conn->prepare('INSERT 
         INTO complaint 
             (complainant_id, 
-            complainee_id, 
+            complainee_id,
+            complaint_type_id, 
             complaint_description) 
-        VALUES (?, ?, ?)');
+        VALUES (?, ?, ?, ?)');
     
-        if(!$stmt->execute(array($complainantId, $complaineeId, $complaintDescription))){
+        if(!$stmt->execute(array($complainantId, $complaineeId, $complaintTypeId, $complaintDescription))){
             $stmt = null;
             header("location: ../pending-complaints.php?message=stmtfailed");
             exit();
