@@ -114,6 +114,9 @@ if(empty($data)){
                 <?php 
                     }
                 ?>
+
+
+
                     <p class="content__comp__lbl">Name of person being complained about: 
                 <?php 
                     if($_SESSION['accessType'] == "resident"){
@@ -128,6 +131,25 @@ if(empty($data)){
                 ?>
                     </p>
                     <p class="content__comp__val"><?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?></p>
+
+
+
+                    <p class="content__comp__lbl">Complaint Type: 
+                <?php 
+                    if($_SESSION['accessType'] == "resident" || $_SESSION['accessType'] == "admin"){
+                ?>
+                        <button class="content__comp__edit" onclick="showEditComplaintTypeModal()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z"/>
+                            </svg>Edit
+                        </button>
+                <?php 
+                    }
+                ?>
+                    </p>
+                    <p class="content__comp__val"><?= $data['type'] ?></p>
+
+
 
                     <p class="content__comp__lbl">Complaint Description: 
                 <?php 
@@ -144,6 +166,9 @@ if(empty($data)){
                     </p>
                     <p class="content__comp__val"><?= $data['complaint_description'] ?></p>
 
+
+
+                    
                 <?php
                     //if(count($proofData) != 0){
                 ?>
@@ -327,6 +352,53 @@ if(empty($data)){
             </form>
         </div>
 
+
+
+
+
+
+
+
+
+
+
+        <!-- modal -->
+        <div id="editComplaintTypeModal" class="modal2 modal2--add--comp" onclick="hideEditComplaintTypeModal(event)">
+            <form action="includes/editComplaintType.php" method="post" id="editComplaintTypeModalCont" class="modal2__cont--small"  >
+                <div class="modal2__head">
+                    <span class="modal2__title">
+                        Edit Complaint
+                    </span>
+                    
+                    <span id="editComplaintTypeModalExit" class="modal2__close"  onclick="hideEditComplaintTypeModal(event)">
+                        <img src="assets/icons/exit.svg" alt="" id="editComplaintTypeModalExitIcon">
+                    </span>
+                </div>
+
+                <div class="modal2__body--small">
+                    <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                    <label class="modal2__lbl">
+                        Complaint Type
+                    </label>
+                    <select name="complaintTypeId" id="select-name" placeholder="Please select name..." required>
+                    <option value="">Please select complaint type...</option>
+                <?php
+                    foreach($complaintTypesData as $row){
+                ?>
+                    <option value="<?= $row['id'] ?>"><?= $row['type'] ?></option>
+                <?php
+                    }
+                ?>
+                </select>
+                </div>
+
+                <div class="modal2__footer">
+                    <button onclick="hideEditComplaintTypeModal(event)" type="button" id="editComplaintTypeModalCancel" class="modal2__cancel">Cancel</button>
+
+                    <input type="submit" class="modal2__submit" value="Submit" name="editComplaintTypeBtn">
+                </div>
+            </form>
+        </div>
 
 
 

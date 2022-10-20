@@ -82,6 +82,9 @@ if(empty($data)){
                     <p class="content__comp__lbl">Name of person being complained about:</p>
                     <p class="content__comp__val"><?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?></p>
 
+                    <p class="content__comp__lbl">Complaint Type:</p>
+                    <p class="content__comp__val"><?= $data['type'] ?></p>
+
                     <p class="content__comp__lbl">Complaint Description:</p>
                     <p class="content__comp__val"><?= $data['complaint_description'] ?></p>
 

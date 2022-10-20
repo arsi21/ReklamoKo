@@ -110,6 +110,34 @@ function hideEditComplaineeModal(event) {
 
 
 
+
+const editComplaintTypeModal = document.getElementById("editComplaintTypeModal");
+const editComplaintTypeModalCont = document.getElementById("editComplaintTypeModalCont");
+const editComplaintTypeModalExit = document.getElementById("editComplaintTypeModalExit");
+const editComplaintTypeModalExitIcon = document.getElementById("editComplaintTypeModalExitIcon");
+const editComplaintTypeModalCancel = document.getElementById("editComplaintTypeModalCancel");
+const editComplaintTypeModalBackground = document.getElementById("body-background");
+
+function showEditComplaintTypeModal() {
+    editComplaintTypeModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
+    editComplaintTypeModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
+};
+
+function hideEditComplaintTypeModal(event) {
+    if (editComplaintTypeModalExit == event.target || editComplaintTypeModalExitIcon == event.target || editComplaintTypeModalCancel == event.target) {
+        console.log(event)
+        editComplaintTypeModal.classList.remove("modal2--add--comp--active");//to show and hide modal
+        editComplaintTypeModalBackground.classList.remove("body-background--noscroll");//to remove the scroll in body
+    }
+
+    //console.log(event)
+};
+
+
+
+
+
+
 const editComplaintDescModal = document.getElementById("editComplaintDescModal");
 const editComplaintDescModalCont = document.getElementById("editComplaintDescModalCont");
 const editComplaintDescModalExit = document.getElementById("editComplaintDescModalExit");

@@ -88,6 +88,21 @@ class PendingComplaintInfo extends Dbh {
     }
 
 
+    protected function updateComplaintType($complaintId, $complaintTypeId) {
+        $stmt = $this->connect()->prepare('UPDATE complaint
+        SET complaint_type_id = ?
+        WHERE id = ?');
+    
+        if(!$stmt->execute(array($complaintTypeId, $complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
+
     protected function updateComplaintDesc($complaintId, $complaintDesc) {
         $stmt = $this->connect()->prepare('UPDATE complaint
         SET complaint_description = ?
@@ -205,6 +220,7 @@ class PendingComplaintInfo extends Dbh {
         r1.last_name complainant_last_name,
         r2.first_name complainee_first_name,
         r2.last_name complainee_last_name,
+        ct.type,
         c.complaint_description,
         pc.pending_date,
         pc.status,
@@ -216,6 +232,8 @@ class PendingComplaintInfo extends Dbh {
         ON c.complainant_id = r1.id
         INNER JOIN resident r2
         ON c.complainee_id = r2.id
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
         WHERE c.id = ?
         AND c.complainant_id = ?
         AND pc.status != "approved"
@@ -240,6 +258,7 @@ class PendingComplaintInfo extends Dbh {
         r1.last_name complainant_last_name,
         r2.first_name complainee_first_name,
         r2.last_name complainee_last_name,
+        ct.type,
         c.complaint_description,
         pc.pending_date,
         pc.status,
@@ -251,6 +270,8 @@ class PendingComplaintInfo extends Dbh {
         ON c.complainant_id = r1.id
         INNER JOIN resident r2
         ON c.complainee_id = r2.id
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
         WHERE c.id = ?
         AND pc.status != "approved"
         ORDER BY pc.pending_date DESC');
