@@ -1446,6 +1446,26 @@ input[type=number] {
   margin-bottom: 8px;
 }
 
+.form-error {
+  display: flex;
+  gap: 0.5rem;
+  padding-block: 1rem;
+  padding-inline: 1rem;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 0.9rem;
+  background-color: #e8e8e8;
+}
+.form-error p {
+  color: #cd4949;
+}
+.form-error svg {
+  fill: #cd4949 !important;
+  height: 20px !important;
+  width: 20px !important;
+  vertical-align: middle !important;
+}
+
 .home-body {
   overflow-x: hidden;
 }
