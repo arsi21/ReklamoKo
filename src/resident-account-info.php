@@ -1,8 +1,4 @@
 <?php
-//include all needed partials
-include_once 'partials/header.php';
-include_once 'partials/navigation.php';
-
 if(!isset($_SESSION)){
     session_start();
 }
@@ -24,6 +20,10 @@ $data = $model->getResidentAccount($userId);
 if(empty($data)){
     header("location:resident-accounts.php");
 }
+
+//include all needed partials
+include_once 'partials/header.php';
+include_once 'partials/navigation.php';
 ?>
 
 
