@@ -108,7 +108,7 @@
 
                 <li>
                     <a href="admin-accounts.php" class="nav__solved">
-                        <img src="assets/icons/resident-accounts.svg" alt="Admin accounts icon">
+                        <img src="assets/icons/admin-accounts.svg" alt="Admin accounts icon">
                         <span>Admin Accounts</span>
                     </a>
                 </li>
@@ -116,7 +116,7 @@
                 <li>
                     <a href="lupon.php" class="nav__solved">
                         <img src="assets/icons/official-accounts.svg" alt="Pacification commitee icon">
-                        <span>Pacification Committee</span>
+                        <span>Pacification Committees</span>
                     </a>
                 </li>
 
