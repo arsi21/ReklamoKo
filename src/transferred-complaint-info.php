@@ -1,8 +1,4 @@
 <?php
-//include all needed partials
-include_once 'partials/header.php';
-include_once 'partials/navigation.php';
-
 if(!isset($_SESSION)){
     session_start();
 }
@@ -39,6 +35,10 @@ $date = $data['transferred_date'];
 if(empty($data)){
     header("location: transferred-complaints.php");
 }
+
+//include all needed partials
+include_once 'partials/header.php';
+include_once 'partials/navigation.php';
 ?>
 
 

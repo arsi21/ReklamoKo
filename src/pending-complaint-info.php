@@ -1,12 +1,7 @@
 <?php
-//include all needed partials
-include_once 'partials/header.php';
-include_once 'partials/navigation.php';
-
 if(!isset($_SESSION)){
     session_start();
 }
-
 
 include_once "classes/dbh.php";
 include_once "classes/pending-complaint-info.php";
@@ -16,6 +11,8 @@ $model = new PendingComplaintInfo();
 
 //get the complaint Id
 $complaintId = $_GET['id'];
+
+$data;
 
 
 if($_SESSION['accessType'] == 'resident'){
@@ -34,11 +31,13 @@ if($_SESSION['accessType'] == 'resident'){
     $luponData = $model->getLupons();
 }
 
-if(true){
+if(empty($data)){
     header("location:pending-complaints.php");
 }
 
-//echo var_dump($data);
+//include all needed partials
+include_once 'partials/header.php';
+include_once 'partials/navigation.php';
 ?>
 
 
@@ -77,6 +76,7 @@ if(true){
                     </form>
             <?php 
                 }
+                echo gettype($data);
             ?>
                 </div>
 
