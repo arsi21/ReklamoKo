@@ -94,21 +94,28 @@
 
                 <li>
                     <a href="submitted-applications.php" class="nav__ongoing">
-                        <img src="assets/icons/submitted_application.svg" alt="On going complaints icon">
+                        <img src="assets/icons/submitted_application.svg" alt="Submitted applications icon">
                         <span>Submitted Applications</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="resident-accounts.php" class="nav__transferred">
-                        <img src="assets/icons/resident-accounts.svg" alt="Transferred complaints icon">
+                        <img src="assets/icons/resident-accounts.svg" alt="Resident accounts icon">
                         <span>Resident Accounts</span>
                     </a>
                 </li>
 
                 <li>
+                    <a href="admin-accounts.php" class="nav__solved">
+                        <img src="assets/icons/resident-accounts.svg" alt="Admin accounts icon">
+                        <span>Admin Accounts</span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="lupon.php" class="nav__solved">
-                        <img src="assets/icons/official-accounts.svg" alt="Solved complaints icon">
+                        <img src="assets/icons/official-accounts.svg" alt="Pacification commitee icon">
                         <span>Pacification Committee</span>
                     </a>
                 </li>

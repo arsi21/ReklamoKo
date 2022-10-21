@@ -1,10 +1,32 @@
 <?php 
 
-class ResidentAccountInfo extends Dbh {
+class AdminAccountInfo extends Dbh {
+
+
+
+        //update
+        protected function updateAccessType($id) {
+            $ACCESS_TYPE = "resident";
+            $stmt = $this->connect()->prepare('UPDATE user
+            SET access_type = ?
+            WHERE id = ?');
+        
+            if(!$stmt->execute(array($ACCESS_TYPE, $id))){
+                $stmt = null;
+                header("location: ../admin-account.php?message=stmtfailed");
+                exit();
+            }
+    
+            $stmt = null;
+        }
+
+
+
+
 
     //get
 
-    public function getResidentAccount($id) {
+    public function getAdminAccount($id) {
         $stmt = $this->connect()->prepare('SELECT u.id,
         r.first_name,
         r.middle_name,
@@ -27,11 +49,11 @@ class ResidentAccountInfo extends Dbh {
         INNER JOIN postal p
         ON p.id = r.postal_id
         WHERE u.id = ?
-        AND u.access_type = "resident"');
+        AND u.access_type = "admin"');
 
         if(!$stmt->execute(array($id))){
             $stmt = null;
-            header("location: ../resident-accounts.php?message=stmtfailed");
+            header("location: ../admin-accounts.php?message=stmtfailed");
             exit();
         }
 

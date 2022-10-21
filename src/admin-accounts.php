@@ -12,12 +12,12 @@ include_once 'partials/header.php';
 include_once 'partials/navigation.php';
 
 include_once "classes/dbh.php";
-include_once "classes/lupon.php";
+include_once "classes/admin-account.php";
 
 //Instantiate Class
-$model = new Lupon();
+$model = new AdminAccount();
 
-$data = $model->getAllLupon();
+$data = $model->getAdminAccounts();
 $allResidentsData = $model->getAllResidents();
 
 $dataCount = count($data);
@@ -26,9 +26,10 @@ $dataCount = count($data);
 
 
 
+
         <section id="content" class="content">
             <div class="content__title__cont">
-                <h2 class="content__title">Pacification Committee</h2>
+                <h2 class="content__title">Admin Accounts</h2>
             </div>
 
             <div class="content__body__cont">
@@ -37,7 +38,7 @@ $dataCount = count($data);
                         <img src="assets/icons/search.svg" alt="Search icon">
                     </div>
 
-                    <input class="content__search" id="searchInput" type="search" name="search" placeholder="Search pacification committee name">
+                    <input class="content__search" id="searchInput" type="search" name="search" placeholder="Search admin name">
                 </div>
 
                 <div class="content__pages__indicator">
@@ -66,7 +67,7 @@ $dataCount = count($data);
                 <?php
                     foreach($data as $row){
                 ?>
-                    <a class="content__item__link" href="lupon-info.php?id=<?= $row['id'] ?>">
+                    <a class="content__item__link" href="admin-account-info.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
                                 <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>
@@ -82,7 +83,7 @@ $dataCount = count($data);
                     if($dataCount == 0){
                 ?>
                     <div class="no-data-msg">
-                        <p>No list of lupon!</p>
+                        <p>No resident accounts!</p>
                     </div>
                 <?php
                     }
@@ -96,13 +97,13 @@ $dataCount = count($data);
 
 
 
-        
-        <!-- modal -->
-        <div id="editComplaineeModal" class="modal2 modal2--add--comp" onclick="hideEditComplaineeModal(event)">
-            <form action="includes/add-lupon.php" method="post" id="editComplaineeModalCont" class="modal2__cont--small"  >
+
+<!-- modal -->
+<div id="editComplaineeModal" class="modal2 modal2--add--comp" onclick="hideEditComplaineeModal(event)">
+            <form action="includes/add-admin.php" method="post" id="editComplaineeModalCont" class="modal2__cont--small"  >
                 <div class="modal2__head">
                     <span class="modal2__title">
-                        Add Pacification Committee
+                        Add Admin
                     </span>
                     
                     <span id="editComplaineeModalExit" class="modal2__close"  onclick="hideEditComplaineeModal(event)">
@@ -176,6 +177,11 @@ if(isset($_GET['message'])){
 
 
 
+
+
+
+
+<script src="js/searchAdminAccounts.js"></script>
 <script>
 const editComplaineeModal = document.getElementById("editComplaineeModal");
 const editComplaineeModalCont = document.getElementById("editComplaineeModalCont");
@@ -201,9 +207,6 @@ function hideEditComplaineeModal(event) {
 </script>
 
     
-
-<script src="js/searchLupon.js"></script>
-
 
 <!-- include partials -->
 <?php include_once 'partials/footer.php';?>
