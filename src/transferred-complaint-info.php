@@ -31,6 +31,11 @@ if($_SESSION['accessType'] == 'resident'){
     $meetingData = $model->getMeetingSchedules($complaintId);
 }
 
+$complainant = ucwords($data['complainant_first_name']) . " " . ucwords($data['complainant_last_name']);
+$complainee = ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']);
+$type = $data['type'];
+$date = $data['transferred_date'];
+
 if(empty($data)){
     header("location: transferred-complaints.php");
 }
@@ -54,7 +59,7 @@ if(empty($data)){
                         <img src="assets/icons/back.svg" alt="back button">
                     </a>
 
-                    <a class="success-btn" href="transfer-complaint-pdf.php" target="_blank" rel="noopener noreferrer">
+                    <a class="success-btn" href="transfer-complaint-pdf.php?complainant=<?= $complainant ?>&complainee=<?= $complainee ?>&type=<?= $type ?>&date=<?= $date ?>" target="_blank" rel="noopener noreferrer">
                         PDF
                     </a>
                 </div>

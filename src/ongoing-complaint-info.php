@@ -135,6 +135,9 @@ if(empty($data)){
 
                         <form action="includes/add-transferred-complaint.php" method="post">
                             <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                            <input type="hidden" value="<?= ucwords($data['complainant_first_name']) . " " . ucwords($data['complainant_last_name']) ?>" name="complainant">
+                            <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
+                            <input type="hidden" value="<?= $data['type'] ?>" name="type">
                             <button type="submit" class="danger-btn" name="transferredBtn">Transferred</button>
                         </form>
                     </div>

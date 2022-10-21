@@ -6,6 +6,9 @@ if(!isset($_POST['transferredBtn'])){
 
 //Grab the data
 $complaintId = $_POST['complaintId'];
+$complainant = $_POST['complainant'];
+$complainee = $_POST['complainee'];
+$type = $_POST['type'];
 $transferredDate;
 
 //get current date
@@ -24,4 +27,4 @@ $controller = new OngoingComplaintInfoController();
 $controller->addTransferredComplaint($complaintId, $transferredDate);
 
 //going back to page
-header("location: ../ongoing-complaints.php?message=markedAsTransferredSuccessfully");
+header("location: ../transfer-complaint-pdf.php?message=markedAsTransferredSuccessfully&complainant=$complainant&complainee=$complainee&type=$type&date=$transferredDate");
