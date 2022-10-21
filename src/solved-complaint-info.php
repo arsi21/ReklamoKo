@@ -88,7 +88,7 @@ if(empty($data)){
                     <p class="content__comp__lbl">Complaint Description:</p>
                     <p class="content__comp__val"><?= $data['complaint_description'] ?></p>
 
-                    <p class="content__comp__lbl">Lupon:</p>
+                    <p class="content__comp__lbl">Pacification Committee:</p>
                     <p class="content__comp__val"><?= ucwords($data['lupon_first_name']) . " " . ucwords($data['lupon_last_name']) ?></p>
 
                 <?php

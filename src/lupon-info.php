@@ -34,7 +34,7 @@ if(empty($data)){
 
         <section id="content" class="content">
             <div class="content__title__cont">
-                <h2 class="content__title">Lupon</h2>
+                <h2 class="content__title">Pacification Committee</h2>
             </div>
 
             <div class="content__body__cont">

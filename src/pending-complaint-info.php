@@ -34,9 +34,11 @@ if($_SESSION['accessType'] == 'resident'){
     $luponData = $model->getLupons();
 }
 
-if(empty($data)){
-    header("location: pending-complaints.php");
+if(true){
+    header("location:pending-complaints.php");
 }
+
+//echo var_dump($data);
 ?>
 
 
@@ -232,7 +234,7 @@ if(empty($data)){
 
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                     <label class="modal2__lbl">
-                        Lupon
+                        Pacification Committee
                     </label>
                     <select name="luponId" id="select-name" placeholder="Please select name..." required>
                         <option value="">Please select name...</option>

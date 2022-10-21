@@ -109,7 +109,7 @@
                 <li>
                     <a href="lupon.php" class="nav__solved">
                         <img src="assets/icons/official-accounts.svg" alt="Solved complaints icon">
-                        <span>Lupon</span>
+                        <span>Pacification Committee</span>
                     </a>
                 </li>
 

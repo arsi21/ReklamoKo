@@ -28,7 +28,7 @@ $dataCount = count($data);
 
         <section id="content" class="content">
             <div class="content__title__cont">
-                <h2 class="content__title">Lupon</h2>
+                <h2 class="content__title">Pacification Committee</h2>
             </div>
 
             <div class="content__body__cont">
@@ -37,7 +37,7 @@ $dataCount = count($data);
                         <img src="assets/icons/search.svg" alt="Search icon">
                     </div>
 
-                    <input class="content__search" id="searchInput" type="search" name="search" placeholder="Search lupon name">
+                    <input class="content__search" id="searchInput" type="search" name="search" placeholder="Search pacification committee name">
                 </div>
 
                 <div class="content__pages__indicator">
@@ -102,7 +102,7 @@ $dataCount = count($data);
             <form action="includes/add-lupon.php" method="post" id="editComplaineeModalCont" class="modal2__cont--small"  >
                 <div class="modal2__head">
                     <span class="modal2__title">
-                        Add Lupon
+                        Add Pacification Committee
                     </span>
                     
                     <span id="editComplaineeModalExit" class="modal2__close"  onclick="hideEditComplaineeModal(event)">
@@ -113,7 +113,7 @@ $dataCount = count($data);
                 <div class="modal2__body--small">
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                     <label class="modal2__lbl">
-                        Lupon Name
+                        Pacification Committee Name
                     </label>
                     <select name="residentId" id="select-name" placeholder="Please select name..." required>
                     <option value="">Please select name...</option>
