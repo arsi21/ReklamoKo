@@ -36,8 +36,8 @@ class PDF extends FPDF{
     function SubHeading($complainant, $complainee, $type, $SUB_HEADING)
     {
         $this->SetFont('Arial','B',12);
-        $this->Cell(190,15,$SUB_HEADING,0,0,'C');
-        $this->Ln(30);
+        $this->Cell(190,10,$SUB_HEADING,0,0,'C');
+        $this->Ln(20);
         $this->SetFont('Arial','',12);
         $this->Cell(190,5,$complainant,0,0,'C');
         $this->Ln();
@@ -53,7 +53,7 @@ class PDF extends FPDF{
         $this->Cell(95,7,$type,0,0,'C');
         $this->Ln();
         $this->SetFont('Arial','B',12);
-        $this->Cell(95,7,'(Ipinagsusumbong)',0,0,'C');
+        $this->Cell(95,3,'(Ipinagsusumbong)',0,0,'C');
         $this->Ln(20);
         $this->SetFont('Arial','B',15);
         $this->Cell(190,5,'PAGPAPATUNAY PARA MAGHAIN NG PORMAL NA SAKDAL',0,0,'C');
@@ -69,7 +69,7 @@ class PDF extends FPDF{
         $this->Ln(10);
         $this->SetFont('Arial','B',12);
         $this->Cell(190,10,'NAGPAPATUNAY:',0,0,'C');
-        $this->Ln(20);
+        $this->Ln(30);
         $this->SetFont('Arial','',12);
         $this->Cell(95,7,'ESTANISLAO DELA CRUZ',0,0,'C');
         $this->Cell(95,7,'PEDRO DELA CRUZ',0,0,'C');
