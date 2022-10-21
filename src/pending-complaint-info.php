@@ -12,8 +12,6 @@ $model = new PendingComplaintInfo();
 //get the complaint Id
 $complaintId = $_GET['id'];
 
-$data;
-
 
 if($_SESSION['accessType'] == 'resident'){
     //get resident id
@@ -76,7 +74,6 @@ include_once 'partials/navigation.php';
                     </form>
             <?php 
                 }
-                echo gettype($data);
             ?>
                 </div>
 
