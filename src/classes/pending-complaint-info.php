@@ -41,6 +41,51 @@ class PendingComplaintInfo extends Dbh {
         $stmt = null;
     }
 
+    protected function setComment($complaintId, $message) {
+        $stmt = $this->connect()->prepare('SELECT
+        COUNT(id)
+        AS count
+        FROM comment
+        WHERE complaint_id = ?');
+
+        if(!$stmt->execute(array($complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+            exit();
+        }
+        
+        $result = $stmt->fetch();
+
+        if($result['count'] == 0){
+            $stmt = $this->connect()->prepare('INSERT 
+            INTO comment
+                (complaint_id, 
+                message) 
+            VALUES (?, ?)');
+        
+            if(!$stmt->execute(array($complaintId, $message))){
+                $stmt = null;
+                header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+                exit();
+            }
+        }else{
+            $stmt = $this->connect()->prepare('UPDATE 
+            comment
+            SET message = ? 
+            WHERE complaint_id = ?');
+        
+            if(!$stmt->execute(array($message, $complaintId))){
+                $stmt = null;
+                header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+                exit();
+            }
+        }
+
+        
+
+        $stmt = null;
+    }
+
 
 
 
@@ -59,19 +104,6 @@ class PendingComplaintInfo extends Dbh {
         $stmt = null;
     }
 
-    protected function updatePendingComplaintMessage($complaintId, $message) {
-        $stmt = $this->connect()->prepare('UPDATE pending_complaint
-        SET message = ?
-        WHERE complaint_id = ?');
-    
-        if(!$stmt->execute(array($message, $complaintId))){
-            $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
-            exit();
-        }
-
-        $stmt = null;
-    }
 
     protected function updateComplainee($complaintId, $complaineeId) {
         $stmt = $this->connect()->prepare('UPDATE complaint
@@ -224,7 +256,7 @@ class PendingComplaintInfo extends Dbh {
         c.complaint_description,
         pc.pending_date,
         pc.status,
-        pc.message
+        cm.message
         FROM pending_complaint pc
         INNER JOIN complaint c
         ON c.id = pc.complaint_id 
@@ -234,6 +266,8 @@ class PendingComplaintInfo extends Dbh {
         ON c.complainee_id = r2.id
         INNER JOIN complaint_type ct
         ON c.complaint_type_id = ct.id
+        INNER JOIN comment cm
+        ON cm.complaint_id = c.id 
         WHERE c.id = ?
         AND c.complainant_id = ?
         AND pc.status != "approved"
@@ -262,7 +296,7 @@ class PendingComplaintInfo extends Dbh {
         c.complaint_description,
         pc.pending_date,
         pc.status,
-        pc.message
+        cm.message
         FROM pending_complaint pc
         INNER JOIN complaint c
         ON c.id = pc.complaint_id 
@@ -272,6 +306,8 @@ class PendingComplaintInfo extends Dbh {
         ON c.complainee_id = r2.id
         INNER JOIN complaint_type ct
         ON c.complaint_type_id = ct.id
+        INNER JOIN comment cm
+        ON cm.complaint_id = c.id 
         WHERE c.id = ?
         AND pc.status != "approved"
         ORDER BY pc.pending_date DESC');

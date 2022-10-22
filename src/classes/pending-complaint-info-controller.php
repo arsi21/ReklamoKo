@@ -14,6 +14,15 @@ class PendingComplaintInfoController extends PendingComplaintInfo {
     }
 
 
+    public function addComment($complaintId, $message) {
+        if(!$this->emptyInputMessage($message)){
+            header("location: ../pending-complaint-info.php?id=$complaintId&message=emptyInput");
+            exit();
+        }
+
+        $this->setComment($complaintId, $message);
+    }
+
 
 
 
@@ -23,15 +32,6 @@ class PendingComplaintInfoController extends PendingComplaintInfo {
 
     public function editPendingComplaintStatus($complaintId, $status) {
         $this->updatePendingComplaintStatus($complaintId, $status);
-    }
-
-    public function editPendingComplaintMessage($complaintId, $message) {
-        if(!$this->emptyInputMessage($message)){
-            header("location: ../pending-complaint-info.php?id=$complaintId&message=emptyInput");
-            exit();
-        }
-
-        $this->updatePendingComplaintMessage($complaintId, $message);
     }
 
     public function editComplainee($complaintId, $complaineeId) {

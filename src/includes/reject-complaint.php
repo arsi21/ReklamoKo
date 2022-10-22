@@ -19,7 +19,7 @@ $controller = new PendingComplaintInfoController();
 
 //validate data and add data to the database
 $controller->editPendingComplaintStatus($complaintId, $status);
-$controller->editPendingComplaintMessage($complaintId, $message);
+$controller->addComment($complaintId, $message);
 
 
 //going back to page
