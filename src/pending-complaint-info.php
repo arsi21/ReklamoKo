@@ -29,6 +29,7 @@ if($_SESSION['accessType'] == 'resident'){
     $luponData = $model->getLupons();
 }
 
+
 if(empty($data)){
     header("location:pending-complaints.php");
 }
@@ -230,6 +231,9 @@ include_once 'partials/navigation.php';
                 <div class="modal2__body--small">
 
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                    <input type="hidden" value="<?= $data['complainant_number'] ?>" name="complainantNumber">
+                    <input type="hidden" value="<?= $data['complainee_number'] ?>" name="complaineeNumber">
+                    <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
                     <label class="modal2__lbl">
                         Pacification Committee
                     </label>

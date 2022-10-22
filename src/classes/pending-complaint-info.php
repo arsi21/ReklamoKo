@@ -250,8 +250,10 @@ class PendingComplaintInfo extends Dbh {
         $stmt = $this->connect()->prepare('SELECT c.id,
         r1.first_name complainant_first_name,
         r1.last_name complainant_last_name,
+        r1.mobile_number complainant_number,
         r2.first_name complainee_first_name,
         r2.last_name complainee_last_name,
+        r2.mobile_number complainee_number,
         ct.type,
         c.complaint_description,
         pc.pending_date,
@@ -266,7 +268,7 @@ class PendingComplaintInfo extends Dbh {
         ON c.complainee_id = r2.id
         INNER JOIN complaint_type ct
         ON c.complaint_type_id = ct.id
-        INNER JOIN comment cm
+        LEFT JOIN comment cm
         ON cm.complaint_id = c.id 
         WHERE c.id = ?
         AND c.complainant_id = ?
@@ -290,8 +292,10 @@ class PendingComplaintInfo extends Dbh {
         $stmt = $this->connect()->prepare('SELECT c.id,
         r1.first_name complainant_first_name,
         r1.last_name complainant_last_name,
+        r1.mobile_number complainant_number,
         r2.first_name complainee_first_name,
         r2.last_name complainee_last_name,
+        r2.mobile_number complainee_number,
         ct.type,
         c.complaint_description,
         pc.pending_date,
@@ -306,7 +310,7 @@ class PendingComplaintInfo extends Dbh {
         ON c.complainee_id = r2.id
         INNER JOIN complaint_type ct
         ON c.complaint_type_id = ct.id
-        INNER JOIN comment cm
+        LEFT JOIN comment cm
         ON cm.complaint_id = c.id 
         WHERE c.id = ?
         AND pc.status != "approved"
