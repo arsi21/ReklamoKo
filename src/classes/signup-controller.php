@@ -5,6 +5,7 @@ class SignupController extends Signup {
     private $password;
     private $confirmPassword;
     private $agreeTerms;
+    private $hashedPassword;
 
     public function __construct($mobileNumber, $password, $confirmPassword, $agreeTerms) {
         $this->mobileNumber = $mobileNumber;
@@ -34,7 +35,9 @@ class SignupController extends Signup {
             exit();
         }
 
-        $this->setUser($this->mobileNumber, $this->password);
+        $hashedPassword = sha1($this->password);
+
+        $this->setUser($this->mobileNumber, $hashedPassword);
     }
 
     private function emptyInput() {

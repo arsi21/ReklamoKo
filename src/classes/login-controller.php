@@ -3,6 +3,7 @@
 class LoginController extends Login {
     private $mobileNumber;
     private $password;
+    private $hashedPassword;
 
     public function __construct($mobileNumber, $password) {
         $this->mobileNumber = $mobileNumber;
@@ -15,7 +16,9 @@ class LoginController extends Login {
             exit();
         }
 
-        $this->getUser($this->mobileNumber, $this->password);
+        $hashedPassword = sha1($this->password);
+
+        $this->getUser($this->mobileNumber, $hashedPassword);
     }
 
     private function emptyInput() {
