@@ -3,16 +3,18 @@
 class Signup extends Dbh {
     
     protected function setUser($mobileNumber, $password) {
-        $accessType = "nonVerified";//default access type
+        $ACCESS_TYPE = "nonVerified";//default access type
+        $PROFILE = "default.jpg";//default profile
         $stmt = $this->connect()->prepare('INSERT 
         INTO user 
             (mobile_number, 
             password, 
+            profile,
             access_type) 
         VALUES 
-            (?, ?, ?)');
+            (?, ?, ?, ?)');
     
-        if(!$stmt->execute(array($mobileNumber, $password, $accessType))){
+        if(!$stmt->execute(array($mobileNumber, $password,$PROFILE, $ACCESS_TYPE))){
             $stmt = null;
             header("location: ../signup.php?message=stmtfailed");
             exit();

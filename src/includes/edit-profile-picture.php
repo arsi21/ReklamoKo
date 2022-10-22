@@ -68,7 +68,7 @@ $oldProfile = $userData['profile'];
 $controller->editProfile($userId, $profileNameNew);
 
 //remove old profile
-if($oldProfile != ""){
+if($oldProfile != "default.jpg"){
     $imageDestination = "../profile-uploads/".$oldProfile;
     unlink($imageDestination);
 }
