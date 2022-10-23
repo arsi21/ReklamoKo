@@ -225,6 +225,10 @@ body {
 .nav__hr {
   margin-inline: 16px;
   margin-bottom: 1rem;
+  border: 0;
+  height: 0;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 .nav__hr--ad {
   margin-top: 1rem;
@@ -327,6 +331,9 @@ body {
     padding: 10px;
   }
   .nav--desk--close .nav__complain__btn span {
+    display: none;
+  }
+  .nav--desk--close ul li a span {
     display: none;
   }
 }
@@ -531,6 +538,7 @@ body {
 .content__item__date, .content__item__status, .content__item__position {
   font-size: 0.9rem;
   font-weight: 400;
+  white-space: nowrap;
 }
 .content__item__status, .content__item__position {
   color: #5f74cc;
