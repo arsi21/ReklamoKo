@@ -130,6 +130,9 @@ include_once 'partials/navigation.php';
                 ?> 
                         <form action="includes/add-solved-complaint.php" method="post">
                             <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                            <input type="hidden" value="<?= $data['complainant_number'] ?>" name="complainantNumber">
+                            <input type="hidden" value="<?= $data['complainee_number'] ?>" name="complaineeNumber">
+                            <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
                             <button type="submit" class="primary-btn" name="solvedBtn">Solved</button>
                         </form>
 
@@ -137,6 +140,8 @@ include_once 'partials/navigation.php';
                             <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                             <input type="hidden" value="<?= ucwords($data['complainant_first_name']) . " " . ucwords($data['complainant_last_name']) ?>" name="complainant">
                             <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
+                            <input type="hidden" value="<?= $data['complainant_number'] ?>" name="complainantNumber">
+                            <input type="hidden" value="<?= $data['complainee_number'] ?>" name="complaineeNumber">
                             <input type="hidden" value="<?= $data['type'] ?>" name="type">
                             <button type="submit" class="danger-btn" name="transferredBtn">Transferred</button>
                         </form>
@@ -170,7 +175,10 @@ include_once 'partials/navigation.php';
                 <div class="modal2__body--small">
 
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
-
+                    <input type="hidden" value="<?= $data['complainant_number'] ?>" name="complainantNumber">
+                    <input type="hidden" value="<?= $data['complainee_number'] ?>" name="complaineeNumber">
+                    <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
+                    
                     <label class="modal2__lbl">
                         Schedule Date
                     </label>

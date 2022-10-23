@@ -6,6 +6,8 @@ if(!isset($_POST['rejectBtn'])){
 
 //Grab the data
 $complaintId = $_POST['complaintId'];
+$complainantNumber = $_POST['complainantNumber'];
+$complainee = $_POST['complainee'];
 $message = $_POST['message'];
 $status = "rejected";
 
@@ -21,6 +23,14 @@ $controller = new PendingComplaintInfoController();
 $controller->editPendingComplaintStatus($complaintId, $status);
 $controller->addComment($complaintId, $message);
 
+
+$CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. Your complaint against {$complainee} rejected by the admin. Message of the admin: {$message}";
+
+include "../classes/sms-sender.php";
+
+$smsSender = new SmsSender();
+//for sending sms
+$smsSender->sendSms($complainantNumber, $CONTENT);
 
 //going back to page
 header("location: ../pending-complaints.php?message=rejectedSuccessfully");

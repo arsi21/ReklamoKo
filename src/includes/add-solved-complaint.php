@@ -6,6 +6,9 @@ if(!isset($_POST['solvedBtn'])){
 
 //Grab the data
 $complaintId = $_POST['complaintId'];
+$complainantNumber = $_POST['complainantNumber'];
+$complaineeNumber = $_POST['complaineeNumber'];
+$complainee = $_POST['complainee'];
 $solvedDate;
 
 //get current date
@@ -22,6 +25,18 @@ $controller = new OngoingComplaintInfoController();
 
 //validate data and add data to the database
 $controller->addSolvedComplaint($complaintId, $solvedDate);
+
+
+//for sending message
+$COMPLAINANT_CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. Your complaint against {$complainee} has been marked as solved.";
+$COMPLAINEE_CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. The complaint against to you has been marked as solved.";
+
+include "../classes/sms-sender.php";
+
+$smsSender = new SmsSender();
+
+$smsSender->sendSms($complainantNumber, $COMPLAINANT_CONTENT);
+$smsSender->sendSms($complaineeNumber, $COMPLAINEE_CONTENT);
 
 //going back to page
 header("location: ../ongoing-complaints.php?message=markedAsSolvedSuccessfully");
