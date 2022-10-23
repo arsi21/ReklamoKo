@@ -21,8 +21,9 @@ class SmsSender {
         $token = $_ENV['TOKEN'];
         $twilio = new Client($sid, $token);
 
+        $formattedToNumber = $this->formatNumber($to);
         $message = $twilio->messages
-                            ->create($to, // to
+                            ->create($formattedToNumber, // to
                                     [
                                         "body" => $content,
                                         "from" => $FROM
@@ -30,4 +31,12 @@ class SmsSender {
                             );
     }
     
+    private function formatNumber($number){
+        $result;
+
+        $formattedNumber = substr($number, 1);
+        $result = "+63{$formattedNumber}";
+
+        return $result;
+    }
 }

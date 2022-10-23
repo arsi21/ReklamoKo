@@ -39,8 +39,8 @@ include "../classes/sms-sender.php";
 
 $smsSender = new SmsSender();
 
-$smsSender->sendSms($complainantNumber, $COMPLAINANT_CONTENT);
-$smsSender->sendSms($complaineeNumber, $COMPLAINEE_CONTENT);
+//$smsSender->sendSms($complainantNumber, $COMPLAINANT_CONTENT);
+//$smsSender->sendSms($complaineeNumber, $COMPLAINEE_CONTENT);
 
 //going back to page
 header("location: ../pending-complaints.php?message=approvedSuccessfully");
