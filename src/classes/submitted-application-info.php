@@ -33,6 +33,20 @@ class SubmittedApplicationInfo extends Dbh {
         $stmt = null;
     }
 
+    protected function updateMobileNumber($id, $number){
+        $stmt = $this->connect()->prepare('UPDATE resident
+        SET mobile_number = ?
+        WHERE id = ?');
+    
+        if(!$stmt->execute(array($number, $id))){
+            $stmt = null;
+            header("location: ../submitted-application-info.php?id=$applicationId&message=stmtfailed");
+            exit();
+        }
+
+        $stmt = null;
+    }
+
 
 
 
@@ -65,6 +79,7 @@ class SubmittedApplicationInfo extends Dbh {
     public function getSubmittedApplication($id) {
         $stmt = $this->connect()->prepare('SELECT a.id,
         a.user_id,
+        r.id resident_id,
         r.first_name,
         r.middle_name,
         r.last_name,

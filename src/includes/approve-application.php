@@ -7,6 +7,7 @@ if(!isset($_POST['approveBtn'])){
 //Grab the data
 $applicationId = $_POST['applicationId'];
 $userId = $_POST['userId'];
+$residentId = $_POST['residentId'];
 $number = $_POST['number'];
 
 $status = "approved";
@@ -23,6 +24,7 @@ $controller = new SubmittedApplicationInfoController();
 //validate data and add data to the database
 $controller->editApplicationStatus($applicationId, $status);
 $controller->editUserAccessType($userId, $accessType);
+$controller->editMobileNumber($residentId, $number);
 
 $CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. Your application for an account has been approved by the admin. You can now log in and report a complaint easily.";
 

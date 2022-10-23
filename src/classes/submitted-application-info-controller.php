@@ -12,6 +12,10 @@ class SubmittedApplicationInfoController extends SubmittedApplicationInfo {
         $this->updateUserAccessType($userId, $accessType);
     }
 
+    public function editMobileNumber($id, $number) {
+        $this->updateMobileNumber($id, $number);
+    }
+
 
 
 
