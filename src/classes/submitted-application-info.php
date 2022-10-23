@@ -69,6 +69,7 @@ class SubmittedApplicationInfo extends Dbh {
         r.middle_name,
         r.last_name,
         r.suffix,
+        u.mobile_number,
         r.house_number,
         r.street,
         r.barangay,
@@ -83,6 +84,8 @@ class SubmittedApplicationInfo extends Dbh {
         ON r.id = a.resident_id
         INNER JOIN postal p
         ON p.id = r.postal_id
+        INNER JOIN user u
+        ON u.id = a.user_id
         WHERE a.id = ?');
 
         if(!$stmt->execute(array($id))){

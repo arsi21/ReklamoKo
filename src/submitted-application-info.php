@@ -81,6 +81,7 @@ include_once 'partials/navigation.php';
                         <form action="includes/approve-application.php" method="post">
                             <input type="hidden" value="<?= $data['id'] ?>" name="applicationId">
                             <input type="hidden" value="<?= $data['user_id'] ?>" name="userId">
+                            <input type="hidden" value="<?= $data['mobile_number'] ?>" name="number">
                             <button type="submit" id="approveComplaintBtn" class="primary-btn" name="approveBtn">Approve</button>
                         </form>
                         <button id="rejectComplaintBtn" class="danger-btn" onclick="showRejectComplaintModal()">Reject</button>
@@ -110,6 +111,7 @@ include_once 'partials/navigation.php';
                 <div class="modal2__body--small">
                     <input type="hidden" value="<?= $data['id'] ?>" name="applicationId">
                     <input type="hidden" value="<?= $data['user_id'] ?>" name="userId">
+                    <input type="hidden" value="<?= $data['mobile_number'] ?>" name="number">
 
                     <label class="modal2__lbl">
                         Message
