@@ -21,6 +21,7 @@
         padding: 14px;
         display: flex;
         align-items: center;
+        width: 100%;
     }
 
     &__profile__pic {
@@ -38,13 +39,21 @@
 
     &__profile__info {
         margin-left: 3.5rem;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
     &__name {
         display: block;
         font-weight: variables.$fw-700;
         font-size: variables.$fs-regular;
+        width: 100%;
+        padding-right: 1rem;
         color: variables.$clr-font-0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     &__position {
@@ -107,6 +116,9 @@
                 width: 100%;
                 padding-block: 0.6rem;
                 padding-inline: 24px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
 
                 &:hover {
                     font-weight: variables.$fw-400;

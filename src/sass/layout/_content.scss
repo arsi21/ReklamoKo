@@ -101,6 +101,8 @@
 
     &__item__name {
         font-weight: variables.$fw-700;
+        overflow: hidden;
+        text-overflow: ellipsis;
         white-space: nowrap;
     }
 
@@ -229,6 +231,14 @@
             display: flex;
             gap: 2rem;
             align-items: center;
+        }
+
+        &__item__name {
+            min-width: 15ch;
+            max-width: 15ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 }
