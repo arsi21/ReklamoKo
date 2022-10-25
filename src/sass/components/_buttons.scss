@@ -1,7 +1,8 @@
 @use '../abstracts/variables';
 
 input[type=submit].home-card__button,
-a.home-card__button {
+a.home-card__button,
+.home-card__button {
     font-size: variables.$fs-regular;
     font-weight: variables.$fw-700;
     padding-block: 0.7em;

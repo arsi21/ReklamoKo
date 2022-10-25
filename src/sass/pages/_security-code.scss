@@ -5,6 +5,15 @@
     margin-top: 1rem;
 }
 
+#resend {
+    display: none;
+    margin-top: 1.5rem;
+}
+
+.resend-loader {
+    margin-top: 1.5rem;
+}
+
 @media (min-width: 23em) {
     .home-card__mobile__cont {
         display: grid;

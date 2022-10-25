@@ -14,30 +14,50 @@ class SignupController extends Signup {
         $this->agreeTerms = $agreeTerms;
     }
 
-    public function signupUser() {
+    public function verifyInput() {
+
+        $result;
+
         if(!$this->emptyInput()){
-            header("location: ../signup.php?message=emptyInput&mobileNumber=$this->mobileNumber");
-            exit();
+            $result = "emptyInput";
+            return $result;
         }
 
         if(!$this->mobileNumberTakenCheck()){
-            header("location: ../signup.php?message=mobileNumberTaken&mobileNumber=$this->mobileNumber");
-            exit();
+            $result = "mobileNumberTaken";
+            return $result;
         }
 
         if(!$this->passwordMatch()){
-            header("location: ../signup.php?message=passwordDidNotMatch&mobileNumber=$this->mobileNumber");
-            exit();
+            $result = "passwordDidNotMatch";
+            return $result;
         }
 
         if(!$this->checkAgreeTerms()){
-            header("location: ../signup.php?message=agreeTerms&mobileNumber=$this->mobileNumber");
-            exit();
+            $result = "agreeTerms";
+            return $result;
+        }
+
+        $result = "none";
+        
+        return $result;
+    }
+
+    public function signupUser($otp) {
+        $result;
+
+        if(!$this->verifyOtp($otp)){
+            $result = "invalid";
+            return $result;
         }
 
         $hashedPassword = sha1($this->password);
 
         $this->setUser($this->mobileNumber, $hashedPassword);
+
+        $result = "none";
+
+        return $result;
     }
 
     private function emptyInput() {
@@ -76,6 +96,23 @@ class SignupController extends Signup {
     private function checkAgreeTerms() {
         $result;
         if($this->agreeTerms != "yes"){
+            $result = false;
+        }else{
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    private function verifyOtp($otp) {
+        //start session
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        
+        $result;
+
+        if($otp != $_SESSION['otp']){
             $result = false;
         }else{
             $result = true;
