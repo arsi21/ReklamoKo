@@ -80,6 +80,8 @@ class TransferredComplaint extends Dbh {
             WHERE r.first_name
             LIKE '%$search%'
             OR r.last_name
+            LIKE '%$search%'
+            OR CONCAT(r.first_name, ' ', r.last_name)
             LIKE '%$search%')
         ORDER BY tc.transferred_date DESC");
 
@@ -112,6 +114,8 @@ class TransferredComplaint extends Dbh {
             WHERE r.first_name
             LIKE '%$search%'
             OR r.last_name
+            LIKE '%$search%'
+            OR CONCAT(r.first_name, ' ', r.last_name)
             LIKE '%$search%')
         ORDER BY tc.transferred_date DESC");
 

@@ -65,6 +65,8 @@ class ResidentAccount extends Dbh {
             WHERE r.first_name
             LIKE '%$search%'
             OR r.last_name
+            LIKE '%$search%'
+            OR CONCAT(r.first_name, ' ', r.last_name)
             LIKE '%$search%')
         ORDER BY r.first_name");
 
