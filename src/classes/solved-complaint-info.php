@@ -14,7 +14,8 @@ class solvedComplaintInfo extends Dbh {
         r3.last_name lupon_last_name,
         ct.type,
         c.complaint_description,
-        sc.solved_date
+        sc.solved_date,
+        u.profile
         FROM solved_complaint sc
         INNER JOIN complaint c
         ON c.id = sc.complaint_id 
@@ -30,6 +31,10 @@ class solvedComplaintInfo extends Dbh {
         ON l.resident_id = r3.id
         INNER JOIN complaint_type ct
         ON c.complaint_type_id = ct.id
+        INNER JOIN application a
+        ON a.resident_id = c.complainant_id
+        INNER JOIN user u
+        ON u.id = a.user_id
         WHERE c.id = ?
         AND c.complainant_id = ?');
 
@@ -56,7 +61,8 @@ class solvedComplaintInfo extends Dbh {
         r3.last_name lupon_last_name,
         ct.type,
         c.complaint_description,
-        sc.solved_date
+        sc.solved_date,
+        u.profile
         FROM solved_complaint sc
         INNER JOIN complaint c
         ON c.id = sc.complaint_id 
@@ -72,6 +78,10 @@ class solvedComplaintInfo extends Dbh {
         ON l.resident_id = r3.id
         INNER JOIN complaint_type ct
         ON c.complaint_type_id = ct.id
+        INNER JOIN application a
+        ON a.resident_id = c.complainant_id
+        INNER JOIN user u
+        ON u.id = a.user_id
         WHERE c.id = ?');
 
         if(!$stmt->execute(array($complaintId))){
