@@ -15,8 +15,8 @@ include "../classes/signup-controller.php";
 //instantiate class
 $controller = new SignupController($mobileNumber, $password, $confirmPassword, $agreeTerms);
 
-//$otp = "123456"; 
-$otp = rand(100000,999999); 
+$otp = "654321"; 
+//$otp = rand(100000,999999); 
 $_SESSION['otp'] = $otp;
 $CONTENT = "Barangay AGBANNAWAG ReklamoKo website OTP is {$otp}";
 
