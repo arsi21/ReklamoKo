@@ -21,11 +21,12 @@ class AccountInfo extends Dbh {
     }
 
     protected function updatePassword($userId, $password) {
+        $hashedPassword = sha1($password);
         $stmt = $this->connect()->prepare('UPDATE user
         SET password = ?
         WHERE id = ?');
 
-        if(!$stmt->execute(array($password, $userId))){
+        if(!$stmt->execute(array($hashedPassword, $userId))){
             $stmt = null;
             header("location: ../account-info.php?message=stmtfailed");
             exit();
