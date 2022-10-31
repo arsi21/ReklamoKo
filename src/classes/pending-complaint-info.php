@@ -258,7 +258,8 @@ class PendingComplaintInfo extends Dbh {
         c.complaint_description,
         pc.pending_date,
         pc.status,
-        cm.message
+        cm.message,
+        u.profile
         FROM pending_complaint pc
         INNER JOIN complaint c
         ON c.id = pc.complaint_id 
@@ -270,6 +271,10 @@ class PendingComplaintInfo extends Dbh {
         ON c.complaint_type_id = ct.id
         LEFT JOIN comment cm
         ON cm.complaint_id = c.id 
+        INNER JOIN application a
+        ON a.resident_id = c.complainant_id
+        INNER JOIN user u
+        ON u.id = a.user_id
         WHERE c.id = ?
         AND c.complainant_id = ?
         AND pc.status != "approved"
@@ -300,7 +305,8 @@ class PendingComplaintInfo extends Dbh {
         c.complaint_description,
         pc.pending_date,
         pc.status,
-        cm.message
+        cm.message,
+        u.profile
         FROM pending_complaint pc
         INNER JOIN complaint c
         ON c.id = pc.complaint_id 
@@ -312,6 +318,10 @@ class PendingComplaintInfo extends Dbh {
         ON c.complaint_type_id = ct.id
         LEFT JOIN comment cm
         ON cm.complaint_id = c.id 
+        INNER JOIN application a
+        ON a.resident_id = c.complainant_id
+        INNER JOIN user u
+        ON u.id = a.user_id
         WHERE c.id = ?
         AND pc.status != "approved"
         ORDER BY pc.pending_date DESC');

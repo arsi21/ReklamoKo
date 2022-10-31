@@ -83,17 +83,7 @@ include_once 'partials/navigation.php';
                 <div class="content__details__cont">
                     <div class="content__complainant__cont">
                         <div class="content__complainant__pic">
-                    <?php 
-                        if($_SESSION['profile'] != ""){
-                    ?>
-                            <img src="profile-uploads/<?= $_SESSION['profile'] ?>" alt="resident profile picture">
-                    <?php 
-                        }else{
-                    ?>
-                            <img src="profile-uploads/default.jpg" alt="resident profile picture">
-                    <?php 
-                        }
-                    ?>
+                            <img src="profile-uploads/<?= $data['profile'] ?>" alt="resident profile picture">
                         </div>
 
                         <div class="content__complainant__info">
