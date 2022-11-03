@@ -23,6 +23,21 @@ class SignupController extends Signup {
             return $result;
         }
 
+        if(!$this->validMobileNumber()){
+            $result = "invalidMobileNumber";
+            return $result;
+        }
+
+        if(!$this->validPassword()){
+            $result = "invalidPassword";
+            return $result;
+        }
+
+        if(!$this->validConfirmPassword()){
+            $result = "invalidConfirmPassword";
+            return $result;
+        }
+
         if(!$this->mobileNumberTakenCheck()){
             $result = "mobileNumberTaken";
             return $result;
@@ -45,6 +60,11 @@ class SignupController extends Signup {
 
     public function signupUser($otp) {
         $result;
+
+        if(!$this->validOtp($otp)){
+            $result = "invalid";
+            return $result;
+        }
 
         if(!$this->verifyOtp($otp)){
             $result = "invalid";
@@ -98,6 +118,58 @@ class SignupController extends Signup {
         if($this->agreeTerms != "yes"){
             $result = false;
         }else{
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    private function validMobileNumber() {
+        $result;
+        $pattern = "/^(09)\d{9}$/";
+
+        if(!preg_match($pattern, $this->mobileNumber)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    private function validPassword() {
+        $result;
+        $pattern = "/^.{4,}$/";
+
+        if(!preg_match($pattern, $this->password)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    private function validConfirmPassword() {
+        $result;
+        $pattern = "/^.{4,}$/";
+
+        if(!preg_match($pattern, $this->confirmPassword)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    private function validOTP($otp) {
+        $result;
+        $pattern = "/^\d{6}$/";
+
+        if(!preg_match($pattern, $otp)){
+            $result = false;
+        }else {
             $result = true;
         }
 
