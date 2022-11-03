@@ -26,12 +26,48 @@ class ComplaintController extends Complaint {
             exit();
         }
 
+        if(!$this->validComplainant()){
+            header("location: ../pending-complaints.php?message=invalidComplainant");
+            exit();
+        }
+
+        if(!$this->validComplainee()){
+            header("location: ../pending-complaints.php?message=invalidComplainee");
+            exit();
+        }
+
         $this->setComplaint($this->complainantId, $this->complaineeId, $this->complaintTypeId, $this->complaintDescription, $this->proof1, $this->proof2, $this->proof3, $this->complaintDate);
     }
 
     private function emptyInput() {
         $result;
         if(empty($this->complainantId) || empty($this->complaineeId) || empty($this->complaintTypeId) || empty($this->complaintDescription)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    private function validComplainant() {
+        $result;
+        $pattern = "/\D/";
+
+        if(preg_match($pattern, $this->complainantId)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    private function validComplainee() {
+        $result;
+        $pattern = "/\D/";
+
+        if(preg_match($pattern, $this->complaineeId)){
             $result = false;
         }else {
             $result = true;
