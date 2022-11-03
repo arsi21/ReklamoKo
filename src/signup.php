@@ -137,7 +137,7 @@
                             </div>
 
                             <div class="resend-cont">
-                                <p id="resend" onclick="resendOtp()" class="link">Resend</p>
+                                <span id="resend" onclick="resendOtp()" class="link">Resend</span>
                                 <div id="loader" class="loader resend-loader"></div>
                             </div>
 
