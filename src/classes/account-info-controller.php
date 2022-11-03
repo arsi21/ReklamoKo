@@ -10,6 +10,16 @@ class AccountInfoController extends AccountInfo {
     }
 
     public function editPassword($userId, $password, $confirmPassword) {
+        if(!$this->validPassword($password)){
+            header("location: ../account-info.php?message=invalidPassword");
+            exit();
+        }
+
+        if(!$this->validConfirmPassword($confirmPassword)){
+            header("location: ../account-info.php?message=invalidConfirmPassword");
+            exit();
+        }
+
         if(!$this->passwordMatch($password, $confirmPassword)){
             header("location: ../account-info.php?message=passwordDidNotMatch");
             exit();
@@ -24,6 +34,31 @@ class AccountInfoController extends AccountInfo {
 
 
 
+    private function validPassword($password) {
+        $result;
+        $pattern = "/^.{4,}$/";
+
+        if(!preg_match($pattern, $password)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    private function validConfirmPassword($confirmPassword) {
+        $result;
+        $pattern = "/^.{4,}$/";
+
+        if(!preg_match($pattern, $confirmPassword)){
+            $result = false;
+        }else {
+            $result = true;
+        }
+
+        return $result;
+    }
 
     private function passwordMatch($password, $confirmPassword) {
         $result;
