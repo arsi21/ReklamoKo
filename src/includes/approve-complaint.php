@@ -12,6 +12,8 @@ $complainee = $_POST['complainee'];
 $luponId = $_POST['luponId'];
 $scheduleDate = $_POST['scheduleDate'];
 $scheduleTime = $_POST['scheduleTime'];
+$formattedScheduleDate = date("m-d-Y", strtotime($scheduleDate));
+$formattedScheduleTime = date("g:i a", strtotime($scheduleTime));
 $ongoingDate;
 
 //get current date
@@ -31,8 +33,8 @@ $controller->addOngoingComplaint($complaintId, $luponId, $scheduleDate, $schedul
 
 
 //for sending message
-$COMPLAINANT_CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. Your complaint against {$complainee} approved by the admin. The schedule for your meeting is on {$scheduleDate} at {$scheduleTime}. Please go to the barangay hall of barangay AGBANNAWAG on the said schedule.";
-$COMPLAINEE_CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. You have a scheduled meeting on {$scheduleDate} at {$scheduleTime}. This is for a complaint reported against to you. Please go to the barangay hall of barangay AGBANNAWAG on the said schedule. Failure to attend three(3) meetings will transfer the complaint to the police.";
+$COMPLAINANT_CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. Your complaint against {$complainee} approved by the admin. The schedule for your meeting is on {$formattedScheduleDate} at {$formattedScheduleTime}. Please go to the barangay hall of barangay AGBANNAWAG on the said schedule.";
+$COMPLAINEE_CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. You have a scheduled meeting on {$formattedScheduleDate} at {$formattedScheduleTime}. This is for a complaint reported against to you. Please go to the barangay hall of barangay AGBANNAWAG on the said schedule. Failure to attend three(3) meetings will transfer the complaint to the police.";
 
 include "../classes/sms-sender.php";
 
