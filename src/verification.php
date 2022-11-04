@@ -1,4 +1,24 @@
 <?php include_once 'includes/check-access.php'; ?>
+<?php 
+ //start session
+if(!isset($_SESSION)){
+    session_start();
+}
+
+//check if they login
+if(isset($_SESSION['accessType'])){
+    if($_SESSION['accessType'] == "resident"){
+        header("location:pending-complaints.php");
+    }elseif($_SESSION['accessType'] == "admin"){
+        header("location:dashboard.php");
+    }elseif($_SESSION['accessType'] == "pendingVerification"){
+        header("location:login.php");
+    }elseif($_SESSION['accessType'] == ""){
+        header("location:login.php");
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

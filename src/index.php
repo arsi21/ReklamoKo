@@ -1,11 +1,18 @@
 <?php 
-session_start();
-
-if(isset($_SESSION['access']) && $_SESSION['access'] == "resident"){
-    header("location: pending-complaints.php");
-}elseif(isset($_SESSION['access']) && $_SESSION['access'] == "official"){
-    header("location: dashboard.php");
+ //start session
+if(!isset($_SESSION)){
+    session_start();
 }
+
+//check if they login
+if(isset($_SESSION['accessType'])){
+    if($_SESSION['accessType'] == "resident"){
+        header("location:pending-complaints.php");
+    }elseif($_SESSION['accessType'] == "admin"){
+        header("location:dashboard.php");
+    }
+}
+
 ?>
 
 <!DOCTYPE html>

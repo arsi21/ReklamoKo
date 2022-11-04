@@ -16,21 +16,21 @@ class SmsSender {
         // Find your Account SID and Auth Token at twilio.com/console
         // and set the environment variables. See http://twil.io/secure
         
-        $sid = $_ENV['SID'];
-        $token = $_ENV['TOKEN'];
-        $twilio = new Client($sid, $token);
-        $FROM = $_ENV['SENDER'];
+        // $sid = $_ENV['SID'];
+        // $token = $_ENV['TOKEN'];
+        // $twilio = new Client($sid, $token);
+        // $FROM = $_ENV['SENDER'];
 
-        $formattedToNumber = $this->formatNumber($to);
-        $message = $twilio->messages
-                            ->create($formattedToNumber, // to
-                                    [
-                                        "body" => $content,
-                                        "from" => $FROM
-                                    ]
-                            );
+        // $formattedToNumber = $this->formatNumber($to);
+        // $message = $twilio->messages
+        //                     ->create($formattedToNumber, // to
+        //                             [
+        //                                 "body" => $content,
+        //                                 "from" => $FROM
+        //                             ]
+        //                     );
 
-        // return;
+        return;
     }
     
     private function formatNumber($number){

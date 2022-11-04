@@ -1,3 +1,21 @@
+<?php 
+ //start session
+if(!isset($_SESSION)){
+    session_start();
+}
+
+//check if they login
+if(isset($_SESSION['accessType'])){
+    if($_SESSION['accessType'] == "resident"){
+        header("location:pending-complaints.php");
+    }elseif($_SESSION['accessType'] == "admin"){
+        header("location:dashboard.php");
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
