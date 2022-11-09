@@ -1,4 +1,14 @@
-<?php include_once 'includes/check-access.php'; ?>
+<?php 
+include_once 'includes/check-access.php'; 
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+if($_SESSION['accessType'] != "pendingVerification"){
+    header("location:login.php");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

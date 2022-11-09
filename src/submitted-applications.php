@@ -1,22 +1,11 @@
 <?php 
- //start session
 if(!isset($_SESSION)){
     session_start();
 }
 
-//check if they login
-if(isset($_SESSION['accessType'])){
-    if($_SESSION['accessType'] == "resident"){
-        header("location:pending-complaints.php");
-    }elseif($_SESSION['accessType'] == "admin"){
-        header("location:dashboard.php");
-    }elseif($_SESSION['accessType'] == "nonVerified"){
-        header("location:verification.php");
-    }elseif($_SESSION['accessType'] == ""){
-        header("location:login.php");
-    }
+if($_SESSION['accessType'] == "resident"){
+    header("location:pending-complaints.php");
 }
-
 
 //include all needed partials
 include_once 'partials/header.php';
