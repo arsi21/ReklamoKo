@@ -55,30 +55,8 @@ if(isset($_SESSION['accessType'])){
         <p>&copy; 2022 ReklamoKo</p>
     </footer>
 
-    <script>
-        //for mobile menu
-        const mobileBtn = document.getElementById('mobile-btn');
-        nav = document.querySelector('nav')
-        mobileBtnExit = document.getElementById('mobile-exit');
+    <script src="js/index-page.js"></script>
 
-        mobileBtn.addEventListener('click', () => {
-            nav.classList.add('menu-btn');
-        })
-
-        mobileBtnExit.addEventListener('click', () => {
-            nav.classList.remove('menu-btn');
-
-        })
-
-
-        //for redirecting to signup page using signup button
-        const signupBtn = document.querySelector('#signup');
-
-        signupBtn.addEventListener('click', function () {
-            location.href = "signup.php";
-        });
-
-    </script>
 </body>
 
 </html>
