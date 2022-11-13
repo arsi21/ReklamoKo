@@ -1,17 +1,19 @@
 <?php
 
 class ComplaintController extends Complaint {
-    private $complainantId;
-    private $complaineeId;
+    private $userId;
+    private $complainantIds;
+    private $complaineeIds;
     private $complaintDescription;
     private $proof1;
     private $proof2;
     private $proof3;
     private $complaintDate;
 
-    public function __construct($complainantId, $complaineeId, $complaintTypeId, $complaintDescription, $proof1, $proof2, $proof3, $complaintDate) {
-        $this->complainantId = $complainantId;
-        $this->complaineeId = $complaineeId;
+    public function __construct($userId, $complainantIds, $complaineeIds, $complaintTypeId, $complaintDescription, $proof1, $proof2, $proof3, $complaintDate) {
+        $this->userId = $userId;
+        $this->complainantIds = $complainantIds;
+        $this->complaineeIds = $complaineeIds;
         $this->complaintTypeId = $complaintTypeId;
         $this->complaintDescription = $complaintDescription;
         $this->proof1 = $proof1;
@@ -26,22 +28,22 @@ class ComplaintController extends Complaint {
             exit();
         }
 
-        if(!$this->validComplainant()){
-            header("location: ../pending-complaints.php?message=invalidComplainant");
-            exit();
-        }
+        // if(!$this->validComplainant()){
+        //     header("location: ../pending-complaints.php?message=invalidComplainant");
+        //     exit();
+        // }
 
-        if(!$this->validComplainee()){
-            header("location: ../pending-complaints.php?message=invalidComplainee");
-            exit();
-        }
+        // if(!$this->validComplainee()){
+        //     header("location: ../pending-complaints.php?message=invalidComplainee");
+        //     exit();
+        // }
 
-        $this->setComplaint($this->complainantId, $this->complaineeId, $this->complaintTypeId, $this->complaintDescription, $this->proof1, $this->proof2, $this->proof3, $this->complaintDate);
+        $this->setComplaint($this->userId, $this->complainantIds, $this->complaineeIds, $this->complaintTypeId, $this->complaintDescription, $this->proof1, $this->proof2, $this->proof3, $this->complaintDate);
     }
 
     private function emptyInput() {
         $result;
-        if(empty($this->complainantId) || empty($this->complaineeId) || empty($this->complaintTypeId) || empty($this->complaintDescription)){
+        if(empty($this->complaintTypeId)){
             $result = false;
         }else {
             $result = true;
@@ -50,29 +52,29 @@ class ComplaintController extends Complaint {
         return $result;
     }
 
-    private function validComplainant() {
-        $result;
-        $pattern = "/\D/";
+    // private function validComplainant() {
+    //     $result;
+    //     $pattern = "/\D/";
 
-        if(preg_match($pattern, $this->complainantId)){
-            $result = false;
-        }else {
-            $result = true;
-        }
+    //     if(preg_match($pattern, $this->complainantId)){
+    //         $result = false;
+    //     }else {
+    //         $result = true;
+    //     }
 
-        return $result;
-    }
+    //     return $result;
+    // }
 
-    private function validComplainee() {
-        $result;
-        $pattern = "/\D/";
+    // private function validComplainee() {
+    //     $result;
+    //     $pattern = "/\D/";
 
-        if(preg_match($pattern, $this->complaineeId)){
-            $result = false;
-        }else {
-            $result = true;
-        }
+    //     if(preg_match($pattern, $this->complaineeId)){
+    //         $result = false;
+    //     }else {
+    //         $result = true;
+    //     }
 
-        return $result;
-    }
+    //     return $result;
+    // }
 }

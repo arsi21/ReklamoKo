@@ -14,11 +14,11 @@ include_once "classes/pending-complaint.php";
 $model = new PendingComplaint();
 
 //get the user id
-$residentId = $_SESSION['residentId'];
+$userId = $_SESSION['userId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $data = $model->getUserPendingComplaints($residentId);
+    $data = $model->getUserPendingComplaints($userId);
 }elseif($_SESSION['accessType'] == "admin"){
     $data = $model->getAllPendingComplaints();
 }
@@ -73,8 +73,34 @@ $dataCount = count($data);
                     <a class="content__item__link" href="pending-complaint-info.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
-                                <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>
-                                <span class="content__item__desc"><?= $row['complaint_description'] ?></span>
+                        <?php 
+                            if($_SESSION['accessType'] == "admin"){
+                        ?>
+                            <div>
+                                <span class="content__item__name">
+                                    <?= ucwords($row['complainant']) ?>
+                                </span>
+                            <?php 
+                                if($row['complainant_count'] == 2){
+                            ?>
+                                <span class="content__item__name">
+                                    <?= "& " . $row['complainant_count'] - 1 . " other" ?>
+                                </span>
+                            <?php 
+                                }elseif($row['complainant_count'] > 2){
+                            ?>
+                                <span class="content__item__name">
+                                    <?= "& " . $row['complainant_count'] - 1 . " others" ?>
+                                </span>
+                            <?php 
+                                }
+                            ?>
+
+                            </div>
+                        <?php 
+                            }
+                        ?>
+                                <span class="content__item__desc"><?= $row['type'] ?></span>
                                 <span class="content__item__date"><?= $row['pending_date'] ?></span>
                             <?php 
                                 if($row['status'] == "pending"){

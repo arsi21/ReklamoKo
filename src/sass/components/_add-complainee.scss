@@ -1,0 +1,30 @@
+@use '../abstracts/variables';
+
+
+#addComplainee {
+    input[type=text] {
+        padding: 0.6em;
+        border-radius: 6px;
+        border: 2px solid #E1E1E1;
+        font-size: variables.$fs-regular;
+        width: 100%;
+    }
+}
+
+.complainee-result-cont {
+    position: relative;
+
+    #complaineeResult {
+        z-index: 999;
+        position: absolute;
+        background-color: white;
+        top: 0.3rem;
+        display: none;
+        padding: 0.6em;
+        border-radius: 6px;
+        border: 1px solid #E1E1E1;
+        font-size: variables.$fs-regular;
+        width: 100%;
+        box-shadow: 2px 2px 4px #000000;
+    }
+}

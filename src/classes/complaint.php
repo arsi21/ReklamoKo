@@ -2,7 +2,8 @@
 
 class Complaint extends Dbh {
 
-    protected function setComplaint($complainantId, $complaineeId, $complaintTypeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate) {  
+    protected function setComplaint($userId, $complainantIds, $complaineeIds, $complaintTypeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate) {  
+        
         //get all proofs
         $proofs = array();
         if(!empty($proof1NameNew)){
@@ -21,13 +22,12 @@ class Complaint extends Dbh {
 
         $stmt = $conn->prepare('INSERT 
         INTO complaint 
-            (complainant_id, 
-            complainee_id,
+            (user_id,
             complaint_type_id, 
             complaint_description) 
-        VALUES (?, ?, ?, ?)');
+        VALUES (?, ?, ?)');
     
-        if(!$stmt->execute(array($complainantId, $complaineeId, $complaintTypeId, $complaintDescription))){
+        if(!$stmt->execute(array($userId, $complaintTypeId, $complaintDescription))){
             $stmt = null;
             header("location: ../pending-complaints.php?message=stmtfailed");
             exit();
@@ -44,6 +44,36 @@ class Complaint extends Dbh {
             VALUES (?, ?)');
 
             if(!$stmt->execute(array($complaintId, $proof))){
+                $stmt = null;
+                header("location: ../pending-complaints.php?message=stmtfailed");
+                exit();
+            }
+        }
+
+        //add complainee
+        foreach($complainantIds as $complainantId){
+            $stmt = $conn->prepare('INSERT 
+            INTO complaint_complainant 
+                (complaint_id, 
+                complainant_id) 
+            VALUES (?, ?)');
+
+            if(!$stmt->execute(array($complaintId, $complainantId))){
+                $stmt = null;
+                header("location: ../pending-complaints.php?message=stmtfailed");
+                exit();
+            }
+        }
+
+        //add complainee
+        foreach($complaineeIds as $complaineeId){
+            $stmt = $conn->prepare('INSERT 
+            INTO complaint_complainee 
+                (complaint_id, 
+                complainee_id) 
+            VALUES (?, ?)');
+
+            if(!$stmt->execute(array($complaintId, $complaineeId))){
                 $stmt = null;
                 header("location: ../pending-complaints.php?message=stmtfailed");
                 exit();

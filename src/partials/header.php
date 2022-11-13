@@ -18,7 +18,7 @@ $resident = new Resident();
 $complaintType = new ComplaintType();
 
 //get data from database
-$residentsData = $resident->getResidents($residentId);
+$residentsData = $resident->getResidents();
 $complaintTypesData = $complaintType->getComplaintType();
 ?>
 <!DOCTYPE html>

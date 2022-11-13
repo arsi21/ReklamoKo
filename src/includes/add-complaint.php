@@ -10,14 +10,26 @@ if(!isset($_POST['submitBtn'])){
 }
 
 //Grab the data
-$complainantId = $_SESSION['residentId'];
-$complaineeId = $_POST['complainee'];
+$userId = $_SESSION['userId'];
+$complainantIds = "";
+$complaineeIds = "";
 $complaintTypeId = $_POST['complaintTypeId'];
 $complaintDescription = $_POST['complaintDescription'];
 $proof1NameNew = "";
 $proof2NameNew = "";
 $proof3NameNew = "";
 $complaintDate;
+
+
+if(!empty($_POST['complainants'])){
+    $complainantIds = $_POST['complainants'];
+}
+
+if(!empty($_POST['complainees'])){
+    $complaineeIds = $_POST['complainees'];
+}
+
+var_dump($complaineeIds);
 
 //get current date
 date_default_timezone_set("Asia/Manila");
@@ -133,7 +145,7 @@ include "../classes/complaint.php";
 include "../classes/complaint-controller.php";
 
 //instantiate class
-$complaint = new ComplaintController($complainantId, $complaineeId, $complaintTypeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate);
+$complaint = new ComplaintController($userId, $complainantIds, $complaineeIds, $complaintTypeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate);
 
 //validate data and add data to the database
 $complaint->addComplaint();

@@ -15,10 +15,11 @@ $complaintId = $_GET['id'];
 
 if($_SESSION['accessType'] == 'resident'){
     //get resident id
+    $userId = $_SESSION['userId'];
     $residentId = $_SESSION['residentId'];
 
     //get data from database
-    $data = $model->getUserPendingComplaint($complaintId, $residentId);
+    $data = $model->getUserPendingComplaint($complaintId, $userId);
     $proofData = $model->getComplaintProofs($complaintId);
     $luponData = $model->getLupons();
     $residentsData = $model->getResidents($residentId);
@@ -107,7 +108,7 @@ include_once 'partials/navigation.php';
 
 
 
-                    <p class="content__comp__lbl">Name of person being complained about: 
+                    <p class="content__comp__lbl">Complainant(s):
                 <?php 
                     if($_SESSION['accessType'] == "resident"){
                 ?>
@@ -120,7 +121,24 @@ include_once 'partials/navigation.php';
                     }
                 ?>
                     </p>
-                    <p class="content__comp__val"><?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?></p>
+                    <p class="content__comp__val"><?= ucwords($data['complainant']) ?></p>
+
+
+
+                    <p class="content__comp__lbl">Complainee(s):
+                <?php 
+                    if($_SESSION['accessType'] == "resident"){
+                ?>
+                        <button class="content__comp__edit" onclick="showEditComplaineeModal()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z"/>
+                            </svg>Edit
+                        </button>
+                <?php 
+                    }
+                ?>
+                    </p>
+                    <p class="content__comp__val"><?= ucwords($data['complainee']) ?></p>
 
 
 

@@ -13,23 +13,41 @@
 
             <div class="modal2__body">
                 <label class="modal2__lbl">
-                    Name of person being complained about
+                    Name of complainant(s)*
                 </label>
-                <select name="complainee" id="select-name" placeholder="Please select name..." required>
+                <select selectize name="complainants[]" id="select-complainant" placeholder="Please select name..." required>
                     <option value="">Please select name...</option>
                 <?php
                     foreach($residentsData as $row){
                 ?>
-                    <option value="<?= $row['id'] ?>"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
+                    <option value="<?= $row['id'] ?>" <?php echo ($residentId == $row['id']) ? "selected": "" ?>><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
                 <?php
                     }
                 ?>
                 </select>
-
+                
                 <div class="spacer"></div>
 
                 <label class="modal2__lbl">
-                    Complaint Type
+                    Name of person(s) being complained about
+                </label>
+                <select selectize name="complainees[]" id="select-complainee" placeholder="Please select name...">
+                    <option value="">Please select name...</option>
+                <?php
+                    foreach($residentsData as $row){
+                        if($residentId != $row['id']){
+                ?>
+                    <option value="<?= $row['id'] ?>"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
+                <?php
+                        }
+                    }
+                ?>
+                </select>
+                
+                <div class="spacer"></div>
+
+                <label class="modal2__lbl">
+                    Complaint Type*
                 </label>
                 <select name="complaintTypeId" id="select-name" placeholder="Please select complaint type..." required>
                     <option value="">Please select complaint type...</option>
@@ -52,7 +70,7 @@
                 <label class="modal2__lbl">
                     Complaint description
                 </label>
-                <textarea class="modal2__input" name="complaintDescription" required></textarea>
+                <textarea class="modal2__input" name="complaintDescription"></textarea>
 
                 <p class="modal2__lbl">
                     Proof/Pictures (Optional)

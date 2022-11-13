@@ -160,9 +160,16 @@ document.addEventListener('click', function (event) {
     }
 });
 
-
 $(document).ready(function () {
     $('select').selectize({
         sortField: 'text'
     });
+});
+
+$("#select-complainant").selectize({
+    maxItems: null,
+});
+
+$("#select-complainee").selectize({
+    maxItems: null,
 });

@@ -93,6 +93,7 @@
     }
 
     &__item__name,
+    &__item__name2,
     &__item__desc {
         display: block;
         margin-bottom: 0.2rem;
@@ -100,6 +101,13 @@
     }
 
     &__item__name {
+        font-weight: variables.$fw-700;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__item__name2 {
         font-weight: variables.$fw-700;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -235,6 +243,14 @@
         }
 
         &__item__name {
+            min-width: 15ch;
+            max-width: 15ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &__item__name2 {
             min-width: 15ch;
             max-width: 15ch;
             overflow: hidden;
