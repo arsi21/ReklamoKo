@@ -4,14 +4,24 @@ class solvedComplaintInfo extends Dbh {
 
     //get
 
-    public function getUserSolvedComplaint($complaintId, $residentId) {
+    public function getUserSolvedComplaint($complaintId, $userId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
-        r1.first_name complainant_first_name,
-        r1.last_name complainant_last_name,
-        r2.first_name complainee_first_name,
-        r2.last_name complainee_last_name,
-        r3.first_name lupon_first_name,
-        r3.last_name lupon_last_name,
+        r.first_name complainant_first_name,
+        r.last_name complainant_last_name,
+        (SELECT GROUP_CONCAT(r.first_name, " ", r.last_name SEPARATOR ", ")
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = ?
+            GROUP BY cct.complaint_id) AS complainant,
+            (SELECT GROUP_CONCAT(r.first_name, " ", r.last_name SEPARATOR ", ") 
+            FROM complaint_complainee cc
+            INNER JOIN resident r
+            ON r.id = cc.complainee_id
+            WHERE cc.complaint_id = ?
+            GROUP BY cc.complaint_id) AS complainee,
+        r2.first_name lupon_first_name,
+        r2.last_name lupon_last_name,
         ct.type,
         c.complaint_description,
         sc.solved_date,
@@ -19,26 +29,27 @@ class solvedComplaintInfo extends Dbh {
         FROM solved_complaint sc
         INNER JOIN complaint c
         ON c.id = sc.complaint_id 
-        INNER JOIN resident r1
-        ON c.complainant_id = r1.id
-        INNER JOIN resident r2
-        ON c.complainee_id = r2.id
         INNER JOIN ongoing_complaint oc
         ON oc.complaint_id = sc.complaint_id
         INNER JOIN lupon l
         ON oc.lupon_id = l.id
-        INNER JOIN resident r3
-        ON l.resident_id = r3.id
+        INNER JOIN resident r2
+        ON l.resident_id = r2.id
         INNER JOIN complaint_type ct
         ON c.complaint_type_id = ct.id
         INNER JOIN application a
-        ON a.resident_id = c.complainant_id
+        ON a.user_id = c.user_id
         INNER JOIN user u
         ON u.id = a.user_id
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
+        INNER JOIN resident r
+        ON r.id = cct.complainant_id
         WHERE c.id = ?
-        AND c.complainant_id = ?');
+        AND c.user_id = ?
+        GROUP BY cct.complaint_id');
 
-        if(!$stmt->execute(array($complaintId, $residentId))){
+        if(!$stmt->execute(array($complaintId, $complaintId, $complaintId, $userId))){
             $stmt = null;
             header("location: ../solved-complaints.php?error=stmtfailed");
             exit();
@@ -53,12 +64,22 @@ class solvedComplaintInfo extends Dbh {
 
     public function getAllSolvedComplaint($complaintId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
-        r1.first_name complainant_first_name,
-        r1.last_name complainant_last_name,
-        r2.first_name complainee_first_name,
-        r2.last_name complainee_last_name,
-        r3.first_name lupon_first_name,
-        r3.last_name lupon_last_name,
+        r.first_name complainant_first_name,
+        r.last_name complainant_last_name,
+        (SELECT GROUP_CONCAT(r.first_name, " ", r.last_name SEPARATOR ", ")
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = ?
+            GROUP BY cct.complaint_id) AS complainant,
+            (SELECT GROUP_CONCAT(r.first_name, " ", r.last_name SEPARATOR ", ") 
+            FROM complaint_complainee cc
+            INNER JOIN resident r
+            ON r.id = cc.complainee_id
+            WHERE cc.complaint_id = ?
+            GROUP BY cc.complaint_id) AS complainee,
+        r2.first_name lupon_first_name,
+        r2.last_name lupon_last_name,
         ct.type,
         c.complaint_description,
         sc.solved_date,
@@ -66,25 +87,26 @@ class solvedComplaintInfo extends Dbh {
         FROM solved_complaint sc
         INNER JOIN complaint c
         ON c.id = sc.complaint_id 
-        INNER JOIN resident r1
-        ON c.complainant_id = r1.id
-        INNER JOIN resident r2
-        ON c.complainee_id = r2.id
         INNER JOIN ongoing_complaint oc
         ON oc.complaint_id = sc.complaint_id
         INNER JOIN lupon l
         ON oc.lupon_id = l.id
-        INNER JOIN resident r3
-        ON l.resident_id = r3.id
+        INNER JOIN resident r2
+        ON l.resident_id = r2.id
         INNER JOIN complaint_type ct
         ON c.complaint_type_id = ct.id
         INNER JOIN application a
-        ON a.resident_id = c.complainant_id
+        ON a.user_id = c.user_id
         INNER JOIN user u
         ON u.id = a.user_id
-        WHERE c.id = ?');
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
+        INNER JOIN resident r
+        ON r.id = cct.complainant_id
+        WHERE c.id = ?
+        GROUP BY cct.complaint_id');
 
-        if(!$stmt->execute(array($complaintId))){
+        if(!$stmt->execute(array($complaintId, $complaintId, $complaintId))){
             $stmt = null;
             header("location: ../solved-complaints.php?message=stmtfailed");
             exit();
