@@ -1,12 +1,12 @@
 <?php
 //check if button clicked
-if(!isset($_POST['editComplaineeBtn'])){
+if(!isset($_POST['editComplainantBtn'])){
     header("location: ../login.php");
 }
 
 //Grab the data
 $complaintId = $_POST['complaintId'];
-$complaineeIds = $_POST['complainees'];
+$complainantIds = $_POST['complainants'];
 $status = "pending";
 
 
@@ -19,7 +19,7 @@ include "../classes/pending-complaint-info-controller.php";
 $controller = new PendingComplaintInfoController();
 
 //validate data and add data to the database
-$controller->editComplainee($complaintId, $complaineeIds);
+$controller->editComplainant($complaintId, $complainantIds);
 $controller->editPendingComplaintStatus($complaintId, $status);
 
 

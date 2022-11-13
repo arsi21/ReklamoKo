@@ -86,6 +86,36 @@ function hideEditComplaintModal(event) {
 };
 
 
+
+
+
+
+const editComplainantModal = document.getElementById("editComplainantModal");
+const editComplainantModalCont = document.getElementById("editComplainantModalCont");
+const editComplainantModalExit = document.getElementById("editComplainantModalExit");
+const editComplainantModalExitIcon = document.getElementById("editComplainantModalExitIcon");
+const editComplainantModalCancel = document.getElementById("editComplainantModalCancel");
+const editComplainantModalBackground = document.getElementById("body-background");
+
+function showEditComplainantModal() {
+    editComplainantModal.classList.toggle("modal2--add--comp--active");//to show and hide modal
+    editComplainantModalBackground.classList.toggle("body-background--noscroll");//to remove the scroll in body
+};
+
+function hideEditComplainantModal(event) {
+    if (editComplainantModalExit == event.target || editComplainantModalExitIcon == event.target || editComplainantModalCancel == event.target) {
+        console.log(event)
+        editComplainantModal.classList.remove("modal2--add--comp--active");//to show and hide modal
+        editComplainantModalBackground.classList.remove("body-background--noscroll");//to remove the scroll in body
+    }
+
+    //console.log(event)
+};
+
+
+
+
+
 const editComplaineeModal = document.getElementById("editComplaineeModal");
 const editComplaineeModalCont = document.getElementById("editComplaineeModalCont");
 const editComplaineeModalExit = document.getElementById("editComplaineeModalExit");
@@ -181,3 +211,12 @@ function hideEditComplaintProofModal(event) {
         editComplaintProofModalBackground.classList.remove("body-background--noscroll");//to remove the scroll in body
     }
 };
+
+
+$("#select-new-complainant").selectize({
+    maxItems: null,
+});
+
+$("#select-new-complainee").selectize({
+    maxItems: null,
+});

@@ -105,15 +105,59 @@ class PendingComplaintInfo extends Dbh {
     }
 
 
-    protected function updateComplainee($complaintId, $complaineeId) {
-        $stmt = $this->connect()->prepare('UPDATE complaint
-        SET complainee_id = ?
-        WHERE id = ?');
+    protected function updateComplainant($complaintId, $complainantIds) {
+        $stmt = $this->connect()->prepare('DELETE 
+        FROM complaint_complainant
+        WHERE complaint_id = ?');
     
-        if(!$stmt->execute(array($complaineeId, $complaintId))){
+        if(!$stmt->execute(array($complaintId))){
             $stmt = null;
             header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
             exit();
+        }
+
+        //add complainee
+        foreach($complainantIds as $complainantId){
+            $stmt = $this->connect()->prepare('INSERT 
+            INTO complaint_complainant 
+                (complaint_id, 
+                complainant_id) 
+            VALUES (?, ?)');
+
+            if(!$stmt->execute(array($complaintId, $complainantId))){
+                $stmt = null;
+                header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+                exit();
+            }
+        }
+
+        $stmt = null;
+    }
+
+    protected function updateComplainee($complaintId, $complaineeIds) {
+        $stmt = $this->connect()->prepare('DELETE 
+        FROM complaint_complainee
+        WHERE complaint_id = ?');
+    
+        if(!$stmt->execute(array($complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+            exit();
+        }
+
+        //add complainee
+        foreach($complaineeIds as $complaineeId){
+            $stmt = $this->connect()->prepare('INSERT 
+            INTO complaint_complainee 
+                (complaint_id, 
+                complainee_id) 
+            VALUES (?, ?)');
+
+            if(!$stmt->execute(array($complaintId, $complaineeId))){
+                $stmt = null;
+                header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+                exit();
+            }
         }
 
         $stmt = null;

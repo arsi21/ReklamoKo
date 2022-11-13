@@ -9,6 +9,7 @@ include_once "classes/pending-complaint-info.php";
 //Instantiate Class
 $model = new PendingComplaintInfo();
 
+
 //get the complaint Id
 $complaintId = $_GET['id'];
 
@@ -22,7 +23,6 @@ if($_SESSION['accessType'] == 'resident'){
     $data = $model->getUserPendingComplaint($complaintId, $userId);
     $proofData = $model->getComplaintProofs($complaintId);
     $luponData = $model->getLupons();
-    $residentsData = $model->getResidents($residentId);
 }elseif($_SESSION['accessType'] == 'admin'){
     //get data from database
     $data = $model->getPendingComplaint($complaintId);
@@ -112,7 +112,7 @@ include_once 'partials/navigation.php';
                 <?php 
                     if($_SESSION['accessType'] == "resident"){
                 ?>
-                        <button class="content__comp__edit" onclick="showEditComplaineeModal()">
+                        <button class="content__comp__edit" onclick="showEditComplainantModal()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M18.363 8.464l1.433 1.431-12.67 12.669-7.125 1.436 1.439-7.127 12.665-12.668 1.431 1.431-12.255 12.224-.726 3.584 3.584-.723 12.224-12.257zm-.056-8.464l-2.815 2.817 5.691 5.692 2.817-2.821-5.693-5.688zm-12.318 18.718l11.313-11.316-.705-.707-11.313 11.314.705.709z"/>
                             </svg>Edit
@@ -327,6 +327,52 @@ include_once 'partials/navigation.php';
         
 
 
+
+
+        <!-- modal -->
+        <div id="editComplainantModal" class="modal2 modal2--add--comp" onclick="hideEditComplainantModal(event)">
+            <form action="includes/editComplainant.php" method="post" id="editComplainantModalCont" class="modal2__cont--small"  >
+                <div class="modal2__head">
+                    <span class="modal2__title">
+                        Edit Complaint
+                    </span>
+                    
+                    <span id="editComplainantModalExit" class="modal2__close"  onclick="hideEditComplainantModal(event)">
+                        <img src="assets/icons/exit.svg" alt="" id="editComplainantModalExitIcon">
+                    </span>
+                </div>
+
+                <div class="modal2__body--small">
+                    <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
+                    <label class="modal2__lbl">
+                        Name of complainant(s)*
+                    </label>
+                    <select selectize name="complainants[]" id="select-new-complainant" placeholder="Please select name..." required>
+                        <option value="">Please select name...</option>
+                    <?php
+                        foreach($residentsData as $row){
+                    ?>
+                        <option value="<?= $row['id'] ?>" <?php echo ($residentId == $row['id']) ? "selected": "" ?>><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
+                    <?php
+                        }
+                    ?>
+                    </select>
+
+                </div>
+
+                <div class="modal2__footer">
+                    <button onclick="hideEditComplainantModal(event)" type="button" id="editComplainantModalCancel" class="modal2__cancel">Cancel</button>
+
+                    <input type="submit" class="modal2__submit" value="Submit" name="editComplainantBtn">
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
         <!-- modal -->
         <div id="editComplaineeModal" class="modal2 modal2--add--comp" onclick="hideEditComplaineeModal(event)">
             <form action="includes/editComplainee.php" method="post" id="editComplaineeModalCont" class="modal2__cont--small"  >
@@ -343,18 +389,21 @@ include_once 'partials/navigation.php';
                 <div class="modal2__body--small">
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                     <label class="modal2__lbl">
-                        Name of person being complained about
+                    Name of person(s) being complained about
                     </label>
-                    <select name="complaineeId" id="select-name" placeholder="Please select name..." required>
-                    <option value="">Please select name...</option>
-                <?php
-                    foreach($residentsData as $row){
-                ?>
-                    <option value="<?= $row['id'] ?>"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
-                <?php
-                    }
-                ?>
-                </select>
+                    <select selectize name="complainees[]" id="select-new-complainee" placeholder="Please select name...">
+                        <option value="">Please select name...</option>
+                    <?php
+                        foreach($residentsData as $row){
+                            if($residentId != $row['id']){
+                    ?>
+                        <option value="<?= $row['id'] ?>"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></option>
+                    <?php
+                            }
+                        }
+                    ?>
+                    </select>
+
                 </div>
 
                 <div class="modal2__footer">
