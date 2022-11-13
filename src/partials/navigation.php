@@ -120,6 +120,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="logs.php" class="nav__solved">
+                        <img src="assets/icons/ongoing_complaints.svg" alt="Logs icon">
+                        <span>Logs</span>
+                    </a>
+                </li>
+
     <?php
         }
     ?>
