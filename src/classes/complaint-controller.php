@@ -38,7 +38,8 @@ class ComplaintController extends Complaint {
         //     exit();
         // }
 
-        $this->setComplaint($this->userId, $this->complainantIds, $this->complaineeIds, $this->complaintTypeId, $this->complaintDescription, $this->proof1, $this->proof2, $this->proof3, $this->complaintDate);
+        $complaintId = $this->setComplaint($this->userId, $this->complainantIds, $this->complaineeIds, $this->complaintTypeId, $this->complaintDescription, $this->proof1, $this->proof2, $this->proof3, $this->complaintDate);
+        return $complaintId;
     }
 
     private function emptyInput() {

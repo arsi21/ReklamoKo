@@ -83,6 +83,8 @@ class Complaint extends Dbh {
         $this->setPendingComplaint($complaintId, $complaintDate);
 
         $stmt = null;
+
+        return $complaintId;
     }
 
     private function setPendingComplaint($complaintId, $complaintDate) {

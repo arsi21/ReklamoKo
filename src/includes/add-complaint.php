@@ -19,6 +19,8 @@ $proof1NameNew = "";
 $proof2NameNew = "";
 $proof3NameNew = "";
 $complaintDate;
+$actionMade;
+
 
 
 if(!empty($_POST['complainants'])){
@@ -143,12 +145,18 @@ if(!empty($_FILES['proof3']['name'])){
 include "../classes/dbh.php";
 include "../classes/complaint.php";
 include "../classes/complaint-controller.php";
+include "../classes/log.php";
+include "../classes/log-controller.php";
+
 
 //instantiate class
 $complaint = new ComplaintController($userId, $complainantIds, $complaineeIds, $complaintTypeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate);
+$logController = new LogController();
 
 //validate data and add data to the database
-$complaint->addComplaint();
+$complaintId = $complaint->addComplaint();
+$actionMade = "Added complaint [id={$complaintId}]";
+$logController->addLog($userId, $actionMade);
 
 
 //save images
