@@ -319,29 +319,41 @@ class PendingComplaintInfo extends Dbh {
         r.first_name complainant_first_name,
         r.last_name complainant_last_name,
             (SELECT GROUP_CONCAT(r.first_name, " ", r.last_name SEPARATOR ", ")
-            FROM complaint_complainant cct
-            INNER JOIN resident r
-            ON r.id = cct.complainant_id
-            WHERE cct.complaint_id = ?
-            GROUP BY cct.complaint_id) AS complainant,
+                FROM complaint_complainant cct
+                INNER JOIN resident r
+                ON r.id = cct.complainant_id
+                WHERE cct.complaint_id = ?
+                GROUP BY cct.complaint_id) AS complainant,
+            (SELECT GROUP_CONCAT(r.mobile_number SEPARATOR ", ")
+                FROM complaint_complainant cct
+                INNER JOIN resident r
+                ON r.id = cct.complainant_id
+                WHERE cct.complaint_id = ?
+                GROUP BY cct.complaint_id) AS complainant_number,
             (SELECT COUNT(r.id)
-            FROM complaint_complainant cct
-            INNER JOIN resident r
-            ON r.id = cct.complainant_id
-            WHERE cct.complaint_id = ?
-            GROUP BY cct.complaint_id) AS complainant_count,
+                FROM complaint_complainant cct
+                INNER JOIN resident r
+                ON r.id = cct.complainant_id
+                WHERE cct.complaint_id = ?
+                GROUP BY cct.complaint_id) AS complainant_count,
             (SELECT GROUP_CONCAT(r.first_name, " ", r.last_name SEPARATOR ", ") 
-            FROM complaint_complainee cc
-            INNER JOIN resident r
-            ON r.id = cc.complainee_id
-            WHERE cc.complaint_id = ?
-            GROUP BY cc.complaint_id) AS complainee,
+                FROM complaint_complainee cc
+                INNER JOIN resident r
+                ON r.id = cc.complainee_id
+                WHERE cc.complaint_id = ?
+                GROUP BY cc.complaint_id) AS complainee,
+            (SELECT GROUP_CONCAT(r.mobile_number SEPARATOR ", ") 
+                FROM complaint_complainee cc
+                INNER JOIN resident r
+                ON r.id = cc.complainee_id
+                WHERE cc.complaint_id = ?
+                GROUP BY cc.complaint_id) AS complainee_number,
             (SELECT COUNT(r.id)
-            FROM complaint_complainee cc
-            INNER JOIN resident r
-            ON r.id = cc.complainee_id
-            WHERE cc.complaint_id = ?
-            GROUP BY cc.complaint_id) AS complainee_count,
+                FROM complaint_complainee cc
+                INNER JOIN resident r
+                ON r.id = cc.complainee_id
+                WHERE cc.complaint_id = ?
+                GROUP BY cc.complaint_id) AS complainee_count,
         ct.type,
         c.complaint_description,
         pc.pending_date,
@@ -368,7 +380,7 @@ class PendingComplaintInfo extends Dbh {
         GROUP BY cct.complaint_id
         ORDER BY pc.complaint_id DESC');
 
-        if(!$stmt->execute(array($id, $id, $id, $id, $id))){
+        if(!$stmt->execute(array($id, $id, $id, $id, $id, $id, $id))){
             $stmt = null;
             header("location: ../pending-complaint.php?id=$id&message=stmtfailed");
             exit();

@@ -241,7 +241,7 @@ include_once 'partials/navigation.php';
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                     <input type="hidden" value="<?= $data['complainant_number'] ?>" name="complainantNumber">
                     <input type="hidden" value="<?= $data['complainee_number'] ?>" name="complaineeNumber">
-                    <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
+                    <input type="hidden" value="<?= ucwords($data['complainee']) ?>" name="complainee">
                     <label class="modal2__lbl">
                         Pacification Committee
                     </label>
@@ -301,7 +301,7 @@ include_once 'partials/navigation.php';
                 <div class="modal2__body--small">
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                     <input type="hidden" value="<?= $data['complainant_number'] ?>" name="complainantNumber">
-                    <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
+                    <input type="hidden" value="<?= ucwords($data['complainee']) ?>" name="complainee">
                     
                     <label class="modal2__lbl">
                         Message
