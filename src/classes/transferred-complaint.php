@@ -4,21 +4,26 @@ class TransferredComplaint extends Dbh {
 
     //get
 
-    public function getUserTransferredComplaints($residentId) {
+    public function getUserTransferredComplaints($userId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
-        r.first_name,
-        r.last_name,
-        c.complaint_description,
+        CONCAT(r.first_name, " ", r.last_name) AS complainant,
+        COUNT(r.id) AS complainant_count,
+        ct.type,
         tc.transferred_date
         FROM transferred_complaint tc
         INNER JOIN complaint c
         ON c.id = tc.complaint_id 
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
         INNER JOIN resident r
-        ON r.id = c.complainee_id
-        WHERE c.complainant_id = ?
+        ON r.id = cct.complainant_id
+        WHERE c.user_id = ?
+        GROUP BY cct.complaint_id
         ORDER BY tc.transferred_date DESC');
 
-        if(!$stmt->execute(array($residentId))){
+        if(!$stmt->execute(array($userId))){
             $stmt = null;
             header("location: ../transferred-complaints.php?message=stmtfailed");
             exit();
@@ -33,15 +38,20 @@ class TransferredComplaint extends Dbh {
 
     public function getAllTransferredComplaints() {
         $stmt = $this->connect()->query('SELECT c.id,
-        r.first_name,
-        r.last_name,
-        c.complaint_description,
+        CONCAT(r.first_name, " ", r.last_name) AS complainant,
+        COUNT(r.id) AS complainant_count,
+        ct.type,
         tc.transferred_date
         FROM transferred_complaint tc
         INNER JOIN complaint c
         ON c.id = tc.complaint_id 
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
         INNER JOIN resident r
-        ON r.id = c.complainee_id
+        ON r.id = cct.complainant_id
+        GROUP BY cct.complaint_id
         ORDER BY tc.transferred_date DESC');
 
         $results = $stmt->fetchAll();

@@ -14,10 +14,10 @@ $complaintId = $_GET['id'];
 
 if($_SESSION['accessType'] == 'resident'){
     //get resident id
-    $residentId = $_SESSION['residentId'];
+    $userId = $_SESSION['userId'];
 
     //get data from database
-    $data = $model->getUserTransferredComplaint($complaintId, $residentId);
+    $data = $model->getUserTransferredComplaint($complaintId, $userId);
     $proofData = $model->getComplaintProofs($complaintId);
     $meetingData = $model->getMeetingSchedules($complaintId);
 }elseif($_SESSION['accessType'] == 'admin'){
@@ -27,8 +27,8 @@ if($_SESSION['accessType'] == 'resident'){
     $meetingData = $model->getMeetingSchedules($complaintId);
 }
 
-$complainant = ucwords($data['complainant_first_name']) . " " . ucwords($data['complainant_last_name']);
-$complainee = ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']);
+$complainant = ucwords($data['complainant']);
+$complainee = ucwords($data['complainee']);
 $type = $data['type'];
 $date = $data['transferred_date'];
 
@@ -78,8 +78,11 @@ include_once 'partials/navigation.php';
                         </div>
                     </div>
 
-                    <p class="content__comp__lbl">Name of person being complained about:</p>
-                    <p class="content__comp__val"><?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?></p>
+                    <p class="content__comp__lbl">Complainant(s):</p>
+                    <p class="content__comp__val"><?= ucwords($data['complainant']) ?></p>
+
+                    <p class="content__comp__lbl">Complainee(s):</p>
+                    <p class="content__comp__val"><?= ucwords($data['complainee']) ?></p>
 
                     <p class="content__comp__lbl">Complaint Type:</p>
                     <p class="content__comp__val"><?= $data['type'] ?></p>
