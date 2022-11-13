@@ -14,10 +14,10 @@ $complaintId = $_GET['id'];
 
 if($_SESSION['accessType'] == 'resident'){
     //get resident id
-    $residentId = $_SESSION['residentId'];
+    $userId = $_SESSION['userId'];
 
     //get data from database
-    $data = $model->getUserOngoingComplaint($complaintId, $residentId);
+    $data = $model->getUserOngoingComplaint($complaintId, $userId);
     $proofData = $model->getComplaintProofs($complaintId);
     $meetingData = $model->getMeetingSchedules($complaintId);
 }elseif($_SESSION['accessType'] == 'admin'){
@@ -67,8 +67,11 @@ include_once 'partials/navigation.php';
                         </div>
                     </div>
 
-                    <p class="content__comp__lbl">Name of person being complained about:</p>
-                    <p class="content__comp__val"><?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?></p>
+                    <p class="content__comp__lbl">Complainant(s):</p>
+                    <p class="content__comp__val"><?= ucwords($data['complainant']) ?></p>
+
+                    <p class="content__comp__lbl">Complainee(s):</p>
+                    <p class="content__comp__val"><?= ucwords($data['complainee']) ?></p>
 
                     <p class="content__comp__lbl">Complaint Type:</p>
                     <p class="content__comp__val"><?= $data['type'] ?></p>
@@ -122,14 +125,14 @@ include_once 'partials/navigation.php';
                             <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                             <input type="hidden" value="<?= $data['complainant_number'] ?>" name="complainantNumber">
                             <input type="hidden" value="<?= $data['complainee_number'] ?>" name="complaineeNumber">
-                            <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
+                            <input type="hidden" value="<?= ucwords($data['complainee']) ?>" name="complainee">
                             <button type="submit" class="primary-btn" name="solvedBtn">Solved</button>
                         </form>
 
                         <form action="includes/add-transferred-complaint.php" method="post">
                             <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
-                            <input type="hidden" value="<?= ucwords($data['complainant_first_name']) . " " . ucwords($data['complainant_last_name']) ?>" name="complainant">
-                            <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
+                            <input type="hidden" value="<?= ucwords($data['complainant']) ?>" name="complainant">
+                            <input type="hidden" value="<?= ucwords($data['complainee'])?>" name="complainee">
                             <input type="hidden" value="<?= $data['complainant_number'] ?>" name="complainantNumber">
                             <input type="hidden" value="<?= $data['complainee_number'] ?>" name="complaineeNumber">
                             <input type="hidden" value="<?= $data['type'] ?>" name="type">
@@ -167,7 +170,7 @@ include_once 'partials/navigation.php';
                     <input type="hidden" value="<?= $complaintId ?>" name="complaintId">
                     <input type="hidden" value="<?= $data['complainant_number'] ?>" name="complainantNumber">
                     <input type="hidden" value="<?= $data['complainee_number'] ?>" name="complaineeNumber">
-                    <input type="hidden" value="<?= ucwords($data['complainee_first_name']) . " " . ucwords($data['complainee_last_name']) ?>" name="complainee">
+                    <input type="hidden" value="<?= ucwords($data['complainee']) ?>" name="complainee">
                     
                     <label class="modal2__lbl">
                         Schedule Date

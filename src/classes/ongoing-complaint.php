@@ -4,18 +4,22 @@ class OngoingComplaint extends Dbh {
 
     //get
 
-    public function getUserOngoingComplaints($residentId) {
+    public function getUserOngoingComplaints($userId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
-        r.first_name,
-        r.last_name,
-        c.complaint_description,
+        CONCAT(r.first_name, " ", r.last_name) AS complainant,
+        COUNT(r.id) AS complainant_count,
+        ct.type,
         oc.ongoing_date
         FROM ongoing_complaint oc
         INNER JOIN complaint c
         ON c.id = oc.complaint_id 
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
         INNER JOIN resident r
-        ON r.id = c.complainee_id
-        WHERE c.complainant_id = ?
+        ON r.id = cct.complainant_id
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        WHERE c.user_id = ?
         AND c.id 
         NOT IN 
             (SELECT complaint_id
@@ -24,9 +28,10 @@ class OngoingComplaint extends Dbh {
         NOT IN 
             (SELECT complaint_id
             FROM transferred_complaint)
+        GROUP BY cct.complaint_id
         ORDER BY oc.ongoing_date DESC');
 
-        if(!$stmt->execute(array($residentId))){
+        if(!$stmt->execute(array($userId))){
             $stmt = null;
             header("location: ../ongoing-complaints.php?message=stmtfailed");
             exit();
@@ -41,15 +46,19 @@ class OngoingComplaint extends Dbh {
 
     public function getAllOngoingComplaints() {
         $stmt = $this->connect()->query('SELECT c.id,
-        r.first_name,
-        r.last_name,
-        c.complaint_description,
+        CONCAT(r.first_name, " ", r.last_name) AS complainant,
+        COUNT(r.id) AS complainant_count,
+        ct.type,
         oc.ongoing_date
         FROM ongoing_complaint oc
         INNER JOIN complaint c
         ON c.id = oc.complaint_id 
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
         INNER JOIN resident r
-        ON r.id = c.complainee_id
+        ON r.id = cct.complainant_id
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
         WHERE c.id 
         NOT IN 
             (SELECT complaint_id
@@ -58,6 +67,7 @@ class OngoingComplaint extends Dbh {
         NOT IN 
             (SELECT complaint_id
             FROM transferred_complaint)
+        GROUP BY cct.complaint_id
         ORDER BY oc.ongoing_date DESC');
 
         $results = $stmt->fetchAll();
