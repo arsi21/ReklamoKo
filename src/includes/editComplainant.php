@@ -4,23 +4,33 @@ if(!isset($_POST['editComplainantBtn'])){
     header("location: ../login.php");
 }
 
+if(!isset($_SESSION)){
+    session_start();
+}
+
 //Grab the data
 $complaintId = $_POST['complaintId'];
 $complainantIds = $_POST['complainants'];
 $status = "pending";
+$userId = $_SESSION['userId'];
+$actionMade = "Edited the complainant of complaint [id={$complaintId}]";
 
 
 //include needed files
 include "../classes/dbh.php";
 include "../classes/pending-complaint-info.php";
 include "../classes/pending-complaint-info-controller.php";
+include "../classes/log.php";
+include "../classes/log-controller.php";
 
 //instantiate class
 $controller = new PendingComplaintInfoController();
+$logController = new LogController();
 
 //validate data and add data to the database
 $controller->editComplainant($complaintId, $complainantIds);
 $controller->editPendingComplaintStatus($complaintId, $status);
+$logController->addLog($userId, $actionMade);
 
 
 //going back to page

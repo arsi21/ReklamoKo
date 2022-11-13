@@ -4,19 +4,29 @@ if(!isset($_POST['deleteBtn'])){
     header("location: ../login.php");
 }
 
+if(!isset($_SESSION)){
+    session_start();
+}
+
 //Grab the data
 $complaintId = $_POST['complaintId'];
+$userId = $_SESSION['userId'];
+$actionMade = "Deleted the complaint [id={$complaintId}]";
 
 //include needed files
 include "../classes/dbh.php";
 include "../classes/pending-complaint-info.php";
 include "../classes/pending-complaint-info-controller.php";
+include "../classes/log.php";
+include "../classes/log-controller.php";
 
 //instantiate class
 $controller = new PendingComplaintInfoController();
+$logController = new LogController();
 
 //validate data and add data to the database
 $controller->removeComplaint($complaintId);
+$logController->addLog($userId, $actionMade);
 
 //remove proof image in proof-uploads folder
 if(!empty($_POST['proof1'])){
