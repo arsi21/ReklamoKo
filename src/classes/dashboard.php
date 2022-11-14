@@ -82,4 +82,94 @@ class Dashboard extends Dbh {
 
         return $results;
     }
+
+
+    public function getResidentsWithMostNumberOfComplaint() {
+        $stmt = $this->connect()->query('SELECT 
+        CONCAT(r.first_name, " ", r.last_name) AS resident,
+        r.id AS resident_id,
+        COUNT(r.id) AS complaint_count
+        FROM pending_complaint pc
+        INNER JOIN complaint c
+        ON c.id = pc.complaint_id 
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        LEFT JOIN comment cm
+        ON cm.complaint_id = c.id 
+        INNER JOIN application a
+        ON a.user_id = c.user_id
+        INNER JOIN user u
+        ON u.id = a.user_id
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
+        INNER JOIN resident r
+        ON r.id = cct.complainant_id
+        WHERE pc.is_archive != 1
+        GROUP BY cct.complainant_id
+        ORDER BY complaint_count DESC
+        LIMIT 10');
+
+        $results = $stmt->fetchAll();
+
+        $stmt = null;
+
+        return $results;
+    }
+
+
+    public function getMostComplainedAboutResidents() {
+        $stmt = $this->connect()->query('SELECT 
+        CONCAT(r.first_name, " ", r.last_name) AS resident,
+        r.id AS resident_id,
+        COUNT(r.id) AS complaint_count
+        FROM pending_complaint pc
+        INNER JOIN complaint c
+        ON c.id = pc.complaint_id 
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        LEFT JOIN comment cm
+        ON cm.complaint_id = c.id 
+        INNER JOIN application a
+        ON a.user_id = c.user_id
+        INNER JOIN user u
+        ON u.id = a.user_id
+        INNER JOIN complaint_complainee cc
+        ON cc.complaint_id = c.id
+        INNER JOIN resident r
+        ON r.id = cc.complainee_id
+        WHERE pc.is_archive != 1
+        GROUP BY cc.complainee_id
+        ORDER BY complaint_count DESC
+        LIMIT 10');
+
+        $results = $stmt->fetchAll();
+
+        $stmt = null;
+
+        return $results;
+    }
+
+
+    public function getComplaintTypesWithMostNumberOfComplaint() {
+        $stmt = $this->connect()->query('SELECT ct.type,
+        ct.id,
+        COUNT(ct.id) AS type_count
+        FROM pending_complaint pc
+        INNER JOIN complaint c
+        ON c.id = pc.complaint_id 
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        WHERE pc.is_archive != 1
+        GROUP BY c.complaint_type_id
+        ORDER BY type_count DESC
+        LIMIT 10');
+
+        $results = $stmt->fetchAll();
+
+        $stmt = null;
+
+        return $results;
+    }
+
+
 }

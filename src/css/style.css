@@ -1569,6 +1569,101 @@ input[type=number] {
   box-shadow: 2px 2px 4px #000000;
 }
 
+.card-cont {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6rem;
+  margin-inline: 1rem;
+  max-width: 1300px;
+  margin-bottom: 1rem;
+}
+.card-cont .card {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  padding: 1.5em;
+  border-radius: 6px;
+  row-gap: 0.6rem;
+}
+.card-cont .card-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #494747;
+}
+.card-cont .card .content-list-title {
+  display: flex;
+  padding-inline: 1rem;
+  margin-top: 1em;
+  justify-content: space-between;
+  align-items: center;
+  color: #494747;
+}
+.card-cont .card .content-list-title .name-cont-title {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+.card-cont .card .content-list-title .name-cont-title .number-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.card-cont .card .content-list-title .name-cont-title .resident-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.card-cont .card .content-list-title .complaint-count-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.card-cont .card .content-list {
+  display: flex;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-cont .card .content-list .name-cont {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+.card-cont .card .content-list .name-cont .number {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #494747;
+}
+.card-cont .card .content-list .name-cont .resident {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #707070;
+}
+.card-cont .card .content-list .complaint-count {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.card-cont .card .content-list .complaint-count-primary {
+  color: #669fd9;
+}
+.card-cont .card .content-list .complaint-count-success {
+  color: #8add8a;
+}
+.card-cont .card .content-list .complaint-count-danger {
+  color: #d96e6e;
+}
+
+@media (min-width: 40em) {
+  .card-cont {
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+  .card-cont .card {
+    width: 50%;
+  }
+  .card-cont .card-full {
+    width: 100%;
+  }
+}
 .home-body {
   overflow-x: hidden;
 }

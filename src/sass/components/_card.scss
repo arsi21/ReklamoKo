@@ -1,0 +1,119 @@
+@use '../abstracts/variables';
+
+.card-cont {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.6rem;
+    margin-inline: 1rem;
+    max-width: 1300px;
+    margin-bottom: 1rem;
+
+
+    .card {
+        display: flex;
+        background-color: variables.$clr-light;
+        flex-direction: column;
+        padding: 1.5em;
+        border-radius: 6px;
+        row-gap: 0.6rem;
+
+        &-title {
+            font-size: variables.$fs-small;
+            font-weight: variables.$fw-700;
+            color: variables.$clr-font-dark-80;
+        }
+
+        .content-list-title {
+            display: flex;
+            padding-inline: 1rem;
+            margin-top: 1em;
+            justify-content: space-between;
+            align-items: center;
+            color: variables.$clr-font-dark-80;
+
+            .name-cont-title {
+                display: flex;
+                gap: 1em;
+                align-items: center;
+
+                .number-title {
+                    font-size: variables.$fs-xs;
+                    font-weight: variables.$fw-700;
+                }
+
+                .resident-title {
+                    font-size: variables.$fs-xs;
+                    font-weight: variables.$fw-700;
+                }
+            }
+
+            .complaint-count-title {
+                font-size: variables.$fs-xs;
+                font-weight: variables.$fw-700;
+            }
+        }
+
+
+
+
+
+        .content-list {
+            display: flex;
+            background-color: variables.$clr-dark-30;
+            border-radius: 6px;
+            padding: 1rem;
+            justify-content: space-between;
+            align-items: center;
+
+            .name-cont {
+                display: flex;
+                gap: 1em;
+                align-items: center;
+
+                .number {
+                    font-size: variables.$fs-xs;
+                    font-weight: variables.$fw-700;
+                    color: variables.$clr-font-dark-80;
+                }
+
+                .resident {
+                    font-size: variables.$fs-small;
+                    font-weight: variables.$fw-700;
+                    color: variables.$clr-font-dark-60;
+                }
+            }
+
+            .complaint-count {
+                font-size: variables.$fs-small;
+                font-weight: variables.$fw-700;
+
+                &-primary {
+                    color: variables.$clr-primary;
+                }
+
+                &-success {
+                    color: variables.$clr-success;
+                }
+
+                &-danger {
+                    color: variables.$clr-danger;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 40em) {
+    .card-cont {
+        flex-direction: row;
+        gap: 0.6rem;
+
+        .card {
+            width: 50%;
+        }
+
+        .card-full {
+            width: 100%;
+        }
+    }
+}
