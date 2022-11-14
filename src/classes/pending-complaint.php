@@ -116,34 +116,45 @@ class PendingComplaint extends Dbh {
 
     //search
 
-    public function searchUserPendingComplaints($search, $complainantId) {
+    public function searchUserPendingComplaints($search, $userId) {
         $stmt = $this->connect()->query("SELECT c.id,
-        r.first_name,
-        r.last_name,
-        c.complaint_description,
+		CONCAT(r.first_name, ' ', r.last_name) AS complainant,
+        COUNT(r.id) AS complainant_count,
+        ct.type,
         pc.pending_date,
         pc.status
         FROM pending_complaint pc
         INNER JOIN complaint c
         ON c.id = pc.complaint_id 
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        LEFT JOIN comment cm
+        ON cm.complaint_id = c.id 
+        INNER JOIN application a
+        ON a.user_id = c.user_id
+        INNER JOIN user u
+        ON u.id = a.user_id
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
         INNER JOIN resident r
-        ON r.id = c.complainee_id
-        WHERE c.complainant_id = '$complainantId'
-        AND pc.status != 'approved'
+        ON r.id = cct.complainant_id
+        WHERE pc.status != 'approved'
+        AND pc.is_archive != 1
+        AND c.user_id = $userId
         AND c.id
         IN (SELECT c.id
             FROM pending_complaint pc
             INNER JOIN complaint c
             ON c.id = pc.complaint_id 
+            INNER JOIN complaint_type ct
+            ON c.complaint_type_id = ct.id
+            INNER JOIN complaint_complainant cct
+            ON cct.complaint_id = c.id
             INNER JOIN resident r
-            ON r.id = c.complainee_id
-            WHERE r.first_name
-            LIKE '%$search%'
-            OR r.last_name
-            LIKE '%$search%'
-            OR CONCAT(r.first_name, ' ', r.last_name)
+            ON r.id = cct.complainant_id
+            WHERE ct.type
             LIKE '%$search%')
-        AND pc.is_archive != 1
+        GROUP BY cct.complaint_id
         ORDER BY pc.complaint_id DESC");
 
         $results = $stmt->fetchAll();
@@ -156,31 +167,48 @@ class PendingComplaint extends Dbh {
 
     public function searchAllPendingComplaints($search) {
         $stmt = $this->connect()->query("SELECT c.id,
-        r.first_name,
-        r.last_name,
-        c.complaint_description,
+		CONCAT(r.first_name, ' ', r.last_name) AS complainant,
+        COUNT(r.id) AS complainant_count,
+        ct.type,
         pc.pending_date,
         pc.status
         FROM pending_complaint pc
         INNER JOIN complaint c
         ON c.id = pc.complaint_id 
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        LEFT JOIN comment cm
+        ON cm.complaint_id = c.id 
+        INNER JOIN application a
+        ON a.user_id = c.user_id
+        INNER JOIN user u
+        ON u.id = a.user_id
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
         INNER JOIN resident r
-        ON r.id = c.complainee_id
+        ON r.id = cct.complainant_id
         WHERE pc.status != 'approved'
+        AND pc.is_archive != 1
         AND c.id
         IN (SELECT c.id
             FROM pending_complaint pc
             INNER JOIN complaint c
             ON c.id = pc.complaint_id 
+            INNER JOIN complaint_type ct
+            ON c.complaint_type_id = ct.id
+            INNER JOIN complaint_complainant cct
+            ON cct.complaint_id = c.id
             INNER JOIN resident r
-            ON r.id = c.complainee_id
+            ON r.id = cct.complainant_id
             WHERE r.first_name
             LIKE '%$search%'
             OR r.last_name
             LIKE '%$search%'
             OR CONCAT(r.first_name, ' ', r.last_name)
+            LIKE '%$search%'
+            OR ct.type
             LIKE '%$search%')
-        AND pc.is_archive != 1
+        GROUP BY cct.complaint_id
         ORDER BY pc.complaint_id DESC");
 
         $results = $stmt->fetchAll();
