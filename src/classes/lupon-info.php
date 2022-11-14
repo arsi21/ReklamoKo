@@ -6,9 +6,10 @@ class LuponInfo extends Dbh {
     //delete
 
     protected function deleteLupon($luponId){
-        $stmt = $this->connect()->prepare('DELETE 
-        FROM lupon
+        $stmt = $this->connect()->prepare('UPDATE lupon
+        SET is_archive = 1
         WHERE id = ?');
+
 
         if(!$stmt->execute(array($luponId))){
             $stmt = null;
@@ -41,7 +42,8 @@ class LuponInfo extends Dbh {
         ON r.id = l.resident_id
         INNER JOIN postal p
         ON p.id = r.postal_id
-        WHERE l.id = ?');
+        WHERE l.id = ?
+        AND is_archive != 1');
 
         if(!$stmt->execute(array($id))){
             $stmt = null;

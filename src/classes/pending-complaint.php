@@ -22,6 +22,7 @@ class PendingComplaint extends Dbh {
         ON u.id = a.user_id
         WHERE c.user_id = ?
         AND pc.status != "approved"
+        AND pc.is_archive != 1
         ORDER BY pc.complaint_id DESC');
 
         if(!$stmt->execute(array($userId))){
@@ -60,6 +61,7 @@ class PendingComplaint extends Dbh {
         INNER JOIN resident r
         ON r.id = cct.complainant_id
         WHERE pc.status != "approved"
+        AND pc.is_archive != 1
         GROUP BY cct.complaint_id
         ORDER BY pc.complaint_id DESC');
 
@@ -141,6 +143,7 @@ class PendingComplaint extends Dbh {
             LIKE '%$search%'
             OR CONCAT(r.first_name, ' ', r.last_name)
             LIKE '%$search%')
+        AND pc.is_archive != 1
         ORDER BY pc.complaint_id DESC");
 
         $results = $stmt->fetchAll();
@@ -177,6 +180,7 @@ class PendingComplaint extends Dbh {
             LIKE '%$search%'
             OR CONCAT(r.first_name, ' ', r.last_name)
             LIKE '%$search%')
+        AND pc.is_archive != 1
         ORDER BY pc.complaint_id DESC");
 
         $results = $stmt->fetchAll();

@@ -248,8 +248,8 @@ class PendingComplaintInfo extends Dbh {
     //delete
 
     protected function deleteComplaint($complaintId) {
-        $stmt = $this->connect()->prepare('DELETE 
-        FROM pending_complaint
+        $stmt = $this->connect()->prepare('UPDATE pending_complaint
+        SET is_archive = 1
         WHERE complaint_id = ?');
     
         if(!$stmt->execute(array($complaintId))){
@@ -258,25 +258,25 @@ class PendingComplaintInfo extends Dbh {
             exit();
         }
 
-        $stmt = $this->connect()->prepare('DELETE 
-        FROM proof
-        WHERE complaint_id = ?');
+        // $stmt = $this->connect()->prepare('DELETE 
+        // FROM proof
+        // WHERE complaint_id = ?');
     
-        if(!$stmt->execute(array($complaintId))){
-            $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
-            exit();
-        }
+        // if(!$stmt->execute(array($complaintId))){
+        //     $stmt = null;
+        //     header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+        //     exit();
+        // }
 
-        $stmt = $this->connect()->prepare('DELETE 
-        FROM complaint
-        WHERE id = ?');
+        // $stmt = $this->connect()->prepare('DELETE 
+        // FROM complaint
+        // WHERE id = ?');
     
-        if(!$stmt->execute(array($complaintId))){
-            $stmt = null;
-            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
-            exit();
-        }
+        // if(!$stmt->execute(array($complaintId))){
+        //     $stmt = null;
+        //     header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+        //     exit();
+        // }
 
         $stmt = null;
     }
@@ -342,6 +342,7 @@ class PendingComplaintInfo extends Dbh {
         WHERE c.id = ?
         AND pc.status != "approved"
         AND c.user_id = ?
+        AND pc.is_archive != 1
         GROUP BY cct.complaint_id
         ORDER BY pc.complaint_id DESC');
 
@@ -421,6 +422,7 @@ class PendingComplaintInfo extends Dbh {
         ON r.id = cct.complainant_id
         WHERE c.id = ?
         AND pc.status != "approved"
+        AND pc.is_archive != 1
         GROUP BY cct.complaint_id
         ORDER BY pc.complaint_id DESC');
 

@@ -40,6 +40,7 @@ class Lupon extends Dbh {
         ON r.id = l.resident_id
         INNER JOIN postal p
         ON p.id = r.postal_id
+        WHERE is_archive != 1
         ORDER BY r.first_name');
 
         $results = $stmt->fetchAll();
@@ -54,7 +55,8 @@ class Lupon extends Dbh {
         FROM resident
         WHERE id NOT IN 
             (SELECT resident_id 
-            FROM lupon)
+            FROM lupon
+            WHERE is_archive != 1)
         ORDER BY first_name');
 
         $results = $stmt->fetchAll();
@@ -100,6 +102,7 @@ class Lupon extends Dbh {
             LIKE '%$search%'
             OR CONCAT(r.first_name, ' ', r.last_name)
             LIKE '%$search%')
+        AND is_archive != 1
         ORDER BY r.first_name");
 
         $results = $stmt->fetchAll();
