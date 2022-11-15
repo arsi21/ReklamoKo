@@ -209,7 +209,7 @@ body {
 .nav__name {
   display: block;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.9rem;
   width: 100%;
   padding-right: 1rem;
   color: white;
@@ -219,7 +219,7 @@ body {
 }
 .nav__position {
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   color: #BCBCBC;
 }
 .nav__hr {
@@ -266,7 +266,7 @@ body {
 }
 .nav ul li a {
   display: block;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #BCBCBC;
   width: 100%;
   padding-block: 0.6rem;
@@ -521,7 +521,7 @@ body {
 .content__item__name, .content__item__name2, .content__item__desc {
   display: block;
   margin-bottom: 0.2rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .content__item__name {
   font-weight: 700;
@@ -1589,6 +1589,7 @@ input[type=number] {
   font-size: 0.9rem;
   font-weight: 700;
   color: #494747;
+  text-align: center;
 }
 .card-cont .card .content-list-title {
   display: flex;
@@ -2126,12 +2127,12 @@ nav.menu-btn {
   row-gap: 0.3rem;
 }
 .counts-cont .count-cont .count-name {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #494747;
 }
 .counts-cont .count-cont .count-number {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 .counts-cont .count-cont .count-number-primary {
@@ -2147,7 +2148,7 @@ nav.menu-btn {
   color: #d96e6e;
 }
 .counts-cont .count-cont .count-lbl {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   color: #707070;
 }
 

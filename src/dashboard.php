@@ -138,7 +138,7 @@ $complaintTypesWithMostNumberOfComplaint = $model->getComplaintTypesWithMostNumb
 
                 <div class="card-cont">
                   <div class="card card-full">
-                    <p class="card-title">Top 10 complaint types with highest number of reported complaints</p>
+                    <p class="card-title">Top 10 complaint types with highest number of reported complaints about</p>
                     <div class="content-list-title">
                         <div class="name-cont-title">
                             <p class="number-title">#</p>

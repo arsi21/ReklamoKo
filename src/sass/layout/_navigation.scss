@@ -47,7 +47,7 @@
     &__name {
         display: block;
         font-weight: variables.$fw-700;
-        font-size: variables.$fs-regular;
+        font-size: variables.$fs-small;
         width: 100%;
         padding-right: 1rem;
         color: variables.$clr-font-0;
@@ -58,7 +58,7 @@
 
     &__position {
         font-weight: variables.$fw-400;
-        font-size: variables.$fs-small;
+        font-size: variables.$fs-xs;
         color: variables.$clr-font-dark-50;
     }
 
@@ -115,7 +115,7 @@
 
             a {
                 display: block;
-                font-size: variables.$fs-regular;
+                font-size: variables.$fs-small;
                 color: variables.$clr-font-dark-50;
                 width: 100%;
                 padding-block: 0.6rem;
