@@ -9,6 +9,7 @@ function getComplaintStatusCounts() {
             let complaintCountsPerStatus = res.complaintCountsPerStatus
             let complaintCountsPerMonth = res.complaintCountsPerMonth
             let residentAccountCounts = res.residentAccountCounts
+            const mostComplainant = res.mostComplainant
 
             $('#pending').text(complaintCountsPerStatus.pending)
             $('#ongoing').text(complaintCountsPerStatus.ongoing)
@@ -150,3 +151,32 @@ function getComplaintStatusCounts() {
         }
     })
 }
+
+
+
+// function generateReport() {
+//     $.ajax({
+//         type: 'GET',
+//         url: '../src/includes/get-data-dashboard.php',
+//         success: function (response) {
+//             let res = JSON.parse(response)
+//             let complaintCountsPerStatus = res.complaintCountsPerStatus
+//             let complaintCountsPerMonth = res.complaintCountsPerMonth
+//             let residentAccountCounts = res.residentAccountCounts
+//             var mostComplainant = res.mostComplainant
+//         }
+//     })
+
+//     $.ajax({
+//         type: "POST",
+//         url: "includes/generate-most-complainant-report.php",
+//         data: { data: mostComplainants },
+//         success: function () {
+//         }
+//     });
+// }
+
+
+// function asdf() {
+//     console.log("asdasdff")
+// }

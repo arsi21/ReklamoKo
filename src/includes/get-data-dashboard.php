@@ -14,6 +14,7 @@ $complaintCountsPerStatus = $model->getComplaintCountsPerStatus();
 $countsPerMonth = $model->getComplaintCountsPerMonth($year);
 $residentAccountCounts = $model->getResidentAccountCounts();
 $complaintCountsPerMonth = array (0,0,0,0,0,0,0,0,0,0,0,0);
+$residentsWithMostNumberOfComplaint = $model->getResidentsWithMostNumberOfComplaint();
 
 for($i = 0; $i < 12; $i++){
     if(isset($countsPerMonth[$i]['MONTH'])){
@@ -22,10 +23,11 @@ for($i = 0; $i < 12; $i++){
     }
 }
 
-$response = array('complaintCountsPerStatus' => '', 'complaintCountsPerMonth' => '', 'residentAccountCounts' => '');
+$response = array('complaintCountsPerStatus' => '', 'complaintCountsPerMonth' => '', 'residentAccountCounts' => '', 'mostComplainant' => '');
 
 $response['complaintCountsPerStatus'] = $complaintCountsPerStatus;
 $response['complaintCountsPerMonth'] = $complaintCountsPerMonth;
 $response['residentAccountCounts'] = $residentAccountCounts;
+$response['mostComplainant'] = $residentsWithMostNumberOfComplaint;
 
 echo json_encode($response);
