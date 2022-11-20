@@ -18,17 +18,20 @@ $actionMade = "Logged in to the system";
 include "../classes/dbh.php";
 include "../classes/login.php";
 include "../classes/login-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 //instantiate class
 $login = new LoginController($mobileNumber, $password);
-$logController = new LogController();
 
 //validate data and login user
 $login->loginUser();
 $userId = $_SESSION['userId'];
-$logController->addLog($userId, $actionMade);
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
+
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 //get the access type
 $access = $_SESSION['accessType'];

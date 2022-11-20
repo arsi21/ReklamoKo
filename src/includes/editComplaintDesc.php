@@ -13,23 +13,26 @@ $complaintId = $_POST['complaintId'];
 $complaintDesc = $_POST['complaintDescription'];
 $status = "pending";
 $userId = $_SESSION['userId'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 $actionMade = "Edited the complaint description of complaint [id={$complaintId}]";
 
 //include needed files
 include "../classes/dbh.php";
 include "../classes/pending-complaint-info.php";
 include "../classes/pending-complaint-info-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 //instantiate class
 $controller = new PendingComplaintInfoController();
-$logController = new LogController();
 
 //validate data and add data to the database
 $controller->editComplaintDesc($complaintId, $complaintDesc);
 $controller->editPendingComplaintStatus($complaintId, $status);
-$logController->addLog($userId, $actionMade);
+
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 
 //going back to page

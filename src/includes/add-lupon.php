@@ -11,6 +11,7 @@ if(!isset($_SESSION)){
 //Grab the data
 $residentId = $_POST['residentId'];
 $userId = $_SESSION['userId'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 $actionMade = "Added resident [id={$residentId}] as pacification committee";
 
 
@@ -18,16 +19,18 @@ $actionMade = "Added resident [id={$residentId}] as pacification committee";
 include "../classes/dbh.php";
 include "../classes/lupon.php";
 include "../classes/lupon-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 //instantiate class
 $controller = new LuponController();
-$logController = new LogController();
 
 //validate data and add data to the database
 $controller->addLupon($residentId);
-$logController->addLog($userId, $actionMade);
+
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 //going back to page
 header("location: ../lupon.php?message=addedSuccessfully");

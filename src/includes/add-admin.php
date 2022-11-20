@@ -12,6 +12,7 @@ if(!isset($_SESSION)){
 //Grab the data
 $residentId = $_POST['residentId'];
 $userId = $_SESSION['userId'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 $actionMade = "Added resident [id={$residentId}] as admin";
 
 
@@ -19,16 +20,18 @@ $actionMade = "Added resident [id={$residentId}] as admin";
 include "../classes/dbh.php";
 include "../classes/admin-account.php";
 include "../classes/admin-account-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 //instantiate class
 $controller = new AdminAccountController();
-$logController = new LogController();
 
 //validate data and add data to the database
 $controller->editAccessType($residentId);
-$logController->addLog($userId, $actionMade);
+
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 //going back to page
 header("location: ../admin-accounts.php?message=addedSuccessfully");

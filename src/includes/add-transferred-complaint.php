@@ -17,6 +17,7 @@ $complaineeNumber = $_POST['complaineeNumber'];
 $type = $_POST['type'];
 $transferredDate;
 $userId = $_SESSION['userId'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 $actionMade = "Added complaint [id={$complaintId}] to transferred";
 
 //get current date
@@ -27,18 +28,19 @@ $transferredDate = date("Y-m-d");
 include "../classes/dbh.php";
 include "../classes/ongoing-complaint-info.php";
 include "../classes/ongoing-complaint-info-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 //instantiate class
 $controller = new OngoingComplaintInfoController();
 
-$logController = new LogController();
 
 //validate data and add data to the database
 $controller->addTransferredComplaint($complaintId, $transferredDate);
 
-$logController->addLog($userId, $actionMade);
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 //for sending message
 $COMPLAINANT_CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. Your complaint against {$complainee} has been transferred to the police.";

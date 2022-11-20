@@ -15,6 +15,7 @@ $message = $_POST['message'];
 $number = $_POST['number'];
 $accessType = "nonVerified";
 $userId = $_SESSION['userId'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 $actionMade = "Rejected application [id={$applicationId}]";
 
 
@@ -22,17 +23,19 @@ $actionMade = "Rejected application [id={$applicationId}]";
 include "../classes/dbh.php";
 include "../classes/submitted-application-info.php";
 include "../classes/submitted-application-info-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 //instantiate class
 $controller = new SubmittedApplicationInfoController();
-$logController = new LogController();
 
 //validate data and add data to the database
 $controller->removeApplication($applicationId);
 $controller->editUserAccessType($userId, $accessType);
-$logController->addLog($userId, $actionMade);
+
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 $CONTENT = "This message is from the barangay AGBANNAWAG ReklamoKo website. Your application for an account has been rejected by the admin. Admin message: {$message}";
 

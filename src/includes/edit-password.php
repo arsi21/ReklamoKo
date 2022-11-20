@@ -10,6 +10,7 @@ if(!isset($_POST['editPasswordBtn'])){
 
 //Grab the data
 $userId = $_SESSION['userId'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 $password = $_POST['password'];
 $confirmPassword = $_POST['confirmPassword'];
 $actionMade = "Edited their password";
@@ -18,16 +19,18 @@ $actionMade = "Edited their password";
 include "../classes/dbh.php";
 include "../classes/account-info.php";
 include "../classes/account-info-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 //instantiate class
 $controller = new AccountInfoController();
-$logController = new LogController();
 
 //validate data and add data to the database
 $controller->editPassword($userId, $password, $confirmPassword);
-$logController->addLog($userId, $actionMade);
+
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 //going back to page
 header("location: ../account-info.php?message=updatedSuccessfully");

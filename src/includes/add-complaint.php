@@ -11,6 +11,7 @@ if(!isset($_POST['submitBtn'])){
 
 //Grab the data
 $userId = $_SESSION['userId'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 $complainantIds = "";
 $complaineeIds = "";
 $complaintTypeId = $_POST['complaintTypeId'];
@@ -145,18 +146,20 @@ if(!empty($_FILES['proof3']['name'])){
 include "../classes/dbh.php";
 include "../classes/complaint.php";
 include "../classes/complaint-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 
 //instantiate class
 $complaint = new ComplaintController($userId, $complainantIds, $complaineeIds, $complaintTypeId, $complaintDescription, $proof1NameNew, $proof2NameNew, $proof3NameNew, $complaintDate);
-$logController = new LogController();
 
 //validate data and add data to the database
 $complaintId = $complaint->addComplaint();
 $actionMade = "Added complaint [id={$complaintId}]";
-$logController->addLog($userId, $actionMade);
+
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 
 //save images

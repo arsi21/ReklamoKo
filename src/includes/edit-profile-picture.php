@@ -10,6 +10,7 @@ if(!isset($_POST['editProfileBtn'])){
 
 //Grab the data
 $userId = $_SESSION['userId'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 $profileNameNew = "";
 $actionMade = "Edited their profile";
 
@@ -56,13 +57,11 @@ if(!empty($_FILES['profile']['name'])){
 include "../classes/dbh.php";
 include "../classes/account-info.php";
 include "../classes/account-info-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 //instantiate class
 $model = new AccountInfo();
 $controller = new AccountInfoController();
-$logController = new LogController();
 
 //get all old proofs
 $userData = $model->getUser($userId);
@@ -70,7 +69,11 @@ $oldProfile = $userData['profile'];
 
 //validate data and add data to the database
 $controller->editProfile($userId, $profileNameNew);
-$logController->addLog($userId, $actionMade);
+
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 //remove old profile
 if($oldProfile != "default.jpg"){

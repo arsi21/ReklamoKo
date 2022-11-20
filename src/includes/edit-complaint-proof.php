@@ -15,6 +15,7 @@ $proof2NameNew = "";
 $proof3NameNew = "";
 $status = "pending";
 $userId = $_SESSION['userId'];
+$name = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 $actionMade = "Edited the proof of complaint [id={$complaintId}]";
 
 
@@ -126,13 +127,11 @@ if(!empty($_FILES['proof3']['name'])){
 include "../classes/dbh.php";
 include "../classes/pending-complaint-info.php";
 include "../classes/pending-complaint-info-controller.php";
-include "../classes/log.php";
-include "../classes/log-controller.php";
+include "../classes/logger.php";
 
 //instantiate class
 $model = new PendingComplaintInfo();
 $controller = new PendingComplaintInfoController();
-$logController = new LogController();
 
 //get all old proofs
 $oldProofs = $model->getComplaintProofs($complaintId);
@@ -140,7 +139,11 @@ $oldProofs = $model->getComplaintProofs($complaintId);
 //validate data and add data to the database
 $controller->editComplaintProof($complaintId, $proof1NameNew, $proof2NameNew, $proof3NameNew);
 $controller->editPendingComplaintStatus($complaintId, $status);
-$logController->addLog($userId, $actionMade);
+
+//add log
+$log = new Logger("log.txt");
+$log->setTimestamp("Y-m-d H:i:s");
+$log->putLog("UserId={$userId} {$name} {$actionMade}");
 
 //remove old proof
 foreach($oldProofs as $proof){
