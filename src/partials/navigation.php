@@ -120,6 +120,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="residents.php" class="nav__transferred">
+                        <img src="assets/icons/resident-accounts.svg" alt="Resident accounts icon">
+                        <span>Residents</span>
+                    </a>
+                </li>
+
     <?php
         }
     ?>

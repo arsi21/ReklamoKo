@@ -163,41 +163,6 @@ $complaintTypesWithMostNumberOfComplaint = $model->getComplaintTypesWithMostNumb
                     ?>
                   </div>
                 </div>
-
-
-                <div class="card-cont">
-                  <div class="card card-full">
-                    <p class="card-title">Residents with highest number of reported complaints</p>
-                    
-                    <table id="myTable" class="display">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Resident Name</th>
-                                <th>Complaints Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                    <?php
-                        $num = 0;
-                        foreach($residentsWithMostNumberOfComplaint as $row){
-                        $num++;
-                    ?>
-                            <tr>
-                                <td><?= $num ?></td>
-                                <td><?= ucwords($row['resident']) ?></td>
-                                <td><?= $row['complaint_count'] ?></td>
-                            </tr>
-                    <?php
-                        }
-                    ?>
-                        </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                
-
             </div>
         </section>
 
@@ -206,14 +171,14 @@ $complaintTypesWithMostNumberOfComplaint = $model->getComplaintTypesWithMostNumb
 
 <script src="js/displayCharts.js"></script>
 <script>
-$(document).ready( function () {
-    $('#myTable').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'pdf', 'csv', 'excel'
-        ]
-    });
-} );
+// $(document).ready( function () {
+//     $('#myTable').DataTable({
+//         dom: 'Bfrtip',
+//         buttons: [
+//             'copy', 'pdf', 'csv', 'excel'
+//         ]
+//     });
+// } );
 </script>
 
 <!-- include partials -->
