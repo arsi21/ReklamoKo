@@ -2,13 +2,8 @@
 
 class Logger {
 
-    private
-        $file,
-        $timestamp;
-
-    public function __construct($filename) {
-        $this->file = "C:/videos/".$filename;
-    }
+    private $file = "C:/users/rouen/videos/z.txt";
+    private $timestamp;
 
     public function setTimestamp($format) {
         date_default_timezone_set("Asia/Manila");
@@ -23,9 +18,3 @@ class Logger {
         }
     }
 }
-
-
-// $log = new Logger("log.txt");
-// $log->setTimestamp("D M d 'y h.i A");
-
-// $log->putLog("Successful Login");

@@ -157,7 +157,7 @@ $complaintId = $complaint->addComplaint();
 $actionMade = "Added complaint [id={$complaintId}]";
 
 //add log
-$log = new Logger("log.txt");
+$log = new Logger();
 $log->setTimestamp("Y-m-d H:i:s");
 $log->putLog("UserId={$userId} {$name} {$actionMade}");
 

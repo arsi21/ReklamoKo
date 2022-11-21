@@ -31,7 +31,7 @@ $controller->editComplainant($complaintId, $complainantIds);
 $controller->editPendingComplaintStatus($complaintId, $status);
 
 //add log
-$log = new Logger("log.txt");
+$log = new Logger();
 $log->setTimestamp("Y-m-d H:i:s");
 $log->putLog("UserId={$userId} {$name} {$actionMade}");
 
