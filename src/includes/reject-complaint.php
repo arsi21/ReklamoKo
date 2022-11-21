@@ -9,7 +9,7 @@ $complaintId = $_POST['complaintId'];
 $complainantNumber = $_POST['complainantNumber'];
 $complainee = $_POST['complainee'];
 $message = $_POST['message'];
-$status = "rejected";
+$status = "pending";
 
 //include needed files
 include "../classes/dbh.php";
@@ -33,4 +33,4 @@ $smsSender = new SmsSender();
 $smsSender->sendSms($complainantNumber, $CONTENT);
 
 //going back to page
-header("location: ../pending-complaints.php?message=rejectedSuccessfully");
+header("location: ../pending-complaints.php?message=addedMessageSuccessfully");

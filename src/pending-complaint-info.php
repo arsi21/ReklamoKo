@@ -95,11 +95,11 @@ include_once 'partials/navigation.php';
 
                     <p class="content__comp__lbl">Complaint Status:</p>
                 <?php 
-                    if($data['status'] == "pending"){
+                    if($data['message'] == ""){
                 ?>
                     <p class="content__comp__val primary"><?= ucwords($data['status']) ?></p>
                 <?php 
-                    }elseif($data['status'] == "rejected"){
+                    }elseif($data['message'] != ""){
                 ?>
                     <p class="content__comp__val danger"><?= ucwords($data['status']) ?> - <span class="secondary"><?= $data['message'] ?></span></p>
                 <?php 
@@ -212,7 +212,7 @@ include_once 'partials/navigation.php';
                 ?>
                     <div class="content__btn__cont">
                         <button id="approveComplaintBtn" class="primary-btn" onclick="showApproveComplaintModal()">Approve</button>
-                        <button id="rejectComplaintBtn" class="danger-btn" onclick="showRejectComplaintModal()">Reject</button>
+                        <button id="rejectComplaintBtn" class="danger-btn" onclick="showRejectComplaintModal()">Message</button>
                     </div>
                 <?php 
                     }
@@ -290,7 +290,7 @@ include_once 'partials/navigation.php';
             <form action="includes/reject-complaint.php" id="rejectComplaintModalCont" class="modal2__cont--small" method="post">
                 <div class="modal2__head">
                     <span class="modal2__title">
-                        Reject Complaint
+                        Message
                     </span>
                     
                     <span id="rejectComplaintModalExit" class="modal2__close">
