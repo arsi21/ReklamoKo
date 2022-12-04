@@ -4,7 +4,7 @@ class PendingComplaint extends Dbh {
 
     //get
 
-    public function getUserPendingComplaints($userId) {
+    public function getUserPendingComplaints($residentId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
         ct.type,
         pc.pending_date,
@@ -16,16 +16,17 @@ class PendingComplaint extends Dbh {
         ON c.complaint_type_id = ct.id
         LEFT JOIN comment cm
         ON cm.complaint_id = c.id 
-        INNER JOIN application a
-        ON a.user_id = c.user_id
-        INNER JOIN user u
-        ON u.id = a.user_id
-        WHERE c.user_id = ?
+        WHERE ?
+        IN (SELECT r.id
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = c.id)
         AND pc.status != "approved"
         AND pc.is_archive != 1
         ORDER BY pc.complaint_id DESC');
 
-        if(!$stmt->execute(array($userId))){
+        if(!$stmt->execute(array($residentId))){
             $stmt = null;
             header("location: ../pending-complaints.php?message=stmtfailed");
             exit();
@@ -116,10 +117,57 @@ class PendingComplaint extends Dbh {
 
     //search
 
-    public function searchUserPendingComplaints($search, $userId) {
+    // public function searchUserPendingComplaints($search, $userId) {
+    //     $stmt = $this->connect()->query("SELECT c.id,
+	// 	CONCAT(r.first_name, ' ', r.last_name) AS complainant,
+    //     COUNT(r.id) AS complainant_count,
+    //     ct.type,
+    //     pc.pending_date,
+    //     pc.status
+    //     FROM pending_complaint pc
+    //     INNER JOIN complaint c
+    //     ON c.id = pc.complaint_id 
+    //     INNER JOIN complaint_type ct
+    //     ON c.complaint_type_id = ct.id
+    //     LEFT JOIN comment cm
+    //     ON cm.complaint_id = c.id 
+    //     INNER JOIN application a
+    //     ON a.user_id = c.user_id
+    //     INNER JOIN user u
+    //     ON u.id = a.user_id
+    //     INNER JOIN complaint_complainant cct
+    //     ON cct.complaint_id = c.id
+    //     INNER JOIN resident r
+    //     ON r.id = cct.complainant_id
+    //     WHERE pc.status != 'approved'
+    //     AND pc.is_archive != 1
+    //     AND c.user_id = $userId
+    //     AND c.id
+    //     IN (SELECT c.id
+    //         FROM pending_complaint pc
+    //         INNER JOIN complaint c
+    //         ON c.id = pc.complaint_id 
+    //         INNER JOIN complaint_type ct
+    //         ON c.complaint_type_id = ct.id
+    //         INNER JOIN complaint_complainant cct
+    //         ON cct.complaint_id = c.id
+    //         INNER JOIN resident r
+    //         ON r.id = cct.complainant_id
+    //         WHERE ct.type
+    //         LIKE '%$search%')
+    //     GROUP BY cct.complaint_id
+    //     ORDER BY pc.complaint_id DESC");
+
+    //     $results = $stmt->fetchAll();
+
+    //     $stmt = null;
+
+    //     return $results;
+    // }
+
+
+    public function searchUserPendingComplaints($search, $residentId) {
         $stmt = $this->connect()->query("SELECT c.id,
-		CONCAT(r.first_name, ' ', r.last_name) AS complainant,
-        COUNT(r.id) AS complainant_count,
         ct.type,
         pc.pending_date,
         pc.status
@@ -130,17 +178,14 @@ class PendingComplaint extends Dbh {
         ON c.complaint_type_id = ct.id
         LEFT JOIN comment cm
         ON cm.complaint_id = c.id 
-        INNER JOIN application a
-        ON a.user_id = c.user_id
-        INNER JOIN user u
-        ON u.id = a.user_id
-        INNER JOIN complaint_complainant cct
-        ON cct.complaint_id = c.id
-        INNER JOIN resident r
-        ON r.id = cct.complainant_id
-        WHERE pc.status != 'approved'
+        WHERE $residentId
+        IN (SELECT r.id
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = c.id)
+        AND pc.status != 'approved'
         AND pc.is_archive != 1
-        AND c.user_id = $userId
         AND c.id
         IN (SELECT c.id
             FROM pending_complaint pc
@@ -148,13 +193,8 @@ class PendingComplaint extends Dbh {
             ON c.id = pc.complaint_id 
             INNER JOIN complaint_type ct
             ON c.complaint_type_id = ct.id
-            INNER JOIN complaint_complainant cct
-            ON cct.complaint_id = c.id
-            INNER JOIN resident r
-            ON r.id = cct.complainant_id
             WHERE ct.type
             LIKE '%$search%')
-        GROUP BY cct.complaint_id
         ORDER BY pc.complaint_id DESC");
 
         $results = $stmt->fetchAll();

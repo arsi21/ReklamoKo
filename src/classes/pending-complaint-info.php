@@ -290,7 +290,7 @@ class PendingComplaintInfo extends Dbh {
     //get
 
 
-    public function getUserPendingComplaint($complaintId, $userId) {
+    public function getUserPendingComplaint($complaintId, $residentId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
         r.first_name complainant_first_name,
         r.last_name complainant_last_name,
@@ -341,12 +341,17 @@ class PendingComplaintInfo extends Dbh {
         ON r.id = cct.complainant_id
         WHERE c.id = ?
         AND pc.status != "approved"
-        AND c.user_id = ?
+        AND ?
+        IN (SELECT r.id
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = ?)
         AND pc.is_archive != 1
         GROUP BY cct.complaint_id
         ORDER BY pc.complaint_id DESC');
 
-        if(!$stmt->execute(array($complaintId, $complaintId, $complaintId, $complaintId, $complaintId, $userId))){
+        if(!$stmt->execute(array($complaintId, $complaintId, $complaintId, $complaintId, $complaintId, $residentId, $complaintId))){
             $stmt = null;
             header("location: ../pending-complaint.php?id=$id&message=stmtfailed");
             exit();

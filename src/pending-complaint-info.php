@@ -20,7 +20,7 @@ if($_SESSION['accessType'] == 'resident'){
     $residentId = $_SESSION['residentId'];
 
     //get data from database
-    $data = $model->getUserPendingComplaint($complaintId, $userId);
+    $data = $model->getUserPendingComplaint($complaintId, $residentId);
     $proofData = $model->getComplaintProofs($complaintId);
     $luponData = $model->getLupons($complaintId);
 }elseif($_SESSION['accessType'] == 'admin'){

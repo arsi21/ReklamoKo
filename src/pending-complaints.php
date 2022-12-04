@@ -15,10 +15,11 @@ $model = new PendingComplaint();
 
 //get the user id
 $userId = $_SESSION['userId'];
+$residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $data = $model->getUserPendingComplaints($userId);
+    $data = $model->getUserPendingComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
     $data = $model->getAllPendingComplaints();
 }

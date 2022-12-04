@@ -15,12 +15,13 @@ $model = new PendingComplaint();
 
 //get the user id
 $userId = $_SESSION['userId'];
+$residentId = $_SESSION['residentId'];
 
 $search = $_POST['search'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $data = $model->searchUserPendingComplaints($search, $userId);
+    $data = $model->searchUserPendingComplaints($search, $residentId);
 }elseif($_SESSION['accessType'] == "admin"){
     $data = $model->searchAllPendingComplaints($search);
 }
