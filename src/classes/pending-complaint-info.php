@@ -459,13 +459,32 @@ class PendingComplaintInfo extends Dbh {
     }
 
 
-    public function getLupons() {
-        $stmt = $this->connect()->query('SELECT l.id,
+    public function getLupons($complaintId) {
+        $stmt = $this->connect()->prepare('SELECT l.id,
         r.first_name,
         r.last_name
         FROM lupon l
         INNER JOIN resident r
-        ON l.resident_id = r.id ');
+        ON l.resident_id = r.id
+        WHERE l.is_archive != 1
+        AND l.resident_id
+        NOT IN (SELECT r.id
+                FROM complaint_complainant cct
+                INNER JOIN resident r
+                ON r.id = cct.complainant_id
+                WHERE cct.complaint_id = ?)
+        AND l.resident_id
+        NOT IN (SELECT r.id
+                FROM complaint_complainee cc
+                INNER JOIN resident r
+                ON r.id = cc.complainee_id
+                WHERE cc.complaint_id = ?)');
+
+        if(!$stmt->execute(array($complaintId, $complaintId))){
+            $stmt = null;
+            header("location: ../pending-complaint.php?id=$complaintId&message=stmtfailed");
+            exit();
+        }
 
         $results = $stmt->fetchAll();
 

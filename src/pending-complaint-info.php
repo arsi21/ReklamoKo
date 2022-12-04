@@ -22,12 +22,12 @@ if($_SESSION['accessType'] == 'resident'){
     //get data from database
     $data = $model->getUserPendingComplaint($complaintId, $userId);
     $proofData = $model->getComplaintProofs($complaintId);
-    $luponData = $model->getLupons();
+    $luponData = $model->getLupons($complaintId);
 }elseif($_SESSION['accessType'] == 'admin'){
     //get data from database
     $data = $model->getPendingComplaint($complaintId);
     $proofData = $model->getComplaintProofs($complaintId);
-    $luponData = $model->getLupons();
+    $luponData = $model->getLupons($complaintId);
 }
 
 
