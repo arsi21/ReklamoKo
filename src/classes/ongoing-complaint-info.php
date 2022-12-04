@@ -54,11 +54,11 @@ class OngoingComplaintInfo extends Dbh {
 
     //get
 
-    public function getUserOngoingComplaint($complaintId, $userId) {
+    public function getUserOngoingComplaint($complaintId, $residentId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
-        r.first_name complainant_first_name,
-        r.last_name complainant_last_name,
-        r.mobile_number complainant_number,
+        r3.first_name complainant_first_name,
+        r3.last_name complainant_last_name,
+        r3.mobile_number complainant_number,
         r2.first_name lupon_first_name,
         r2.last_name lupon_last_name,
         (SELECT GROUP_CONCAT(r.first_name, " ", r.last_name SEPARATOR ", ")
@@ -104,10 +104,17 @@ class OngoingComplaintInfo extends Dbh {
         ON c.complaint_type_id = ct.id
         INNER JOIN application a
         ON a.user_id = c.user_id
+        INNER JOIN resident r3
+        ON r3.id = a.resident_id
         INNER JOIN user u
         ON u.id = a.user_id
         WHERE c.id = ?
-        AND c.user_id = ?
+        AND ?
+        IN (SELECT r.id
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = ?)
         AND c.id 
         NOT IN 
             (SELECT complaint_id
@@ -119,7 +126,7 @@ class OngoingComplaintInfo extends Dbh {
         GROUP BY cct.complaint_id
         ORDER BY oc.ongoing_date DESC');
 
-        if(!$stmt->execute(array($complaintId, $complaintId, $complaintId, $complaintId, $complaintId, $userId))){
+        if(!$stmt->execute(array($complaintId, $complaintId, $complaintId, $complaintId, $complaintId, $residentId, $complaintId))){
             $stmt = null;
             header("location: ../ongoing-complaints.php?message=stmtfailed");
             exit();

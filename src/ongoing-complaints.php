@@ -14,11 +14,11 @@ include_once "classes/ongoing-complaint.php";
 $model = new OngoingComplaint();
 
 //get the user id
-$userId = $_SESSION['userId'];
+$residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $data = $model->getUserOngoingComplaints($userId);
+    $data = $model->getUserOngoingComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
     $data = $model->getAllOngoingComplaints();
 }

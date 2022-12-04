@@ -15,9 +15,10 @@ $complaintId = $_GET['id'];
 if($_SESSION['accessType'] == 'resident'){
     //get resident id
     $userId = $_SESSION['userId'];
+    $residentId = $_SESSION['residentId'];
 
     //get data from database
-    $data = $model->getUserOngoingComplaint($complaintId, $userId);
+    $data = $model->getUserOngoingComplaint($complaintId, $residentId);
     $proofData = $model->getComplaintProofs($complaintId);
     $meetingData = $model->getMeetingSchedules($complaintId);
 }elseif($_SESSION['accessType'] == 'admin'){

@@ -4,7 +4,7 @@ class OngoingComplaint extends Dbh {
 
     //get
 
-    public function getUserOngoingComplaints($userId) {
+    public function getUserOngoingComplaints($residentId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
         CONCAT(r.first_name, " ", r.last_name) AS complainant,
         COUNT(r.id) AS complainant_count,
@@ -19,7 +19,12 @@ class OngoingComplaint extends Dbh {
         ON r.id = cct.complainant_id
         INNER JOIN complaint_type ct
         ON c.complaint_type_id = ct.id
-        WHERE c.user_id = ?
+        WHERE ?
+        IN (SELECT r.id
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = c.id)
         AND c.id 
         NOT IN 
             (SELECT complaint_id
@@ -31,7 +36,7 @@ class OngoingComplaint extends Dbh {
         GROUP BY cct.complaint_id
         ORDER BY oc.ongoing_date DESC');
 
-        if(!$stmt->execute(array($userId))){
+        if(!$stmt->execute(array($residentId))){
             $stmt = null;
             header("location: ../ongoing-complaints.php?message=stmtfailed");
             exit();

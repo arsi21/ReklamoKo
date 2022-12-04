@@ -292,8 +292,9 @@ class PendingComplaintInfo extends Dbh {
 
     public function getUserPendingComplaint($complaintId, $residentId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
-        r.first_name complainant_first_name,
-        r.last_name complainant_last_name,
+        r3.first_name complainant_first_name,
+        r3.last_name complainant_last_name,
+        r3.mobile_number complainant_number,
             (SELECT GROUP_CONCAT(r.first_name, " ", r.last_name SEPARATOR ", ")
             FROM complaint_complainant cct
             INNER JOIN resident r
@@ -333,6 +334,8 @@ class PendingComplaintInfo extends Dbh {
         ON cm.complaint_id = c.id 
         INNER JOIN application a
         ON a.user_id = c.user_id
+        INNER JOIN resident r3
+        ON r3.id = a.resident_id
         INNER JOIN user u
         ON u.id = a.user_id
         INNER JOIN complaint_complainant cct
