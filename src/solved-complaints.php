@@ -15,11 +15,11 @@ include_once "classes/solved-complaint.php";
 $model = new SolvedComplaint();
 
 //get the resident id
-$userId = $_SESSION['userId'];
+$residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $data = $model->getUserSolvedComplaints($userId);
+    $data = $model->getUserSolvedComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
     $data = $model->getAllSolvedComplaints();
 }

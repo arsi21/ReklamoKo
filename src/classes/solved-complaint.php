@@ -4,7 +4,7 @@ class SolvedComplaint extends Dbh {
 
     //get
 
-    public function getUserSolvedComplaints($userId) {
+    public function getUserSolvedComplaints($residentId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
         CONCAT(r.first_name, " ", r.last_name) AS complainant,
         COUNT(r.id) AS complainant_count,
@@ -19,11 +19,16 @@ class SolvedComplaint extends Dbh {
         ON cct.complaint_id = c.id
         INNER JOIN resident r
         ON r.id = cct.complainant_id
-        WHERE c.user_id = ?
+        WHERE ?
+        IN (SELECT r.id
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = c.id)
         GROUP BY cct.complaint_id
         ORDER BY sc.solved_date DESC');
 
-        if(!$stmt->execute(array($userId))){
+        if(!$stmt->execute(array($residentId))){
             $stmt = null;
             header("location: ../solved-complaints.php?message=stmtfailed");
             exit();
