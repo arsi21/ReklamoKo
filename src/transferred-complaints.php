@@ -15,11 +15,11 @@ include_once "classes/transferred-complaint.php";
 $model = new TransferredComplaint();
 
 //get the user id
-$userId = $_SESSION['userId'];
+$residentId = $_SESSION['residentId'];
 
 //get data from database
 if($_SESSION['accessType'] == "resident"){
-    $data = $model->getUserTransferredComplaints($userId);
+    $data = $model->getUserTransferredComplaints($residentId);
 }elseif($_SESSION['accessType'] == "admin"){
     $data = $model->getAllTransferredComplaints();
 }

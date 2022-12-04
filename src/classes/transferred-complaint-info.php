@@ -4,10 +4,10 @@ class TransferredComplaintInfo extends Dbh {
 
     //get
 
-    public function getUserTransferredComplaint($complaintId, $userId) {
+    public function getUserTransferredComplaint($complaintId, $residentId) {
         $stmt = $this->connect()->prepare('SELECT c.id,
-        r.first_name complainant_first_name,
-        r.last_name complainant_last_name,
+        r3.first_name complainant_first_name,
+        r3.last_name complainant_last_name,
         (SELECT GROUP_CONCAT(r.first_name, " ", r.last_name SEPARATOR ", ")
                 FROM complaint_complainant cct
                 INNER JOIN resident r
@@ -51,6 +51,8 @@ class TransferredComplaintInfo extends Dbh {
         ON c.complaint_type_id = ct.id
         INNER JOIN application a
         ON a.user_id = c.user_id
+        INNER JOIN resident r3
+        ON r3.id = a.resident_id
         INNER JOIN user u
         ON u.id = a.user_id
         INNER JOIN complaint_complainant cct
@@ -58,10 +60,15 @@ class TransferredComplaintInfo extends Dbh {
         INNER JOIN resident r
         ON r.id = cct.complainant_id
         WHERE c.id = ?
-        AND c.user_id = ?
+        AND ?
+        IN (SELECT r.id
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = ?)
         GROUP BY cct.complaint_id');
 
-        if(!$stmt->execute(array($complaintId, $complaintId, $complaintId, $complaintId, $complaintId, $userId))){
+        if(!$stmt->execute(array($complaintId, $complaintId, $complaintId, $complaintId, $complaintId, $residentId, $complaintId))){
             $stmt = null;
             header("location: ../transferred-complaints.php?message=stmtfailed");
             exit();
