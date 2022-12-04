@@ -34,8 +34,34 @@ $dataCount = count($data);
                     <a class="content__item__link" href="ongoing-complaint-info.php?id=<?= $row['id'] ?>">
                         <div class="content__item__cont">
                             <div class="content__item__info__cont">
-                                <span class="content__item__name"><?= ucwords($row['first_name']) . " " . ucwords($row['last_name']) ?></span>
-                                <span class="content__item__desc"><?= $row['complaint_description'] ?></span>
+                        <?php 
+                            if($_SESSION['accessType'] == "admin"){
+                        ?>
+                            <div>
+                                <span class="content__item__name">
+                                    <?= ucwords($row['complainant']) ?>
+                                </span>
+                            <?php 
+                                if($row['complainant_count'] == 2){
+                            ?>
+                                <span class="content__item__name">
+                                    <?= "& " . $row['complainant_count'] - 1 . " other" ?>
+                                </span>
+                            <?php 
+                                }elseif($row['complainant_count'] > 2){
+                            ?>
+                                <span class="content__item__name">
+                                    <?= "& " . $row['complainant_count'] - 1 . " others" ?>
+                                </span>
+                            <?php 
+                                }
+                            ?>
+
+                            </div>
+                        <?php 
+                            }
+                        ?>
+                                <span class="content__item__desc"><?= $row['type'] ?></span>
                                 <span class="content__item__date"><?= $row['ongoing_date'] ?></span>
                             </div>
                         </div>
@@ -49,7 +75,7 @@ $dataCount = count($data);
                     if($dataCount == 0){
                 ?>
                     <div class="no-data-msg">
-                        <p>No data found!</p>
+                        <p>No ongoing complaints!</p>
                     </div>
                 <?php
                     }

@@ -75,29 +75,45 @@ class TransferredComplaint extends Dbh {
     //search
     public function searchUserTransferredComplaints($search, $residentId) {
         $stmt = $this->connect()->query("SELECT c.id,
-        r.first_name,
-        r.last_name,
-        c.complaint_description,
+        CONCAT(r.first_name, ' ', r.last_name) AS complainant,
+        COUNT(r.id) AS complainant_count,
+        ct.type,
         tc.transferred_date
         FROM transferred_complaint tc
         INNER JOIN complaint c
         ON c.id = tc.complaint_id 
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
         INNER JOIN resident r
-        ON r.id = c.complainee_id
-        WHERE c.complainant_id = '$residentId'
+        ON r.id = cct.complainant_id
+        WHERE $residentId
+        IN (SELECT r.id
+            FROM complaint_complainant cct
+            INNER JOIN resident r
+            ON r.id = cct.complainant_id
+            WHERE cct.complaint_id = c.id)
         AND c.id
         IN (SELECT c.id
             FROM transferred_complaint tc
             INNER JOIN complaint c
             ON c.id = tc.complaint_id 
+            INNER JOIN complaint_type ct
+            ON c.complaint_type_id = ct.id
+            INNER JOIN complaint_complainant cct
+            ON cct.complaint_id = c.id
             INNER JOIN resident r
-            ON r.id = c.complainee_id
+            ON r.id = cct.complainant_id
             WHERE r.first_name
             LIKE '%$search%'
             OR r.last_name
             LIKE '%$search%'
             OR CONCAT(r.first_name, ' ', r.last_name)
+            LIKE '%$search%'
+            OR ct.type
             LIKE '%$search%')
+        GROUP BY cct.complaint_id
         ORDER BY tc.transferred_date DESC");
 
         $results = $stmt->fetchAll();
@@ -110,28 +126,39 @@ class TransferredComplaint extends Dbh {
 
     public function searchAllTransferredComplaints($search) {
         $stmt = $this->connect()->query("SELECT c.id,
-        r.first_name,
-        r.last_name,
-        c.complaint_description,
+        CONCAT(r.first_name, ' ', r.last_name) AS complainant,
+        COUNT(r.id) AS complainant_count,
+        ct.type,
         tc.transferred_date
         FROM transferred_complaint tc
         INNER JOIN complaint c
         ON c.id = tc.complaint_id 
+        INNER JOIN complaint_type ct
+        ON c.complaint_type_id = ct.id
+        INNER JOIN complaint_complainant cct
+        ON cct.complaint_id = c.id
         INNER JOIN resident r
-        ON r.id = c.complainee_id
+        ON r.id = cct.complainant_id
         WHERE c.id
         IN (SELECT c.id
             FROM transferred_complaint tc
             INNER JOIN complaint c
             ON c.id = tc.complaint_id 
+            INNER JOIN complaint_type ct
+            ON c.complaint_type_id = ct.id
+            INNER JOIN complaint_complainant cct
+            ON cct.complaint_id = c.id
             INNER JOIN resident r
-            ON r.id = c.complainee_id
+            ON r.id = cct.complainant_id
             WHERE r.first_name
             LIKE '%$search%'
             OR r.last_name
             LIKE '%$search%'
             OR CONCAT(r.first_name, ' ', r.last_name)
+            LIKE '%$search%'
+            OR ct.type
             LIKE '%$search%')
+        GROUP BY cct.complaint_id
         ORDER BY tc.transferred_date DESC");
 
         $results = $stmt->fetchAll();
